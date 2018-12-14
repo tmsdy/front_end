@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+	div{float: left ;margin:  4px ;}
+.box1{width:200px;height:200px;border:1px solid #000; border-radius:20px;}
+.box2{width:200px;height:200px;border:1px solid #000; border-radius:20px 40px;}
+.box3{width:200px;height:200px;border:1px solid #000; border-radius:20px 40px 60px;}
+.box4{width:200px;height:200px;border:1px solid #000; border-radius:20px 40px 60px 80px;}
+.box5{width:200px;height:300px;border:1px solid #000;border-radius:100px/150px;}
+.box6{width:200px;height:200px;border:1px solid #000; 
+	border-radius:20px 40px 60px 80px/10px 20px 30px 40px;}
+.box7{width:200px;height:300px;border:1px solid #000;border-radius:50%;}
+	/*
+	border-radius: 1-4个数字 / 1-4个数字
+		前面是水平，后面是垂直
+		不给“/”则水平和垂直一样
+		border-radius: 10px/5px;
+		参数
+		各种长度单位都可以：px，%，…
+		%有时很方便
+		但宽高不一致时不太好*/
+	/*
+	用法
+		1个：都一样
+		border-radius: 一样
+		2个：对角
+		border-radius: 左上&右下    右上&左下
+		3个：斜对角
+		border-radius: 左上    右上&左下    右下
+		4个：全部，顺时针
+		border-radius: 左上    右上    右下    左下*/
+
+</style>
+</head>
+<body>
+<div class="box1">1</div>
+<div class="box2">2</div>
+<div class="box3">3</div>
+<div class="box4">4</div>
+<div class="box5">5</div>
+<div class="box6">6</div>
+<div class="box7">7</div>
+</body>
+</html>

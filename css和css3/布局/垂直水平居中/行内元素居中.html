@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    
+    .box{
+        width: 800px ;
+        height: 400px ;
+        background: #999999 ;
+        /* 可使行内元素居中 */
+        text-align: center ;
+        /* 把容器当成表格里的单元格 */
+        display: table-cell ;
+        vertical-align: middle ;
+    }
+    .item{
+        width: 100px ;
+        height: 100px ; 
+        display: inline-block ;
+        line-height: 100px ;
+        background: pink ;
+    }
+
+
+</style>
+<body>
+    <div class="box">
+        <div class="item">center1</div>
+        <div class="item">center2</div>
+        <div class="item">center3</div>
+    </div>
+</body>
+</html>

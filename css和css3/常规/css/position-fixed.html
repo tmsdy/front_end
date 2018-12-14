@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- fixed: 它的containing block一律为根元素(html/body)，根元素也是initial containing block 
+    position: relative;是管不了fixed的，如果想把.son元素定位到.father右上角只能采取下面方法
+ -->
+<style>
+    .father{
+        width: 300px ;
+        height: 200px ;
+        background: pink ;
+        position: relative;
+    }
+    .right{
+        height: 0 ;
+        text-align: right ;
+        overflow: hidden;
+    }
+    .son{
+        display: inline ;
+        width: 40px ;
+        height: 40px ;
+        background: #333 ;
+        position: fixed;
+        margin-left: -40px ;
+        z-index: 9999;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="right">
+            &nbsp;<div class="son"></div>
+        </div>
+    </div>
+</body>
+</html>

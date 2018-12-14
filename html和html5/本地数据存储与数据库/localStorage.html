@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+   
+</head>
+
+<body>
+   <div id="setNum">设置数字</div>
+   <div id="getNum">获取数字</div>
+   <div id="remove">清除</div>
+</body>
+
+<script type="text/javascript">
+
+    var setDiv = document.getElementById('setNum') ;
+    var getDiv = document.getElementById('getNum') ;
+    var removeDiv = document.getElementById('remove') ;
+
+    setDiv.onclick=()=>{ // localStorage 是永久存储的，存在用户的硬盘里
+        localStorage.setItem("num", "123"); 
+    } ;
+    getDiv.onclick=()=>{
+        var num = localStorage.getItem("num"); 
+        console.log(num) ;
+    } ;
+    removeDiv.onclick=()=>{
+        // localStorage.removeItem('num') ; //单独删除
+        localStorage.clear(); 
+    }
+    
+</script>
+
+</html>				
+				

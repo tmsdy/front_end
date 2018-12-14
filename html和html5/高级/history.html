@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+/*
+为什么用history?
+    Ajax的视图展现是在页面无刷新情况下进行的，这也就意味着在用户做了一系列操作之后，页面的URL是没有任何变化的，
+    这些操作所产生的结果自然也就无法保留，当用户再次访问时，想要展现的数据也就无法重现。
+    HTML5中的History API很好的支持了基于URL的页面无刷新操作，也使得SEO优化得到完美的解决
+    为了解决异步单页的路由问题，使得页面在不刷新的情况下，带来视图的变化，同时变化后的信息能得到准确的传播。
+
+关于history
+    window.history是用来保存用户在一个会话期间的网站访问记录，并提供相应的方法进行追溯。其对应的成员如下：
+    方法：back()、forward()、go(num)、*pushState(stateData, title, url)、*replaceState(stateData, title, url)
+    属性：length、*state
+    事件：*window.onpopstate
+    以上*标注的为HTML5新增特性。
+　　方法说明：
+        back()：回退到上一个访问记录；
+        forward()：前进到下一个访问记录；
+        go(num)：跳转到相应的访问记录；其中num大于0，则前进；小于0，则后退；
+        pushState(stateData, title, url)：在history中创建一个新的访问记录，不能跨域，且不造成页面刷新；
+        replaceState(stateData, title, url)：修改当前的访问记录，不能跨域，且不造成页面刷新；
+    HTML5新增了可以监听history和hash访问变化的全局方法：
+　　　　window.onpopstate：当调用history.go()、history.back()、history.forward()时触发；pushState()\replaceState()方法不触发。
+　　　　window.onhashchange：当前 URL 的锚部分(以 '#' 号为开始) 发生改变时触发。触发的情况如下：
+　　　　　　a、通过设置Location 对象 的 location.hash 或 location.href 属性修改锚部分；
+　　　　　　b、使用不同history操作方法到带hash的页面;
+　　　　　　c、点击链接跳转到锚点
+*/
+
+</script>
+<body>
+    
+</body>
+</html>

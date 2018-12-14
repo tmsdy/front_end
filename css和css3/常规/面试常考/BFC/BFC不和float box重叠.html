@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<style>
+	body {
+		position: relative;
+	}
+	.aside {
+		width: 200px;
+		height: 150px;
+		float: left;
+		background: #f66;
+	}
+	.main {
+		height: 200px;
+		background: #fcc;
+		overflow: hidden;
+		/*加了这个生成BFC：BFC区域不会和float box重叠，做自适应*/
+	}
+</style>
+<body>
+	<div class="aside"></div>
+	<div class="main"></div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+	div{float: left ;margin: 6px ;}
+.box1{width:300px;height:300px;border:10px solid #000; 
+background-image:linear-gradient(60deg,red,blue);}
+	
+.box2{width:300px;height:300px;border:10px solid #000; 
+background-image:linear-gradient(60deg,red,blue,yellow,blue);}
+	
+.box3{width:300px;height:300px;border:10px solid #000; 
+background-image:linear-gradient(60deg,red 0,blue 50%,green 100%);}
+	/* 重复的渐变 */
+.box4{width:300px;height:300px;border:10px solid #000; 
+background-image:repeating-linear-gradient(60deg,red 0,blue 30px);}
+  				/*平铺渐变*/
+.box5{width:300px;height:300px;
+background:linear-gradient(red,blue); 
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='red',endColorstr='blue',GradientType='0');}
+	
+	/*
+	线性渐变格式
+		linear-gradient([<起点> || <角度>,]? <点>, <点>…)
+		只能用在背景上
+		IE filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff',endColorstr='#ff0000',GradientType='1');
+		参数
+		起点：从什么方向开始渐变		默认：top
+		left、top、left top
+		角度：从什么角度开始渐变
+		xxx deg的形式
+		点：渐变点的颜色和位置
+		black 50%，位置可选*/
+	/*
+	线性渐变实例
+		最简单
+		red, green
+		从上到下
+		起点位置
+		left top, red, green
+		30deg, red, green
+		逆时针
+		repeating-linear-gradient*/
+	/*	
+	线性渐变实例(2)
+	加入点的位置
+		top, red 40%, green 60%
+		top, red 50%, green 50%
+		同一个位置两个点——直接跳变
+		也可以用px
+		配合rgba
+		top, rgba(255,255,255,1), rgba(255,255,255,0)
+		加入背景图片
+		background: -webkit-linear-gradient (top, rgba(255,255,255,1) 30%, rgba(255,255,255,0)), url(a.gif)*/
+
+
+</style>
+</head>
+<body>
+<div class="box1">1</div>
+<div class="box2">2</div>
+<div class="box3">3</div>
+<div class="box4">4</div>
+<div class="box5">5</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
+	<script src="meter.js" ></script>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+
+	var oDiv = document.getElementById('box') ;
+
+	/*
+	* 参数：
+	* 1.容器
+	* 2.百分比，0到1之间小数就行
+	* 3.渐变开始的颜色 传十六进制颜色
+	* 4.渐变结束的颜色 传十六进制颜色
+	* 5.动画圆的半径 Number
+	* */
+    RenderProgress(oDiv,0.6,'#FFA933','#FF4B31',200) ;
+
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        line-height: 32px ;
+    }
+    .box > span{
+        font-size: 24px ;
+    }
+</style>
+<body>
+    <!-- span前有个看不见的类似于字符的"空白幽灵节点"
+    内外两个x的line-height相同，而span的字体大基线下移又文字默认基线对齐导致撑开div的大小 
+    解决方法：给box设置和span一样的字体大小-->
+    <div class="box">
+        x<span>文字x</span>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 400px ;
+        height: 140px ;
+        border: 1px solid #333 ;
+    }
+
+    #div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;margin-top: 20px ;}
+
+</style>
+<script type="text/javascript">
+    function allowDrop(ev)
+    {
+    ev.preventDefault();
+    }
+    
+    function drag(ev)
+    {
+    ev.dataTransfer.setData("Text",ev.target.id);
+    }
+    
+    function drop(ev)
+    {
+    var data=ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data));
+    ev.preventDefault();
+    }
+</script>
+<body>
+    <div class="box" align="center" bgcolor="#CCFFFF">
+        <p>哈哈哈</p>
+        <p contenteditable>配色网提供大量优秀配色方案，为色彩构成学习者提供免费资料</p>
+        <p hidden>我被隐藏了</p>
+    </div>
+
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    <br />
+    <p id="drag1" draggable="true" ondragstart="drag(event)">这是一段可移动的段落。请把该段落拖入上面的矩形。</p>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h1{font-size:16px;}
+        p{width:200px;padding:5px 10px;border:1px solid #ddd;font:14px/1.5 simsun,serif,sans-serif;}
+        /* first-letter仅作用于块对象。内联对象要使用该伪对象，必须先将其设置为块级对象。
+        该伪类常被用来配合font-size属性和float属性制作首字下沉效果。 */
+        /* 下面两个差不多 ::是css3写法*/
+        .p1:first-letter {float:left;font-size:40px;font-weight:bold;line-height:1;}
+        /* p::first-letter {float:left;font-size:40px;font-weight:bold;line-height:1;} */
+    
+        .p2:first-line {color:#090;}
+        /* p2::first-line {color:#090;} */
+    </style>
+
+    </head>
+    <body>
+
+        <h1>杂志常用的首字下沉效果</h1>
+        <p class="p1">今天，阳光明媚，晴空万里，非常适合户外活动，如踏青、远足之类的。长期坐在办公室的同学们要多注意运动。</p>
+        <h1>第一行文字的颜色与其它不同</h1>
+        <p class="p2">今天，阳光明媚，晴空万里，非常适合户外活动，如踏青、远足之类的。长期坐在办公室的同学们要多注意运动。</p>
+        
+    </body>
+
+</html>

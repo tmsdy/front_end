@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+</style>
+<script>
+
+  $(function () {
+
+    var oC = $('#c1').get(0);
+    var oGC = oC.getContext('2d') ;
+    var r1 = 244 ;
+    var r2 = 212;
+    var l1 = 200 ;
+    var l2 = 230 ;
+	var sqrt3 = Math.sqrt(3).toFixed(3) ;
+
+    oGC.beginPath();
+    oGC.strokeStyle = '#F2F4FF';
+    oGC.lineWidth = 6;
+    oGC.moveTo(l1+r1,100);
+    oGC.bezierCurveTo(l1,100,l1,100+r1+(1/(2+sqrt3))*r1,l1+r1-sqrt3*r1/2,100+3*r1/2) ;
+    oGC.stroke();
+    oGC.moveTo(l1+r1,100);
+    oGC.bezierCurveTo(l1+2*r1,100,l1+2*r1,100+r1+(1/(2+sqrt3))*r1,l1+r1+sqrt3*r1/2,100+3*r1/2) ;
+    oGC.stroke();
+    oGC.closePath() ;
+
+    oGC.beginPath();
+    // oGC.strokeStyle = 'red';
+    var gr = oGC.createRadialGradient(l2+r2-sqrt3*r2/2,130+3*r2/2,r2,l2+r2,130,r2);
+    //添加颜色端点
+    gr.addColorStop(0,'green');
+    gr.addColorStop(.5,'red');
+    gr.addColorStop(1,'blue');
+    //应用fillStyle生成渐变
+    oGC.strokeStyle = gr;
+    oGC.lineWidth = 30;
+    oGC.moveTo(l2+r2,130);
+    oGC.bezierCurveTo(l2,130,l2,130+r2+(1/(2+sqrt3))*r2,l2+r2-sqrt3*r2/2,130+3*r2/2) ;
+    oGC.stroke();
+    oGC.moveTo(l2+r2,130);
+    oGC.bezierCurveTo(l2+2*r2,130,l2+2*r2,130+r2+(1/(2+sqrt3))*r2,l2+r2+sqrt3*r2/2,130+3*r2/2) ;
+    oGC.stroke();
+    oGC.closePath() ;
+
+
+  })
+
+</script>
+<body>
+	<canvas id="c1" width="800" height="600">
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* 
+    设置了margin-right:auto ; 它将剩余的空间放置在元素的右侧 
+    display:flex ;配合margin:auto ;也还能实现水平垂直居中
+    */
+    .flex-box{
+        width: 600px ;
+        height: 300px ;
+        margin: 0 auto ;
+        background: #999999 ;
+        display: flex ;
+    }
+    .flex-item{
+        width: 100px ;
+        height: 100px ;
+        margin: 10px ;
+        background: pink ;
+    }
+
+    .flex-item:first-child{
+        margin-right: auto ;
+    }
+
+
+    .flex-box2{
+        width: 600px ;
+        height: 300px ;
+        margin: 10px auto ;
+        background: #999999 ;
+        display: flex ;
+    }
+    .flex-center{
+        width: 100px ;
+        height: 100px ;
+        margin: auto ;
+        background: pink ;
+    }
+
+</style>
+<body>
+    <div class="flex-box">
+        <div class="flex-item">flex-item 1</div>
+        <div class="flex-item">flex-item 2</div>
+        <div class="flex-item">flex-item 3</div>
+    </div>
+    <div class="flex-box2">
+        <div class="flex-center">center</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!--
+通用首部字段：请求报文响应报文都会使用
+
+    1.Cache-Control：操作缓存的工作机制
+        客户端请求：
+            no-cache：强制向服务器再次验证，防止拿到过期的资源。
+        服务端响应：
+            public：任意客户端都可利用缓存
+            private：缓存只给某个特定的客户端
+            no-cache：缓存前必须先确认其有效性
+
+        两端都有且功能一样：
+            no-store：指不进行缓存
+            max-age：缓存的有效时间（相对时间）    
+
+    2.Connection：
+        1.控制代理不再转发首部字段: Upgrade，那么Upgrade:HTTP/1.1这种会被删除再转发
+        2.管理持久连接: keep-alive (持久连接) close(关闭连接) HTTP1.1版本默认keep-alive之前版本默认close
+
+    3.Date: 表示创建报文的日期和时间
+		Date: Tue, 03 Jul 2017 10:40:00 GMT
+
+    4.Transfer-Encoding：chunked，表示分块传输。规定传输报文主体时用的编码格式，
+    
+    5.Upgrade
+        升级一个成其他的协议(例如websocket，TLS，HTTP1.1)，服务器可用101状态码作为相应返回。
+
+
+
+
+ -->

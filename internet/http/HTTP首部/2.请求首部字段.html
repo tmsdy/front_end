@@ -1,0 +1,38 @@
+<!-- 
+请求首部字段
+    1、Accept：text/html,text/plain;q=0.3 q表示优先级，不指定的默认为1，意思是最好给我发html格式的，没有的话text格式也行
+        文本类型：text/html、text/plain…
+		图片类型：image/jpeg、image/gif、image/png…
+		视频文件：video/mpeg、video/quicktime
+		二进制文件：application/octet-stream、application/zip…
+
+    2、Accept-Charset：支持的字符集及字符集的相对优先顺序，跟Accept一样，用q来表示相对优先级。这个字段应用于内容协商机制的服务器驱动协商。
+
+    3、Accept-Encoding：支持的内容编码gzip、compress、deflate、identity（不执行压缩或者不会变化的默认编码格式）
+
+    4、Accept-Language：能够处理的自然语言集，q表示优先级
+
+    5.Authorization: 告知服务器用户代理的认证信息(证书值)
+
+    6.If-xxx,条件请求，服务器判断条件为真时执行请求
+        If-Match:对应服务器标记的ETag，匹配则返回对应资源(资源更新ETag更新)，如果是*则只要资源存在就处理请求
+        If-None-Match：和If-Match作用相反
+        If-Modified-Since：对应Last-Modified,没过期就去读缓存
+
+	7.Host: 虚拟主机运行在同一个IP上
+		Host: www.hackr.jp，意思是找这个地址的虚拟主机拿资源
+
+	8.Range:只获取部分资源
+		Range: bytes=5001-10000，能处理该范围请求时返回206，不能处理该范围请求时返回200。
+
+	9.Referer: 哪个web页面发起的请求
+		Referer: www.hackr.jp/index.html
+
+    10.User-Agent: 
+        1.判断浏览器类型，采用兼容方案
+        2.判断是不是移动端
+        3.标识H5容器，方便调用H5容器特定接口
+        4.伪装成本低，不要过度依赖
+    
+
+ -->

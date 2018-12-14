@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+p{height:30px;border:1px solid #000;}
+p[miaov]{background:red;}
+	p[miaov="leo"]{background:green;}
+	p[miaov~="old"]{background:pink;}/*词列表的等于属性值*/
+	p[miaov^="g"]{background:blue;}/*以此属性值开头*/
+	p[miaov$="f"]{background:#F84A4D;}/*以此属性值结尾*/
+	p[miaov*="j"]{background:purple;}/*只要包含此属性值*/
+	p[miaov|=b]{background:black;}/*以b-开头或者只有一个b的*/
+	/*可以用input[type = "text"] 等来找input里面不同类型元素*/
+</style>
+</head>
+<body>
+<!--	自定义属性和修改写法-->
+	<p miaov="leo">leo</p> 
+    <p miaov="bdp old">杜鹏</p>
+    <p miaov="bzM">子鼠</p>
+    <p miaov="gxm">小美</p>
+    <p miaov="faf">樊阿芳</p>
+    <p miaov="hf">韩飞</p>
+    <p miaov="jbl">金宝拉</p>
+    <p miaov="b-leo">子鼠</p>
+    <p miaov="g-xm">小美</p>
+    <p miaov="b">无名氏</p>
+</body>
+</html>

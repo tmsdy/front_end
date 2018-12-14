@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        p{height:30px;border:1px solid #000;}
+        /* 选择.nth-p元素父级下的子元素 */
+        .nth-p:nth-child(1){background:green!important;} /*该元素的父元素中的第n个子节点*/
+        .nth-p:nth-child(2n-1){background:red;} /*奇数行 里面放2n-1效果一样 n代表正整数包括0*/
+        .nth-p:nth-child(2n){background:blue;} /*偶数行 里面放2n效果一样*/
+        .nth-p:nth-last-child(1){background:pink;}/*倒着数第一个*/
+
+.margin-top{margin-top: 50px ;}
+        /* 选择.type-p元素父级下的.type-p元素 */
+        .type-p:first-of-type{background:green} 
+        .type-p:nth-of-type(3){background:red}/*顺数第三个*/
+        .type-p:nth-of-type(2n){background:blue}/*偶数行*/
+        .type-p:nth-last-of-type(1){background:red}/*倒数第一个*/
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <p class="nth-p">p1</p>
+        <p class="nth-p">p2</p>
+        <p class="nth-p">p3</p>
+        <p class="nth-p">p4</p>
+        <p class="nth-p">p5</p>
+    </div>
+    <div class="margin-top">
+        <p class="type-p">p1</p>
+        <p class="type-p">p2</p>
+        <p class="type-p">p3</p>
+        <p class="type-p">p4</p>
+        <p class="type-p">p5</p>
+    </div>
+        
+</body>
+
+</html>

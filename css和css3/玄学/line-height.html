@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        line-height: 120px ;
+        background: #f0f3f9 ;
+    }
+    .content{
+        display: inline-block ;
+        line-height: 20px ;
+        margin: 0 20px ;
+        vertical-align: middle ;
+    }
+    
+    .box2 { margin-top:20px ;line-height: 32px; }
+    .box2 > span { font-size: 24px; }
+
+</style>
+<body>
+    <div class="box">
+        x<div class="content">基于行高实现的.....</div>
+    </div>
+    <!-- box02的最终宽度为35px -->
+    <div class="box2">
+        x<span>文字</span>
+    </div>
+</body>
+</html>

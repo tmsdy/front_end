@@ -1,0 +1,117 @@
+.select_btn{
+    width: 160px;
+    font-size: 20px;
+    margin: 20px auto;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/* public */
+body, input, textarea {
+    color: #333;
+    font-size: 14px;
+}
+.select_box,
+.select_box .select_content,
+.select_box .select_mask{
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+.scroll_y, .sg_layout.sg_scroll_y, .sg_scroll_y {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.border_bottom, .border_left, .border_right, .border_top {
+    position: relative;
+}
+.border_bottom:after {
+    bottom: 0;
+}
+.border_bottom:after, .border_top:before {
+    right: 0;
+    left: 0;
+    height: 1px;
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+}
+.border_bottom:after, .border_left:before, .border_right:after, .border_top:before {
+    position: absolute;
+    z-index: 10;
+    content: "";
+    background-color: #E7E7E7;
+}
+
+/* select_box */
+.select_box{
+    z-index: 11;
+}
+.select_box.show .select_mask {
+    opacity: 1;
+}
+.select_box .select_mask {
+    z-index: 998;
+    -webkit-transition: opacity .4s ease;
+    transition: opacity .4s ease;
+    opacity: 0;
+    background-color: rgba(0,0,0,.6) ;
+}
+.select_box.show .select_content {
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.select_box .select_content {
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+    z-index: 999;
+    top: 20vh;
+    -webkit-transition: -webkit-transform .4s ease;
+    transition: transform .4s ease;
+    background-color: #FFF;
+}
+
+.select_box .select_normal {
+    line-height: 44px;
+    text-align: center;
+    color: #212121;
+}
+.select_box .select_left_column {
+    position: absolute;
+    top: 44px;
+    bottom: 0;
+    width: 33%;
+    background-color: #F5F5F5;
+}
+.select_box .select_item {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px 15px;
+    line-height: 20px;
+    color: #212121;
+}
+.select_box .select_item.selected:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    content: "";
+    background-color: #1695E3;
+}
+
+.select_box .select_right_column {
+    position: absolute;
+    top: 44px;
+    right: 0;
+    bottom: 0;
+    width: 67%;
+    background-color: #FFF;
+}
+.select_box .click_item.checked {
+    color: #1695E3;
+}

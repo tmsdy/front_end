@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<script src="http://cdn.ronghub.com/RongIMLib-2.3.3.min.js"></script>
+<style>
+	*{margin: 0 ;padding: 0}
+.ry-container{
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.ry-user-input{
+	width: 70vw;
+	height: 80px;
+	margin-top: 40vh;
+	border: 1px solid #999;
+	border-radius: 8px;
+	padding: 0 20px;
+	font-size: 30px;
+}
+	.login-btn{
+		width: 20vw;
+		height: 80px;
+		margin-top: 30px;
+		background-color: skyblue;
+		border-radius: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+		font-size: 36px;
+	}
+</style>
+<body>
+	<div class="ry-container">
+		<input class="ry-user-input" placeholder="请输入">
+		<div class="login-btn">登陆</div>
+	</div>
+</body>
+<script>
+  RongIMLib.RongIMClient.init('m7ua80gbmj4tm');
+
+  // 设置连接监听状态 （ status 标识当前连接状态 ）
+  // 连接状态监听器
+  RongIMClient.setConnectionStatusListener({
+    onChanged: function (status) {
+      switch (status) {
+        case RongIMLib.ConnectionStatus.CONNECTED:
+          console.log('链接成功');
+          break;
+        case RongIMLib.ConnectionStatus.CONNECTING:
+          console.log('正在链接');
+          break;
+        case RongIMLib.ConnectionStatus.DISCONNECTED:
+          console.log('断开连接');
+          break;
+        case RongIMLib.ConnectionStatus.KICKED_OFFLINE_BY_OTHER_CLIENT:
+          console.log('其他设备登录');
+          break;
+        case RongIMLib.ConnectionStatus.DOMAIN_INCORRECT:
+          console.log('域名不正确');
+          break;
+        case RongIMLib.ConnectionStatus.NETWORK_UNAVAILABLE:
+          console.log('网络不可用');
+          break;
+      }
+    }});
+
+  // 消息监听器
+  RongIMClient.setOnReceiveMessageListener({
+    // 接收到的消息
+    onReceived: function (message) {
+      console.log(message);
+      if(message.messageType==RongIMClient.MessageType.TextMessage){
+        console.log('消息内容')
+      }
+      if(message.messageType==RongIMClient.MessageType.ImageMessage) {
+        console.log('图片内容')
+      }
+
+    }
+  });
+
+  var token = "OBRGNRLyILhzqLRGw5NDmZp7FWcJttxHRnbzHtwwB4UeaR705X8l2nyOFxUEeUZIhqD1fC16DqMVlHHf+xHsr3klBYwpNXYj9S4V9fqm2WU5w1St5tYM6w==";
+  var accid = '94709002a6c642f6dr7gy6ry';
+  //    var token = 'eNzuBPVYy1TTsvwABahYK5p7FWcJttxHRnbzHtwwB4UeaR705X8l2jw4KGBdr74/U9TF/DEifz784xLZiJQKdWluDJYWsjwtKmWtEY0Hnn6+QtqIkNdR4g==';
+  //    var accid = '2bbad311eafc4a26ms9al9mk';
+
+  RongIMClient.connect(token, {
+    onSuccess: function(userId) {
+      console.log("Connect successfully." + userId);
+    },
+    onTokenIncorrect: function() {
+      console.log('token无效');
+    },
+    onError:function(errorCode){
+      var info = '';
+      switch (errorCode) {
+        case RongIMLib.ErrorCode.TIMEOUT:
+          info = '超时';
+          break;
+        case RongIMLib.ConnectionState.UNACCEPTABLE_PAROTOCOL_VERSION:
+          info = '不可接受的协议版本';
+          break;
+        case RongIMLib.ConnectionState.IDENTIFIER_REJECTED:
+          info = 'appkey不正确';
+          break;
+        case RongIMLib.ConnectionState.SERVER_UNAVAILABLE:
+          info = '服务器不可用';
+          break;
+      }
+      console.log(errorCode);
+    }
+  });
+</script>
+</html>

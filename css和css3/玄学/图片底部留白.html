@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 280px;
+        outline: 1px solid #aaa;
+    }
+
+    .box img {
+        height: 96px;
+    }
+
+    /* 间隙清除方法 */
+    /* 图片块状化。可以一口气干掉“幽灵空白节点”、line-height和vertical-align。 */
+    .box-1 img {
+        display: block;
+    }
+    /* 容器font-size足够小。此方法要想生效，需要容器的line-height属性值和当前font-size相关，
+    如line-height:1.5或者line-height:150%之类；否则只会让下面的间隙变得更大，因为基线位置因字符x变小而往上升了。 */
+    .box-2 {
+        font-size: 0;
+    }
+    /* 图片设置其他vertical-align属性值。间隙的产生原因之一就是基线对齐，
+    所以我们设置vertical-align的值为top、middle、bottom中的任意一个都是可以的。 */
+    .box-3 img {
+        vertical-align: bottom;
+    }
+    /* 容器line-height足够小。只要半行间距小到字母x的下边缘位置或者再往上，
+    自然就没有了撑开底部间隙高度空间了。比方说，容器设置line-height:0。 */
+    .box-4 {
+        line-height: 0;
+    }
+</style>
+
+<body>
+ <!-- 间隙产生的三大元凶就是“幽灵空白节点”、line-height和vertical-align属性。 -->
+    <h4>间隙示意：</h4>
+    <div class="box">
+        x<img src="image/game02.png">
+    </div>
+    <h4>图片block块状清除间隙：</h4>
+    <div class="box box-1">
+        x<img src="image/game02.png">
+    </div>
+    <h4>容器font-size:0清除间隙：</h4>
+    <div class="box box-2">
+        x<img src="image/game02.png">
+    </div>
+    <h4>图片vertial-align设置清除：</h4>
+    <div class="box box-3">
+        x<img src="image/game02.png">
+    </div>
+    <h4>图片line-height设置清除：</h4>
+    <div class="box box-4">
+        x<img src="image/game02.png">
+    </div>
+</body>
+
+</html>

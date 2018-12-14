@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。 */
+    /* flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。 */
+    /* flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。 */
+    /* flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。
+    浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。 */
+    .grid{
+        width: 1000px ;
+        display: flex ;
+    }
+
+    .grid-cell{
+        flex: 1 ;
+        border: 1px solid pink ;
+    }
+    .grid-cell.cell1{
+        /* 占据整个容器的12.5% */
+        flex: 0 0 12.5% ;
+    }
+    .grid-cell.cell3{
+        /* 占据整个容器的37.5% */
+        flex: 0 0 37.5% ;
+    }
+
+</style>
+<body>
+    <div class="grid">
+        <div class="grid-cell cell1">1</div>
+        <div class="grid-cell">2</div>
+        <div class="grid-cell cell3">3</div>
+    </div>
+</body>
+</html>

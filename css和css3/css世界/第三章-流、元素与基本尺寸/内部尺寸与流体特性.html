@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.box { width: 200px;padding: 10px;background-color: #cd0000;text-align: center;}
+.content {display: inline-block;text-align: left;}
+.ao,.tu {display: inline-block;width: 0;font-size: 14px;line-height: 18px;margin: 35px;color: #fff}
+.ao:before,
+.tu:before {outline: 2px solid #cd0000;font-family: Consolas, Monaco, monospace;}
+.ao:before {content: "love你love";}
+.tu { direction: rtl;}
+.tu:before {content: "我love你";}
+</style>
+<!-- 
+    内部尺寸：元素的尺寸由内部的元素决定，有三种表现形式
+    1.包裹性：尺寸永远小于包含块容器的尺寸，有自适应性。
+        除了inline-block，浮动元素以及绝对定位元素都具有包裹性
+    2.首选最小宽度：在外部容器宽度为0时，元素最适合的最小宽度（例子：实现凹凸效果）
+    3.最大宽度：xxx
+ -->
+<body>
+    <div class="box">
+        <p id="conMore" class="content">文字内容</p>
+    </div>
+    <p><button id="btnMore">更多文字</button></p>
+
+    <span class="ao"></span>
+    <span class="tu"></span>
+</body>
+<script>
+
+var btn = document.getElementById('btnMore'), 
+  content = document.getElementById('conMore');
+
+if (btn && content) {
+  btn.onclick = function() {
+    content.innerHTML += '-新增文字';
+  };
+}
+
+</script>
+</html>

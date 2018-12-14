@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        height: 128px ;
+        width: 400px ;
+        margin: 100px auto ;
+        border: 1px solid #333 ;
+    }
+    /* 讲道理图片是在div的外面的，还是由"幽灵空白节点"的存在导致
+    css中非主动触发位移的内联元素不会跑到计算容器的外面，导致图片位置被"幽灵空白节点"的
+    vertical-align:baseline给限死了 */
+    .box > img{
+        height: 96px ;
+        margin-top: -200px ;
+    }
+
+</style>
+<body>
+    <div class="box">
+        x<img src="image/game02.png" />
+    </div>
+</body>
+</html>

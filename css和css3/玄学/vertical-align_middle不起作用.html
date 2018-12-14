@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        height: 128px ;
+        background: #666666 ;
+        color: #fff ;
+        line-height: 128px ;
+        /* 如果想要实现真正意义上的垂直居中对齐，只要想办法让字符x的中心位置就是容器的垂直中心位置即可，
+        通常的做法是设置font-size:0，整个字符x缩小成了一个看不见的点，根据line-height的半行间距上下等分规则，
+        这个点就正好是整个容器的垂直中心位置，这样就可以实现真正意义上的垂直居中对齐了。 */
+        font-size: 0 ;
+    }
+    .box > img {
+        height: 96px ;
+        vertical-align: middle ;
+    }
+
+</style>
+<body>
+    <!-- 由于"幽灵空白节点"的高度太小而引起vertical-align: middle失效，
+        可以给.box加line-height:128px这样就行了(似乎看起来不是绝对居中) 
+    vertial-align:middle可以让内联元素的真正意义上的垂直中心位置和字符x的交叉点对齐。
+    基本上所有的字体中，字符x的位置都是偏下一点儿的，font-size越大偏移越明显，
+    这才导致默认状态下的vertial-align:middle实现的都是“近似垂直居中”。-->
+    <div class="box">
+        x<img src="image/game02.png" />
+    </div>
+    
+</body>
+</html>

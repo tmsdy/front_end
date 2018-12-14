@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左右定宽，中间自适应(1)</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        .left{
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            background: #f66;
+        }
+        .right{
+            height: 200px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 220px;
+            background: #f66;
+        }
+        .main{
+            height: 300px;
+            margin-left: 200px;
+            margin-right: 220px;
+            background: #fcc;
+        }
+    </style>
+    </head>
+    <body>
+    <div class="left"></div>
+    <div class="right"></div>
+    <div class="main"></div>
+    </body>
+</html>

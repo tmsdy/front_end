@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+<script>
+
+	var oC1 = document.getElementById('c1') ;
+	var ctx = oC1.getContext('2d') ;
+
+    ctx.fillRect(40, 40, 100, 100);
+    ctx.beginPath();
+    ctx.arc(230, 90, 50, 0, Math.PI*2, false);
+    ctx.closePath();
+    ctx.fill();
+    ctx.clearRect(230, 90, 50, 50);
+
+</script>
+</html>

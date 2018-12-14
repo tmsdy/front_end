@@ -1,0 +1,41 @@
+.router-box{
+    width: 340px ;
+    height: 400px ;
+    margin: 10px auto ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+}
+#text{
+    font-size: 28px ;
+    color: #333 ;
+    margin-top: 40px ;
+}
+.box{
+    display: none ;
+}
+#select-btn{
+    width: 200px ;
+    height: 60px ;
+    color: #fff ;
+    border-radius: 60px ;
+    line-height: 60px ;
+    text-align: center ;
+    background: #0099CC ;
+    margin: 10px auto ;
+    display: block ;
+}
+.box{
+    width: 100% ;
+}
+.box div{
+    width: 100% ;
+    height: 60px ;
+    font-size: 20px ;
+    line-height: 60px ;
+    text-align: center ;
+    color: #0099CC ;
+    background: #CCCCFF ;
+    border-radius: 80px ;
+    margin: 20px ;
+}

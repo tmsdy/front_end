@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style type="text/css">
+
+    a:link {color: #FF0000}
+    a:visited {color: #00FF00}
+    a:hover {color: #FF00FF}
+    a:active {color: #0000FF}
+
+    h1 {
+	font-size: 16px;
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    input:focus {
+        background: #f6f6f6;
+        color: #f60;
+        border: 1px solid #f60;
+        outline: none;
+    }
+    
+</style>
+
+<body>
+        <p><b><a href="/index.html" target="_blank">这是一个链接。</a></b></p>
+        <p><b>注释：</b>在 CSS 定义中，a:hover 必须位于 a:link 和 a:visited 之后，这样才能生效！</p>
+        <p><b>注释：</b>在 CSS 定义中，a:active 必须位于 a:hover 之后，这样才能生效！</p>        
+
+        <form action="#">
+            <ul>
+                <li><input value="姓名" /></li>
+                <li><input value="单位" /></li>
+                <li><input value="年龄" /></li>
+                <li><input value="职业" /></li>
+            </ul>
+        </form>
+</body>
+</html>

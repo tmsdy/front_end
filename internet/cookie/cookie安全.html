@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    /* cookie : 服务端返回数据的时候通过Set-Cookie设置到浏览器里面，下次同域请求就会带上这个cookie
+         
+    通过规定的签名算法例如：secret(wall)=34Yult8i
+    username=wall|34Yult8i，请求时加上这个签名，服务端会校验出是否被篡改了 
+         
+    网站常用的是用cookie保存session_id,用session_id去请求
+    */
+    console.log(document.cookie) 
+    
+
+</script>
+<body>
+    <div>Content</div>
+</body>
+</html>
