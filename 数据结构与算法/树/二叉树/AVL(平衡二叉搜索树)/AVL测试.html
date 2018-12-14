@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <script src="./AVL.js"></script> -->
+    <script src="./练习.js"></script>
+<script>
+    var nodes = [12,8,18,5,11,17,4,7,2];
+    var avlTree = new AVLTree() ;
+    nodes.forEach(item=> {
+        avlTree.insert(item);
+    })
+    initHeight(avlTree.root) ;
+    console.log(avlTree)
+    console.log(avlTree.find(18))
+    // console.log(isBST(avlTree.root)) ;
+    // console.log(isBST({
+    //     key:12,
+    //     left:{
+    //         key:15 ,
+    //         left:null,
+    //         right:null
+    //     },
+    //     right:{
+    //         key:8 ,
+    //         left:null,
+    //         right:null
+    //     }
+    // }))
+    // console.log(avlTree.root)
+    // console.log(isBalanced(avlTree.root)) ;
+
+
+</script>
+</body>
+</html>

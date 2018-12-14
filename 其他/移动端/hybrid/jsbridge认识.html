@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<!--
+1.不管是 Hybrid 应用，还是 React-Native 都离不开 JSBridge，当然也包括微信小程序，有了它 Web 和 Native 可以进行交互
+	主要是 给 JavaScript 提供调用 Native 功能的接口，让混合开发中的『前端部分』可以方便地使用地址位置、摄像头甚至支付等 Native 功能
+	它的核心是 构建 Native 和非 Native 间消息通信的通道，而且是 双向通信的通道。
+	所谓 双向通信的通道:
+		JS 向 Native 发送消息 : 调用相关功能、通知 Native 当前 JS 的相关状态等。
+		Native 向 JS 发送消息 : 回溯调用结果、消息推送、通知 JS 当前 Native 的状态等。
+
+2.技术方案：
+	基于 Web 的 Hybrid 解决方案：例如微信浏览器、各公司的 Hybrid 方案
+	非基于 Web UI 但业务逻辑基于 JavaScript 的解决方案：例如 React-Native
+
+微信小程序基于 Web UI，但是为了追求运行效率，对 UI 展现逻辑和业务逻辑的 JavaScript 进行了隔离。
+因此小程序的技术方案介于上面描述的两种方式之间。
+
+-->
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<script>
+
+      function findSubStr(shortStr,longStr){
+        let sstr= ""  ;
+        let len1=shortStr.length ;
+
+        for ( let i=len1;i> 0 ;i--){
+          for ( let j= 0 ;j<=len1-i;j++){
+            sstr = shortStr.substr(j,i);
+            if (longStr.indexOf(sstr)>= 0 ) return sstr; //从最长的开始遍历，有符合的直接返回
+          }
+        }
+        return "" ;
+      }
+      console.log(findSubStr( "aaa3333" , "baa333cc" )); //aa333
+      console.log(findSubStr( "aaaX3333--" , "baa333ccX3333333x" )); //X333
+
+	</script>
+</body>
+</html>

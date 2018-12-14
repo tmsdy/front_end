@@ -1,0 +1,31 @@
+<!-- 
+
+vue init nuxt-community/koa-template nuxt-learn（用模板去装nuxt）
+npm install
+npm run dev
+注意：package.json里面要加这些
+"devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+}
+npm i eslint-plugin-html@^3
+npm i eslint-loader@2.0.0(重要) 如果需要eslint的话，不需要可以在nuxt.config.js里面把它注释掉
+命令行：curl http://localhost:3000/city/list 模拟发起请求
+npm i axios
+
+服务器端吐出编译好的内容和异步获取到的数据给浏览器端
+
+渲染之前异步获取数据：处理组件数据用asyncData,处理vuex里的数据用fetch，拿到数据再commit
+
+<script> //吐出来的数据给浏览器端，方便浏览器作对比
+    window.__NUXT__={
+        layout:"search",
+        data:[{list:["北京","天津"]}],
+        error:null,
+        serverRendered:true
+    };
+</script>
+
+ -->

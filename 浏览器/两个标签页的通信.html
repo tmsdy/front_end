@@ -1,0 +1,17 @@
+<!-- 
+1.利用storage事件
+    在一个标签页localStorage.setItem的时候另一个可以通过监听storage事件拿到设置的值  
+    window.addEventListener("storage", function(event){ 
+        console.log(event.key + "=" + event.newValue);    
+    }); 
+
+2.postMessage API
+    支持两个页面跨域；只能传递字符串    
+    数据；参考 window.open；
+
+3.WebSocket 服务器中转
+    需要页面都与服务器建立 WebSockets 连接；支持跨域
+
+4.service Worker
+
+ -->

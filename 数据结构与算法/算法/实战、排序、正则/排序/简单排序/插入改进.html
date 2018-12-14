@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 就是像打扑克抓牌的过程
+let arr = [112,28,23,66,83,43,26,5,9] ;
+insertSort(arr)
+console.log(arr) ;
+
+function insertSort(arr){
+    let len = arr.length ;
+    
+    for(let i=1 ;i<len ;i++){
+        let sItem = arr[i] ;
+        let j ;
+        for(j=i; j>0 && sItem<arr[j-1] ;j--){//把比插入元素大的向后移一位
+            arr[j] = arr[j-1] ;
+        }
+        arr[j] = sItem ;
+    }
+    return
+}
+
+
+</script>
+</body>
+</html>

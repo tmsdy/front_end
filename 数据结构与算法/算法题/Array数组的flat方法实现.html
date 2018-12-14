@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<script>
+
+	var arr1 = [1,2,[[3],4,5],6,[3,7]] ; // 要把它变成 [1,2,3,4,5,6,3,7]，不管嵌套多少层都能实现扁平化
+
+	Array.prototype.flat = function () { //方法一：递归
+	  var arr = [] ;
+	  this.forEach((item,index)=>{
+	    if(Array.isArray(item)){
+	      arr = arr.concat(item.flat()) ;//递归去处理
+	    }else{
+	      arr.push(item) ;
+	    }
+	  })
+	  return arr ;
+    }
+	// arr1 = arr1.flat() ;
+	// console.log(arr1) ;
+
+    Array.prototype.newFlat = function () { //简单粗暴解法
+	  return this.toString().split(',').map(item=>+item) ;
+    }
+    arr1 = arr1.newFlat() ;
+    console.log(arr1) ;
+</script>
+<body>
+
+</body>
+</html>

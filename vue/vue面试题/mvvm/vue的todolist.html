@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<body>
+    <div id="app">
+        <div>
+            <input v-model="title">
+            <button @click="add">添加</button>
+        </div>
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+// 数据与视图的分离，解耦（开放封闭原则）
+ var vm = new Vue({
+     el:'#app' ,
+     data:{
+         title:"" ,
+         list:[]
+     },
+     methods:{
+         add:function(){
+             this.list.push(this.title) ;
+             this.title = '' ;
+         }
+     }
+ })
+
+</script>
+</html>

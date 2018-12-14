@@ -1,0 +1,63 @@
+@charset "utf-8";
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -163px 0 0 -218px;
+    width: 450px;
+    min-height: 550px;
+    border: 1px solid #dadada;
+    border-radius: 10px;
+    margin-top: -324px;
+    box-shadow: 0 9px 30px -6px rgba(0,0,0,.2), 0 18px 20px -10px rgba(0,0,0,.04), 0 18px 20px -10px rgba(0,0,0,.04), 0 10px 20px -10px rgba(0,0,0,.04);
+    background: url("../img/login-bg.png") repeat-x 0 bottom #fff;
+}
+.login-box .title {
+    margin: 23px 0 50px;
+    padding: 75px 0 0;
+    text-align: center;
+    font-size: 30px;
+    line-height: 60px;
+}
+.login-box .content {
+    padding: 0 40px 22px;
+}
+
+.login-box .form-item{
+    position: relative;
+    margin: 10px 0;
+    height: 46px;
+    background: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 6px;
+    box-shadow: 0 3px 5px -4px rgba(0,0,0,.4) inset, -1px 0 3px -2px rgba(0,0,0,.1) inset;
+    line-height: 46px;
+    font-size: 18px;
+    opacity: .618;
+    transition: opacity .3s ease;
+}
+.login-box .form-item i{
+    position: absolute;
+    left: 15px;
+    top: 0;
+    font-size: 16px;
+    color: #BEBEBE;
+}
+.login-box .form-item input{
+    padding: 0 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+}
+.login-box .button {
+    padding: 1px;
+    background: #6383C6;
+    background: linear-gradient(#6383C6,#4262AF);
+    border-radius: 6px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #FFF;
+    cursor: default;
+    font-size: 20px;
+}

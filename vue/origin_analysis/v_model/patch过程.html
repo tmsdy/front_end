@@ -1,0 +1,8 @@
+<!-- 
+
+
+    有个addEventLisener('compositionstart')和addEventLisener('compositionend')事件
+    start时候把e.target.composing设为true,没有事件，end时候设为false，并trigger('input')事件
+    这是导致为什么输入法没按空格确定的时候没有input事件的原因
+
+ -->

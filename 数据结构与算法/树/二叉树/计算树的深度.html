@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+function TreeDepth(pRoot)
+{
+     if(!pRoot) {
+        return 0;
+    }
+    let left = pRoot.left;
+    let right = pRoot.right;
+    return Math.max(TreeDepth(left),TreeDepth(right)) + 1;
+}
+var pArr = {
+    value:1 ,
+    left:{
+        value:2
+    },
+    right:{
+        value:3 ,
+        left:{
+            value:4
+        },
+        right:{
+            value:5 ,
+            right:{
+                value:6
+            }
+        }
+    }
+}
+
+console.log(TreeDepth(pArr)) ;// 4
+
+</script>
+</html>

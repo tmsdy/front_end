@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+	// 思想：每次遍历在没排好序中，从前向后如果比右边的大就两者交换位置直到把最大的元素沉底
+	// 稳定，平均时间复杂度O(n2),最好O(n)在正序的情况下，空间复杂度O(1)
+
+let arr = [112,2,23,6516,223,423,26,75,69] ;
+function bubbleSort(arr) {
+    var len = arr.length;
+    for (var i = 0; i < len; i++) {
+        for (var j = 0; j < len - 1 - i; j++) {
+            if (arr[j] > arr[j+1]) {        //相邻元素两两对比
+                var temp = arr[j+1];        //元素交换
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+    }
+    return arr;
+}
+console.log(bubbleSort(arr));
+
+</script>
+<body>
+    
+</body>
+</html>

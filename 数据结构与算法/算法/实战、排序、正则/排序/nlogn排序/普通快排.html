@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script src="./随机数组.js"></script>
+<script>
+let arr = [8, 4, 26, 17,12,3,222,33] ;
+quickSort(arr,0,arr.length-1)
+ console.log(arr);
+
+  var arr2 = genRondomArr(100000,100,300000) ;
+let time1 = new Date().getTime() ;
+quickSort(arr2,0,arr2.length-1) ;
+console.log(new Date().getTime()-time1) ;  // 35~80ms
+
+ function quickSort(arr,l,r){ //对arr[l...r]部分进行快速排序
+     if(l>=r) return ;
+     let p = partition(arr,l,r) ;
+     quickSort(arr,l,p-1) ;
+     quickSort(arr,p+1,r) ;
+     return  
+ }
+
+ function partition(arr,l,r){ //返回p，使得arr[l...p-1]<arr[p];arr[p+1...r]>arr[p];
+    let temp = arr[l] ;
+    let j = l;
+    for( let i=l+1 ;i<=r ;i++){
+        if(temp > arr[i]){
+            swap(arr,j+1,i) ;
+            j++ ; 
+        }
+    }
+    swap(arr,l,j) ;//把temp放在应该在的位置arr[j]
+    return j ;
+ }
+ function swap(arr, a, b) { // 交换
+      let temp = arr[a];
+      arr[a] = arr[b];
+      arr[b] = temp;
+    }
+
+</script>
+</html>

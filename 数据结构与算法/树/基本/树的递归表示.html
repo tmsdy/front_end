@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+class Tree{
+    constructor(v,children){
+        this.v = v ;
+        this.children = children || null ;
+    }
+}   
+function tree_transverse(tree){ //后续遍历 左右根，先打印叶子节点
+    console.log(tree.v) ;
+    if(tree.children){
+        tree.children.forEach(tree_transverse) ;
+    }
+} 
+const tree = new Tree(10,[
+    new Tree(5),
+    new Tree(3,[
+        new Tree(7),
+        new Tree(11)
+    ]),
+    new Tree(2)
+])
+tree_transverse(tree) ; // 10 5 3 7 11 2
+</script>
+</body>
+</html>

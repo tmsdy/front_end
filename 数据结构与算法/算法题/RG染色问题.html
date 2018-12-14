@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+// var test = 'RGRGRRGGGGR' ;
+
+var test = 'RRRGGGGG' ;
+
+var rtotal = test.match(/R/g).length;
+var rcount = 0;
+var t;
+var min = rtotal;
+for(var i=0;i<test.length;i++){
+    if(test[i]=="R"){
+        rcount++;
+    }
+    t = (i+1-rcount)+(rtotal-rcount);
+    console.log(t) ;
+    if(t<min){
+        min = t;
+    }
+}
+
+console.log(min) ;
+
+
+</script>
+<body>
+    
+</body>
+</html>

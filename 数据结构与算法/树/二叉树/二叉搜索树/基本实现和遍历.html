@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script src="./ES5实现.js"></script>
+    <!-- <script src="./ES6实现.js"></script> -->
+<script>
+
+    var nodes = [8,2,4,5,7,13,11,9,14];
+    var sTree = new searchTree() ;
+    nodes.forEach(item=> {
+        sTree.insert(item);
+    })
+    console.log(sTree)
+    sTree.zhongxubianli(function(key){
+        console.log(key)
+    })
+    // var bTree = new BinarySearchTree() ;
+    // nodes.forEach(item=> {
+    //     bTree.insert(item);
+    // })
+    // console.log(bTree) ;
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!-- 
+
+model函数：
+
+    export default function model(
+        el:ASTElement, //AST节点
+        dir:ASTDirective, //指令对象
+        _warn:Function
+    ):?boolean {
+        warn = warn ;
+        const value = dir.value ;
+        const modifiers = dir.modifiers ;
+        const tag = el.tag ;
+        const type = el.attrsMap.type ;
+        if(process.env.NODE_ENV!=='production'){
+            if(tag==='input'&&type==='file'){ //在生成环境是input并type=file会报警告
+                warn(...)
+            }
+        }
+        if(el.component){ //判断是否在组件中使用的v-model
+            genComponentModel(el,value,modifiers) ;
+            return false ;
+        }else if(tag==='select'){
+            genSelect(el,value,modifiers) ;
+        }else if(tag==='input'&&type==='checkbox'){
+            genCheckbox(el,value,modifiers) ;
+        }else if(tag==='input'&&type==='radio'){
+            genRadioModel(el,value,modifiers) ;
+        }else if(tag==='input'||tag === 'textarea'){ //大部分会走这里
+            genDefaultModel(el,value,modifiers) ;
+        }else if(!config.isReservedTag(tag)){ //组件v-model不需要额外的runtime
+            genComponentModel(el,value,modifiers) ;
+            return false ;
+        }else if(process.env.NODE_ENV!=='production'){
+            warn(...)
+        }
+        return true ;
+    }
+
+    function genDefaultModel(){
+        el: ASTElement,
+        value:string,
+        modifiers:?ASTModifiers
+    }:?boolean{
+        const type = el.attrsMap.type ;
+        if(process.env.NODE_ENV!=='production'){
+            const value = el.attrsMap['v-bind:value']||el.attrsMap[':value'] ;
+            const typeBinding = el.attrsMap['v-bind:type']||el.attrsMap[':type'] ;
+            if(value&&!typeBinding){ //:value和v-model冲突，编译直接报错
+                const binding = el.attrsMap['v-bind:value']?'v-bind:value': warn(...) ;
+            }
+        }
+        ...(处理modifiers修饰符)
+        var event = lazy? 'change': type === 'range'? RANGE_TOKEN: 'input'; //一般是input
+        ...
+
+        let code = genAssignmentCode(value,valueExpression) ; //一个跨平台代码辅助生成~~
+        //拿到的code = "message=$event.target.value"
+        if (needCompositionGuard) { //true
+            code = "if($event.target.composing)return;" + code;
+            // code = "if($event.target.composing)return;message=$event.target.value"
+        }
+        
+        addProp(el,'value',`(${value})`) ; //给input添加value并赋值${value}
+        addHandler(el,event,code,null,true) ; //添加事件处理函数
+
+    }
+
+    function addProp (el, name, value) { //el.props = [{name:"value",value:"(message)"}]
+        (el.props || (el.props = [])).push({ name: name, value: value });
+        el.plain = false;
+     }
+     addHandler执行完
+    el.event = {
+        input :{
+            value:'if($event.target.composing)return;message=$event.target.value'
+        }
+    }
+ -->

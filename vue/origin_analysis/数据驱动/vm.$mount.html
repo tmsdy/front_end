@@ -1,0 +1,87 @@
+<!-- 
+
+var mount = Vue.prototype.$mount;
+Vue.prototype.$mount = function (el,hydrating) {
+  el = el && query(el); //el是元素el否则就document.querySelector(el)取一下
+
+  if (el === document.body || el === document.documentElement) { //vue挂载到body/html报错
+    "development" !== 'production' && warn(
+      "Do not mount Vue to <html> or <body> - mount to normal elements instead."
+    );
+    return this
+  }
+
+  var options = this.$options;
+
+  if (!options.render) {
+    var template = options.template;
+    if (template) { //有template的处理
+      ...
+    } else if (el) { //通过外部html生成 template
+      template = getOuterHTML(el);
+    }
+    if (template) { //编译过程,用template生成render函数(vue只认这个)
+      ...
+      var ref = compileToFunctions(template, {
+        shouldDecodeNewlines: shouldDecodeNewlines,
+        shouldDecodeNewlinesForHref: shouldDecodeNewlinesForHref,
+        delimiters: options.delimiters,
+        comments: options.comments
+      }, this);
+      var render = ref.render;
+      var staticRenderFns = ref.staticRenderFns;
+      options.render = render;
+      options.staticRenderFns = staticRenderFns;
+      ...
+    }
+  }
+  return mount.call(this, el, hydrating) //有了render函数调用这个
+};
+
+function getOuterHTML (el) {
+  if (el.outerHTML) {
+    return el.outerHTML
+  } else {
+    var container = document.createElement('div');
+    container.appendChild(el.cloneNode(true));
+    return container.innerHTML
+  }
+}
+
+Vue.prototype.$mount = function (el,hydrating) { //公共mount方法
+  el = el && inBrowser ? query(el) : undefined;
+  return mountComponent(this, el, hydrating)
+};
+
+function mountComponent (vm,el,hydrating) {
+  vm.$el = el;
+  if (!vm.$options.render) { //如果没写render并且template没转化为render
+    vm.$options.render = createEmptyVNode;
+    {
+      ...报一些警告
+    }
+  }
+  callHook(vm, 'beforeMount');
+
+  var updateComponent;
+  if ("development" !== 'production' && config.performance && mark) {
+    updateComponent = function () {
+      ...一些性能埋点的东西
+    };
+  } else {
+    updateComponent = function () {
+      vm._update(vm._render(), hydrating);
+    };
+  }
+
+  new Watcher(vm, updateComponent, noop, null, true); //实例化渲染Watcher
+  hydrating = false;
+
+  if (vm.$vnode == null) {
+    vm._isMounted = true;
+    callHook(vm, 'mounted');
+  }
+  return vm
+}
+
+ -->

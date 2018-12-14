@@ -1,0 +1,37 @@
+<!-- 
+v-model:
+    1.表单上的实现
+    2.组件上的实现
+
+编译上：三个阶段
+    1.parse阶段：把模板解析成AST树，对v-model的解析，对AST节点添加directive属性，代码生成节点要用到
+    export const dirRE = /^v-|^@|^:/ ; //匹配v-、@、:开头的属性
+        function processAttrs(el){ //el是AST节点
+            const list = el.attrsList ;
+            let i,l,name,rawName,value,modifiers,isProp ;
+            for(i=0;l=list.length;i<l;i++){ //遍历AST节点的属性列表，把包括v-model在内的所有指令信息push到el.directives
+                name = rawName = list[i].name ;
+                value = list[i].value ;
+                if(dirRE.test(name)){
+                    el.hasBindings=true ;
+                    modifiers = parseModifiers(name) ;//解析修饰符 v-model也是支持修饰符的
+                }
+                if(v-bind(即:)、v-on(即@)的处理){...}
+                else{ v-开头的处理
+                    ...
+                    addDirective(el,name,rawName,value,arg,modifiers) 给el添加directive属性
+                    if(process.env.NODE_ENV!=='production'&&name==='model'){ //如果是非生产环境且属性名为model(之前处理把v-去掉了)
+                        checkForAliasModel(el,value) ; //检测v-model和v-for一起使用时
+                    }
+                }
+            }
+
+        }
+        export function addDirective(
+            ...传入的参数
+        ){
+            (el.directives||(el.directives=[])).push({name,rawName,value,arg,modifiers})
+            el.plain = false ;
+        }
+
+ -->

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<body>
+    <div id="container"></div>
+    <button id="btn-change" type="button">change</button>
+</body>
+<script>
+
+$(function(){
+
+    var data = [
+        {
+            name:'feifei',
+            age:20,
+            address:'北京'
+        },
+        {
+            name:'fangfang',
+            age:11,
+            address:'贵州'
+        },
+        {
+            name:'sss' ,
+            age:45 ,
+            address:'广州'
+        }
+    ] ;
+    function render(data) {
+        var $container = $('#container') ;
+        // 清空现有内容
+        $container.html('') ;
+        // 拼接table
+        var $table = $('<table>') ;
+        $table.append($(`<tr><td>name</td><td>age</td><td>address</td></tr>`)) ;
+        data.forEach(item=>{
+            $table.append($(`<tr><td>${item.name}</td><td>${item.age}</td><td>${item.address}</td></tr>`))
+        }) ;
+        
+        // 渲染到页面
+        $container.append($table) ;
+        console.log(Date.parse(new Date())) ;
+    }
+
+    $('#btn-change').click(function(){
+        data[1].age = 18 ;
+        data[2].address = '上海' ;
+        console.log(Date.parse(new Date())) ;
+        render(data) ;
+        
+    })
+
+    render(data) ;
+})
+
+</script>
+</html>

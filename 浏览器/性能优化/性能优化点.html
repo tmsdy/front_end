@@ -1,0 +1,26 @@
+
+<!--
+性能优化：
+	1.网络优化：
+		1.资源合并：减少了HTTP请求。资源压缩：减少了请求资源的大小
+		2.浏览器缓存，强缓存协商缓存
+		3.DNS预解析
+			<link rel="dns-prefetch" href="//host_name_to_prefetch.com">
+			<meta http-equiv="x-dns-prefetch-control" content="on"> //这个是强制加预解析
+		4.使用HTTP2.0
+		5.预加载预渲染
+
+	2.非核心代码异步加载----异步加载的方式/区别
+		js生成script标签/defer/async
+		defer是加载完HTML执行，如果多个会依次执行，async则是谁加载快谁先执行完
+
+	4.使用CDN。CSS 文件放在 head 中
+
+	5.对需要很多时间计算的js代码使用 Webworker，另开一个线程执行脚本而不影响渲染
+
+	6.正确理解Repaint和Reflow 减少对DOM的操作
+
+	7.服务端渲染
+
+
+-->

@@ -1,0 +1,47 @@
+<!-- 
+var uid = 0;
+
+var Dep = function Dep () { //建立数据与Watcher之间的桥梁
+  this.id = uid++;
+  this.subs = []; //放所有订阅的Watcher
+};
+
+Dep.prototype.addSub = function addSub (sub) {//依赖收集
+  this.subs.push(sub);
+};
+
+Dep.prototype.removeSub = function removeSub (sub) {
+  remove(this.subs, sub);
+};
+
+Dep.prototype.depend = function depend () { 
+  if (Dep.target) {
+    Dep.target.addDep(this);
+  }
+};
+
+Dep.prototype.notify = function notify () { //调用所有订阅者的update方法
+  var subs = this.subs.slice();
+  for (var i = 0, l = subs.length; i < l; i++) {
+    subs[i].update();
+  }
+};
+
+Dep.target = null; //实际上是个全局的Watcher(当前计算的)
+var targetStack = [];
+
+function pushTarget (_target) {
+  if (Dep.target) { targetStack.push(Dep.target); }
+  Dep.target = _target;
+}
+
+function popTarget () {
+  Dep.target = targetStack.pop();
+}
+
+
+
+
+
+    
+ -->

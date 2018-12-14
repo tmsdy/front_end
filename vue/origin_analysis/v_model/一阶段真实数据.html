@@ -1,0 +1,31 @@
+<!-- 
+    AST：抽象语法树
+function processAttrs(el){}中：
+    el:{ //AST节点(这里是一个input元素节点)
+        attrsList:[
+            {
+                name:"v-model",
+                value:"message"
+            },
+            {
+                name:'type',
+                value:'text'
+            }
+        ]
+        attrsMap:{
+            type:'text',
+            v-model:'message'
+        }
+        children:Array(0)
+        parent:Object
+        plain:false
+        tag:"input"
+        type:1
+    },
+    name = rawName = 'v-model' ;
+    modifiers = undefined ;
+    执行到addDirective(el,name,rawName,value,arg,modifiers)时
+    name='model',rawName='v-model',value='message',arg=null,modifiers=undefined
+    然后这个方法把这些属性放到一个{}中push到el.directives中
+
+ -->

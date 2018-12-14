@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 就像打扑克抓牌的过程，有提前终止，理论相对选择排序快
+let arr = [112,28,23,66,83,43,26,5,9] ;
+console.log(insertSort(arr)) ;
+
+function insertSort(arr){
+    let len = arr.length ;
+    
+    for(let i=1 ;i<len ;i++){
+        //在终止前每次都要交换值赋值3次性能差可改进
+        for(let j=i; j>0 && arr[j]<arr[j-1] ;j--){ 
+            swap(arr,j,j-1) ;
+        }
+    }
+    function swap(arr, a, b) { // 交换
+      let temp = arr[a];
+      arr[a] = arr[b];
+      arr[b] = temp;
+    }
+    return arr ;
+}
+
+
+</script>
+</body>
+</html>

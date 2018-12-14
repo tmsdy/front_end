@@ -1,0 +1,30 @@
+<!-- 
+
+export class CodegenState{ //一开始执行编译过程中会实例化CodegenState，执行构造函数
+    options: CompilerOptions ;
+    warn：Function ;
+    transforms: Array<TransformFunction> ;
+    dataGenFns: Array<DataGenFunction> ;
+    directives: {[key:string]:DirectiveFunction} ;
+    ...
+    constructor(options:CompilerOptions){
+        this.options = options ;
+        ...
+        //把baseDirectives和options.directives做一个merge生成directives。options.directives是编译相关的配置
+        this.directives = extend(extend({},baseDirectives),options.directives) ;
+        ...
+    }
+
+}
+
+web平台
+export const baseOptions: CompilerOptions = {
+    expertHTML:true,
+    modules,
+    directives,
+    ...
+}
+其中的directives是{model,text,html}对象
+
+
+ -->

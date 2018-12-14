@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <script>
+//   1.快慢指针判断法
+//         快的每次 fast.next.next ;
+//         慢的每次 slow.next ;
+function isLoopList(head){
+
+    if (!head) return false;
+    var slow = head;
+    var fast = head.next;
+
+    //如果不是循环链表那么一定有尾部节点 此节点 node.next = null
+    while(!slow && !fast && !fast.next){
+        if (fast == slow || fast.next == slow) return true;
+        fast =fast.next.next;
+        slow = slow.next;
+    }
+    return false;
+}
+
+
+     
+     </script>
+</body>
+</html>

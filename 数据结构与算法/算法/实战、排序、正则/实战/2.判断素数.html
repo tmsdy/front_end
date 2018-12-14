@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 0和1不是素数，因式分解只有1和其本身的数是素数。
+    // 技巧：只需要除到该数的平方根看看能不能整除其他数就行了
+
+    function is_prime(n){
+        if(n<=1) return false ;
+        const N = Math.floor(Math.sqrt(n)) ;
+        let is_prime = true ;
+        for(let i=2; i<=N ;i++){
+            if(n%i === 0 ){
+                is_prime = false ;
+                break ;
+            }
+        }
+        return is_prime ;
+    }
+    
+</script>
+</body>
+</html>

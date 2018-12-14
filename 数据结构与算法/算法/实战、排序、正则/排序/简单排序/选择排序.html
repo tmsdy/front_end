@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 最稳定，空间复杂度O(1),时间复杂度都是O(n2)。优点不耗费额外的内存空间，不过不稳定(为啥我感觉是稳定的)
+
+    let arr = [112,28,23,66,83,43,26,5,9] ;
+    console.log(selectionSort(arr))
+
+    function selectionSort(arr) {
+       let len = arr.length ;
+       let mIndex,temp ;
+
+       for(let i=0 ; i<len ;i++){
+           mIndex = i ;
+           for(let j=i+1;j<len ;j++){
+               if(arr[j]<arr[mIndex]){
+                 mIndex = j ;
+               }
+           }
+        temp = arr[i] ;
+        arr[i] = arr[mIndex] ;
+        arr[mIndex] = temp ;
+       }
+       return arr ;
+    }
+    
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!-- 
+
+2.代码生成阶段
+    genData(el,state){ //el:AST节点，state:代码生成阶段CodegenState
+        let data = '{' ;
+        const dirs = genDirectives(el,state) ; //会对AST节点修改(添加props，event属性等)，要在前面先执行
+        if(dirs) data+=dirs+',' ;
+        // data='{directives:[{name:"model",rawName:"v-model",value:(message),expression:"message"}],'
+        ...(一系列的判断并拼接)
+    }    
+
+    function genDirectives(el,state){
+        const dirs = el.directives ;
+        if(!dirs) return ;
+        let res = 'directives:['; 最后拼接成对象数组,给运行时用的
+        let hasRuntime = false ;
+        let i,l,dir,needRunTime ;
+        for(i=0,l=dirs.length;i<l;i++){
+            dir = dirs[i] ;
+            needRuntime = true ;
+            //拿到DirectiveFunction，实际上是个model函数
+            const gen:DirectiveFunction = state.directives[dir.name] ;
+            if(gen){
+                needRunTime = !!gen(el,dir.state.warn) ; //一般返回true ;
+            }
+            if(needRunTime){
+                hasRuntime = true ;
+                res += `{name:"${dir.name}"},value="${dir.value}"...}`
+            }
+        }
+        if(hasRuntime){
+            return res.slice(0,-1)+']' ;
+            //返回的数据directives:[{name:"model",rawName:"v-model",value:(message),expression:"message"}]
+        }
+    }
+    //ast抽象语法树，刚才被改变的ast节点被包含在里面
+    var code = generate(ast, options);
+    // code = {
+    //    render:"with(this){return _c('div',[_c('p',[_v("信息："+_s(message))]),_v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(message),expression:"message"}],attrs:{"type":"text"},domProps:{"value":(message)},on:{"input":function($event){if($event.target.composing)return;message=$event.target.value}}}),_v(" "),_c('p',[_v("信息："+_s(message2))]),_v(" "),_c('input',{attrs:{"type":"text"},domProps:{"value":message2},on:{"input":function($event){message2=$event.target.value}}})])}"
+    //    staticRenderFns:Array(0)
+    //}
+    return {
+        ast: ast,
+        render: code.render,
+        staticRenderFns: code.staticRenderFns
+    }
+    function generate (
+        ast,
+        options
+    ) {
+        var state = new CodegenState(options);
+        var code = ast ? genElement(ast, state) : '_c("div")';
+        return {
+            render: ("with(this){return " + code + "}"),
+            staticRenderFns: state.staticRenderFns
+        }
+    }
+    function genElement (el, state) {
+        if (el.staticRoot && !el.staticProcessed) {
+            return genStatic(el, state)
+        } else if (el.once && !el.onceProcessed) {
+            return genOnce(el, state)
+        } else if (el.for && !el.forProcessed) {
+            return genFor(el, state)
+        } else if (el.if && !el.ifProcessed) {
+            return genIf(el, state)
+        } else if (el.tag === 'template' && !el.slotTarget) {
+            return genChildren(el, state) || 'void 0'
+        } else if (el.tag === 'slot') {
+            return genSlot(el, state)
+        } else {
+            var code;
+            if (el.component) {
+                code = genComponent(el.component, el, state);
+            } else {
+            var data = el.plain ? undefined : genData$2(el, state);
+
+            var children = el.inlineTemplate ? null : genChildren(el, state, true);
+            code = "_c('" + (el.tag) + "'" + (data ? ("," + data) : '') + (children ? ("," + children) : '') + ")";
+            }
+            // module transforms
+            for (var i = 0; i < state.transforms.length; i++) {
+                code = state.transforms[i](el, code);
+            }
+            return code
+        }
+        }
+ -->

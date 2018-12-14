@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script src="./随机数组.js"></script>
+<script>
+let arr = [8, 4, 26, 17,12,3,222,33] ;
+quickSort(arr,0,arr.length-1)
+ console.log(arr);
+
+  var arr2 = genRondomArr(100000,100,300000) ;
+let time1 = new Date().getTime() ;
+quickSort(arr2,0,arr2.length-1) ;
+console.log(new Date().getTime()-time1) ;  // 140~200ms，随机的慢了一点，有序的会很快
+
+ function quickSort(arr,l,r){ 
+     if(r-l<=15){ //小于16长度就用插入排序了
+        insertSort(arr,l,r) ;
+        return
+    }
+     let p = partition(arr,l,r) ;
+     quickSort(arr,l,p-1) ;
+     quickSort(arr,p+1,r) ;
+     return  
+ }
+
+ function partition(arr,l,r){ 
+    swap(arr,l,Math.round()*(r-l)+l) ;
+    let temp =  arr[l];
+    let j = l;
+    for( let i=l+1 ;i<=r ;i++){
+        if(temp > arr[i]){
+            swap(arr,j+1,i) ;
+            j++ ;
+        }
+    }
+    swap(arr,l,j) ;
+    return j ;
+ }
+ function swap(arr, a, b) { // 交换
+      let temp = arr[a];
+      arr[a] = arr[b];
+      arr[b] = temp;
+    }
+
+function insertSort(arr,l,r){
+    for(let i=l+1 ;i<=r ;i++){
+        let sItem = arr[i] ;
+        let j ;
+        for(j=i; j>l && sItem<arr[j-1] ;j--){//把比插入元素大的向后移一位
+            arr[j] = arr[j-1] ;
+        }
+        arr[j] = sItem ;
+    }
+    return 
+}
+
+</script>
+</html>

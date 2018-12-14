@@ -1,0 +1,102 @@
+<!-- 
+    function Vue (options) {
+        ...
+        this._init(options);
+    }
+    initMixin(Vue);
+    ...
+function initMixin (Vue) { 
+  Vue.prototype._init = function (options) { //合并得到一个vm.$options，执行一堆init方法
+    var vm = this;
+    vm._uid = uid$3++;
+    ...
+    if (options && options._isComponent) {
+      initInternalComponent(vm, options);
+    } else {
+      vm.$options = mergeOptions(
+        resolveConstructorOptions(vm.constructor), //默认的options
+        options || {}, //传入的options
+        vm
+      );
+    }
+    ...
+    initLifecycle(vm);
+    initEvents(vm);
+    initRender(vm); 
+    callHook(vm, 'beforeCreate');
+    initState(vm); //这个里面的initData(vm) 方法走完vm上才有data
+    callHook(vm, 'created');
+    ...
+
+    if (vm.$options.el) {
+      vm.$mount(vm.$options.el); //这个执行完数据渲染到页面上
+    }
+  };
+}
+
+function initState (vm) {
+  vm._watchers = [];
+  var opts = vm.$options;
+  if (opts.props) { initProps(vm, opts.props); }
+  if (opts.methods) { initMethods(vm, opts.methods); }
+  if (opts.data) {
+    initData(vm);
+  }else {
+    observe(vm._data = {}, true /* asRootData */);
+  }
+  if (opts.computed) { initComputed(vm, opts.computed); }
+  if (opts.watch && opts.watch !== nativeWatch) {
+    initWatch(vm, opts.watch);
+  }
+}
+
+function initData (vm) {
+  var data = vm.$options.data; 
+  data = vm._data = typeof data === 'function' 
+    ? getData(data, vm) //如果写的是data(){return{}}这种会调用这个
+    : data || {};
+  ...
+  // proxy data on instance
+  var keys = Object.keys(data);
+  var props = vm.$options.props;
+  var methods = vm.$options.methods;
+  var i = keys.length;
+  while (i--) { 
+    var key = keys[i];
+  {
+      if (methods && hasOwn(methods, key)) {
+
+        ...判断data和props的数据是否冲突，冲突则报错
+
+        } else if (!isReserved(key)) {
+        proxy(vm, "_data", key); //_data上key变化代理到vm上
+    }
+  }
+  observe(data, true); //把data做了一层响应式的处理
+}
+
+function getData (data, vm) {
+  pushTarget();
+  try {
+    return data.call(vm, vm) //调用data函数，改变一下this拿到返回的data数据
+  } catch (e) {
+    handleError(e, vm, "data()");
+    return {}
+  } finally {
+    popTarget();
+  }
+}
+
+function proxy (target, sourceKey, key) { //传vm,'_data',key，当访问vm.message时候就会访问vm._data[message]
+  sharedPropertyDefinition.get = function proxyGetter () {
+    return this[sourceKey][key]
+  };
+  sharedPropertyDefinition.set = function proxySetter (val) {
+    this[sourceKey][key] = val;
+  };
+  Object.defineProperty(target, key, sharedPropertyDefinition);
+}
+
+
+
+ -->

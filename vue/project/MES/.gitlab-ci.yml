@@ -1,0 +1,128 @@
+image: registry-corp.hypereal.com/cache/yarn:9.11.1
+
+stages:
+  - init
+  - lint
+  - test
+  - build
+  - publish
+  - deploy
+
+init_environment:
+  stage: init
+  script:
+    - 'yarn config set registry "https://registry.npm.taobao.org"'
+    - 'yarn'
+  artifacts:
+    name: 'packages'
+    expire_in: 60 mins
+    paths:
+      - node_modules/
+
+init_build_tag:
+  stage: init
+  script:
+    - NOW=`date +"%Y%m%d_%H%M%S"`
+    - export BUILD_TAG="${CI_COMMIT_REF_NAME}-${NOW}-${CI_COMMIT_SHA:0:8}"
+    - echo "BUILD_TAG=$BUILD_TAG"
+    - echo $BUILD_TAG > build-tag.txt
+  artifacts:
+    name: 'build-tag'
+    expire_in: 60 mins
+    paths:
+      - build-tag.txt
+
+code_lint:
+  stage: lint
+  script:
+    - 'ls -la'
+    - 'yarn lint'
+
+unit_test:
+  stage: test
+  script:
+    - 'ls -la'
+    - 'yarn test:unit'
+
+build:
+  stage: build
+  only:
+    - staging
+    - prod
+  artifacts:
+    name: 'dist'
+    expire_in: 60 mins
+    paths:
+      - deploy/
+  script:
+    - 'ls -la'
+    - BUILD_TAG=`cat build-tag.txt`
+    - echo "BUILD_TAG=$BUILD_TAG"
+    - export BUILD_TAG
+    - yarn build --mode ${CI_COMMIT_REF_NAME}
+    - mkdir -p deploy/docker
+    - mv dist/*.html deploy/docker
+    - mv dist deploy/oss
+
+publish_oss:
+  stage: publish
+  only:
+    - staging
+    - prod
+  script:
+    - 'ls -la'
+    - 'ls -Rl deploy/oss'
+    - BUILD_TAG=`cat build-tag.txt`
+    - echo "BUILD_TAG=$BUILD_TAG"
+    - 'chmod +x tools/ossutil-linux-64'
+    - './tools/ossutil-linux-64 config -e ${ALI_OSS_ENDPOINT} -i ${ALI_OSS_AKID} -k ${ALI_OSS_AKS}'
+    - './tools/ossutil-linux-64 cp deploy/oss/ ${ALI_OSS_BUCKET}/${BUILD_TAG}/ -u -r'
+
+publish_docker:
+  stage: publish
+  image: registry.sihe6.com/library/ci-docker:20181127
+  only:
+    - staging
+    - prod
+  script:
+    - 'ls -la'
+    - 'ls -Rl deploy/docker'
+    - 'BUILD_TAG=`cat build-tag.txt`'
+    - echo "BUILD_TAG=$BUILD_TAG"
+    - docker info
+    - cp script/dockerfile deploy/docker/
+    - cd deploy/docker/
+
+    - docker build -t registry.sihe6.com/web/mes:$BUILD_TAG .
+    - ls -alh
+    - docker push registry.sihe6.com/web/mes:$BUILD_TAG
+
+deploy:kube-staging:
+  stage: deploy
+  image: registry-sho.hypereal.com/library/aws-tools:v20181119
+  script:
+    - DOCKER_TAG=`cat build-tag.txt`
+    - echo "DOCKER_TAG = $DOCKER_TAG"
+    - cd ./script/kube-staging
+
+    - find . -type f | xargs sed -i "s/DOCKER_TAG/$DOCKER_TAG/g"
+
+    - kubectl apply -f .
+  only:
+    - /^staging-.+$/
+    - staging
+
+deploy:kube-prod:
+  stage: deploy
+  image: registry-sho.hypereal.com/library/aws-tools:v20181119
+  script:
+    - DOCKER_TAG=`cat build-tag.txt`
+    - echo "DOCKER_TAG = $DOCKER_TAG"
+    - cd ./script/kube-prod
+
+    - find . -type f | xargs sed -i "s/DOCKER_TAG/$DOCKER_TAG/g"
+
+    - kubectl apply -f .
+  only:
+    - /^prod-.+$/
+    - prod

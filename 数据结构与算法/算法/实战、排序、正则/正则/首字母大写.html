@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+body{
+    text-transform: capitalize;
+}
+</style>
+<body>
+    <div> i love you </div>
+<script>
+    let str = 'i love you' ;
+    
+    function firstUpperCase(str) {
+        return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
+    }
+    
+    console.log(firstUpperCase(str))
+    
+</script>
+</body>
+</html>

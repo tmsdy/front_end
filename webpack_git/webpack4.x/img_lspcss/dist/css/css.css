@@ -1,0 +1,16 @@
+body{
+    color: red ;
+}
+.avatar{
+    width: 100px ;
+    height: 100px ;
+    background-image: url(images/75acd1ddb7c73356c4589782662104e0.jpg);
+    background-size: 100% auto ;
+}
+.square{
+    width: 100px ;
+    height: 100px ;
+    background: pink ;
+    -webkit-transform: translateX(100px) ;
+            transform: translateX(100px) ;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+console.log(is_balance(['(','[',')',']',')']))
+function is_balance(str){
+    const [first,...others] = str ;
+    const stack = [first] ;
+    while(others.length>0){
+        const c = stack[stack.length-1] ;
+        const n = others.shift() ;
+        if(!match(n,c)){
+            stack.push(n) ;
+        }else{
+            stack.pop() ;
+        }
+    }
+    return stack.length === 0 ;
+}
+    
+function match(n,c){
+    return (c=='['&&n==']')||(c=='('&&n==')') ;
+}
+
+</script>
+</body>
+</html>

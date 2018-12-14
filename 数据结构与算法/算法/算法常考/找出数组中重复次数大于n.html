@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<script>
+	  let arr = [1,2,1,2,1,1,1,2,2,2] ;
+      console.log(findItem(arr,4)) ;
+      function findItem(arr,n)
+      {
+        let obj = {};
+        let targetArr = [] ;
+        for(let i =0 ; i < arr.length; i ++){
+          let temp = arr[i]
+          if(!obj[temp]){
+            obj[temp] = 0;
+          }
+          obj[temp] += 1;
+        }
+
+        for(let k in obj){
+          if(obj[k] > n){
+            targetArr.push(k) ;
+          }
+        }
+        return targetArr;
+      }
+
+	</script>
+</body>
+</html>

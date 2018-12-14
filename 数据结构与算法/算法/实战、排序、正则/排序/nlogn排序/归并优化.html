@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="./随机数组.js"></script>
+<script>
+    var arr = [23, 47 ,81 ,95 ,7, 14, 39, 55, 62, 74,9] ;
+    mergeSort(arr , 0 , arr.length-1)
+    console.log(arr) ;
+
+    var arr2 = genRondomArr(50000,100,300000) ;
+    let time1 = new Date().getTime() ;
+    mergeSort(arr2 , 0 , arr2.length-1)
+    console.log(new Date().getTime()-time1) ; //110ms~150ms 无序情况优化了3倍，有序的话估计很多倍
+
+    function mergeSort(arr,l,r){// 对arr[l...r]范围进行排序
+        // if(l>=r) return ;
+        if(r-l<=15){ //小于16长度就用插入排序了
+            insertSort(arr,l,r) ;
+            return ;
+        }
+        let mid = Math.floor((l+r)/2) ;
+        mergeSort(arr,l,mid) ;
+        mergeSort(arr,mid+1,r) ;
+        if(arr[mid]>arr[mid+1]) merge(arr,l,mid,r) ; //对于有序的不走merge了，性能高
+        return arr ;
+    }
+
+    function merge(arr,l,mid,r){// 将arr[l...mid]和arr[mid+1...r]两部分进行归并
+        let _arr = [] ;
+        for(let i=l ;i<=r ;i++){
+            _arr[i-l] = arr[i] ;
+        }
+        let i = l ,j=mid+1 ;
+        for(let k=l ;k<=r ;k++){
+            if(i>mid){
+                arr[k] = _arr[j-l] ;
+                j++ ;
+            }else if(j>r){
+                arr[k] = _arr[i-l] ;
+                i++ ;
+            }else if(_arr[i-l]<_arr[j-l]){
+                arr[k] = _arr[i-l] ;
+                i++ ;
+            }else{
+                arr[k] = _arr[j-l] ;
+                j++ ;
+            }
+        }
+    }
+//对数组arr[l...r]的插入排序
+    function insertSort(arr,l,r){
+        
+        for(let i=l+1 ;i<=r ;i++){
+            let sItem = arr[i] ;
+            let j ;
+            for(j=i; j>l && sItem<arr[j-1] ;j--){//把比插入元素大的向后移一位
+                arr[j] = arr[j-1] ;
+            }
+            arr[j] = sItem ;
+        }
+        return 
+    }
+    
+</script>
+</body>
+</html>

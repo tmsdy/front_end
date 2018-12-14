@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+
+    var vm = new Vue({
+        el:"#app" ,
+        template:"<div>hello</div>",
+        data:{
+            name:'feifei'
+        },
+        beforeCreate(){ //初始化
+            console.log('beforeCreate')
+            console.log(this.name) ; //undefined
+        },
+        //这里有data了
+        created(){ //初始化完成
+            console.log('created') ;
+            console.log(this.name) ;  //feifei
+        },
+        // 1.只是new Vue的话没el得时候是没有beforeMount，mounted方法的，是var vm = new Vue()的话是有的
+        // el是一个选择器，比如用到的最多的是id选择器app，vue实例需要用这个el去template中寻找对应的
+        // 2.有template调用内部render函数去渲染，没有就调用外部的html,渲染优先级：render函数(自己写的)>template属性>外部html
+        beforeMount(){ //有模板和挂载元素即将挂载时
+            console.log(this.$el) //template还没被渲染
+            console.log('beforeMounted')
+        },
+        mounted(){ //挂载后
+            console.log(this.$el) //渲染完成
+            console.log('mounted')
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate')
+        },
+        updated(){//只有和模版中的数据绑定了才会发生更新
+            console.log('updated')
+        },
+        beforeDestory(){ //销毁前
+            console.log('beforeDestory')
+        },
+      // Vue 实例上的东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁
+        distoryed(){ //销毁后
+            console.log('distoryed')
+        }
+    })
+
+    /*
+    1.Vue的所有生命周期函数都是自动绑定到this的上下文上。使用箭头函数的话，就会出现this指向的父级作用域，就会报错
+    
+    */
+
+</script>
+</html>

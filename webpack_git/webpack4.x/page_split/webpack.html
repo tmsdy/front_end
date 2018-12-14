@@ -1,0 +1,46 @@
+<!-- 
+webpack
+    代码转换：TypeScript 编译成 JavaScript、SCSS 编译成 CSS 等。
+    文件优化：压缩 JavaScript、CSS、HTML 代码，压缩合并图片等。
+    代码分割：提取多个页面的公共代码、提取首屏不需要执行部分的代码让其异步加载。(4版本最大特点)
+    模块合并：在采用模块化的项目里会有很多个模块和文件，需要构建功能把模块分类合并成一个文件。
+    自动刷新：监听本地源代码的变化，自动重新构建、刷新浏览器。
+    代码校验：在代码被提交到仓库前需要校验代码是否符合规范，以及单元测试是否通过。
+    自动发布：更新完代码后，自动构建出线上发布代码并传输给发布系统。
+
+命令：
+    npm i webpack webpack-cli -D
+    npx webpack执行打包
+    npm i webpack-dev-server -D 开启服务预览 
+        package.json的script中加"dev":"webpack-dev-server --open --mode development"配置
+    npm i html-webpack-plugin -D 根据模板生成html文件到dist目录下
+    npm i clean-webpack-plugin -D 每次产出到dist目录时都先把dist目录清空
+
+1.webpack-cli是装在node_modules的bin 目录下的不能直接运行
+    npx 可以直接运行node_modules/.bin 目录下面的命令
+    配置"scripts": {
+        "build": "webpack --mode development"
+    }
+
+2.webpack打包后的文件放在内存中，即使dist目录被删掉，也能通过localhost:8080/bundle.js访问到
+
+3.node_modules中有6个文件向bundle.js注入websocket客户端(打包进去的)，用来跟服务器通信
+    服务器的文件改了会重新编译并通知客户端刷新拿到最新的结果
+   
+4.不要用bundle.js，因为每次打包都生成这个文件名不变会走缓存的，或者设置个hash给js文件加hash值也行
+    在多入口情况不能写死了，会被覆盖
+
+5.entry: 可以是一个字符串，或者一个数组，或者一个对象
+    默认多入口多chunk产出多个js都被一个index.html引入，如果需要每个制定引入需要配置多个HtmlWebpackPlugin(多页面应用)
+    当两个页面都用jquery时,访问第一个需要加载jquery，访问第二个时候jquery已经缓存起来了。
+    npm i jquery -S
+    在entry里配个vendor(第三方)的入口
+
+6.全局变量，例如jquery
+    npm i expose-loader -D
+    代码里：let $ = require('expose-loader?$!jquery')
+    或者rules里加个{
+        test: /^jquery$/,
+        loader:'expose-loader?$'
+    }
+ -->

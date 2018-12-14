@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<body>
+    <div id="app">
+        <!-- <p>{{name}}</p>
+        <p>{{age}}</p> -->
+    </div>
+</body>
+<script>
+
+// var vm = new Vue({
+//     el:'#app' ,
+//     data:{
+//         name:'feifei' ,
+//         age : 21 
+//     }
+// })
+
+var vm = {} ;
+var data = {
+    name:'feifei' ,
+    age:21
+} ;
+
+for(var key in data){
+
+    (function(){
+        Object.defineProperty(vm,key,{ //给vm对象定义属性，所以data的变化被代理到vm上了
+            get:function(){
+                console.log('get'+data[key])
+                return data[key] ;
+            },
+            set:function(newVal){
+                console.log('set'+newVal)
+                data[key] = newVal ;
+            }
+        })
+    })(key)
+
+}
+
+
+vm.name = '红红' ; //set可以监听到
+
+console.log(vm.name) ; //get可以监听到
+
+
+</script>
+</html>

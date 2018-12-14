@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="./树的遍历通解.js"></script>
+<script>
+const tree = new Tree(10,[
+    new Tree(5),
+    new Tree(3,[
+        new Tree(7),
+        new Tree(11)
+    ]),
+    new Tree(2)
+])
+tree_transverse(tree,0) ; // 10 5 3 7 11 2 
+// tree_transverse(tree,3) ;
+// tree_transverse(tree,1) ;   
+
+</script>
+<body>
+</body>
+</html>
