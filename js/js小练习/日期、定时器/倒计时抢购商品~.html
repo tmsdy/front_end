@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style>
+	p{margin: 0 ;
+	padding: 4px 0 }
+	ul {
+		margin: 0 ;
+		padding: 0 ;
+		list-style: none ;
+		font-size: 12px ;
+		position: relative ;
+	}
+	input {
+		width: 140px ;
+	}
+	ul li {
+		width: 180px ;
+		height: 260px ;
+		padding: 4px ;
+		border: 1px solid #9B9596 ;
+		position: absolute ;
+		top: 0 ;
+	}
+	div {
+		width: 180px ;
+		height: 260px ;
+		position: absolute ;
+		top: 0 ;
+		display: none ;
+	}
+	.bg {
+		width: 180px ;
+		height: 260px ;
+	}
+	strong{
+		position: absolute ;
+		right: 8px ;
+		top:8px ;
+	}
+	span{
+		color: red ;
+	}
+	.t1 {
+		font-size: 10px ;
+	}
+	#btn {
+		font-size: 10px ;	
+	}
+	</style>
+
+<body>
+<p>限购时间</p>
+<ul id="list">
+	<li>
+	<input class="t1" type="text" value="February 4,2018 19:53:50" />
+	<strong >确认</strong>
+	<p>剩余00天00小时00分00秒</p>
+	<img src="img/商品01.png" />
+	<p>疯狂599，美的爆款隐藏式<br />面板下拉门微波炉</p>
+	<p>抢购价：<span>￥</span><span>599.00</span></p>
+	</li>
+	<div><img class="bg" src="img/商品_bg.png" /></div>
+	<li>
+	<input class="t1" type="text" value="February 4,2018 19:53:50" />
+	<strong >确认</strong>
+	<p>剩余00天00小时00分00秒</p>
+	<img src="img/商品02.png" />
+	<p>疯狂599，美的爆款隐藏式<br />面板下拉门微波炉</p>
+	<p>抢购价：<span>￥</span><span>3299.00</span></p>
+	</li>
+	<div><img class="bg" src="img/商品_bg.png" /></div>
+	<li>
+	<input class="t1" type="text" value="February 4,2018 19:53:50" />
+	<strong >确认</strong>
+	<p>剩余00天00小时00分00秒</p>
+	<img src="img/商品03.png" />
+	<p>疯狂599，美的爆款隐藏式<br />面板下拉门微波炉</p>
+	<p>抢购价：<span>￥</span><span>1299.00</span></p>
+	</li>
+	<div><img class="bg" src="img/商品_bg.png" /></div>
+</ul>
+</body>
+<script src="mine.js"></script>
+<script src="myMove.js"></script>
+<script>
+	$(function(){
+		
+		var oUl = $('list') ;		
+		var aLi = oUl.getElementsByTagName('li') ;
+		var aImg = oUl.getElementsByTagName('div') ;
+		var timer = null ;
+		var iNow = null;
+		var iNew = null;
+		var str = '' ;
+		var t = 0 ;
+		for (var i=0; i<aLi.length ; i++){
+			aLi[i].index = i ;
+			aLi[i].style.left = 10+200*i+'px' ;
+			aImg[i].style.left = 10+200*i+'px' ;
+			T1(aLi[i]) ;
+			
+		}
+		
+		//倒计时函数
+		function T1(obj){
+				var oText = obj.getElementsByTagName('input')[0] ;
+				var oBtn = obj.getElementsByTagName('strong')[0] ;
+				var oRamain =obj.getElementsByTagName('p')[0] ;
+				var price = obj.getElementsByTagName('span')[1] ;
+				var num = obj.index ;
+			//点击实现倒计时
+			oBtn.onclick = function(){			
+				iNew = new Date(oText.value) ;
+				clearInterval(timer) ;
+				timer = setInterval(function(){
+					iNow = new Date() ;
+					t = Math.floor((iNew-iNow)/1000) ;
+					if ( t>=0){
+						str = '剩余'+toTwo(Math.floor(t/86400))+'天'+toTwo(Math.floor(t%86400/3600))+'小时'+toTwo(Math.floor(t%86400%3600/60))+'分'+toTwo(t%60)+'秒';
+						oRamain.innerHTML = str ;
+						if (t==0){
+							//倒计时结束后执行的函数
+							fnShake(aLi[num],'left',14,function(){
+								aImg[obj.index].style.display = 'block' ;
+								for (var i=0; i<aLi.length ; i++){
+								opacMove(aLi[num],0.08 ,10 ,0 ,140) ;
+								}
+							})
+						}
+					}else{
+						clearInterval(timer) ;
+					}
+				},1000);
+			}
+		
+}
+		
+		
+	})
+	function toTwo(n){
+		return n<10 ? '0'+n : ''+n;
+	}
+	</script>
+	
+	
+</html>
+
+

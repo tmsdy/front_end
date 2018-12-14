@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title> 
+</head>
+<body>
+    
+</body>
+<script>
+/**
+ * generator生成器
+ * 可以返回多次的函数
+ */
+
+ function* numbers(){
+    yield 1;
+ }
+
+ const gen = numbers() ;
+
+ console.log(gen.next()) ;
+ console.log(gen.next()) ;
+
+
+// 斐波那契数列  ---常规做法
+// function fib(max){
+//     var a = 0,b = 1,arr = [0,1] ;
+//     while(arr.length < max){
+//         [a,b] = [b,a+b] ; //等同于a=b;b=a+b;
+//         arr.push(b) ;
+//     }
+//     return arr ;
+// }
+// console.log(fib(8)) ;
+
+// yield方法
+function* fib(max){
+    var a = 0,b = 1,n = 0 ;
+    while ( n < max ){
+        yield a ;
+        [a,b] = [b,a+b] ;
+        n++ ;
+    }
+    return ;
+}
+
+for(let x of fib(10)){
+    console.log(x)
+}
+
+</script>
+</html>

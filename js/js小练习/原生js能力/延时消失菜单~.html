@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style>
+	p{
+    margin:0;
+}
+	ul{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+	#nav {
+		width: 880px ;
+		height: 38px ;
+		border-bottom: 2px solid #e7788d ;
+		border-radius: 5px ;
+		background: #fdf1f4 ;
+	}
+	#nav ul li ,#nav span {
+		height: 36px ;
+		color: #e15671 ;
+		font-family: simsun ;
+		font-size: 16px ;
+		line-height: 38px ;	
+	}
+	#nav ul li {
+		padding: 0 28px ;
+		float: left ;
+	}
+	#nav span {
+		height: 38px ;
+		padding: 0 28px ;
+		float: right ;
+	}
+
+	.active {
+		color: #131313 ;
+		z-index: 1 ;
+		border: 2px solid #e7788d ;
+		background: #F8D0DA ;
+		border-bottom: 2px solid #F8D0DA ;
+	}
+	#nav span:hover {
+		color: #131313 ;
+		z-index: 1 ;
+		background: #FA5AB9 ;
+		border-radius: 4px ;
+	}
+	#hide {
+		height: 40px ;
+		position: relative ;
+	}
+	#hide ul {
+		display: inline-block ;
+		height: 38px ;
+		background: #F8D0DA ;
+		border: 2px solid #e7788d ;
+		border-top : none ;
+		position: absolute ;
+		display: none ;
+	}
+	#hide ul li {
+		float: left ;
+		height: 32px ;
+		color: #B34459 ;
+		font-family: simsun ;
+		font-size: 14px ;
+		line-height: 38px ;	
+		padding: 4px ;
+	}
+	#hide li:hover {
+		text-decoration: underline ;
+	}
+	
+	</style>
+<body>
+<div id="nav" >
+	<ul>
+		<li>首页</li>
+		<li>关于我们</li>
+		<li>作品</li>
+		<li>博客</li>
+	</ul>
+	<span><a href="">更多 >></a></span>
+</div>
+<div id="hide">
+	<ul>
+		<li>最近更新</li>
+		<li>活动</li>
+		<li>报名试听</li>
+		<li>学员反馈</li>
+	</ul>
+	<ul>
+		<li>妙味讲师</li>
+		<li>培训方式</li>
+		<li>培训理念</li>
+		<li>联系我们</li>
+	</ul>
+	<ul>
+		<li>般固</li>
+		<li>MATRIX</li>
+		<li>留学e网</li>
+		<li>ECMall</li>
+	</ul>
+	<ul>
+		<li>JS教程</li>
+		<li>弹出层效果</li>
+		<li>3D球面标签云</li>
+		<li>Window计算器</li>
+	</ul>
+</div>
+
+</body>
+<script src="mine.js"></script> 
+<script>
+	$(function(){
+		var oNav = $('nav') ;
+		var oHide = $('hide') ;
+		var oUl = oNav.getElementsByTagName('ul')[0] ;
+		var aUl = oHide.getElementsByTagName('ul') ; 
+		var aNav = oNav.getElementsByTagName('li') ; //可见导航里的Li
+		var timer1 =null ;
+		var timer2 = null ;
+		var old = null ;
+		var that = null;
+		
+		for(var i=0; i<aUl.length ;i++){
+			aUl[i].style.left = i*80+'px' ;
+			aNav[i].index = i ;
+			aNav[i].onmouseover = show1 ;
+			aUl[i].onmouseover = show2 ;
+			aUl[i].onmouseout = hide ;	
+		}
+		function show1(){
+		for( var i=0; i<aUl.length; i++ ){
+				aUl[i].style.display = 'none'; 
+				aNav[i].className = '' ;
+			}
+			aNav[this.index].className = 'active' ;
+			aUl[this.index].style.display = 'block' ;
+			old = this ;
+		};
+		function show2(){
+			clearInterval(timer1) ;
+			clearInterval(timer2) ;
+			aNav[this.index].className = 'active' ;
+			aUl[this.index].style.display = 'block' ;
+		};
+		function hide(){
+			that = this ;
+			timer1 = setTimeout(function(){
+			//先把this给that才能在函数里用
+			that.style.display = 'none' ;
+			aNav[old.index].className = '' ;
+			},1000)	;	
+		};
+		oUl.onmouseover =function(){
+			clearInterval(timer2) ;
+		};
+		oUl.onmouseout = function(){
+			timer2 = setTimeout(function(){
+				aUl[old.index].style.display = 'none' ;
+			},1000);
+		};
+		
+	})
+	
+	</script>
+</html>

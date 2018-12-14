@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    
+//元素增加
+    names[4]="小胡";                    //通过赋值，直接添加了两项，null和“小胡”
+    names.unshift("小李","小兰");       //首部添加
+    names.push("小李","小兰");          //末尾添加
+
+//元素删除
+    var item = names.pop();             //尾部删除
+    item=names.shift();                 //首部删除
+
+ //参数表示开始删除的位(包含),要删除的数目，在删除位置处添加的元素，修改源数组
+    names.splice(2,1,"小季","小明"); 
+
+//读取数组段，不修改源数组，负数表示从右向左数，-1表示末尾第一个元素，0表示首部第一个元素。
+//只有一个参数时表示直到末尾。读取索引包含第一个参数不包含第二个参数
+    names = names.slice(-4,6);    
+//查找匹配元素的位置，没有找到返回-1，lastindexof表示最后匹配的位置。
+    names.indexOf("小明");
+
+//数组的拼接和字符串表示
+    names=names.concat("小王",["小明","小黑"]); //拼接数组，不修改源数组，所以要赋值
+    var str=stringnames.join(",");            //使用间隔字符串连接数组
+
+//数组排序
+    names.reverse();                        //数组取反
+    names.sort();                           //数组排序sort(compare)，参数可为排序函数,空元素将排到最后
+    function compare(student1,student2){    //比较函数，返回-1,0,1
+        return student2.age-student1.age;  //正数自动转化为1，负数转化为-1
+    }
+
+//数组原型
+    function array_max( )
+    {
+        return Math.max.apply(Math,this);    //max取最大值，min取最小值。还有很多数学运算
+    }
+    Array.prototype.max = array_max;         //重写数组原型链
+    var x = new Array(1, 2, 3, 4, 5, 6);     //应用自定义原型函数
+    var y = x.max( );
+</script>
+<body>
+    
+</body>
+</html>

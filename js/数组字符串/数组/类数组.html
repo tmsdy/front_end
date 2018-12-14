@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<!--
+	类数组对象：只包含使用从零开始，且自然递增的整数做键名，拥有一个length 属性,是对象
+
+		常见的：arguments和选取的dom集合
+
+	表现为：
+	var arrayLike = {
+	    0: 'zhangsan',
+	    1: 'lisi',
+	    2: 'zhaoliu',
+	    length: 3
+	}
+	数组与类数组区别：
+		1.遍历的时候，数组的效率要比类数组要高很多，建议先将类数组转化成数组，在执行遍历以此优化性能
+		2.类数组不能直接使用数组的方法
+
+	类数组转为数组：
+	1.slice
+	Array.prototype.slice.call(arrayLike);
+
+	2. splice
+	Array.prototype.splice.call(arrayLike, 0);
+
+	3. ES6 Array.from
+	Array.from(arrayLike);
+
+	4.ES6扩展运算符
+	[...arrayLike] ;
+
+	-->
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- 
+在编译阶段，编译器会处理所有的声明，像var这种就被声明提前
+例一：
+    a = 2 ;
+    var a ;
+    console.log(a) ; //2
+等同于：
+    var a ;
+    a = 2 ;
+    console.log(a) ; //2
+
+例二：
+    console.log(a) ; //undefined
+    var a = 2 ;
+等同于：
+    var a ;
+    console.log(a) ;//undefined
+    a = 2 ;
+
+函数会比变量优先被提升，函数表达式不会被提升
+    foo() ;//1
+    var foo ;
+    function foo(){
+        console.log(1) ;
+    }
+    foo = function(){
+        console.log(2) ;
+    }
+    foo() ;//2
+等同于： //重复声明的var会被忽略，最后foo函数还是会被覆盖
+    function foo(){
+        console.log(1) ;
+    }
+    foo() ;//1
+    foo = function(){
+        console.log(2) ;
+    }
+    foo() ;//2
+    
+ -->

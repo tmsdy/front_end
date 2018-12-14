@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<style>
+    #parent{height: 150px;background: pink}
+    #child{height: 100px;background:skyblue}
+</style>
+<body>
+    <div id="parent">
+        <div id="child" class="child"></div>
+      </div>
+</body>
+<script>
+    // 默认是fasle,冒泡阶段 先触发子级再触发父级
+    // true，捕获阶段，先触发父级再触发子级
+    document.getElementById("parent").addEventListener("click",function(e){
+        alert("parent事件被触发，"+e.target.id);
+    },false)
+    document.getElementById("child").addEventListener("click",function(e){
+        alert("child事件被触发，"+e.target.id)
+    },false)
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title> 
+</head>
+<script>
+    /**
+ * Class
+ * 万事皆对象
+ */
+// // es5的对象     ***************************
+//  function Car(options){
+//      this.title = options.title ;
+//  }
+
+// Car.prototype.drive = function(){
+//     return "Vroom" ;
+// }
+
+//  const car =new Car({title : "BmW"}) ;
+//  console.log(car) ;
+// //  console.log(car.drive()) ;
+
+
+//  //继承
+//  function Toyota(options){
+//      Car.call(this,options) ; //this -> toyota,来继承Car的属性
+//      this.color = options.color ;
+//  }
+// //来继承Car的方法
+//  Toyota.prototype = Object.create(Car.prototype) ;
+//  Toyota.prototype.constructor = Toyota ;
+
+//  const toyota = new Toyota({color:"red" , title : "Focus"}) ;
+
+//  console.log(toyota) ;
+// // console.log(toyota.drive()) ;
+
+//es6的对象    ****************************
+class Car{
+    constructor({title}){//解构写法
+        this.title = title ;
+    }
+    drive(){
+        return 'vroom' ;
+    }
+}
+
+const car = new Car({title:"BMW"}) ;
+console.log(car) ;
+// console.log(car.drive()) ;
+//继承
+class Toyota extends Car{
+    constructor(options){
+        super(options) ;
+        this.color = options.color ;
+    }
+}
+
+const toyota = new Toyota({color:"red",title:"Focus"}) ;
+
+console.log(toyota) ;
+
+</script>
+<body>
+    
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+
+
+$(function(){
+	
+	/*$('li').on('click',function(){
+		this.style.background = 'red';
+	});*/
+	//事件委托写法 和上面效果一样 可以提高性能
+	$('ul').delegate('li','click',function(){	
+		this.style.background = 'red';	
+		$('ul').undelegate(); //阻止事件委托		
+	});
+	
+})
+
+</script>
+</head>
+
+<body>
+<ul>
+	<li>11111</li>
+    <li>1111</li>
+    <li>1111</li>
+    <li>111</li>
+    <li>1111</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="input" type="text" placeholder="请输入" >
+</body>
+<script>
+// 事件防抖
+var input = document.getElementById('input') ;
+var timeoutId ;
+
+input.addEventListener('keyup',function(){
+    if(timeoutId){ //这样做保证输入完不输入才执行setTimeout
+        clearTimeout(timeoutId) ;
+    }
+    timeoutId = setTimeout(function(){
+        console.log('输完了')
+    },100)
+})
+
+//事件节流：设置一个开关，一次只能有一个触发执行。
+$(window).scroll(loadMore());
+    function loadMore(){
+        var canRun=true;
+        return function(){
+            if(!canRun){return;}
+            canRun=false;
+            setTimeout(function(){
+                console.log("执行滚动事件");
+                var docHeight=$(document).height();
+                var winHeight=$(window).innerHeight();
+                var scrollDistance=$(window).scrollTop();
+                if( docHeight - (winHeight+scrollDistance) <=100 ){
+                    console.log('加载中...');
+                }
+                canRun=true;
+            },600);
+        }
+}
+
+</script>
+</html>

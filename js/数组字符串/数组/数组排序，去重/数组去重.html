@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+//数组去重 4种方法
+const arr = ['a','bb','22','a','yuci','haha','22'];
+// 1.es6数据结构Set
+let qc_arr1 = Array.from(new Set(arr)) ;
+// let qc_arr1 = [...new Set(arr)] ; //另一种写法
+console.log(qc_arr1); 
+
+//2.使用push()
+let qc_arr2 = [];  
+for(let i = 0; i < arr.length; i++) {  
+    if(qc_arr2.indexOf(arr[i]) == -1) { //不包含某个值则返回-1  
+        qc_arr2.push(arr[i]);  
+    }  
+}  
+console.log(qc_arr2); 
+
+//如果当前数组的第i项在当前数组中第一次出现的位置不是i，那么表示第i项是重复的，忽略掉。否则存入结果数组  
+let qc_arr3 = [arr[0]];  
+for(let i = 1; i < arr.length; i++) {  
+    if(arr.indexOf(arr[i]) == i) {  
+        qc_arr3.push(arr[i]);  
+    }  
+}  
+console.log(qc_arr3);
+
+//3.排序去除相邻重复元素
+
+let arrSort = arr.sort();  
+// console.log(arrSort)
+let qc_arr4 = [];  
+for(let i = 0; i< arrSort.length; i++) {  
+    if(arrSort[i] != arrSort[i+1]) {  
+        qc_arr4.push(arrSort[i]);  
+    }  
+}  
+console.log(qc_arr4); 
+
+
+</script>
+<body>
+    
+</body>
+</html>

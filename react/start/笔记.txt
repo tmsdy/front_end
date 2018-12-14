@@ -1,0 +1,5 @@
+1.配置git : vim ~/.gitconfig
+
+2.生成公钥 ：ssh-keygen -t rsa -C '1065915112@qq.com'
+
+3.去生成的.ssh文件下执行 cat id_rsa.pub

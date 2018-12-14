@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script type="text/javascript" src="jquery-1.10.1.min.js"></script>
+<script>
+
+
+//appendTo : appendChild
+
+$(function(){
+	//找到span，把span放到div的节点前面
+	//$('span').insertBefore( $('div') );
+	//找到div，把div放到span的节点后面
+	//$('div').insertAfter( $('span') );
+	//把div放到span里面的最后位置
+	//$('div').appendTo( $('span') );
+	//把div放到span里面的最前位置
+	//$('div').prependTo( $('span') );
+	
+	//做到div前面是span
+	// $('div').before( $('span') ).css('background','red');
+	//div变红
+	//上面分别对应有after(),append(),prepend()一样作用写法不一样
+	//两种写法区别 ：后续操作变了
+	$('span').insertBefore( $('div') ).css('background','red');
+	//span变红
+});
+
+
+
+</script>
+</head>
+
+<body>
+<div>div</div>
+<span>span</span>
+</body>
+</html>

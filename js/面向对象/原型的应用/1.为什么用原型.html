@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+//原型 : 去改写对象下面公用的方法或者属性 , 让公用的方法或者属性在内存中存在一份 ( 提高性能 )
+
+//原型 : CSS中的class
+//普通方法 : CSS中的style
+
+function CreatePerson(name,age){
+	this.name = name;
+	this.age = age ;
+	this.showName = ()=>{
+		console.log( this.name );
+	};	
+	CreatePerson.prototype.showAge = ()=>{
+		console.log( this.age );
+	}
+}
+var p1 = new CreatePerson('小明',20);
+//p1.showName();
+var p2 = new CreatePerson('小强',22);
+//p2.showName();
+console.log( p1.showName == p2.showName );  //false 因为其实this.sayName是new Function()出来的，不同实例上的同名函数不相等的
+console.log( p1.showAge == p2.showAge ); //true 
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

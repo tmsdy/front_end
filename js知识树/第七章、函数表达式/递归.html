@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    function factorial(num){ //阶乘递归
+        if(num<=1){
+            return 1 ;
+        }else{
+            return num*factorial(num-1) ;
+        }
+    }
+    //表面没问题，但下面代码会使它出错
+    var oneFactorial = factorial ;
+    factorial = null ;
+    console.log(oneFactorial(4))
+
+    var _factorial = (function f(num){ //这种写法不怕上面写法，严格非严格模式都行
+        if(num<=1){
+            return 1 ;
+        }else{
+            return num*f(num-1) ;
+        }
+    })
+
+    var TwoFactorial = _factorial ;
+    _factorial = null ;
+    console.log(TwoFactorial(4))
+
+
+</script>
+<body>
+    
+</body>
+</html>

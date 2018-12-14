@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+ let names = ["hanfei" , "fanafang" , "mengmeng"] ;
+//解构
+ let [name1,name2,name3] = names ;
+ //console.log(name1,name2,name3) ; //拿到数组里面的东西
+
+let arr = [{_name:'fiefei',_age:22},[2,4],444] ;
+let [{_name,_age},[a,b],c] = arr ; //key要一样才行
+console.log(_name,_age,a,b,c) ;
+
+let [json,arr2,f] = arr ;// 也可以整体
+console.log(json,arr2,f)
+
+//自定义key
+let obj = { id:22 ,val: '111' } ;
+let {id:m_id,val:m_val} = obj ;
+
+console.log(m_id,m_val) ;
+
+ //结合展开运算符
+ let [name , ...rest] = names ;
+
+ //console.log(...rest) ; //...rest就代表name后面的两个了
+
+ //对象数组
+ let people = [
+     {name :"hanfei",age:21},
+     {name :"fanafang",age:20},
+     {name :"mengmeng",age:24}
+ ]
+
+//es6 解构2次
+let [{age}] = people ;
+
+console.log(age) ;
+
+
+</script>
+<body>
+    
+</body>
+</html>

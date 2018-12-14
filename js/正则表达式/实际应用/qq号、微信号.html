@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+    
+
+//QQ号正则，5至11位
+var qqPattern = /^[1-9]\d{4,10}$/;
+console.log(qqPattern.test("65974040")); //true
+
+//微信号正则，6至20位，以字母开头，字母，数字，减号，下划线
+var wxPattern = /^[a-zA-Z]([-_a-zA-Z0-9]{5,19})+$/;
+console.log(wxPattern.test("RuilongMao")); //true
+
+</script>
+<body>
+    
+</body>
+</html>

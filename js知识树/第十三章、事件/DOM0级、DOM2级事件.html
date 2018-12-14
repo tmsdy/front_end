@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- html事件处理 -->
+    <input type="button" value="click me" onclick="console.log(this.value)" />
+    
+    <button id="btn1">DOM0级事件处理</button>
+
+    <button id="btn2">DOM2级事件处理</button>
+
+</body>
+<script>
+// DOM0级事件处理:
+let btn1 = document.getElementById('btn1') ;
+btn1.onclick = function(){
+    console.log('DOM0级事件处理') ;
+}
+// btn1.onclick = null ; //删除事件处理
+
+// DOM2级事件处理:第三个布尔值如果是true则表示捕获阶段调用，false则是冒泡阶段调用*****
+// 优点是可以添加多个
+let btn2 = document.getElementById('btn2') ;
+btn2.addEventListener('click',function(){
+    console.log('DOM2级事件处理01') ;
+},false)
+btn2.addEventListener('click',function(){
+    console.log('DOM2级事件处理02') ;
+},false)
+
+</script>
+</html>

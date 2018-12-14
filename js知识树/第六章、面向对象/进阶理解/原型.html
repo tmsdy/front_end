@@ -1,0 +1,15 @@
+<!-- 
+prototype
+
+function Person() {}
+var person1 = new Person(); 
+
+1.(除null外)每个对象在创建的时候就会关联一个原型对象,每一个对象都会从原型"继承"属性
+person1.__proto__ === Person.prototype ;
+
+2.person1属性->__proto__(Person.prototype)->__proto__(Object.prototype) 去找对象的属性和方法
+
+3.person.constructor === Person.prototype.constructor，constructor也是通过原型链找原型里的constructor
+
+
+ -->

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+ var expense = {
+     type : "es6" ,
+     amount : "45"
+ } ;
+
+//  var type = expense.type ;
+//  var amount = expense.amount ;
+//  console.log(type,amount) ;
+
+const { type,amount } = expense ;// 上面的简写
+//console.log (type,amount) ; 
+
+
+var saveFiled = {
+    extension : "jpg" ,
+    name : "girl" ,
+    size : 14040
+};
+//es5
+// function fileSammary(file){
+//     return `${file.name}.${file.extension}的总大小是${file.size}` ;
+// }
+// console.log(fileSammary(saveFiled)) ;
+//es6
+function fileSammary({name,extension,size}){ //解构的写法
+    return `${name}.${extension}的总大小是${size}` ;
+}
+console.log(fileSammary(saveFiled)) ;
+
+
+</script>
+<body>
+    
+</body>
+</html>

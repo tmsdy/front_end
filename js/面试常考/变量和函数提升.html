@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+// 一、引擎会在解释JavaScript代码之前先对其进行编译，编译阶段中的一部分工作就是找到所有的声明，
+// 并用合适的作用域将它们关联起来。包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理。
+// 原型的上定义方法没有变量提升
+
+a = 2;
+var a;
+console.log(a);//输出结果为2
+
+/*
+等价于
+var a;
+a = 2;
+console.log(a);//输出结果为2
+*/
+
+console.log(a);//输出结果为undefined
+var a = 2;
+
+/*
+等价于
+var a;
+console.log(a);//输出结果为undefined
+a = 2;
+*/
+// 二、上面的处理过程好像变量和函数声明从它们在代码中出现的位置被“移动”到了最上面，这个过程就叫作提升。
+// 每个作用域都会进行提升操作。
+
+// 函数声明和变量都会被提升。但是一个值得注意的细节是函数会首先被提升，然后才是变量。
+
+foo();//1
+var foo;
+function foo(){
+    console.log(1);
+}
+foo = function(){
+    console.log(2);
+};
+
+/*
+等价于
+function foo(){
+    console.log(1);
+}
+foo();//1
+foo = function(){
+    console.log(2);
+};
+*/
+// 注意：var foo尽管出现在function foo()...的声明之前，但它是重复的声明(因此被忽略了)，
+// 因为函数声明会被提升到普通变量之前。
+// 尽管重复的var声明会被忽略掉，但出现在后面的函数声明还是可以覆盖前面的。
+
+foo();//3
+function foo(){
+    console.log(1);
+}
+var foo = function(){
+    console.log(2);
+};
+function foo(){
+    console.log(3);
+}
+// 在同一个作用域中进行重复定义是非常糟糕的，而且经常会导致各种奇怪的问题。
+
+</script>
+<body>
+    
+</body>
+</html>

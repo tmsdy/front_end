@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style>
+	li{list-style: none ;}
+	#box {
+		position: relative ;
+	}
+	#box p {
+		width: 320px ;
+		height: 160px ;
+		padding: 6px ;
+		text-indent: 28px ;
+		border: 1px solid black ;
+		font-size: 12px ;
+		line-height: 20px ;
+		position: absolute ;
+		left: 0px ;
+		top:10px ;
+	}
+	#list {
+		position: absolute ;
+		left: 320px ;
+	}
+	li{
+		width: 40px ;
+		height: 24px ;
+		background: #C5C1C1 ;
+		text-align: center ;
+		margin-bottom: 1px ;
+		font-size: 14px ;
+		line-height: 24px ;
+	}
+	#list li:hover{
+		color: #fff ;
+	}
+	#diff:hover {
+		background: gray ;
+	}
+	.cli {display: none ;}
+	.cli:hover {
+		background: orange ;
+	}
+	#tanc {
+		width: 320px ;
+		height: 100px ;
+		background: #F3E0F0;
+		position: relative;
+		border: 2px solid pink ;
+		top:210px ;
+		display: none ;
+	}
+	#tanc ul {
+		margin: 4px;
+		width: 260px ;
+		height: 40px ;
+		border-bottom: 2px solid #FF6E00 ;
+		position: absolute ;
+		left: 6px ;
+	}
+	#tanc ul li{
+		width: 44px ;
+		height: 20px ;
+		background: none ;
+		margin: 0 ;
+		text-align: center ;
+		font-size: 14px ;
+		line-height: 20px ;
+		display: block ;
+		position: absolute ;
+		bottom: 0px ;
+	}
+	
+	#li1{
+		left: 0px ;
+	}
+	#li2{
+		left: 50px ;
+	}
+	#tanc input {
+		position: absolute ;
+		top:60px ;
+	}
+	#inp1{
+		width: 300px ;
+		height: 36px ;
+		position: absolute;
+		left: 6px ;
+		display: none ;
+	}
+	#text3 {
+		position: absolute ; 
+		left: 8px ;
+	}
+	#btn1{
+		position: absolute ;
+		left: 180px ;
+	}
+	#inp2{
+		width: 300px ;
+		height: 36px ;
+		position: absolute ;
+		display: none;
+	}
+	#text1{
+		width: 100px ;
+		left: 10px ;
+	}
+	#text2{
+		width: 100px ;
+		left: 120px ;
+	}
+	#btn2 {
+		right: 20px ;
+	}
+	span {background: yellow ;}
+	
+	</style>
+
+<body>
+<div id="box">
+	<ul id="list">
+		<li id="diff">展开</li>
+		<li class="cli">查找</li>
+		<li class="cli">替换</li>
+	</ul>
+	<p id="text">是一种由Netscape的LiveScript发展而来的原型化继承的面向对象的动态类型的区分大小写的客户端脚本语言，主要目的是为了解决服务器端语言，
+	比如Perl，遗留的速度问题，为客户提供更流畅的浏览效果。当时服务端需要对数据进行验证，由于网络速度相当缓慢，只有28.8kbps，验证步骤浪费的
+	时间太多。于是Netscape的浏览器Navigator加入了Javascript，提供了数据验证的基本功能。</p>
+<div id="tanc">
+	<ul>
+		<li id="li1">查找</li>
+		<li id="li2">替换</li>
+	</ul>
+	<div id="inp2">
+	<input id="text1" type="text" />
+	<input id="text2" type="text" />
+	<input id="btn2" type="button" value="替换" /></div>
+	<div id="inp1">
+	<input id="text3" type="text" />
+	<input id="btn1" type="button" value="查找" />
+	</div>
+	
+</div>
+</div>
+</body>
+<script src="myMove.js"></script>
+<script src="mine.js"></script>
+<script>
+	$(function(){
+		var oDiv = $('box') ;
+		var oP = $('text') ;
+		var oUl = $('list') ;
+		var oDiff = $('diff') ;
+		var oTanc = $('tanc') ;
+		var oBtn1 = $('btn1') ;
+		var oText1 = $('text3') ;
+		var oBtn2 = $('btn2') ;	
+		var oText2 = $('text1') ;
+		var oText3 = $('text2') ;
+		var str1 = oP.innerHTML ;
+		var str2 = '' ;
+		var aDiv = oTanc.getElementsByTagName('div') ;
+		var aLi1 = oUl.getElementsByTagName('li') ;
+		var aLi2 = oTanc.getElementsByTagName('li') ;
+		function show1(str){
+			aLi1[1].style.display = str ;
+			aLi1[2].style.display = str ;
+		}
+		function show2(bool){
+			if(bool){
+				aLi2[0].style.background = '#FF6E00' ;
+				aLi2[1].style.background = '' ;
+				aDiv[0].style.display = 'none' ;
+				aDiv[1].style.display = 'block' ;
+			}else{
+				aLi2[0].style.background = '' ;
+				aLi2[1].style.background = '#FF6E00' ;
+				aDiv[0].style.display = 'block' ;
+				aDiv[1].style.display = 'none' ;
+			}
+		}
+		
+		oDiff.onclick = function(){
+			show1('block') ;
+		}
+		aLi1[1].onclick = function(){
+			oTanc.style.display = 'block' ;
+			var onOff = true ;
+			show2(onOff) ;
+		}
+		aLi1[2].onclick = function(){
+			oTanc.style.display = 'block' ;
+			var onOff = false ;
+			show2(onOff) ;
+		}
+		//点击之后再点Li可点范围变小了*
+		aLi2[0].onclick = function(){
+			oP.innerHTML = str1 ;
+			show1('none') ;
+			var onOff = true ;
+			show2(onOff) ;
+		}
+		aLi2[1].onclick = function(){
+			oP.innerHTML = str1 ;
+			show1('none') ;
+			var onOff = false ;
+			show2(onOff) ;
+		}
+
+		//查找功能
+		oBtn1.onclick = function(){
+			oP.innerHTML = str1 ;
+			str2 = oText1.value ;
+			var i = 0 ;
+			if(str2 == ''){
+				alert('输入内容不能为空') ;
+			}else if(str1.indexOf( str2, i ) != -1){
+				while( str1.indexOf( str2, i ) != -1 ){
+					oP.innerHTML = oP.innerHTML.split(str2).join('<span>'+str2+'</span>');
+					i = str1.indexOf( str2, i ) + str2.length;
+				}
+			}else{
+				alert('没有找到与['+str2+']相关的内容') ;
+			}
+		}
+		//替换功能
+		oBtn2.onclick = function(){
+			var s = oText2.value ;
+			var str2 = oText3.value ;
+			if (!s){
+				alert('请输入要替换的内容') ;
+				return;
+			}
+			oP.innerHTML = oP.innerHTML.split(s).join('<span>'+str2+'</span>');
+		}
+		
+		
+	}) 
+	
+	</script>
+</html>

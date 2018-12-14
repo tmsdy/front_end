@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    //map方法 便于由一个数组来派生一个新的想要的数组
+
+/**场景1
+ * 假定有一个数值数组(A),将A数组中的值以双倍的形式放到B数组
+ */
+ var numbers = [1,2,3] ;
+ var doubleNumbers = [] ;
+ //es5
+ for(var i = 0 ; i < numbers.length ; i++){
+     doubleNumbers.push(numbers[i]*2) ;
+ }
+ //es6 map 超简单
+ var doubled = numbers.map(function(num){
+        return num*2 ;
+ })
+ //console.log(doubled) ; // [2,4,6]
+ 
+ doubled.forEach(function(num){
+        //console.log(num) ; //2 4 6
+ })
+
+/**场景二
+ * 假定有一个对象数组(A)，将A数中对象某个属性的值存储到B数组中
+ */
+var cars = [
+    { model : "AnTa" , price : "cheap" } ,
+    { model : "BMW" , price : "expensive"} 
+] ;
+
+var prices = cars.map(function(car){
+        return car.price ;
+})
+console.log(prices) ; //["cheap" , "expensive"]
+</script>
+<body>
+    
+</body>
+</html>

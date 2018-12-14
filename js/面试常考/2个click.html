@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<div id="button">顶顶顶顶</div>
+</body>
+<script>
+
+	var oBtn = document.getElementById('button') ;
+
+	oBtn.addEventListener('click',function (e) {
+	  Promise.resolve().then(res=>{
+	    console.log('resolve1')
+	  })
+      console.log('click1') ;
+    })
+
+    oBtn.onclick = function(e){
+      Promise.resolve().then(res=>{
+        console.log('resolve2')
+      })
+      console.log('click2') ;
+    }
+
+    oBtn.addEventListener('click',function (e) {
+      Promise.resolve().then(res=>{
+        console.log('resolve3')
+      })
+      console.log('click3') ;
+    })
+
+</script>
+</html>

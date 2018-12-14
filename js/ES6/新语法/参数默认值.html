@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    /**
+ * 函数参数默认值
+ * 优化代码
+ */
+
+//  function makeAjaxRequest (url,method){
+//     if(!method){ //设定函数参数默认值
+//         method = "GET" ;
+//     }
+//     return method ;
+//  }
+function makeAjaxRequest (url,method = "GET"){ //上面的简化写法
+    return method ;
+ }
+
+//  console.log (makeAjaxRequest("google.com")) ; 
+//  console.log (makeAjaxRequest("google.com","POST")) ;
+
+//应用场景 随机产生id
+
+function User(id) {
+    this.id = id ;
+}
+
+function randomId(){
+    return Math.random()*9999 ;
+}
+
+function createAdminUser(user = new User(randomId())){ 
+    user.admin = true ;
+    return user ;
+}
+
+console.log(createAdminUser()) ;
+</script>
+<body>
+    
+</body>
+</html>

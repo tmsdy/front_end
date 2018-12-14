@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 调用对象的方法后返回到该对象
+        function W(){ 
+            this.name="feifei"; 
+            this.age= 12; 
+        } 
+        W.prototype.sayHi=function(){ 
+            console.log('hi,i am '+this.name) ;
+            return this; 
+        }; 
+        W.prototype.doSomething=function(){ 
+            console.log("I'm working"); 
+            return this; 
+        } 
+        W.prototype.sayGoodbye=function(){ 
+            console.log("Goodbye,everybody"); 
+            return this; 
+        }; 
+        var w=new W(); 
+        w.sayHi().doSomething().sayGoodbye(); 
+        
+    </script>
+</body>
+</html>

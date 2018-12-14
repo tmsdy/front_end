@@ -1,0 +1,12 @@
+<nav aria-label="Page navigation" class="col-md-6 col-md-offset-4">
+
+    <ul class="pagination" id="pagination">
+
+        <li class="previous"><a href="/admin/user?page={{page-1}}">&larr;上一页</a></li>
+        {% for page_num in pageAll %}
+        <li class="page"><a href="/admin/user?page={{page_num}}">{{page_num}}</a></li>
+        {% endfor %}
+        <li class="next"><a href="/admin/user?page={{page+1}}">下一页 &rarr;</a></li>
+
+    </ul>
+</nav>

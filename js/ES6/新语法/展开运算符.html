@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    /**
+ *  spread operator 展开运算符
+ * 更快，更便捷的操作数组
+ */
+
+//  function addNumbers(a,b,c,d,e){
+//      var numbers = [a,b,c,d,e] ;
+
+//     return numbers.reduce((sum,number) => {
+//         return sum + number ;
+//     },0) 
+//  }
+// console.log(addNumbers(1,2,3,4,5)) ;
+
+function addNumbers(...numbers){ //上面的简写方法 不管numbers怎么变都能接收过来
+   return numbers.reduce((sum,number) => {
+       return sum + number ;
+   },0) 
+}
+console.log(addNumbers(1,2,3,4,5)) ; //15
+
+var defaultColors = ["red" , "green" ] ;
+var favoriteColors = ["orange" , "yellow"] ;
+
+//concat 连接上面两个数组
+// defaultColors = defaultColors.concat(favoriteColors) ;
+// console.log (defaultColors) ;
+
+//console.log([...defaultColors , ...favoriteColors]) ; //上面的简写
+
+console.log(["blue","green",,...defaultColors , ...favoriteColors]) ; //代替了push的功能
+
+function validateShoppingList(...items){
+    if(items.indexOf('milk') < 0){
+        return ["milk" , ...items] ;//如果...items里面没有'milk'就把'milk'放进去
+    }
+    return items ;
+}
+
+console.log(validateShoppingList("orange","bread" ,"eggs")) ;
+</script>
+<body>
+    
+</body>
+</html>

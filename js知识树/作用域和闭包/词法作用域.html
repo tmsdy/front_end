@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //js采用的是词法作用域 , 函数的词法作用域在函数定义的时候决定
+    function foo(a){
+        var b = 2*a ;
+        function bar(c){
+            console.log(a,b,c) ;
+        }
+        bar(b*3) ;
+    }
+    foo(2) ;
+
+/*
+查找过程 ：
+    引擎执行console.log(a,b,c)并查找a,b,c变量的引用，现在bar中找，找不到，再去foo中找，找到了a和b，在bar(b*3)中找到了c
+遮蔽效应：就是在bar中如果找到了就不会再去上层的作用域中再去找了
+    可以通过window.a这种方式访问被遮蔽的变量，但如果不是全局对象上的被遮蔽变量你是找不到的
+
+*/
+    
+</script>
+</body>
+</html>

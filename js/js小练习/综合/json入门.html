@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    /*
+     JSON 文本的 MIME 类型是 "application/json"
+     1.为什么使用json
+        对于 AJAX 应用程序来说，JSON 比XML更小、更快、更易解析：
+        使用 XML读取 XML 文档使用 XML DOM 来循环遍历文档读取值并存储在变量中
+        使用 JSON读取 JSON 字符串用 eval() 处理 JSON 字符串
+         1、基于纯文本，跨平台传递极其简单；
+    　　 2、Javascript原生支持，后台语言几乎全部支持；
+    　　 3、轻量级数据格式，占用字符数量极少，特别适合互联网传递；
+    　　 4、可读性较强，虽然比不上XML那么一目了然，但在合理的依次缩进之后还是很容易识别的；
+         5、容易编写和解析，当然前提是你要知道数据结构。
+    */
+    //2.json字符串转换为json对象
+    var str = '{ "name": "cxh", "sex": "man" }';
+    var obj = eval('(' + str + ')'); //方法1
+    console.log(obj) ;
+    var obj2 = JSON.parse(str); //方法2
+    console.log(obj2) ;
+
+    // 3.json对象转换为json字符串
+
+    var str3 = JSON.stringify(obj); //方法2
+    console.log(str3);
+ 
+    // 上面的几个方法中，除了eval()函数是js自带的之外，其他的几个方法都来自json.js包。
+    
+
+
+</script>
+<body>
+    
+</body>
+</html>

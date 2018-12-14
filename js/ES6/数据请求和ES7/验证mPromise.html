@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="mPromise.js"></script>
+<body>
+    <script>
+        
+    let p = new MyPromise((resolve,reject)=>{
+
+        console.log('进来了') ;
+        // resolve('成功了')
+        reject('失败了') ;
+
+    })
+    setTimeout(()=>{
+        console.log('普通定时器')
+    })
+    p.then(res=>{
+        console.log('1'+res) ;
+    },err=>{
+        console.log('1'+err) ;
+    })
+
+    p.then(res=>{
+        console.log('2'+res) ;
+    },err=>{
+        console.log('2'+err) ;
+    })
+
+    let p1 = new MyPromise((resolve,reject)=>{
+        resolve('456') ;
+    })
+    let p2 = new MyPromise((resolve,reject)=>{
+        resolve('789') ;
+    })
+    MyPromise.all([p1,p2]).then(res=>{ 
+        console.log(res) ;
+    })
+
+    document.onclick = function(){
+        console.log(p) ;
+        p.then(res=>{
+            console.log(res) ;
+        })
+    }
+    
+    console.log('999') ;
+    
+    
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //迭代器还原生成器的结构
+    function nameIterator(names){
+        let nextIndex = 0 ;
+        return {
+            next(){
+                return nextIndex<names.length?
+                {value:names[nextIndex++],done:false} :
+                {value:undefined,done:true}
+            }
+        }
+    }
+    let nameArr = ['feifei','fangfang','yueyue'] ;
+
+    const names = nameIterator(nameArr) ;
+    console.log(names.next()) ;
+    console.log(names.next()) ;
+
+
+</script>
+</html>

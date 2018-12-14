@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 数据类型：字符串（String）、数字(Number)、布尔(Boolean)、
+    数组(Array)、对象(Object)、空（Null）、未定义（Undefined） 
+    typeof 判断数据类型
+-->
+    <script>
+    
+    var message;
+    console.log(message == undefined); //true 未初始化的变量会自动被赋予 undefined 值
+
+    // null 值表示一个空对象指针    
+    var car = null;
+    console.log(typeof car); // "object"
+    // 如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为 null 而不是其他值
+    // 下面场景就是检查null来判断car是否已经保存一个对象的引用
+    if (car != null){
+        // 对 car 对象执行某些操作
+    }
+
+    var message = "Hello world!";
+    var m_Boolean = Boolean(message);
+    // 任何非空字符串，任何非零数字值（包括无穷大,任何对象转化为布尔值都是true
+    console.log('m_Boolean：'+m_Boolean) ;
+    if (message){//if语句自动执行相应的 Boolean 转换
+        alert("Value is true");
+    }
+
+    </script>
+<body>
+    
+</body>
+</html>

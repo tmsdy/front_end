@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+// 所有都满足every才返回true,一个满足some就返回true
+// 相当于every是&&的关系，some是||的关系
+var people = [
+    {
+        name :'feifei' ,
+        age : 18
+    },
+    {
+        name :'heihei' ,
+        age : 22
+    },
+    {
+        name :'weiwei' ,
+        age : 21
+    }
+]
+
+var bool20_every = people.every(item=>item.age<=20) ;
+var bool20_some = people.some(item=>item.age<=20) ;
+
+console.log(bool20_every)
+console.log(bool20_some)
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

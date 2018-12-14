@@ -1,0 +1,17 @@
+<!-- 
+
+1.默认绑定。this指向全局对象
+    独立函数调用
+    function foo(){
+        console.log(this.a) //如果是严格模式this会绑定到undefined
+    }
+    var a = 2 ;
+    foo() ;// 2 foo()是没带参数的直接调用，所以只能是默认绑定
+
+    (function(){
+        "use strict" ;
+        foo() ;//2 只要foo构造函数里面不是严格模式还是能绑定全局对象
+    })()
+
+
+ -->

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<script>
+  // connection.query() 是一个node的异步操作
+  connection.query(sql, (err, result) => {
+    if(err) {
+      console.err(err)
+    } else {
+      connection.query(sql, (err, result) => {
+        if(err) {
+          console.err(err)
+        } else {
+        ...
+        }
+      })
+    }
+  })
+  // 回调地狱：
+  //    1.看起来很不舒服，可读性比较差；
+  //    2.对异常的捕获无法支持。
+
+</script>
+</body>
+</html>

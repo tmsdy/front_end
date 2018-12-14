@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+    function Parent (name) {
+      this.name = name ;
+      this.age = 12 ;
+      this.sayName = function () {
+        console.log(this.name) ;
+      }
+      Parent.prototype.num = 3 ;
+      Parent.prototype.sayAge = function () {
+        console.log(this.age) ;
+      }
+    }
+    var p1 = new Parent('feifei') ;
+
+    function Son (name) {
+      // Parent.call(this,name) ; //把父级this指向Son，优点：可传参
+     Parent.apply(this,[name]) ;
+    }
+
+    var son1 = new Son('heihei') ;
+    console.log(son1.name) ; //heihei
+    console.log(son1.num) ; //undefined 缺点：不能继承Parent的原型对象
+    son1.sayName() ;
+    son1.sayAge() ; //报错
+
+</script>
+<body>
+    
+</body>
+</html>

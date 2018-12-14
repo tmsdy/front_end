@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+    let date = new Date() ;
+    console.log(date);
+    console.log(Date.parse(date)) ; //时间戳毫秒ms
+    console.log(Date.parse('4/13/2018'))
+    console.log(Date.parse('May 25,2018'))
+    console.log(Date.parse('2018-04-19T00:00:00')) //04的0不能少
+    console.log(Date.now()) //取当前时间
+   /* 
+     Date.parse()接收一个表示日期的字符串参数
+     1."月/日年"，如 4/13/2018 ;
+     2."英文月名，日，年"，如 May 25,2018 ;
+   */
+</script>
+<body>
+    
+</body>
+</html>

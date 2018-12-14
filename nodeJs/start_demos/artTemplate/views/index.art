@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/public/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="/public/css/index.css" type="text/css" />
+    <title>Document</title>
+</head>
+<script id="test" type="text/html">
+    <div class="select_content">
+        <div class="select_normal border_bottom click_item">不限行业</div>
+        <div class="select_left_column scroll_y">
+            <div class="select_item click_item" data-code="B01">金融业</div>
+            <div class="select_item click_item selected" data-code="B02">IT|通信|互联网</div>
+            <div class="select_item click_item" data-code="B03">机械机电|自动化</div>
+            <div class="select_item click_item" data-code="B04">专业服务</div>
+            <div class="select_item click_item" data-code="B05">冶金冶炼|五金|采掘</div>
+            <div class="select_item click_item" data-code="B06">化工行业</div>
+            <div class="select_item click_item" data-code="B07">纺织服装|皮革鞋帽</div>
+            <div class="select_item click_item" data-code="B08">电子电器|仪器仪表</div>
+            <div class="select_item click_item" data-code="B09">快消品|办公用品</div>
+            <div class="select_item click_item" data-code="B10">房产|建筑|城建|环保</div>
+            <div class="select_item click_item" data-code="B11">制药|医疗</div>
+            <div class="select_item click_item" data-code="B12">生活服务|娱乐休闲</div>
+            <div class="select_item click_item" data-code="B13">交通工具|运输物流</div>
+            <div class="select_item click_item" data-code="B14">批发|零售|贸易</div>
+            <div class="select_item click_item" data-code="B15">广告|媒体</div>
+            <div class="select_item click_item" data-code="B16">教育|科研|培训</div>
+            <div class="select_item click_item" data-code="B17">造纸|印刷</div>
+            <div class="select_item click_item" data-code="B18">包装|工艺礼品|奢侈品</div>
+            <div class="select_item click_item" data-code="B19">能源|资源</div>
+            <div class="select_item click_item" data-code="B20">农|林|牧|渔</div>
+            <div class="select_item click_item" data-code="B21">政府|非赢利机构|其他</div>
+            {{each industry_list as value i}}
+            <li>索引 {{i + 1}} ：{{value}}</li>
+            {{/each}}
+        </div>
+    </div>
+</script>
+<body>
+</body>
+<script>
+    var data = {
+        title: '标签',
+        list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+    };
+    var html = template('test', data);
+    document.getElementById('content').innerHTML = html;
+</script>
+</html>

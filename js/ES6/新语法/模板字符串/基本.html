@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    let name = "feifei"
+    
+    function makeUppercase(str){
+        return str.toUpperCase() ;
+    }
+    //模板字符串里面可以写结构，方法，变量
+    let template = `<h1>${makeUppercase('Hello')} World</h1><p>你好世界，你好ES6,你好${name}</p>` ;
+     document.getElementById('app').innerHTML = template ;
+
+let users = [
+    {id:11,name:'feifei'},
+    {id:22,name:'mingming'}
+]
+let newLis = users.map((user,index)=>{
+    return `<li>${user.id}:${user.name}</li>`
+}).join('')
+
+let ul = (`
+    <ul>
+        ${newLis}
+    </ul>
+`)
+console.log(ul) ;
+
+
+    </script>
+</html>

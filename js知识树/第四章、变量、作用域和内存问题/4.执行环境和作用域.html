@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    //具体看p73,每个函数都有自己的执行环境，每个执行环境都有与之关联的变量对象。
+    //当代码在一个环境中执行时，会创建变量对象的一个作用域链，作用域链的前端是当前执行代码所在环境的变量对象，
+    //下个变量对象来自包含(外部)环境，一层包一层直到延伸到全局执行环境的变量对象
+    //只能沿作用域向上搜索不能向下搜索。函数的参数也被当作变量来对待，因此其访问规则与执行环境中的其他变量相同
+    //例子1：
+        let color1 = "blue" ;
+
+        function changeColor(){
+            let color2 = "red" ;
+            
+            function swapColors(){
+                let tempColor = color2 ;
+                color2 = color1 ;
+                color1 = tempColor ;
+                //这里可以访问color1,color2,tempCplor 
+            }
+            //可以访问color1,color2不能访问tempColor
+            swapColors();
+        }
+        // console.log(color2) ;//报错
+        //这里只能访问color
+        changeColor() ;
+
+
+
+</script>
+<body>
+    
+</body>
+</html>

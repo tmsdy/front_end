@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+// Number()可以用于任何数据类型 
+
+    var a = '+100';
+    console.log( 'a= '+Number(a) );			// 100
+
+    var a1 = '';
+    console.log( 'a1= '+Number(a1) );		// 0
+
+    var a2 = true;
+    console.log( 'a2= '+ Number(a2) );		// true为1  false为0
+
+    var a3 = [ 1,3];
+    console.log( 'a3= '+Number(a3) );		// NaN
+
+    var a4 = [ 1];
+    console.log( 'a4= '+Number(a4) );		// 1
+
+    var a5 = null;
+    console.log( 'a4= '+ Number(a5) );		// 0
+
+    console.log(Number('hello')) ;          // NaN
+    console.log(Number(''))         // 0
+
+
+</script>
+<body>
+    
+</body>
+</html>

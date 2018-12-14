@@ -1,0 +1,262 @@
+/* LESS Document */
+body {
+  margin: 0px;
+  background: #666666;
+  font-family: '微软雅黑';
+  font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+p,ul{
+  margin: 0;
+  padding: 0;
+}
+button {
+  border: none;
+}
+a{text-decoration: none}
+
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clear:after,
+.clear:before {
+  content: "";
+  display: table;
+}
+.clear:after {
+  clear: both;
+}
+.clear {
+  *zoom: 1;
+}
+
+nav {
+  height: 56px;
+  border-top: 1px solid #ebebeb;
+  background: #333;
+  box-shadow: 0px 6px 8px #000;
+}
+nav .menu {
+  text-align: center;
+}
+nav .menu a {
+  display: inline-block;
+  padding: 0px 20px;
+  height: 56px;
+  line-height: 56px;
+  text-decoration: none;
+  color: #fff;
+}
+nav .menu a:hover, nav .menu a.focus {
+  color: #fff;
+  background: rgba(20, 20, 20, 0.8);
+  box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7);
+  border-radius: 6px;
+}
+main {
+  width: 1140px;
+  margin: 35px auto 0px;
+}
+main .mainLeft {
+  width: 750px;
+  float: left;
+}
+main .mainLeft .listBox{
+  background: #666;
+  /*box-shadow: 0px 1px 0px rgba(255,255,255,.1), inset 0px 1px 1px rgba(0,0,0,.7);*/
+  width: 630px;
+  color: #fff;
+  /*border-radius: 6px;*/
+  padding-right: 35px ;
+  cursor: pointer;
+  border-right: #111 2px solid;
+}
+main .mainLeft .listItem {
+  background: #333;
+  padding: 20px 0 60px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+main .mainLeft .listItem:hover{
+  background: rgba(0,0,0,0.8);
+}
+.listItem h1,.listItem p{color: #fff}
+.listItem .ti{
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0px 0 20px 22px;
+  border-color: transparent transparent transparent #111;
+  position: absolute;
+  left: 630px;
+  top: 20px;
+}
+.listItem .ci{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  left: 658px;
+  top: 16px;
+  background: #000;
+  border: 2px solid #333;
+}
+.details {
+  width: 630px;
+  height: 40px;
+  background: rgba(1,1,1,0.3);
+  border-radius: 0 0 6px 6px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.details li {
+  line-height: 26px;
+  display: inline;
+  font-size: 11px;
+  margin-right: 10px;
+}
+.likes, .comments {
+  float: right;
+  /*padding: 0 0 0 18px;*/
+}
+/*.likes, .comments {*/
+  /*background: url(../images/icons.png) no-repeat;*/
+/*}*/
+.likes {
+  background-position: 0 -240px;
+}
+.comments {
+  background-position: 0 -220px;
+}
+
+.details li a {
+  color: skyblue;
+}
+/*文章详细*/
+.view-title-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main .mainRight {
+  width: 360px;
+  float: right;
+}
+/*登录成功后的面板*/
+.userInfo-box{
+  width: 435px;
+  padding: 20px 10px 16px;
+  border: 1px solid #666;
+  background: #373737;
+  border-radius: 6px;
+  box-shadow: 10px 10px 5px #000;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-title{
+  font-size: 20px;
+  line-height: 1.5;
+}
+.a-btn-box{
+  display: flex;
+}
+.a-btn{
+  height: 40px ;
+  width: 160px ;
+  margin: 10px 20px 0;
+  background: #5badf9;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/**
+ * 分页
+ */
+.pager {
+  padding: 20px;
+  margin-bottom: 30px;
+  color: #fff;
+}
+.pager a{
+  color: #fff;
+  font-size: 18px;
+}
+.pager ul {
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.pager ul li {
+  display: inline;
+}
+.pager .previous>a, .pager .previous>span {
+    float: left;
+}
+.pager .next>a, .pager .next>span {
+    float: right;
+}
+
+footer {
+  background: #202020;
+}
+footer .footMain {
+  width: 1140px;
+  margin: 0px auto;
+}
+footer .title {
+  border-bottom: 1px solid #ebebeb;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+footer .title em {
+  display: inline-block;
+  margin-bottom: -1px;
+  height: 36px;
+  line-height: 36px;
+  border-bottom: 1px solid #e67e22;
+  padding: 0px 20px 0px 0px;
+  color: #fff;
+  font-style: normal;
+}
+footer .fotBox {
+  width: 28%;
+  float: left;
+  padding: 20px 0px;
+  margin: 0px 2%;
+  color: #979797;
+}
+footer .fotBox span {
+  display: inline-block;
+  padding: 3px 5px;
+  border: 1px solid #303030;
+  margin: 5px;
+  color: #979797;
+}
+.copyright {
+  height: 79px;
+  background: #111111;
+  line-height: 79px;
+  border-top: 1px solid #303030;
+  color: #555;
+}

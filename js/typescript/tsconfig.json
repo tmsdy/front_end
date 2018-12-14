@@ -1,0 +1,11 @@
+{
+  "compilerOptions":{
+    "module":"commonjs" ,
+    "target": "es2017" ,
+    "strictNullChecks": true ,
+    "noImplictThis": true
+  },
+  "include":[
+    "./typescript/**/*.ts"
+  ]
+}

@@ -1,0 +1,16 @@
+<!-- 
+1.函数外部一般是不能访问函数内部的方法和变量的(隐藏作用域中的变量和函数)
+    符合软件设计的最小暴露内容原则，比如模块和API的设计
+
+2.立即执行函数表达式
+    var a = 2 ;
+    (function IIFE(global){
+        var a = 3 ;
+        console.log(a) ; //3
+        console.log(global.a) ; //2
+
+    })(window)
+
+    console.log(a) ; //2
+
+ -->

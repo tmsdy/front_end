@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+    // 1.实现封装
+    var person = (function () {
+        name = "songmin"; //变量作用域为函数内部，外部无法访问
+        return {
+            getName: function () {
+                return name;
+            },
+            setName: function (newname) {
+                name = newname
+            }
+        }
+    })();
+    print(person.name);
+    print(person.getName());
+    print(person.setName("zs"));
+    print(person.getName());
+    // 9.实现面向对象中的对象
+    function Person() {
+        name = "songmin";//变量作用域为函数内部，外部无法访问
+        return {
+            getName: function () {
+                return name;
+            },
+            setName: function (newname) {
+                name = newname
+            }
+        }
+    };
+    var john = Person();
+    print(john.getName());
+    john.setName("aa");
+    var jack = Person();
+    print(jack.getName());
+    jack.setName("aa");
+</script>
+
+<body>
+
+</body>
+
+</html>

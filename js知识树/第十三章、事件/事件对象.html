@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<!-- 
+    
+ -->
+<body>
+    <button id="btn1">事件对象</button>
+</body>
+<script>
+    let btn1 = document.getElementById('btn1') ;
+    btn1.onclick = function(e){
+        // this始终等于e.currentTarget，而target则只包含事件的实际目标
+        console.log(this===e.currentTarget) //true
+
+        e.preventDefault() ;//阻止默认行为
+        e.stopPropagation() ;//阻止冒泡
+        e.eventPhase() ;//捕获1目标2冒泡3阶段
+    }
+
+</script>
+</html>

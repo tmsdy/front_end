@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+
+//replace : 正则去匹配字符串，匹配成功的字符去替换成新的字符串
+
+//replace的写法 : 字符串.replace(正则,新的字符串)
+
+var str = 'aaaca';
+var re = /a+/g;
+var re2 = /a/g;
+
+var str1 = str.replace(re,'b'); //bcb
+
+var str2 = str.replace(re2,'b'); //bbbcb
+
+console.log(str1,str2) 
+
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

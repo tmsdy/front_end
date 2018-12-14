@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    /*
+    js有自动垃圾收集机制
+        原理:找出那些不再继续使用的变量，然后释放其内存，垃圾收集器会周期性的释放内存
+
+        1.标记清除(主流)
+            垃圾收集器在运行的时候给存储在内存中的所有变量加上标记，然后会去掉环境中的变量以及被环境中的变量引用的变量
+            的标记，而在此之后再被加上标记的变量将被视为准备删除的变量
+            当变量进入环境(例如在函数中声明一个变量)时，就标记其"进入环境"，从逻辑上将永远不能释放进入环境的变量所占用的内存
+            因为可能用到，离开环境则标记"离开环境"，
+        
+        一旦数据不再有用可以设置为null来释放引用
+            
+    */
+
+</script>
+<body>
+    
+</body>
+</html>

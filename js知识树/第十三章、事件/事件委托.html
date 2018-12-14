@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- 
+    事件处理程序多了性能就差，每个函数都是对象，占用内存。解决方案：事件委托
+    原理：利用了子DOM的事件冒泡
+ -->
+<body>
+    <ul id="father">
+        <li id="go">去一个地方</li>
+        <li id="do">做一些事</li>
+        <li id="say">说说话</li>
+    </ul>
+</body>
+<script>
+    let father = document.getElementById('father') ;
+    father.addEventListener('click',(e)=>{
+        let targetId = e.target.id ;
+        switch(targetId){
+            case "go": console.log('go') ;break ;
+            case "do": console.log('do') ;break ;
+            case "say": console.log('say') ;break ;
+        }
+    })
+</script>
+</html>

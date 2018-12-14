@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+// setTimeout里的this永远指向window，里面的回调函数是被当做普通函数执行的
+
+// 箭头函数完美解决this指向的问题，什么时候定义的，this就是什么时候的this，无法被call/bind改变
+
+// 1.为一个普通函数指定 this
+var obj = {
+  name: 'feifei'
+};
+
+function foo() {
+  console.log(this); 
+}
+
+foo.call(obj); //把foo里的this指向obj里的
+
+</script>
+
+<body>
+
+</body>
+
+</html>

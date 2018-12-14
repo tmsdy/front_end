@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    let arr = [
+        {
+            name:"feifei" ,
+            age:22
+        },
+        {
+            name:"fangfang",
+            age:20
+        },
+        {
+            name:"fangfang",
+            age:20
+        }
+    ] ;
+    arr.forEach(item=>{
+        if(item.age==22){
+            item.age++ ; //可以改数组，不是异步的
+        }
+    })
+    console.log(arr)
+</script>
+<body>
+    
+</body>
+</html>

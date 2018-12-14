@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.js"></script>
+<body>
+<script>
+
+  var obj = {
+    a: 1,
+    b: {
+      c: 2,
+      d: 3,
+    },
+  }
+  obj.c = obj.b ;
+  obj.e = obj.a ;
+  obj.b.c = obj.c ;
+  obj.b.d = obj.b ;
+  obj.b.e = obj.b.c ;
+
+  var obj1 = _.cloneDeep(obj);
+  console.log(obj1);
+
+</script>
+</body>
+</html>

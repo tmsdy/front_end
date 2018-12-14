@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style  type="text/css">
+		div {
+			border: #b3d4fc 1px solid;
+			padding: 2px;
+			margin: 2px;
+			width: 300px;
+			height:200px;
+		}
+		#div1 {
+			background: #ffff00;
+		}
+		#div2 {
+			background: #ff0000;
+		}
+		#div3 {
+			background: #0000cc;
+		}
+		#div4 {
+			background: #b3d4fc;
+		}
+
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+  function creandadd() {
+    //1.创建文本节点
+    var oTextNode=document.createTextNode("新建的文本节点");
+    //2.得到div1的对象
+    var oDiv1=document.getElementById("div1");
+    //3.将节点添加到div1
+    oDiv1.appendChild(oTextNode);
+  }
+
+  function creandadd1()
+  {
+    //1.添加按钮,创建input节点
+    var oInputNode=document.createElement("input");
+    //2.设置input属性
+    oInputNode.type="button";
+    oInputNode.value="新增的按钮";
+    //3.得到div1对象
+    var oDiv1=document.getElementById("div1");
+    //4.添加到div1对象中
+    oDiv1.appendChild(oInputNode);
+  }
+
+  function creandadd2() {
+    //通过另一种方式添加按钮
+    //1.获取div1对象
+    var oDiv1=document.getElementById("div1");
+    //2.通过innerhtml
+    oDiv1.innerHTML+="<input type='button' value='新按钮'/>";
+  }
+
+  function deleteNode(){
+    //1.获取节点
+    var oDiv2=document.getElementById("div2");
+    oDiv2.parentNode.removeChild(oDiv2);
+  }
+
+  function updateNode() {
+    //1.获取节点
+    var oDiv1=document.getElementById("div1");
+    var oDiv3=document.getElementById("div3");
+    //oDiv1.parentNode.replaceChild(oDiv3,oDiv1);
+    //2.克隆节点并替换
+    var oCopyof=oDiv3.cloneNode(true);  //true克隆其所有子节点
+    oDiv1.parentNode.replaceChild(oCopyof,oDiv1);
+  }
+
+</script>
+
+<input type="button" value="创建并添加节点" onclick="creandadd2()"/>
+<input type="button" value="移除节点" onclick="deleteNode()"/>
+<input type="button" value="更改节点" onclick="updateNode()"/>
+<div id="div1"></div>
+<div id="div2">div演示区域</div>
+<div id="div3">节点的增删改查</div>
+<div id="div4">just do it</div>
+</body>
+</html>

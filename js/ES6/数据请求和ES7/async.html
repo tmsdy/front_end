@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    // async/await
+    //  1.可以借助 babel 在生产环境中使用，是 Generator 函数的语法糖
+    //  2.解决了Promise痛点:不同Promise之间共享数据问题
+    //  3.对异常的支持很好
+
+    var b = async function() {
+      try {
+        var val = await a()
+        console.log(val)
+      } catch (err) {
+        console.log(err)
+      }
+    };
+
+    b();
+</script>
+<body>
+    
+</body>
+</html>
