@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+.fc-error{
+    color: red ;
+}
+</style>
+<body>
+    <div id="app"></div>
+<script>
+//    1.原生写法 
+    function calcNumHtml(idx, keyNum) {
+        if (!keyNum) return idx
+        let html = ''
+        let i = 0
+        while(i < idx.length){
+            let match_off = true 
+            for(let j=0; j<keyNum.length ;j++){
+                if(idx.charAt(i+j)=== keyNum.charAt(j)){
+                    continue 
+                }else{
+                    match_off = false ; 
+                    break
+                }
+            }
+            if(match_off){
+                html += `<span class="fc-error">${keyNum}</span>`
+                i += keyNum.length ;
+                continue ;
+            }else{
+                html += idx.charAt(i) ;
+            }
+            i++ ;
+        }
+      
+      return html
+    }
+    // let html = calcNumHtml('121','1') ;
+
+    function calcNumHtmlReg(idx,keyNum){
+        return idx.replace(
+            new RegExp(`(${keyNum})`, 'g'),
+            '<span class="fc-error">$1</span>',
+        )
+    }
+
+    let html2 = calcNumHtmlReg('1211','11')
+
+
+    document.getElementById('app').innerHTML = html2 ;
+
+</script>
+</body>
+</html>

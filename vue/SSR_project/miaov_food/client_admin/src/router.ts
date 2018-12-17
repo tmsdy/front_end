@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home.vue';
+import Category from '@/views/Category.vue';
 import store from '@/store';
 
 Vue.use(Router)
@@ -22,7 +23,7 @@ const router = new Router({
     {
       path: '/category',
       name: '/category',
-      component: Home
+      component: Category
     },
     {
       path: '/food',
