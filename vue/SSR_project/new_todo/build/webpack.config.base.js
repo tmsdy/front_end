@@ -9,7 +9,8 @@ const config = {
   target:'web',
   entry: path.join(__dirname,'../client/index.js') ,
   output:{
-    path: path.join(__dirname,'../dist')
+    path: path.join(__dirname,'../dist'),
+    // publicPath: '/public/'
   },
   plugins: [
     new VueLoaderPlugin(),

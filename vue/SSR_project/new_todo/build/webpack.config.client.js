@@ -6,6 +6,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const VueClientPlugin = require('vue-server-renderer/client-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -19,6 +20,7 @@ const defaultPlugins = [
   new HtmlWebpackPlugin({
     template: path.join(__dirname,'../index.html')
   }) ,
+  new VueClientPlugin()
 ]
 
 if(isDev){
