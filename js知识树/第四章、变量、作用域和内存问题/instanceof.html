@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 原型继承，子类实例instanceof 父类返回true
+function Person (name) {
+    this.name = name;
+}
+function Student (name) {
+}
+
+Student.prototype = new Person();
+Student.prototype.constructor = Student;
+
+let s = new Student('Tom');
+console.log(s instanceof Person); // 返回 true
+
+// instanceof 的内部机制
+while(x.__proto__!==null) {
+    if(x.__proto__===y.prototype) {
+        return true;
+        break;
+    }
+    x.__proto__ = x.__proto__.proto__;
+}
+if(x.__proto__==null) {return false;}
+
+
+
+</script>
+</html>

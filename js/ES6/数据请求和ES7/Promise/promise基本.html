@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title> 
+</head>
+<body>
+</body>
+<script>
+let p = new Promise((resolve,reject)=>{
+    setTimeout(function(){
+        let num = Math.random() ; 
+        if(num > 0.6){
+            resolve('成功了')
+        }else{
+            resolve('失败了')
+        }
+    },200)
+})
+p.then(val=>{
+    console.log(val)
+},err=>{
+    console.log(err)
+})
+
+</script>
+</html>
