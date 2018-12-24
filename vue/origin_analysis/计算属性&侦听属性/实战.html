@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+<body>
+  <div id="app">
+    <input type="text" v-model="msg" >
+    <div>{{calcMsg}}</div>
+    <div>年龄：{{age}}</div>
+    <button @click="age++">点击加年龄</button>
+  </div>
+</body>
+<script>
+let vm = new Vue({
+  el: '#app',
+  data:{
+    msg: '你好' ,
+    name: '飞飞' ,
+    age: 22
+  },
+  computed:{
+    /*
+    1.只要依赖值不发生变化或者重新求的值和之前的相等就不计算computed值直接返回之前的值(由this.dirty控制)
+      每次计算值都需要渲染，回流一次，所以这是一种优化方式
+    2.走computedWatcher的getter也就是我们写的函数时会访问到依赖的值，改值的get里面dep.Target是当前的computedWatcher了
+      去订阅依赖值的变化。值变化走set，dep.notify，computedWatcher.update
+
+    */
+    calcMsg(){ 
+      return this.msg+this.name 
+    }
+  },
+  watch:{
+    age(newAge){
+      console.log(newAge)
+    }
+  }
+})
+</script>
+</html>
