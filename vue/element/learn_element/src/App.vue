@@ -1,29 +1,27 @@
 <template>
   <div id="app">
     <!-- <layout /> -->
-    <icon />
+    <!-- <icon /> -->
+    <transfer />
   </div>
 </template>
 
 <script>
 import Layout from './components/basic/Layout.vue'
 import Icon from './components/basic/Icon.vue'
+import Transfer from './components/form/Transfer.vue'
 
 export default {
   name: 'app',
   components: {
-    Layout,Icon
+    Layout,Icon,Transfer
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+#app{
+  display: flex ;
+  justify-content: center;
 }
 </style>
