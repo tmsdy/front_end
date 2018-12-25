@@ -3,9 +3,10 @@
     <input type="text" class="add-input" autofocus="autofocus" placeholder="接下来要去做什么？"
             @keyup.enter="addTodo">
     <item :todo="todo"
-          v-for="todo in filteredTodos"
-          :key="todo.id"
-          @del="deleteTodo"></item>
+      ref="item"
+      v-for="todo in filteredTodos"
+      :key="todo.id"
+      @del="deleteTodo"></item>
     <Tabs 
         :filter="filter" 
         :todos="todos" 

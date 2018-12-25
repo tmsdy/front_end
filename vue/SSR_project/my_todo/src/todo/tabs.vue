@@ -30,6 +30,9 @@ export default {
             required: true
         }
     },
+    created(){
+        console.log(this.$refs)
+    },
     methods:{
         toggleFilter(state){
             this.$emit('toggle', state);
