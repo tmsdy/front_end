@@ -13,8 +13,11 @@ git checkout (7位+的版本id) 回到指定项目时间段
 git checkout - 回到上一个版本
 
 分支：测试没问题再合并到主分支
+拿分支：
 git pull 把线上分支拉到本地 git pull origin 本地分支名:远程分支名
-git checkout index-swiper切换到index-swiper分支
+
+
+git checkout 分支名 切换到分支
 git branch 查看所有分支
 
 分支写好后【正常提交步骤】之后需要合并到主分支

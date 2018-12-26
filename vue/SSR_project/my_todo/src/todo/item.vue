@@ -3,13 +3,14 @@
     <input type="checkbox" class="toggle" 
       v-model="todo.completed"> 
 
-    <label>{{todo.content}}</label>
+    <label ref="m-label" @click="busItemClick">{{todo.content}}</label>
     <button class="destroy" @click="deleteTodo"></button>
   </div>
 </template>
 
 <script>
 // v-model="todo.completed" 在checkbox来控制它的checked状态
+import Bus from '../bus.js'
 export default {
   props: {
     todo:{
@@ -18,6 +19,9 @@ export default {
     }
   },
   methods:{
+    busItemClick(){
+      Bus.$emit('itemClick',{ num: 123 })  
+    },
     deleteTodo(){
       this.$emit('del',this.todo.id)
     }

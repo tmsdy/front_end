@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import Bus from '../bus.js'
 export default {
     // props 接收父组件传过来的值
     props:{
@@ -30,8 +31,13 @@ export default {
             required: true
         }
     },
-    created(){
-        console.log(this.$refs)
+    mounted(){
+        setTimeout(()=>{
+            console.log(this)
+        },200)
+        Bus.$on('itemClick', data=> {
+            console.log(data.num) //123
+        })
     },
     methods:{
         toggleFilter(state){

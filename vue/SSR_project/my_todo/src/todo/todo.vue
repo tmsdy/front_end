@@ -1,9 +1,8 @@
 <template>
   <section class="real-app">
-    <input type="text" class="add-input" autofocus="autofocus" placeholder="接下来要去做什么？"
+    <input ref="m_input" type="text" class="add-input" autofocus="autofocus" placeholder="接下来要去做什么？"
             @keyup.enter="addTodo">
     <item :todo="todo"
-      ref="item"
       v-for="todo in filteredTodos"
       :key="todo.id"
       @del="deleteTodo"></item>
@@ -37,6 +36,9 @@ export default {
       ],
       filter:'all'
     }
+  },
+  mounted(){
+    console.log(this)
   },
   computed:{
     filteredTodos(){
