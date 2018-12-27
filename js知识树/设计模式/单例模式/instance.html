@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+/*
+特点：1.系统中唯一被使用 2.一个类只有一个实例
+场景：
+  1.jq中只有一个$
+  2.登录框和购物车
+  3.vuex和rudux中的store还有微信小程序的app
+*/
+class SingleObject {
+    login() {
+        console.log('login...')
+    }
+}
+SingleObject.getInstance = (function () {
+    let instance
+    return function () {
+        if (!instance) {
+            instance = new SingleObject();
+        }
+        return instance
+    }
+})()
+
+// 测试
+let obj1 = SingleObject.getInstance()
+obj1.login()
+let obj2 = SingleObject.getInstance()
+obj2.login()
+console.log(obj1 === obj2)
+
+</script>
+</html>

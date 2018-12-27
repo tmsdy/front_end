@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">哈哈哈</div>
+</body>
+<script>
+class jQuery {
+    constructor(selector) {
+        let slice = Array.prototype.slice
+        let dom = slice.call(document.querySelectorAll(selector))
+        let len = dom ? dom.length : 0
+        for (let i = 0; i < len; i++) {
+            this[i] = dom[i]
+        }
+        this.length = len
+        this.selector ='#'+selector || ''
+    }
+    append(node) {
+
+    }
+    addClass(name) {
+
+    }
+    html(data) {
+      document.querySelector(this.selector).innerHTML = data
+    }
+    // 此处省略若干 API
+}
+window.$ = function (selector) {
+    return new jQuery(selector)
+}
+$('app').html('12345')
+</script>
+</html>
