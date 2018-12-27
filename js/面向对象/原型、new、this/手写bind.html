@@ -29,6 +29,11 @@
 
   Son.myBind(obj,'jiejie')() ; //参数在前面后面传都行
 
+  // 不管我们给函数 bind 几次，fn 中的 this 永远由第一次 bind 决定
+let a = {}
+let fn = function () { console.log(this) }
+fn.bind().bind(a)() // => window
+
 
 
 </script>

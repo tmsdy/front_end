@@ -7,33 +7,36 @@
     <title>Document</title> 
 </head>
 <script>
-class Car{
-    constructor({title}){//解构写法
-        this.title = title ;
+/*
+1.在 JS 中并不存在类，class 只是语法糖，本质还是函数。
+*/
+class Parent{
+    constructor(name){
+        this.name = name ;
     }
-    drive(){
-        return 'vroom' ;
+    static hello(){
+        console.log('hello')
     }
-}
-
-const car = new Car({title:"BMW"}) ;
-console.log(car) ;
-// console.log(car.drive()) ;
-//继承
-class Toyota extends Car {
-    constructor(options){
-        super(options) ;
-        this.color = options.color ;
+    getName(){
+        console.log(this.name) 
     }
 }
 
-const toyota = new Toyota({color:"red",title:"Focus"}) ;
+class Child extends Parent{
+    constructor(name,age){
+        super(name) ; // super指父类的构造函数
+        this.age = age ;
+    }
+    getAge(){
+        console.log(this.age)
+    }
+}
 
-console.log(toyota) ;
+let p = new Parent('feifei') ;
+p.getName() ;
 
 </script>
-<body>
-    
+<body> 
 </body>
 
 </html>

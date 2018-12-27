@@ -6,11 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-    <!-- 
-        参数都是按值传递的，ES中参数可看作局部变量
-    -->
 <script>
-    // 传递基本类型时，被传递的值会被复制给一个局部变量(即命名参数，或者用ES的概念来说就是arguments对象中的一个元素)
+    //参数都是按值传递的，ES中参数可看作局部变量
+    // 1.传递基本类型时，被传递的值会被复制给一个局部变量(即命名参数，或者用ES的概念来说就是arguments对象中的一个元素)
         //num和count相互独立
         function addTen(num){
             console.log(arguments) ; //[20]
@@ -22,7 +20,7 @@
         console.log(count) ; //20 , 没有变化
         console.log(result) ; //30
 
-    // 传递引用类型时(对象也按值传递)，会把这个值在内存中的地址复制给一个局部变量，因此这个局部变量的变化会反映在函数的外部
+    // 2.传递引用类型时(对象也按值传递)，会把这个值在内存中的地址复制给一个局部变量，因此这个局部变量的变化会反映在函数的外部
         //obj和person引用的是同一个对象
         function setName1(obj){
             obj.name = "feifei" ;
@@ -32,7 +30,7 @@
         setName1(person1) ;
         console.log(person1.name) ; //feifei
 
-    // 函数内部重写obj时，这个变量引用的就是一个局部对象了，而这个局部对象会在函数执行完毕后立即被销毁
+    // 3.函数内部重写obj时，这个变量引用的就是一个局部对象了，而这个局部对象会在函数执行完毕后立即被销毁
         function setName2(obj){
             obj.name = "feifei" ;
             obj = new Object() ;

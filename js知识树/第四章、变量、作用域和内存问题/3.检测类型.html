@@ -21,13 +21,16 @@
     console.log(typeof b) ; //boolean
     console.log(typeof i) ; //number
     console.log(typeof u) ; //undefined
-    console.log(typeof n) ; //object
+    console.log(typeof n) ; //object 
     console.log(typeof o) ; //object
 //instanceof 检测出对象，返回真假
     console.log(n instanceof Object) ; //false
     console.log(o instanceof Object) ; //true
     console.log(arr instanceof Array) ; //true
     console.log(re instanceof RegExp) ; //true
+
+    // null不是对象，在 JS 的最初版本中使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，
+    // 000 开头代表是对象，然而 null 表示为全零，所以将它错误的判断为 object
 
 </script>
 <body>
