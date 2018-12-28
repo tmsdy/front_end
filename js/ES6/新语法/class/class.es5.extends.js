@@ -37,13 +37,13 @@ function _inherits(subClass, superClass) {
   }
   subClass.prototype = Object.create(superClass && superClass.prototype, { //寄生原型继承
     constructor: {
-      value: subClass,
+      value: subClass, //指向subClass
       enumerable: false,
       writable: true,
       configurable: true
     }
   });
-  if (superClass)
+  if (superClass) // 就是subClass.__proto__ = superClass，为了让子类继承父类的静态属性
     Object.setPrototypeOf
       ? Object.setPrototypeOf(subClass, superClass)
       : (subClass.__proto__ = superClass);

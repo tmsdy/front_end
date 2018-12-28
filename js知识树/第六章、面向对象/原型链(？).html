@@ -13,7 +13,6 @@
             this.name = "feifei" ;
         }
         SuperType.prototype.getSuperValue = function(){
-            console.log(this)//如果用箭头函数this就指向window了
             return this.name ;
         }
 
@@ -24,7 +23,6 @@
         SubType.prototype.constructor = SubType ;
 
         SubType.prototype.getSubValue = function(){
-            console.log(this)//如果用箭头函数this就指向window了
             return this.age ;
         }
 

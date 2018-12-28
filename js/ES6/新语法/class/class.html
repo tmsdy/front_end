@@ -14,7 +14,7 @@ class Parent{
     constructor(name){
         this.name = name ;
     }
-    static hello(){
+    static hello(){ // 静态属性是属于类的，直接Parent.hello()就能取到不需要实例化
         console.log('hello')
     }
     getName(){
@@ -34,6 +34,7 @@ class Child extends Parent{
 
 let p = new Parent('feifei') ;
 p.getName() ;
+Parent.hello() ;
 
 </script>
 <body> 
