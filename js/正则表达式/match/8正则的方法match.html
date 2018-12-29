@@ -9,19 +9,18 @@
 
 //match的写法 : 字符串.match(正则)
 
-//正则默认：正则匹配成功就会结束，不会继续匹配 
-//如果想全部查找，就要加标识 g(全局匹配)
+// 正则默认匹配到就不会继续匹配了，如果想全部查找，就要加标识 g(全局匹配)
 
 //量词 : 匹配不确定的位置
 //+ : 至少出现一次>=1
 
-var str = 'haj123sdk54hask33dkhalsd879';
+var str = 'haj123sdk54hask33dkhalsd8798';
 
-var re = /\d+/g;
-var re2 = /\d\d/g;
+var re = /\d+/g; //匹配多个数字
+var re2 = /\d\d/g; //匹配2个数字
 
 console.log(str.match(re))  // [123,54,33,879]
-console.log(str.match(re2))   // [12,54,33,87]
+console.log(str.match(re2))   // [12,54,33,87,98]
 
 </script>
 

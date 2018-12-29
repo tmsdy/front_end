@@ -11,26 +11,15 @@
     var obj={name:'Fun_run',age:21,sex:'男'}
 
     let str = '我是<span>{{name}}</span>，年龄<span>{{age}}</span>，性别<span>{{sex}}</span>' ;
-
-//方法一
-    // let str2 = str.replace(/{{[^}]+}}/g,(str)=>{
-    //     let result = '' ;
-    //     let key = str.replace(/{{|}}/g,'') ;
-    //     // console.log(typeof key)
-    //     result = obj[key] ;
-    //     return result 
-    // }) ;
-// 方法二
     let newstr = str.concat();
-        let str2 = str.replace(/{{([^}]+)}}/g,($0,$1)=>{
-            newstr = newstr.replace(new RegExp($0),obj[$1]) ;
-        })
+    let str2 = str.replace(/{{([^}]+)}}/g,($0,$1)=>{
+        newstr = newstr.replace(new RegExp($0),obj[$1]) ;
+    })
 
     document.write(newstr)
 
 </script>
 
 <body>
-    
 </body>
 </html>

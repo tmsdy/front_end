@@ -19,8 +19,14 @@ body{
     function firstUpperCase(str) {
         return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
     }
+    function titleCase3(s) {  
+        return s.toLowerCase().split(/\s+/).map(function(item, index) {  
+            return item.slice(0, 1).toUpperCase() + item.slice(1);  
+        }).join(' ');  
+    } 
     
     console.log(firstUpperCase(str))
+    console.log(titleCase3(str))
     
 </script>
 </body>

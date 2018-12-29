@@ -10,8 +10,6 @@ window.onload = function(){
 	var aT = document.getElementsByTagName('textarea');
 	var oInput = document.getElementById('input1');
 	
-	//var re = /<\w+>/g; // </h3>'/'不是字符不会被匹配到，这样写不行
-	
 	var re = /<[^>]+>/g; //中间只要不是>都会被匹配到
 	
 	oInput.onclick = function(){

@@ -4,33 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <script>
+/*
+match成功返回一个数组：
 
+*/
 var str = 'haj123sdk54hask33dkhalsd879';
 
-
-/*function findNum(str){
-	var arr = [];	
-	var tmp = '';
-	for(var i=0;i<str.length;i++){
-		if( str.charAt(i)<='9' && str.charAt(i)>='0' ){
-			tmp += str.charAt(i);
-		}
-		else{
-			if(tmp){
-				arr.push(tmp);
-				tmp = '';
-			}
-		}
-	}
-	if(tmp){
-		arr.push(tmp);
-		tmp = '';
-	}
-	return arr;
-	
-}*/
-
-//正则这么一下就搞定了，性能还更好
 function findNum(str){
 	return str.match(/\d+/g);
 }
@@ -38,11 +17,12 @@ function findNum(str){
 console.log( findNum(str) );   //[123,54,33,879]
 
 let a = '11' ;
-let re = new RegExp(a+'+')
+let re = new RegExp(a+'+','g') //相当于 /11+/g
 
 console.log('11211'.match(re)) ;
 
-console.log('1211'.match('11')) ;
+console.log('1211'.match('11')) ; //[0: "11",groups: undefined,index: 2,input: "1211"]
+console.log('1211'.match('33')) ; //null
 
 </script>
 </head>

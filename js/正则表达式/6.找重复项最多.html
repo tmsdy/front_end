@@ -10,13 +10,10 @@ var str = 'assssjdssskssalsssdkjsssdss';
 var arr = str.split('');
 
 str = arr.sort().join('');
-
-// alert(str);
-
 var value = '';
 var index = 0;
 
-var re = /(\w)\1+/g;
+var re = /(\w)\1+/g; //匹配字符出现一次以上
 
 str.replace(re,function($0,$1){
 	console.log($0);
@@ -27,7 +24,7 @@ str.replace(re,function($0,$1){
 	
 });
 
-alert('最多的字符:'+value+',重复的次数:'+index);
+console.log('最多的字符:'+value+',重复的次数:'+index);
 
 </script>
 </head>

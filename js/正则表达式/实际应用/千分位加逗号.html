@@ -20,7 +20,7 @@ function commafy(num){ //有小数点的
 }
 
 function commafy_2 (num) { //没有小数点的
-  return num.toString().replace(/(?=(?!\b)(\d{3})+$)/g,',') ;
+  return num && num.toString().replace(/(?=(?!\b)(\d{3})+$)/g,',') ;
 }
 
 </script>

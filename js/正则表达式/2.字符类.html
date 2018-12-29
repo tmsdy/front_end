@@ -9,25 +9,22 @@
 var str1 = 'abc' ;
 var str2 = 'abdc';
 
-var re = /a[bde]c/;
+var re = /a[bde]c/; // abc adc aec都可以匹配到
 
 console.log( re.test(str1) ); //true
 console.log( re.test(str2) ); //false
 
-
 //排除 : ^ 如果^写在[]里面的话，就代表排除的意思
-
 var str = 'abc';
+var re = /a[^bde]c/;// 不是 abc adc aec之一的都可以匹配到
 
-var re = /a[^bde]c/;
-
-console.log('\n' + re.test(str) ); //false
+console.log( re.test(str) ); //false
 
 var str = 'abc';
 
 var re = /a[a-z0-9A-Z]c/;
 
-console.log('\n' + re.test(str) ); //true
+console.log(re.test(str) ); //true
 
 </script>
 </head>

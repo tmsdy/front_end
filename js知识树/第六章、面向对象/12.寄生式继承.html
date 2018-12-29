@@ -13,7 +13,7 @@
 
 // 寄生式继承流程：
 function createAnother(origin){
-    var clone = Object(origin) ; //1.通过调用函数创建新对象 不一定非要Object，能返回对象的函数就行
+    var clone = Object.create(origin) ; //1.通过调用函数创建新对象 不一定非要Object，能返回对象的函数就行
     clone.sayHi = function(){ // 2.以某种方式来增强这个对象
         console.log('hi') ;
     }
