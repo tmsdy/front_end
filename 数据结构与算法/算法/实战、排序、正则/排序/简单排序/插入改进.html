@@ -13,18 +13,32 @@ let arr = [112,28,23,66,83,43,26,5,9] ;
 insertSort(arr)
 console.log(arr) ;
 
+// function insertSort(arr){
+//     let len = arr.length ;
+    
+//     for(let i=1 ;i<len ;i++){
+//         let sItem = arr[i] ;
+//         let j ;
+//         for(j=i; j>0 && sItem<arr[j-1] ;j--){//把比插入元素大的向后移一位
+//             arr[j] = arr[j-1] ;
+//         }
+//         arr[j] = sItem ;
+//     }
+//     return
+// }
+
 function insertSort(arr){
     let len = arr.length ;
     
     for(let i=1 ;i<len ;i++){
-        let sItem = arr[i] ;
-        let j ;
-        for(j=i; j>0 && sItem<arr[j-1] ;j--){//把比插入元素大的向后移一位
-            arr[j] = arr[j-1] ;
+        let sItem = arr[i]
+        let j 
+        for( j=i ; j>0&&sItem<arr[j-1] ;j--){
+            arr[j] = arr[j-1]
         }
-        arr[j] = sItem ;
+        arr[j] = sItem
     }
-    return
+    return 
 }
 
 

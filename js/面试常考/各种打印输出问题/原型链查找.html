@@ -16,7 +16,7 @@ Object.prototype.b = 'b';
 function Person(){};
 var p = new Person();
 
-// p.a: undefined Person.constructor.__proto__才是Function.protorype
+// p.a: undefined Person.constructor.__proto__才是Function.prototype
 console.log('p.a: '+ p.a); 
 // p.b: b 走p的__proto__===Person.prototype -> Person.prototype.__proto__===Object.prototype
 console.log('p.b: '+ p.b); 

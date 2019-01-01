@@ -15,10 +15,11 @@ console.log(insertSort(arr)) ;
 function insertSort(arr){
     let len = arr.length ;
     
-    for(let i=1 ;i<len ;i++){
-        //在终止前每次都要交换值赋值3次性能差可改进
-        for(let j=i; j>0 && arr[j]<arr[j-1] ;j--){ 
-            swap(arr,j,j-1) ;
+    for(let i=1 ; i<len ;i++){
+        for(let j=i ;j>0 ;j-- ){
+            if(arr[j]<arr[j-1]){//在终止前每次都要交换值赋值3次性能差可改进
+                swap(arr,j,j-1) ;
+            }
         }
     }
     function swap(arr, a, b) { // 交换
@@ -28,6 +29,7 @@ function insertSort(arr){
     }
     return arr ;
 }
+
 
 
 </script>
