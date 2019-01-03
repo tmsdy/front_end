@@ -32,7 +32,7 @@ class  Food  extends  Component{
 		}
 	}
 	getData(selectCata){
-		let count=Math.round(Math.random()*2);
+		let count=Math.round(Math.random()*2)
 		return   Array.from(Array(Math.round(Math.random()*20)),(v,k)=>({price:Math.round(Math.random()*20),sole:Math.round(Math.random()*50),img:count,pid:selectCata.id,id:selectCata.id+"_"+k,title:"分类"+selectCata.id+"菜品"+(k+1)}))
 	}
 	render(){
