@@ -21,7 +21,6 @@ class  Food  extends  Component{
 		})
 	}
 	changeCata(selectCata){ //切换分类
-		console.log(selectCata)
 		if(this.state.foodList.some(item=>item.pid==selectCata.id)){ // 不需加载数据
 			console.log('不需加载数据')
 			this.setState({
@@ -49,7 +48,10 @@ class  Food  extends  Component{
 				id:selectCata.id+"_"+k,title:"分类"+selectCata.id+"菜品"+(k+1)
 			})
 		)
-	}
+  }
+  componentDidMount(){
+    console.log(AtTabs,Input)
+  }
 	render(){
 		let {current,tabList} = this.state ;
 	   return  (<View>
@@ -63,7 +65,7 @@ class  Food  extends  Component{
 				<AtTabsPane>评价</AtTabsPane>
 				<AtTabsPane>商家</AtTabsPane>
 			</AtTabs>
-		</View>)	
+		</View>)
 	}
 }
 export default Food;

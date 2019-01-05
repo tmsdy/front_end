@@ -1,20 +1,16 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text , Button} from '@tarojs/components'
+import { View, Text } from '@tarojs/components'
 import './index.less'
 import Head from '../../components/head/head'
-import Food from '../../components/food/food'
+import Todo from '../../components/todo/todo'
+import Footer from '../../components/footer/footer'
 
 export default class Index extends Component {
 
   config = {
     navigationBarTitleText: '首页'
   }
-  constructor(){
-    super(...arguments)
-    this.state = {
 
-    }
-  }
   componentWillMount () { }
 
   componentDidMount () { }
@@ -24,12 +20,13 @@ export default class Index extends Component {
   componentDidShow () { }
 
   componentDidHide () { }
-
   render () {
     return (
-      <View className='index'>
-        <Head />
-        <Food />
+      <View className='app'>
+        <View className='cover'></View>
+        <Head></Head>
+        <Todo></Todo>
+        <Footer></Footer>
       </View>
     )
   }
