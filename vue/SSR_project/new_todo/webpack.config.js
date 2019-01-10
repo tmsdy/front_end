@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV=='development'
 
 const config = {
   target:'web',
-  entry: path.join(__dirname,'src/index.js') ,
+  entry:path.join(__dirname,'src/index.js'),
   output:{
     filename:'bundle.[hash:8].js',
     path: path.join(__dirname,'dist')
@@ -27,20 +27,17 @@ const config = {
     new HtmlWebpackPlugin() ,
   ],
   module:{ // 配置加载资源
-    rules:[ 
+    rules:[
         {
             test:/\.vue$/,
             loader:'vue-loader'
         },
         {
-          test:/\.jsx$/,
+          test:/\.(jsx|js)$/,
           loader:'babel-loader'
         },
-        // {
-        //   test: /\.css$/,
-        //   use: ['style-loader','css-loader','postcss-loader']
-        // },
-        { 
+
+        {
           test:/\.(png|jpg|gif|svg|bmp)/,
           use:{
               loader:'url-loader',//依赖file-loader
@@ -123,7 +120,7 @@ if(isDev){ //开发环境
                 priority: -10,      // 缓存组优先级
                 chunks: "all"       // 必须三选一： "initial" | "all" | "async"(默认就是异步)
             },
-            
+
             echarts: {
                 name: 'echarts',
                 chunks: 'all',

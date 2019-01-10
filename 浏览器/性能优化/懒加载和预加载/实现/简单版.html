@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  let lazyImages = [...document.querySelectorAll('.lazy-image')]
+  let inAdvance = 300 // 自定义一个高度，当距离300px到达图片时加载
+  
+  function lazyLoad() {
+      lazyImages.forEach(image => {
+          if (image.offsetTop < window.innerHeight + window.pageYOffset + inAdvance) { // 距离xxpx时加载图片
+              image.src = image.dataset.src
+              image.onload = () => image.classList.add('loaded')
+          }
+      })
+  }
+  
+  lazyLoad()
+  
+  window.addEventListener('scroll', _.throttle(lazyLoad, 16)) // 用到了lodash的节流函数
+  window.addEventListener('resize', _.throttle(lazyLoad, 16))
+
+
+  
+  </script>
+</html>

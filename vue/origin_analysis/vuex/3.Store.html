@@ -1,0 +1,73 @@
+<!-- 
+var Store = function Store (options) {
+  ...
+  const { plugins=[],strict=false } = options
+  var state = options.state
+  ...很多给this._属性初始化赋值null
+  this._modules = new ModuleCollection(options);// 实现module嵌套子module的
+
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  installModule(this, state, [], this._modules.root);
+
+  resetStoreVM(this, state);
+
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  if (Vue.config.devtools) {
+    devtoolPlugin(this);
+  }
+};
+
+class ModuleCollection{
+  constructor(rawRootModule){//rawRootModule相当于最外层的module
+    this.register([], rawRootModule, false);
+  }
+  get (path) {
+    return path.reduce(function (module, key) {
+      return module.getChild(key)
+    }, this.root)
+  }
+  getNamespace (path) {
+    var module = this.root;
+    return path.reduce(function (namespace, key) {
+      module = module.getChild(key);
+      return namespace + (module.namespaced ? key + '/' : '')
+    }, '')
+  }
+  update$1 (rawRootModule) {
+    update([], this.root, rawRootModule);
+  }
+register (path, rawModule, runtime) {
+  var this$1 = this;
+  ...
+  var newModule = new Module(rawModule, runtime); //把module一些定义转化为module实例
+    if (path.length === 0) { //一开始register走这儿
+      this.root = newModule;
+    } else {
+      var parent = this.get(path.slice(0, -1));
+      parent.addChild(path[path.length - 1], newModule);
+    }
+    if (rawModule.modules) { //递归注册 最终生成modules的树状结构
+      forEachValue(rawModule.modules, function (rawChildModule, key) {
+        this$1.register(path.concat(key), rawChildModule, runtime);
+      });
+    }
+  }
+  unregister (path) {
+    var parent = this.get(path.slice(0, -1));
+    var key = path[path.length - 1];
+    if (!parent.getChild(key).runtime) { return }
+    parent.removeChild(key);
+  };
+}
+ -->

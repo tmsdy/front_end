@@ -13,12 +13,12 @@
 	http-referer后台地址，这样攻击者可以进入后台了
 
 防御XSS攻击：
-	1.HttpOnly    浏览器禁止页面的JS访问带有HttpOnly属性的Cookie。
+	1.HttpOnly  浏览器禁止页面的JS访问带有HttpOnly属性的Cookie。
 
 	2.输入检查 XSS Filter   对输入内容做格式检查，类似“白名单”，可以让一些基于特殊字符的攻击失效。
 	在客户端JS和服务器端代码中实现相同的输入检查（服务器端必须有）。
 
-	3.输出检查     在变量输出到html页面时，可以使用编码或转义的方式来防御XSS攻击
+	3.输出检查  在变量输出到html页面时，可以使用编码或转义的方式来防御XSS攻击
 	 HtmlEncode：将字符转成HTMLEntities，对应的标准是ISO-8859-1。
       &  --> &amp;   <  --> &lt;    >  -->&gt;    "  --> &quot;    '  --> &#x27;     / --> &#x2F;
 JS中可以使用JavascriptEncode。需要对“\”对特殊字符转义，输出的变量的必须在引号内部。

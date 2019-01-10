@@ -1,7 +1,7 @@
 <!--
 Session:
-客户端进入网站后，服务器分配一个 Session ID 给客户端种入(用Set-Cookie) Cookie(sid)
-登录后，在服务器查询 Session ID并写入 Session Object，这个对象里存了用户登陆的各种信息
+进入网站第一次请求，服务器生成Session_id存起来，并响应给客户端种入(用Set-Cookie) Cookie(Session_id)
+登录后，在服务器查询Session_id并写入{Session_id：xxx,user_info:{用户登陆的各种信息}}
 
 优点： 在客户端除了 session_id 以外，看不到任何信息，当然不太容易篡改。
 

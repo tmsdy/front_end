@@ -13,7 +13,7 @@ function observe (value, asRootData) {
     (Array.isArray(value) || isPlainObject(value)) &&
     Object.isExtensible(value) &&
     !value._isVue
-  ) { //满足上面各种条件才能实例化Observer(观察者)
+  ) { //满足上面各种条件才能实例化Observer
     ob = new Observer(value);
   }
   if (asRootData && ob) {

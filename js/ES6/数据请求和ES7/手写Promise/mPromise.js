@@ -69,7 +69,7 @@
         })
       }
 
-      function gen(length, resolve) { //有点函数柯里化的味道，闭包是有的
+      function gen(length, resolve) { 
         let count = 0;
         let valueArr = [];
         return function(value) {
@@ -79,6 +79,8 @@
             }
         }
       }
+
+
     window.MyPromise = MyPromise ;
 
 })()

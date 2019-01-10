@@ -19,9 +19,7 @@
             addNewTask() {
                 this.$store.dispatch('postNewTask', {title: this.newValue}).then(response => {
                     this.newValue = '';
-                    alert('添加成功');
                 }).catch(err => {
-                    // console.log('出错了：', err);
                     alert('添加失败：' + err.data.data);
                 });
             }

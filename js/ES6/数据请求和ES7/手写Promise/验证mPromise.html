@@ -9,12 +9,12 @@
 <script src="mPromise.js"></script>
 <body>
     <script>
-        
+    
     let p = new MyPromise((resolve,reject)=>{
 
         console.log('进来了') ;
-        // resolve('成功了')
-        reject('失败了') ;
+        resolve('成功了')
+        // reject('失败了') ;
 
     })
     setTimeout(()=>{
@@ -31,6 +31,14 @@
     },err=>{
         console.log('2'+err) ;
     })
+
+    setTimeout(()=>{
+        p.then(res=>{
+            console.log('33'+res) ;
+        },err=>{
+            console.log('33'+err) ;
+        })
+    }, 3000)
 
     let p1 = new MyPromise((resolve,reject)=>{
         resolve('456') ;

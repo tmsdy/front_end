@@ -1,0 +1,11 @@
+<!-- 
+
+1.Webpack本质上是一种事件流的机制，它的工作流程就是将各个插件串联起来，而实现这一切的核心就是Tapable，
+webpack中最核心的负责编译的Compiler和负责创建bundle的Compilation都是Tapable的实例
+
+2.npm i tapable -D
+tapable库里有sync和async的钩子
+sync类型：注册在该钩子下面的插件的执行顺序都是顺序执行，只能使用tab注册，不能使用tapPromise和tapAsync注册
+
+
+ -->

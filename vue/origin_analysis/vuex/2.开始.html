@@ -1,0 +1,31 @@
+<!-- 
+1.import Vuex from 'vuex' 
+然后Vue.use(Vuex),里面是
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    ...保证反复调用只执行一次
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+var applyMixin = function (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });//保证在每个组件beforeCreate的时候拿到$store实例
+  } else {...}
+
+}
+
+function vuexInit () {
+  var options = this.$options;
+  if (options.store) { //根组件通过new Vue({ store })拿到store，赋值到this.$store
+    this.$store = typeof options.store === 'function'
+      ? options.store()
+      : options.store;
+  } else if (options.parent && options.parent.$store){//非根组件通过找parent组件来找到store并赋值到this.$store
+    this.$store = options.parent.$store;
+  }
+}
+};
+
+ -->

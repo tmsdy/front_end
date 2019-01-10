@@ -11,7 +11,6 @@ export default new Vuex.Store({
     },
     mutations: {
         updateAll(state, payload) {
-            // console.log(payload);
             state.todos = payload;
         },
         add(state, playload) {
@@ -33,13 +32,11 @@ export default new Vuex.Store({
         },
 
         // 添加新任务
-        // postNewTask(store, {title}) {
-        postNewTask(store, payload) {
+        postNewTask(store, {title}) {
             return axios.post('/api/add', {
-                title: payload.title
+                title
             }).then( response => {
                 if (!response.data.error) {
-                    // console.log(response.data);
                     store.commit('add', response.data);
                     return Promise.resolve(response);
                 } else {
