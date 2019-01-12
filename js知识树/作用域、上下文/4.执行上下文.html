@@ -1,0 +1,36 @@
+<!-- 
+1.因为我们写的函数等可执行代码有很多。js引擎通过创建执行上下文栈来管理执行上下文
+
+2.js一开始执行最先碰到全局代码，先压入全局执行上下文栈ECStack。只有当整个应用程序结束的时候ECStack才会被清空
+程序结束之前ECStack栈底部永远有个globalContext
+ECStack = [
+    globalContext
+]
+3.现在遇到下列代码了：
+function fun3() { console.log('fun3') }
+function fun2() { fun3() }
+function fun1() { fun2() }
+fun1()
+处理原理的伪代码：
+执行fun1(): ECStack.push(<fun1> functionContext)
+fun1中调用了fun2，创建fun2的执行上下文 : ECStack.push(<fun2> functionContext)
+fun2还调用了fun3 : ECStack.push(<fun3> functionContext)
+fun3执行完毕:ECStack.pop()
+fun2执行完毕:ECStack.pop()
+fun1执行完毕:ECStack.pop()
+
+3.对于每个执行上下文，都有三个重要属性：
+  变量对象(Variable object，VO)
+  作用域链(Scope chain)
+  this
+
+4.上下文与作用域（scope）是不同的概念，
+Js单线程，每当有function被执行时，会产生一个新的上下文被压入Js的上下文堆栈中，function执行结束后则被弹出，
+因此Js解释器总是在栈顶上下文中执行。在生成新的上下文时，
+首先会绑定该上下文的变量对象，其中包括arguments和该函数中定义的变量；
+之后会创建属于该上下文的作用域链，最后将this赋予这一function所属的Object，
+
+
+
+
+ -->
