@@ -7,11 +7,18 @@
     <title>Document</title>
 </head>
 <script>
-    // async/await
-    //  1.可以借助 babel 在生产环境中使用，是 Generator 函数的语法糖
-    //  2.解决了Promise痛点:不同Promise之间共享数据问题
-    //  3.对异常的支持很好
+/*
+async/await
+    1.可以借助 babel 在生产环境中使用，是 Generator 函数的语法糖
+    2.优于Promise:
+      1)不同Promise之间共享数据问题
+      2)更好的处理then链
+      3)更易于调试
+    3.对异常的支持很好
+  最大价值：是异步代码形式上更接近于同步代码
+  await是个运算符，会阻塞后面的代码，如果接的是Promise会得到resolve的值，否则会得到一个表达式的运算结果
 
+*/
     var b = async function() {
       try {
         var val = await a()

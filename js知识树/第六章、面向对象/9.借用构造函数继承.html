@@ -20,15 +20,16 @@
       }
     }
     var p1 = new Parent('feifei') ;
-
+// 优点：可向父级传参，避免了引用类型的属性被所有实例共享
+// 缺点：不能继承Parent的原型对象，方法都在构造函数中定义，每次创建实例都会创建一遍方法。
     function Son (name) {
-      // Parent.call(this,name) ; //把父级this指向Son，优点：可传参
+      // Parent.call(this,name) ; 
      Parent.apply(this,[name]) ;
     }
-
+    
     var son1 = new Son('heihei') ;
     console.log(son1.name) ; //heihei
-    console.log(son1.num) ; //undefined 缺点：不能继承Parent的原型对象
+    console.log(son1.num) ; //undefined 
     son1.sayName() ;
     son1.sayAge() ; //报错
 
