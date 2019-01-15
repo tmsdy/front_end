@@ -1,0 +1,16 @@
+<!-- 见珠峰40.deploy
+1.ssh root@101.132.102.35,连接根用户的，不过权限太大要新开一个的用户让其拥有部分root权限
+adduser feifei,设密码一路回车，su feifei切换到feifei用户
+
+2.赋予权限：在root下gpasswd -a feifei sudo 把用户feifei添加到sudo组(组里用户可以申请管理员权限)
+visudo 打开nado编译器 
+在# User privilege specification下加
+feifei  ALL=(ALL:ALL) ALL
+Ctrl+X保存并退出y确定回车
+
+3.在用户feifei下用sudo开头跑命令就能以root权限操作了
+
+4.sudo apt-get update更新操作系统，软件列表
+sudo apt-get install wget curl git
+
+ -->

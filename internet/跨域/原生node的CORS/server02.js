@@ -7,7 +7,7 @@ http.createServer((req,res)=>{
         // 'Access-Control-Allow-Origin':'http://127.0.0.1:8888' ,
 
         // 虽然允许了所有请求地址，但是请求头是不被允许的,会OPTIONS预请求验证，验证成功才会再去请求,失败就报错
-        // 跨域只允许方法 GET、HEAD、POST 
+        // 跨域只允许方法 GET、HEAD、POST ，非简单请求都会发一次预检请求
         // 只允许请求头 text/plain、multipart/form-data、application/x-www-form-urlencoded
         'Access-Control-Allow-Origin':'*' ,
         //允许别的请求头

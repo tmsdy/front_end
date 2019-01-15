@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+
+.wrapper {
+    width: 800px;
+    height: 500px;
+    background: red ;
+    display: flex ;
+    align-items: center ;
+    justify-content: center ;
+}
+
+.inner {
+    width: 25%;
+    height: 0;
+    padding-bottom: 25%;
+    background-color: #008b57;
+}
+/* 
+width和padding都是相对父级的width设置的
+height: 0; 来防止inner内容撑开高度
+*/
+</style>
+<body>
+    <div class="wrapper">
+        <div class="inner">A</div>
+    </div>
+    
+</body>
+
+</html>

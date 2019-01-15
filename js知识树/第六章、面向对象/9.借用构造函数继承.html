@@ -26,8 +26,10 @@
       // Parent.call(this,name) ; 
      Parent.apply(this,[name]) ;
     }
-    
     var son1 = new Son('heihei') ;
+    for(let key in son1){
+      console.log(key) //name age sayName 说明会通过原型链向上找，找到的属性方法也会被枚举到
+    }
     console.log(son1.name) ; //heihei
     console.log(son1.num) ; //undefined 
     son1.sayName() ;
