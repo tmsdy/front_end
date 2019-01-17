@@ -1,0 +1,32 @@
+*{
+    margin: 0 ;
+    padding: 0 ;
+}
+a{
+    color: white ;
+    text-decoration: none ;
+}
+body{
+    background: #3b3d40 ;
+}
+.e-m-gray{
+    color: #979b9f ;
+}
+.pl30{
+    padding-left: 10px ;
+}
+.mt10{
+    margin-top: 10px ;
+}
+.mr15{
+    margin-right: 15px ;
+}
+.ml24{
+    margin-left: 24px ;
+}
+.mt30{
+    margin-top: 30px ;
+}
+.mt22{
+    margin-top: 22px ;
+}

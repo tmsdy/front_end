@@ -16,10 +16,15 @@ let arr = [1,2,3,4] ;
 */
 // 求和
 let sum = arr.reduce((val,item,index,origin)=>{
+    console.log(item)
     return val + item ;//返回值会成为下一次函数执行的时候的val
 },5) //val的初始值，默认是第一个item
 console.log(sum)
-
+let sum8 = [1,2,3].reduce((val,item,index,origin)=>{
+    console.log(item)//设初始值里面才能打印到数组第一项
+    return val+item
+},5) 
+console.log(sum8)
 // 求平均值
 let average = arr.reduce((val,item,index,origin)=>{ //index是每次的索引，origin是原数组
     let sum = val + item ;

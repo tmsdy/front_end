@@ -13,4 +13,28 @@ Ctrl+X保存并退出y确定回车
 4.sudo apt-get update更新操作系统，软件列表
 sudo apt-get install wget curl git
 
+加安全：
+1.sudo vi /etc/iptables.up.rules改防火墙
+2.sudo iptables-restore < /etc/iptables.up.rules重载这个
+
+pm2跑服务：
+1.npm install pm2 -g
+2.跑app.js: pm2 start app.js
+看node服务列表：pm2 list
+看app应用详情：pm2 show app
+看实时日志：pm2 logs
+
+nginx代理：
+1.清除apache
+sudo service apache stop
+update-rc.d -f apache2 remove
+sudo apt-get remove apache2
+2.更新包列表：sudo apt-get update
+3.安装nginx:sudo apt-get install nginx
+4.cd /etc/nginx/conf.d
+写项目配置文件：sudo vi rookiefeifei-top-3389.conf 
+cd ../
+sudo nginx -t 检测配置文件有没有错误
+成功后重启nginx: sudo nginx -s reload
+
  -->

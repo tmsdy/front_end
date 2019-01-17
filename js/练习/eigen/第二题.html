@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+let str = `奴隶社会,非洲,古埃及文明,金字塔
+,亚洲,两河流域文明,汉谟拉比法典
+,,古印度,种姓制度
+,,,佛教的创立
+,欧洲,希腊,希腊城邦
+,,,雅典民主
+,,罗马,城邦
+,,,帝国的征服与扩展
+,,希腊罗马古典文化,建筑艺术
+,,,公历`
+console.log(str2json(str)) //结果**********************
+
+function str2json(str){
+    let json = {}
+    let root = ''
+    str.trim().split('\n').forEach((item, index)=> {
+        if(index==0){
+            item = item.split(',')
+            root = item.splice(0,1).toString()
+            json[root] = []
+        }else{
+            item = item.split(',').splice(1)
+        }
+        // console.log(item)
+        item.reduce((val,item,i,origin)=>{
+            if(!item) return val[val.length-1][Object.keys(val[val.length-1])[0]]
+            add2arr(val,item)
+            return val.find(target=>target[item])[item]
+        },json[root])
+    })
+    return json
+}
+// 给数组添加{ key: [] } 的方法
+function add2arr(arr,key){
+    let json = {}
+    json[key] = []
+    arr.push(json)
+}
+
+
+    
+</script>
+</html>
