@@ -5,6 +5,7 @@ const Content = require('../models/Content') ;
 var data ;
 //处理通用数据
 router.use((req,res,next)=>{
+    console.log('main的通用')
     data = {
         userInfo:req.userInfo,
         categories : [],
@@ -17,6 +18,7 @@ router.use((req,res,next)=>{
 
 //首页
 router.get('/',(req,res,next)=>{
+    console.log('main的/')
     data = {...{
         category: req.query.category ||'' ,
         count:0,

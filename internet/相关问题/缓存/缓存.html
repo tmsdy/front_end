@@ -5,12 +5,13 @@
 		然后对文件进行指纹处理，一旦文件名变动就会立刻下载新的文件。
 
 强制缓存：
-    cache-control： 浏览器优先使用cache-control
-        no-cache:用于频繁变动的资源，并配合 ETag 使用，表示该资源已被缓存，但是每次都会发送请求询问资源是否更新
-        public、private：用cdn代理服务器缓存就是public
-        no-store：该资源不需要缓存,用于不需要缓存的文件
-        max-age = 3600,3600s内不需请求浏览器无需发出请求，直接使用本地缓存(服务端配置)
-        s-maxage：和max-age一个效果不过是作用于像cdn这种public的缓存设备
+先根据本地缓存资源的 header 中(cahe-control,http1.1中的)的信息判断是否命中强缓存
+cache-control： 浏览器优先使用cache-control
+    no-cache:用于频繁变动的资源，并配合 ETag 使用，表示该资源已被缓存，但是每次都会发送请求询问资源是否更新
+    public、private：用cdn代理服务器缓存就是public
+    no-store：该资源不需要缓存,用于不需要缓存的文件
+    max-age = 3600,3600s内不需请求浏览器无需发出请求，直接使用本地缓存(服务端配置)
+    s-maxage：和max-age一个效果不过是作用于像cdn这种public的缓存设备
 
     Expires：即服务器时间(绝对)。受限于本地时间，2种时间不一致会出现缓存失效，所以用的少
 
@@ -32,6 +33,9 @@ last-modified缺点：
 缓存策略：
     首次进页面：先看浏览器中有没有缓存，没有就去请求服务器，服务器在响应头写缓存策略的头
     以后再进：判断缓存有没有过期，没有直接读缓存(强缓存)。过期就优先比对ETag再比对Last-Modified看有没过期
-        没有返回304直接读缓存，有的话就返回新数据
+        没有返回304表示资源未更新，可使用本地的缓存，有的话就返回新数据
+
+1.第一次请求服务器会返回last-Modified和Etag，再次请求该资源时会带上对应的if-modified-since、if-none-match
+
 
  -->

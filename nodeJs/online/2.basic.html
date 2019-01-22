@@ -8,4 +8,33 @@
 主域名指向静态网站
 视频或者图片指向七牛等
 微信小程序或者app等指向服务器
+
+4.码云git仓库，本地到码云ssh，服务器到码云ssh
+把服务器的公钥放到码云里
+服务器中先装git: apt-get install git
+补无密码登录：
+生成ssh: ssh-keygen -t rsa -b 4096 -C "1065915112@qq.com" 一直回车
+eval "$(ssh-agent -s)"跑ssh代理
+ssh-add ~/.ssh/id_rsa 把ssh的key加入代理中
+服务器上也走一遍生成,在.ssh下
+vi authorized_keys里面粘贴本地的公钥
+chmod 600 authorized_keys 改这文件的权限
+service ssh restart
+
+5.pm2跑部署：
+本地项目配置ecosystem.json,root不用关心权限问题，其他用户有权限问题看10.1-2的25分钟处
+配置代码到服务器/www/website/production下
+pm2 deploy ecosystem.json production setup,pm2连上服务器并通知服务器去clone码云的最新代码
+以后发布不用加setup了：pm2 deploy ecosystem.json production
+
+6.nginx修改域名指向,编辑/etc/nginx/conf.d下的rookiefeifei-top-3389.conf
+nginx -s reload
+保证设置防火墙允许的端口
+ok，走通
+
+7.日常三步
+  1)本地改动
+  2)提交push
+  3)pm2的deploy
+
  -->

@@ -22,6 +22,7 @@ app.use((req,res,next)=>{ //每次访问页面解析cookies信息
     if(req.cookies.get('userInfo')){
         try {
             req.userInfo = JSON.parse(req.cookies.get('userInfo')) ;
+            console.log(req.userInfo)
             User.findById(req.userInfo._id).then((userInfo)=>{ //判断是不是管理员
                 req.userInfo.isAdmin = Boolean(userInfo.isAdmin) ;
                 next() ;
