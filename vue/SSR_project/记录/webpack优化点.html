@@ -1,0 +1,12 @@
+<!-- 
+
+1.路由懒加载：不用一上来就全部加载组件，可提高首屏加载速度
+components: ()=>import('../views/todo/todo.vue') ,//进入当前路由才加载
+
+2.js treeShaking:不用的代码不会被打包进来，比如只用了lodash的一个函数，那么除了这个函数之外的不该被打包
+利用的是 es 的模块系统,安装库对应的模块系统即实现tree shaking
+npm install lodash-es --save
+import { chunk } from "lodash-es";
+console.log(chunk([1, 2, 3], 2));
+
+ -->

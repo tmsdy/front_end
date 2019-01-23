@@ -7,7 +7,7 @@
 <script>
 // 1.普通函数调用，指向window,指向window的严格模式下是undefined
 
-function test() { console.log(this) };
+function test() { console.log(this) }; //因为这样声明相当于window.test = ...
 test();
 
 // 2.闭包里的this指向window

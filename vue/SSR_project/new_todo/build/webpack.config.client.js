@@ -117,7 +117,9 @@ if(isDev){
           new UglifyJsPlugin({
             cache: true,
             parallel: true,
-            sourceMap: false
+            sourceMap: false,
+            drop_console: true,//去掉线上的console
+            pure_funcs: ['console.log']
           }),
           new OptimizeCSSPlugin({})
       ]

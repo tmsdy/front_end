@@ -20,8 +20,14 @@ let vm = new Vue({
     arr:[1,2,3]
   },
   created(){
-    this.$set(this.info,'key','键值qwer');
-    Vue.set(this.arr,2,10)
+    setTimeout(()=>{
+      // this.sex = '男' //不行
+      // this.info.key = 'key123' //可以的
+      this.$set(this.info,'key','键值qwer');//这样也行
+      // this.arr[2] = 9 //不行
+      Vue.set(this.arr,2,10) //可以
+    })
+
   },
   methods:{
 
