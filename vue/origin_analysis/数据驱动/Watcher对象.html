@@ -5,7 +5,7 @@ var Watcher = function Watcher (vm,expOrFn,cb,options,isRenderWatcher) {
   if (isRenderWatcher) {
     vm._watcher = this;
   }
-  vm._watchers.push(this);
+  vm._watchers.push(this); //新建的Watcher会被push进vm._watchers里面
   ...
   this.cb = cb;
   this.id = ++uid$1; 

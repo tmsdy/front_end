@@ -42,22 +42,13 @@ for (var i = 0; i < 3; i++) {
         }
   })(i);
 }
-当执行到 data[0] 函数之前，此时全局上下文的 VO 为：
-globalContext = {
-    VO: {
-        data: [...],
-        i: 3
-    }
-}
-跟没改之前一模一样。
+
 
 当执行 data[0] 函数的时候，data[0] 函数的作用域链发生了改变：
 
 data[0]Context = {
     Scope: [AO, 匿名函数Context.AO globalContext.VO]
 }
-匿名函数执行上下文的AO为：
-
 匿名函数Context = {
     AO: {
         arguments: {

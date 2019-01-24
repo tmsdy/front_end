@@ -8,7 +8,7 @@
 怎么做？
     var img = new image() ;
     img.src = 'http://xxx' ; //让它display：none，等之后需要用到这张图片直接去缓存里读就好了
-
+只要浏览器把图片下载到本地，同样的src就会使用缓存
     也可以用原生的ajax去请求，优点是可以精细的控制预加载的过程，缺点是有跨域问题
 
     有个preLoadJs的库 不止jpg,mp3等媒体文件都可以，有原生ajax和img标签的设配选择，很好用

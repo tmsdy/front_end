@@ -66,7 +66,7 @@ function initData (vm) {
   {
       if (methods && hasOwn(methods, key)) {
 
-        ...判断data和props的数据是否冲突，冲突则报错
+        ...判断data和props的数据是否冲突，冲突则报错(利用了Object.keys)
 
         } else if (!isReserved(key)) {
         proxy(vm, "_data", key); //_data上key变化代理到vm上

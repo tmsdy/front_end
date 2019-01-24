@@ -19,7 +19,7 @@ checkscope(); //'local scope'
     Scope: [globalContext.VO],
     this: globalContext.VO
   }
-初始化的同时，checkscope 函数被创建，保存作用域链到函数的内部属性[[scope]]
+走到checkscope函数时函数被创建，保存当前上下文的VO到函数的内部属性[[scope]]
 checkscope.[[scope]] = [
     globalContext.VO
   ];
@@ -30,9 +30,7 @@ ECStack = [
 ]
 4.checkscope 函数执行上下文初始化：
   1).复制函数 [[scope]] 属性创建作用域链push到当前上下文对象的Scope属性中，（闭包的真正原理）
-  2).用 arguments 创建活动对象，
-  3).初始化活动对象，即加入形参、函数声明、变量声明，
-  4).将活动对象压入 checkscope 作用域链顶端
+  2).用 arguments 创建活动对象(AO)并初始化：加入形参、函数声明、变量声明
 同时 f 函数被创建，保存作用域链到 f 函数的内部属性[[scope]]
     checkscopeContext = {
         AO: {
@@ -42,7 +40,7 @@ ECStack = [
             scope: undefined,
             f: reference to function f(){}
         },
-        Scope: [AO, globalContext.VO],
+        Scope: [AO, globalContext.VO], //Scope是作用域链里面有当前AO和保存的VO(变量对象)
         this: undefined
     }
 

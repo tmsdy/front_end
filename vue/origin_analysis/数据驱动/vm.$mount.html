@@ -35,7 +35,7 @@ Vue.prototype.$mount = function (el,hydrating) {
       ...
     }
   }
-  return mount.call(this, el, hydrating) //有了render函数调用这个
+  return mount.call(this, el, hydrating) //有了render函数调用这个，实际走到mountComponent方法
 };
 
 function getOuterHTML (el) {
@@ -66,7 +66,7 @@ function mountComponent (vm,el,hydrating) {
   var updateComponent;
   if ("development" !== 'production' && config.performance && mark) {
     updateComponent = function () {
-      ...一些性能埋点的东西
+      ...一些性能埋点的东西(mark、performance)
     };
   } else {
     updateComponent = function () {

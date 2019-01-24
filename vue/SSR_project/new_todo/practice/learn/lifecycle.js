@@ -36,6 +36,7 @@ new Vue({
   beforeDestroy(){
     console.log('beforeDestroy')
   },
+  // 解除所有watcher、子组件、事件监听
   destroyed(){
     console.log('destroyed')
   }

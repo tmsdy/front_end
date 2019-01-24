@@ -16,6 +16,7 @@ test();
 })();
 
 // 3.作为对象的方法调用
+var name = '全局'
 	var a = {
 	  name :'A',
 	  fn: function () {
@@ -25,7 +26,7 @@ test();
 	// this 要在执行时才能确认,可能fn函数单独抽出去了，看起来是普通函数其实执行时候还是按照对象的方法执行
 	a.fn() ; // this===a
 	a.fn.call({name:'B'}) ; // this === {name: 'B'}
-	var fn1 = a.fn ;
+	let fn1 = a.fn ;
 	fn1() ; // this === window
 
 </script>
