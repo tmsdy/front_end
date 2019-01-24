@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+  /*
+  在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。
+  请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数
+  思路：1.暴力求解 2.先根据递增的这特点快速找到数字可能在哪一行再去判断在不在
+  */
+
+let arr = [[1,2,3],[4,5,6],[7,8,9]]
+
+console.log(Find(arr,10))
+
+function Find(array, target){
+    let n=array.length,
+        m=array[0].length,
+        row=n-1,
+        col=0;
+    if(m==0&&n==0)return false;
+    while(row>=0&&col<=m-1){
+        if(array[row][col]>target){
+            row--;
+        }else if(array[row][col]<target){
+            col++;
+        }else return true;
+    }
+    return false;
+}
+
+</script>
+</html>
