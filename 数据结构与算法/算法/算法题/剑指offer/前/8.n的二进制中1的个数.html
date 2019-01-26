@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+function NumberOf1(n)
+{
+    let count=0,flag=1;
+    while(flag){//循环的次数等于整数二进制的位数，32位的整数需要循环32位
+        if(flag&n)
+            count++;
+        flag=flag<<1;
+    }
+    return count;
+}
+function NumberOf2(n)
+{
+    let count=0;
+    while(n){
+        n=n&(n-1);//核心 与运算 11 得 1
+        console.log(n)
+        count++;
+    }
+    return count;
+}
+console.log(NumberOf2(4))
+// 1 001
+// 2 010
+// 3 011
+// 4 100
+
+</script>
+</html>

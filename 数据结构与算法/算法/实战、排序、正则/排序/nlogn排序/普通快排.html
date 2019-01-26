@@ -32,18 +32,14 @@ console.log(new Date().getTime()-time1) ;  // 35~80ms
     let j = l;
     for( let i=l+1 ;i<=r ;i++){
         if(temp > arr[i]){
-            swap(arr,j+1,i) ;
+            [arr[i],arr[j+1]] = [arr[j+1],arr[i]]
             j++ ; 
         }
     }
-    swap(arr,l,j) ;//把temp放在应该在的位置arr[j]
+    [arr[l],arr[j]] = [arr[j],arr[l]] //把temp放在应该在的位置arr[j]
     return j ;
  }
- function swap(arr, a, b) { // 交换
-      let temp = arr[a];
-      arr[a] = arr[b];
-      arr[b] = temp;
-    }
+
 
 </script>
 </html>

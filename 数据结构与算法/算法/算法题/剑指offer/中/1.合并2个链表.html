@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+// 输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则
+// 只需要不断地比较他们的头结点就行
+
+function Merge(pHead1, pHead2){
+     let list = null
+    if(pHead1 === null){
+        return pHead2;
+    } else if (pHead2 === null) {
+        return pHead1;
+    }
+    if(pHead1 > pHead2){
+        list = pHead2;
+        list.next = Merge(pHead2.next, pHead1);
+    } else {
+        list = pHead1;
+        list.next = Merge(pHead2, pHead1.next)
+    }
+    return list;
+}
+
+</script>
+</html>

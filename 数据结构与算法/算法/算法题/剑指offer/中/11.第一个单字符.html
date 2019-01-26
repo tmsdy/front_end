@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+// 在一个字符串(1<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置
+// 只需要用{}属性为每个字符，记录字符出现的次数就行
+
+function FirstNotRepeatingChar(str)
+{
+    if(str.length<1||str.length>10000) return -1;
+    let map={};
+    for(let i=0;i<str.length;i++){
+        if(!map[str[i]]){
+            map[str[i]]=1;
+        }else{
+            map[str[i]]++;
+        }
+    }
+    for(let i=0;i<str.length;i++){
+        if(map[str[i]]==1){
+            return i;
+        }
+    }
+    return -1;
+}
+
+</script>
+</html>

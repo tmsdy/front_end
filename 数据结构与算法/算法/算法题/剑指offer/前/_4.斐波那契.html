@@ -16,14 +16,24 @@
 
 */
 function Fibonacci(n){ //这个动态规划也太吊了
-    let f=0,g=1;
+    let f=0,g=1
     while(n--){
-        g+=f;
-        f=g-f;
+        g+=f
+        f=g-f
     }
-    return f;
+    return f
 }
 console.log(Fibonacci(3),Fibonacci(5),Fibonacci(7))
+
+function Fibonacci2(n){ //这个也吊
+    if(n===0||n===1) return n
+    let a = 0 ,b = 1
+    for(let i=1; i<n ;i++){
+        [a,b] = [b,a+b]
+    }
+    return b
+}
+console.log(Fibonacci2(3),Fibonacci2(5),Fibonacci2(7))
 /*
 f g
 0 1
@@ -34,17 +44,5 @@ f g
 5 8
 8 13
 */
-function Fibonacci2(n){ 
-    if(n===0) return 0
-    if(n===1) return 1
-    let a = 0 ,b = 1,temp
-    for(let i=1; i<n ;i++){
-      temp = b
-      b = a + b
-      a = temp
-    }
-    return b
-}
-console.log(Fibonacci2(3),Fibonacci2(5),Fibonacci2(7))
 </script>
 </html>

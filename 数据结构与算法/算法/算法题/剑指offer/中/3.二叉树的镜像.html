@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+// 输入一个二叉树，返回它的镜像二叉树
+function Mirror(root)
+{
+    if(root==null) return;
+    Mirror(root.left);
+    Mirror(root.right);
+    [root.left,root.right]=[root.right,root.left];
+    return root;
+}
+
+
+</script>
+</html>

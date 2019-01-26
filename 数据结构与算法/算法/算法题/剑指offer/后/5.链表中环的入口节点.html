@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+  // 给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null
+  function EntryNodeOfLoop(pHead)
+{
+    var list = {};
+    while(pHead!=null){
+        var val = pHead.val;
+        if(list[val]==undefined){
+            list[val] = 1;
+            pHead = pHead.next;
+        }else{ //走一圈遇到之前有定义val点就是入口节点
+            return pHead;
+        }
+    }
+    return  null;
+}
+
+</script>
+</html>

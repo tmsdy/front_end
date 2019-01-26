@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+// 在一个*排序*的链表中，存在重复的结点，请删除该链表中重复的结点，
+// 重复的结点不保留，返回链表头指针。 例如，链表1->2->3->3->4->4->5 处理后为 1->2->5
+function deleteDuplication(pHead)
+{
+    if(pHead == null || pHead.next == null){
+        return pHead; //只有0个或1个结点，则返回
+    }
+    if(pHead.val == pHead.next.val){
+        var pNode = pHead.next;
+        while(pNode!=null && pNode.val==pHead.val){
+            pNode = pNode.next;
+        }
+        return deleteDuplication(pNode);
+    }else{
+        pHead.next = deleteDuplication(pHead.next);
+        return pHead;
+    }
+}
+</script>
+</html>
