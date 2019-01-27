@@ -1,0 +1,23 @@
+<!-- 
+
+1.请求阻塞 (stalled)
+  1)(http1.x中)一个域名的并发请求量存在限制，平均大概6个左右，如果并发请求多了可能关键请求得不到响应
+    把资源放在多个域名下，但多域名存在DNS解析时间，要有所权衡
+    http2.0的多路复用一个TCP连接之中并行执行多个请求，不再有浏览器请求并发限制了
+
+  2)减少资源请求量:
+    1>小图片资源 base64 编码内联
+    2>css sprite : 雪碧图
+    3>js业务代码合并成一个，减少了HTTP的请求数。
+
+2.DNS预解析
+  一个从未访问过的域名解析耗时长达 1 秒，有缓存的话就很快  
+DNS预解析: 会分析这个页面需要的资源所在的域名，浏览器空闲时提前将这些域名转化为 IP 地址
+<meta http-equiv='x-dns-prefetch-control' content='on'>
+<link rel='dns-prefetch' href='http://g-ecx.images-amazon.com'>
+<link rel='dns-prefetch' href='http://z-ecx.images-amazon.com'>
+
+3.CDN
+
+
+ -->
