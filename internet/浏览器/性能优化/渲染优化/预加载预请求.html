@@ -1,0 +1,28 @@
+<!-- 
+
+预加载（preload）
+
+大多数基于标记语言的资源能被浏览器的预加载器（Preloader）尽早发现，推测出页面需要下载哪些资源，
+但不是所有的资源都是基于标记语言的，比如一些隐藏在 CSS 和 Javascript 中的资源。当浏览器发现自己需要这些资源时已经为时已晚，
+所以大多数情况，这些资源的加载都会对页面渲染造成延迟（如用作字体图标 font 字体资源，CSS 内的背景图片资源等）。
+
+现在可以通过 preload 来提前声明当前页面会需要哪些资源(preload 资源请求优先级为 highest)：
+<link rel="preload" href="late_discovered_thing.js" as="script">
+
+预请求（prefetch）
+
+当 SPA 使用了路由分割动态加载的时候，我们从一个页面跳转到另外一个页面的时候，浏览器会动态加载新页面所需要的 js 资源，
+然后再执行渲染。使用预加载技术(prefetch) 技术能提前下载即将需要的资源。
+
+它的原理是:
+利用浏览器的空闲时间去先下载用户指定需要的内容,然后缓存起来,这样用户下次加载时,就直接从缓存中取出来,效率就快了。
+
+ 提前下载好 user 模块的 js 资源，用户访问 /user 时就可以直接读缓存 
+<link href="/static/js/user.479d709b.js" rel="prefetch">
+
+总结：
+当前页面肯定用到的资源用 preload （资源优先级 highest）
+下一个页面会用到的资源用 prefetch （资源优先级 lowest）
+PS: prefetch 可能存在的风险：http 1.1 存在请求并发限制，如果 prefetch 数量太多，有可能阻塞异步加载的 script 资源
+
+ -->
