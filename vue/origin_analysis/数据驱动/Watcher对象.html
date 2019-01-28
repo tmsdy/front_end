@@ -22,8 +22,8 @@ var Watcher = function Watcher (vm,expOrFn,cb,options,isRenderWatcher) {
     ...
   }
   this.value = this.lazy
-    ? undefined
-    : this.get(); //走这儿
+    ? undefined //computed Watcher不求值
+    : this.get(); //渲染Watcher走这儿计算值并更新页面的
 };
 
 Watcher.prototype.get = function get () { 

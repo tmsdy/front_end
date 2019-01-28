@@ -18,7 +18,8 @@ Vue.prototype._render = function () { //返回vnode
     vm.$vnode = _parentVnode;
     var vnode;
     try {
-      vnode = render.call(vm._renderProxy, vm.$createElement);//第一个参数是当前上下文，生产环境就是vm，在这里触发的getter
+      vnode = render.call(vm._renderProxy, vm.$createElement);
+      //第一个参数是当前上下文，生产环境就是vm，在这里触发的getter，把render传入$createElement在里面生成vnode
     } catch (e) {
       handleError(e, vm, "render");
       {
