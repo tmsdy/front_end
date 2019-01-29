@@ -28,12 +28,12 @@ function getUserAction() {
 container.onmousemove = debounce(getUserAction, 1000);
 //注意this，可接收event对象
 function debounce(func,delay){
-    var timer = null
+    let timer = null
     return function(){
-        clearTimeout(timer)
-        timer = setTimeout(() => {
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(()=>{
             func.apply(this,arguments)
-        }, delay);
+        },delay)
     }
 }
 // 立即执行、返回值、取见冴羽

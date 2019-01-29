@@ -30,15 +30,16 @@ function getUserAction(e) {
 };
 container.onclick = throttle(getUserAction, 1000);
 function throttle(func,delay){
-    var last = 0 
-    return function(){
-        var now = +new Date() ;
-        if(now - last>delay){
+    let last = 0
+    return function () {
+        let now = +new Date()
+        if(now-last>delay){
             func.apply(this,arguments)
             last = now
-        }
+        } 
     }
 }
+
 // underscore实现:
 _.throttle = function(func, wait, options) {
     var context, args, result;

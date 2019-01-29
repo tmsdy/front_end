@@ -1,0 +1,27 @@
+<!-- 
+
+1.js执行的时候，界面像是被锁定不能交互，我们要保证100ms响应用户的操作
+
+2.js可能修改了DOM造成UI变化，这种变化会在js当前执行栈执行完后把UI线程里UI变化任务队列里的全部执行也就是渲染页面
+
+3.可用setTimeout延迟执行长时间的代码
+setTimeout和setTimeInterval这块有点没看懂
+多个重复定时器同时创建往往有性能问题，因为只有一个UI线程而所有的定时器都在争夺运行时间
+
+4.Web Workers(html5中的)
+每个新worker在自己的线程中运行代码，没有绑定UI线程不能操作DOM，超过100ms的js任务就可以考虑用Web Workers了
+适用于处理与UI无关的长时间运行脚本：编解码大字符串、复杂数学运算、大数组排序
+var worker = new Worker('jsonparser.js')
+worker.onmessage = function(event){ //数据就位调用事件处理器
+  var jsonData = event.data //拿到回传来的结果
+  evaluateData(jsonData) //使用该数据
+}
+worker.postMessage('jsonText')传入要解析的大段json字符串
+//Worker中来负责解析，jsonparser.js内部代码
+self.onmessage = function(event){
+  var jsonText = event.data
+  var jsonData = JSON.parse(jsonText)
+  self.postMessage(jsonData) //回传处理结果
+} 
+
+ -->
