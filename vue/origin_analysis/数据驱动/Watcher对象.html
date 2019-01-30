@@ -6,7 +6,15 @@ var Watcher = function Watcher (vm,expOrFn,cb,options,isRenderWatcher) {
     vm._watcher = this;
   }
   vm._watchers.push(this); //新建的Watcher会被push进vm._watchers里面
-  ...
+  if (options) {
+    this.deep = !!options.deep;
+    this.user = !!options.user;
+    this.lazy = !!options.lazy;
+    this.sync = !!options.sync;
+    this.before = options.before;
+  } else {
+    this.deep = this.user = this.lazy = this.sync = false;
+  }
   this.cb = cb;
   this.id = ++uid$1; 
   this.active = true;

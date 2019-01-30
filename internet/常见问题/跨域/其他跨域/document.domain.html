@@ -6,9 +6,18 @@
 </head>
 <body>
 <!--
-该方式只能用于二级域名相同的情况下，比如 a.test.com 和 b.test.com 适用于该方式。
+	一级域名相同只是二级域名不同的情况下用
+A网页是http://w1.example.com/a.html，B网页是http://w2.example.com/b.html
+做法：
+	1)给页面添加document.domain = 'example.com';
+	2)服务端Set-Cookie: key=value; domain=.example.com; path=/
 
-只需要给页面添加 document.domain = 'test.com' 表示二级域名都相同就可以实现跨域
+现在，A网页通过脚本设置一个 Cookie。
+document.cookie = "test1=hello";
+B网页就可以读到这个 Cookie。
+var allCookie = document.cookie;
+
+只适用于 Cookie 和 iframe 窗口，LocalStorage 和 IndexDB 无法通过这种方法(用postMessage)
 
 -->
 </body>

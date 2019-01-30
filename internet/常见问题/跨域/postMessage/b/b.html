@@ -9,7 +9,9 @@
 <body>
     <div>bbbbbbbbb</div>
     <script>
+        document.cookie="name=feifei";
     window.onmessage = function(e){
+        
         console.log(e.data)
         e.source.postMessage('你好啊，a同学',e.origin)
     }

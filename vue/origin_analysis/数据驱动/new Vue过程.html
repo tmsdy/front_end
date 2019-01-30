@@ -53,7 +53,8 @@ function initState (vm) {
 function initData (vm) {
   var data = vm.$options.data; 
   data = vm._data = typeof data === 'function' 
-    ? getData(data, vm) //如果写的是data(){return{}}这种会调用这个
+    ? getData(data, vm) 
+    //如果写的是data(){return{}}这种会调用这个,这种写法数据中变量只在当前组件中生效，不会影响其他组件
     : data || {};
   ...
   // proxy data on instance

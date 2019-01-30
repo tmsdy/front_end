@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+  // 在给定的无序、不重复数组中查找n个数，使得他们的和正好是sum,找到一个就好
+  let arr = [1,2,3,4,5,6,7,8] 
+  // let arr2 = [1,8,7,5,9,2,4,6,3]
+// 我这搞得是有序情况下的，无序的话得sort()转成有序的
+
+  // console.log(FindNumbersWithSum(arr,4,10))
+  console.log(FindNumbersWithSum(arr,4,10))
+
+function FindNumbersWithSum(array,n, sum) {
+  let result = []
+  if(n<2) return result
+  if(n==2) return find2Sum(array,sum)
+  let lowNum = array.splice(0,1)[0]
+  let deepRes = FindNumbersWithSum(array,n-1,sum-lowNum)
+  return [lowNum,...deepRes]
+}
+function find2Sum(array,sum){
+  var idx,
+    result = [],
+    min;
+  for (var i = 0; i<array.length-1&&array[i]<sum/2; i++) {
+    idx = array.indexOf(sum - array[i], i + 1);
+    if (idx != -1) {
+        return [array[i], array[idx]];
+    }
+  }
+  return result;
+}
+
+</script>
+</html>

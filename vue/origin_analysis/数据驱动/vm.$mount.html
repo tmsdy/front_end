@@ -74,7 +74,13 @@ function mountComponent (vm,el,hydrating) {
     };
   }
 
-  new Watcher(vm, updateComponent, noop, null, true); //实例化渲染Watcher
+  new Watcher(vm, updateComponent, noop, {
+    before: function before () {
+      if (vm._isMounted && !vm._isDestroyed) {
+        callHook(vm, 'beforeUpdate');
+      }
+    }
+  }, true); //实例化渲染Watcher
   hydrating = false;
 
   if (vm.$vnode == null) {
