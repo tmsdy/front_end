@@ -11,22 +11,20 @@ compile(callback) {
       const compilation = this.newCompilation(params); 
 
       this.hooks.make.callAsync(compilation, err => {
+//触发make事件（重要），有个SingleEntryPlugin监听make，它来驱动核心编译流程
         if (err) return callback(err);
-
         compilation.finish();
-
         compilation.seal(err => {
           if (err) return callback(err);
-
           this.hooks.afterCompile.callAsync(compilation, err => {
             if (err) return callback(err);
-
             return callback(null, compilation);
           });
         });
       });
     });
-	}
+  }
+  //Compilation
   createCompilation() {
       return new Compilation(this);
 	}
@@ -40,6 +38,15 @@ compile(callback) {
 		this.hooks.thisCompilation.call(compilation, params);
 		this.hooks.compilation.call(compilation, params);
 		return compilation;
-	}
+  }
+  //SingleEntryPlugin
+compiler.hooks.make.tapAsync(
+			"SingleEntryPlugin",
+			(compilation, callback) => {
+				const { entry, name, context } = this;
 
+				const dep = SingleEntryPlugin.createDependency(entry, name);
+				compilation.addEntry(context, dep, name, callback);
+			}
+		);
  -->

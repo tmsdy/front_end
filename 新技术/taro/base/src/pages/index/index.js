@@ -9,18 +9,22 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   }
   state = {
-    name : 'feifei',
+    name : '',
     obj: undefined
   }
 
   componentWillMount () {
     // console.log('componentWillMount')
+    let {name} = this.$router.params
+    console.log(name)
+    this.setState({
+      name
+    })
    }
 
   componentDidMount () {
     // console.log('componentDidMount')
     this.setState({
-      name: 'fangfang',
       obj: [{name:'aaa',age:22}]
     })
   }
@@ -33,13 +37,17 @@ export default class Index extends Component {
   componentDidHide () { }
    change(){
      console.log('父组件的change')
+     this.setState({
+      name: 'fangfang3',
+      obj: [{name:'aaa3',age:33}]
+    })
    }
   render () {
     // console.log('render')
     let {name,obj} = this.state
     return (
       <View className='index'>
-        <Child name={name} obj={obj} onChange={this.change} />
+        <Child name={name} obj={obj} onChange={this.change.bind(this)} />
       </View>
     )
   }

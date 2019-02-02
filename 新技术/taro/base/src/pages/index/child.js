@@ -6,6 +6,9 @@ class  Child  extends  Component{
 		super(...arguments);
 		this.state={};
   }
+  componentWillMount(){
+
+  }
   componentWillReceiveProps(nextProps){
     console.log('props属性变化了：'+nextProps.name)
   }
