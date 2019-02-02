@@ -1,0 +1,45 @@
+<!-- 
+
+1.
+compile(callback) {
+    const params = this.newCompilationParams();
+    this.hooks.beforeCompile.callAsync(params, err => {//先beforeCompile
+      if (err) return callback(err);
+
+      this.hooks.compile.call(params); //再compile 没实际逻辑供扩展用的，提供监控能力，只有一个
+//干活的newCompilation对象代表一次编译，修改一次文件重新编译一次重新创建一次compilation
+      const compilation = this.newCompilation(params); 
+
+      this.hooks.make.callAsync(compilation, err => {
+        if (err) return callback(err);
+
+        compilation.finish();
+
+        compilation.seal(err => {
+          if (err) return callback(err);
+
+          this.hooks.afterCompile.callAsync(compilation, err => {
+            if (err) return callback(err);
+
+            return callback(null, compilation);
+          });
+        });
+      });
+    });
+	}
+  createCompilation() {
+      return new Compilation(this);
+	}
+	newCompilation(params) {
+		const compilation = this.createCompilation();
+		compilation.fileTimestamps = this.fileTimestamps;
+		compilation.contextTimestamps = this.contextTimestamps;
+		compilation.name = this.name;
+		compilation.records = this.records;
+		compilation.compilationDependencies = params.compilationDependencies;
+		this.hooks.thisCompilation.call(compilation, params);
+		this.hooks.compilation.call(compilation, params);
+		return compilation;
+	}
+
+ -->
