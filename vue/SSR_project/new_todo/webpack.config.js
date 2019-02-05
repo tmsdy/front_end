@@ -53,14 +53,14 @@ const config = {
 }
 
 if(isDev){ //开发环境
-    config.module.rules.push({
-        test: /\.less/,
-        use: [
-            'style-loader',
-            'css-loader',
-            {loader: 'postcss-loader',options: {ourceMap: true}},'less-loader'
-        ]
-    });
+  config.module.rules.push({
+      test: /\.less/,
+      use: [
+          'style-loader',
+          'css-loader',
+          {loader: 'postcss-loader',options: {ourceMap: true}},'less-loader'
+      ]
+  });
   config.devtool = '#cheap-module-eval-source-map',//打包的代码映射成正常的方便调试
   config.devServer = {
     port: 8000 ,

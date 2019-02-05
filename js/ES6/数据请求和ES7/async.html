@@ -18,6 +18,15 @@ async/await
   最大价值：是异步代码形式上更接近于同步代码
   await是个运算符，会阻塞后面的代码，如果接的是Promise会得到resolve的值，否则会得到一个表达式的运算结果
 
+1.async 会取代 Generator 吗？
+Generator 本来是用作生成器，使用 Generator 处理异步请求只是一个比较 hack 的用法，在异步方面，
+async 可以取代 Generator，但是 async 和 Generator 两个语法本身是用来解决不同的问题的。
+
+2.async 会取代 Promise 吗？
+  1)async 函数返回一个 Promise 对象
+  2)面对复杂的异步流程，Promise 提供的 all 和 race 会更加好用
+  3)Promise 本身是一个对象，所以可以在代码中任意传递
+  4)async 的支持率还很低，即使有 Babel，编译后也要增加 1000 行左右
 */
     var b = async function() {
       try {

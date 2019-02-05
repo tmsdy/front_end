@@ -129,7 +129,4 @@ if(isDev){
 
 }
 
-
-
-
 module.exports = config

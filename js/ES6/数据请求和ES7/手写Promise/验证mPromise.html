@@ -9,7 +9,9 @@
 <script src="mPromise.js"></script>
 <body>
     <script>
-    
+    // setTimeout(()=>{
+    //     console.log('普通定时器')
+    // })
     let p = new MyPromise((resolve,reject)=>{
 
         console.log('进来了') ;
@@ -17,9 +19,7 @@
         // reject('失败了') ;
 
     })
-    setTimeout(()=>{
-        console.log('普通定时器')
-    })
+    
     p.then(res=>{
         console.log('1'+res) ;
     },err=>{

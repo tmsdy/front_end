@@ -27,7 +27,7 @@
             })
         }
         _resolve(val){ //把状态改为成功
-            setTimeout(()=>{ //保证then方法异步执行
+            setTimeout(()=>{ //保证then方法异步执行(不过这是宏任务不知道真Promise的微任务怎么做的)
                 this._status = FULFILLED ;
                 this._val = val ;
                 // 执行所有成功数组里的函数
@@ -42,7 +42,7 @@
                 this.resolvedArr.forEach(item=>item(this._err)) ;
             })
         }
-        _done(resolvedFn,rejectedFn){
+        _done(resolvedFn,rejectedFn){ //收集成功或失败状态要执行的函数
             resolvedFn = typeof resolvedFn==='function'?resolvedFn:null ;
             rejectedFn = typeof rejectedFn==='function'?rejectedFn:null ;
             if(this._status==='pending'){ //收集(有多个then这种)
