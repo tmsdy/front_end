@@ -1,0 +1,55 @@
+<!-- 
+基本选择器：
+  id选择器: #title
+  类选择器：.title
+  标签选择器： div
+  通配选择器： *
+
+属性选择器：
+  通用属性选择器	选择带有 target 属性所有元素	[target]
+  属性值选择器	  选择 target=”_blank” 的所有元素	[target=_blank]
+  包含属性选择器	选择 title 属性包含单词 “flower” 的所有元素	[title~=flower]
+  开头属性选择器	选择 lang 属性值以 “en” 开头的所有元素	[lang|=en]
+
+关系选择器：
+	分组选择器	选择多个选择器的元素	.class1,class2
+	后代选择器	指定选择器的后代元素	div p
+	子选择器	指定选择器的子元素	div>p
+	相邻兄弟选择器	选择相邻且之后的元素	div+p
+  兄弟选择器	选择之后的兄弟元素	div~p
+  
+伪类选择器：
+  结构性伪类选择器
+    :first-child	子元素选择器	第一个子元素
+    :last-child	子元素选择器	最后一个子元素
+    :only-child	子元素选择器	只有一个子元素的
+    :only-of-type	子元素选择器	子元素只有一种类型的
+    :nth-child(n)	子元素选择器	第n个子元素  
+  表单元素选择器
+    :enabled	input非disabled时
+    :disable	input标签disabled时
+    :checked	input标签checked时
+    :default	选择元素之后插入内容
+    :valid	选择元素之后插入内容
+    :invalid	块级首字母
+    :required	选择元素之前插入内容
+    :optional	选择元素之后插入内容
+enabled和disable对input的大部分type都有效，除了checkbox/radio/range三个外。
+valid和invalid，是表单校验时使用，自己手动添加valid和invalid属性无用，必须是inp
+ut使用pattern和required校验
+    动态伪类选择器
+      :link	未被访问时
+      :visited	已被访问时
+      :hover	鼠标以上时
+      :active	访问中跳转页面时
+      :focus	获得焦点时
+    伪元素选择器
+      ::first-line	块级首行
+      ::first-letter	块级首字母
+      ::before	选择元素之前插入内容
+      ::after	选择元素之后插入内容
+      ::selection	光标滑动选择内容
+
+
+      
+ -->

@@ -2,6 +2,7 @@
 一般会话session登录的缺点：
   1.用户量越大，服务器的负载越大
   2.在不同服务器或系统中保持会话一致比较困难，可能一个服务器有记录别的没有
+jwt:用户登录服务端生成token返回，客户端存储token
 
 jwt组成：
   Header: 
@@ -34,5 +35,7 @@ HMACSHA256(base64UrlEncode(header)+'.'+base64UrlEncode(payload),secret)
 jwt优点：
   1.服务器只需要记录数据token就行了
   2.支持多台服务器共享会话状态，用同一解密方法解密token就行了
+  3.jwt并不用cookie，不用担心跨域资源共享的问题
+  4.不占用内存，但是验证签名和解密会占用CPU计算，不过现在CPU计算速度很快哪怕不够也能多台服务器负载均衡
 
  -->

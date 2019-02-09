@@ -1,8 +1,3 @@
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-"use strict";
 
 const {
 	ConcatSource,
@@ -18,52 +13,11 @@ const {
 } = require("tapable");
 const Template = require("./Template");
 
-/** @typedef {import("webpack-sources").ConcatSource} ConcatSource */
-/** @typedef {import("webpack-sources").Source} Source */
-/** @typedef {import("./ModuleTemplate")} ModuleTemplate */
-/** @typedef {import("./Chunk")} Chunk */
-/** @typedef {import("./Module")} Module} */
-/** @typedef {import("./util/createHash").Hash} Hash} */
-/** @typedef {import("./Dependency").DependencyTemplate} DependencyTemplate} */
-
-/**
- * @typedef {Object} RenderManifestOptions
- * @property {Chunk} chunk the chunk used to render
- * @property {string} hash
- * @property {string} fullHash
- * @property {TODO} outputOptions
- * @property {{javascript: ModuleTemplate, webassembly: ModuleTemplate}} moduleTemplates
- * @property {Map<TODO, TODO>} dependencyTemplates
- */
-
-// require function shortcuts:
-// __webpack_require__.s = the module id of the entry point
-// __webpack_require__.c = the module cache
-// __webpack_require__.m = the module functions
-// __webpack_require__.p = the bundle public path
-// __webpack_require__.i = the identity function used for harmony imports
-// __webpack_require__.e = the chunk ensure function
-// __webpack_require__.d = the exported property define getter function
-// __webpack_require__.o = Object.prototype.hasOwnProperty.call
-// __webpack_require__.r = define compatibility on export
-// __webpack_require__.t = create a fake namespace object
-// __webpack_require__.n = compatibility get default export
-// __webpack_require__.h = the webpack hash
-// __webpack_require__.w = an object containing all installed WebAssembly.Instance export objects keyed by module id
-// __webpack_require__.oe = the uncaught error handler for the webpack runtime
-// __webpack_require__.nc = the script nonce
-
 module.exports = class MainTemplate extends Tapable {
-	/**
-	 *
-	 * @param {TODO=} outputOptions output options for the MainTemplate
-	 */
 	constructor(outputOptions) {
 		super();
-		/** @type {TODO?} */
 		this.outputOptions = outputOptions || {};
 		this.hooks = {
-			/** @type {SyncWaterfallHook<TODO[], RenderManifestOptions>} */
 			renderManifest: new SyncWaterfallHook(["result", "options"]),
 			modules: new SyncWaterfallHook([
 				"modules",
@@ -94,9 +48,7 @@ module.exports = class MainTemplate extends Tapable {
 			localVars: new SyncWaterfallHook(["source", "chunk", "hash"]),
 			require: new SyncWaterfallHook(["source", "chunk", "hash"]),
 			requireExtensions: new SyncWaterfallHook(["source", "chunk", "hash"]),
-			/** @type {SyncWaterfallHook<string, Chunk, string>} */
 			beforeStartup: new SyncWaterfallHook(["source", "chunk", "hash"]),
-			/** @type {SyncWaterfallHook<string, Chunk, string>} */
 			startup: new SyncWaterfallHook(["source", "chunk", "hash"]),
 			render: new SyncWaterfallHook([
 				"source",
@@ -126,12 +78,9 @@ module.exports = class MainTemplate extends Tapable {
 			globalHashPaths: new SyncWaterfallHook(["paths"]),
 			globalHash: new SyncBailHook(["chunk", "paths"]),
 
-			// TODO this should be moved somewhere else
-			// It's weird here
 			hotBootstrap: new SyncWaterfallHook(["source", "chunk", "hash"])
 		};
 		this.hooks.startup.tap("MainTemplate", (source, chunk, hash) => {
-			/** @type {string[]} */
 			const buf = [];
 			if (chunk.entryModule) {
 				buf.push("// Load entry module and return exports");

@@ -1,0 +1,17 @@
+<!-- 
+
+1.css合并压缩: 所有CSS文件都需要被压缩，从生产文件中删除注释，空格和空行。
+    合并css：MiniCssExtractPlugin 
+    压缩css：optimize-css-assets-webpack-plugin插件配合 cssnano.co 使用
+
+2.非阻塞引入css：防止DOM花费更多时间才能渲染完成
+    <link rel="preload" href="global.min.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="global.min.css"></noscript>    
+    使用preload实际上可以在浏览器开始显示页面内容之前加载CSS文件
+    做法：需要添加rel属性并赋值preload，并在<link>元素上添加as=“style”
+
+3.关键CSS：将页面渲染时必备的CSS通过<style></style>的方式内联到页面中（尽可能压缩后引用）
+    内联关键CSS有助于加速网页的呈现，减少对服务器的请求数量
+    做法：使用在线工具或使用Addy Osmani开发的插件生成关键CSS。
+
+ -->

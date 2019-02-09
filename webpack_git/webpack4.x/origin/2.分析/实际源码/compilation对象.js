@@ -1,8 +1,4 @@
 class Compilation extends Tapable {
-	/**
-	 * Creates an instance of Compilation.
-	 * @param {Compiler} compiler the compiler which created the compilation
-	 */
 	constructor(compiler) {
 		super();
 		this.hooks = {
@@ -23,49 +19,14 @@ class Compilation extends Tapable {
 
 			finishModules: new SyncHook(["modules"]),
 			finishRebuildingModule: new SyncHook(["module"]),
+			// 封装与解封装
 			unseal: new SyncHook([]),
 			seal: new SyncHook([]),
 
 			beforeChunks: new SyncHook([]),
 			afterChunks: new SyncHook(["chunks"]),
 			/**各种各样的优化 */
-			optimizeDependenciesBasic: new SyncBailHook(["modules"]),
-			optimizeDependencies: new SyncBailHook(["modules"]),
-			optimizeDependenciesAdvanced: new SyncBailHook(["modules"]),
-			afterOptimizeDependencies: new SyncHook(["modules"]),
-			optimize: new SyncHook([]),
-			optimizeModulesBasic: new SyncBailHook(["modules"]),
-			optimizeModules: new SyncBailHook(["modules"]),
-			optimizeModulesAdvanced: new SyncBailHook(["modules"]),
-			afterOptimizeModules: new SyncHook(["modules"]),
-
-			optimizeChunksBasic: new SyncBailHook(["chunks", "chunkGroups"]),
-			optimizeChunks: new SyncBailHook(["chunks", "chunkGroups"]),
-			optimizeChunksAdvanced: new SyncBailHook(["chunks", "chunkGroups"]),
-			afterOptimizeChunks: new SyncHook(["chunks", "chunkGroups"]),
-
-			optimizeTree: new AsyncSeriesHook(["chunks", "modules"]),
-			afterOptimizeTree: new SyncHook(["chunks", "modules"]),
-
-			optimizeChunkModulesBasic: new SyncBailHook(["chunks", "modules"]),
-			optimizeChunkModules: new SyncBailHook(["chunks", "modules"]),
-			optimizeChunkModulesAdvanced: new SyncBailHook(["chunks", "modules"]),
-			afterOptimizeChunkModules: new SyncHook(["chunks", "modules"]),
-			shouldRecord: new SyncBailHook([]),
-
-			reviveModules: new SyncHook(["modules", "records"]),
-			optimizeModuleOrder: new SyncHook(["modules"]),
-			advancedOptimizeModuleOrder: new SyncHook(["modules"]),
-			beforeModuleIds: new SyncHook(["modules"]),
-			moduleIds: new SyncHook(["modules"]),
-			optimizeModuleIds: new SyncHook(["modules"]),
-			afterOptimizeModuleIds: new SyncHook(["modules"]),
-
-			reviveChunks: new SyncHook(["chunks", "records"]),
-			optimizeChunkOrder: new SyncHook(["chunks"]),
-			beforeChunkIds: new SyncHook(["chunks"]),
-			optimizeChunkIds: new SyncHook(["chunks"]),
-			afterOptimizeChunkIds: new SyncHook(["chunks"]),
+// ...
 
 			recordModules: new SyncHook(["modules", "records"]),
 			recordChunks: new SyncHook(["chunks", "records"]),
@@ -76,63 +37,26 @@ class Compilation extends Tapable {
 			recordHash: new SyncHook(["records"]),
 			record: new SyncHook(["compilation", "records"]),
 
-			/** @type {SyncHook} */
-			beforeModuleAssets: new SyncHook([]),
-			/** @type {SyncBailHook} */
-			shouldGenerateChunkAssets: new SyncBailHook([]),
-			/** @type {SyncHook} */
-			beforeChunkAssets: new SyncHook([]),
-			/** @type {SyncHook<Chunk[]>} */
-			additionalChunkAssets: new SyncHook(["chunks"]),
-
-			/** @type {AsyncSeriesHook} */
-			additionalAssets: new AsyncSeriesHook([]),
-			/** @type {AsyncSeriesHook<Chunk[]>} */
-			optimizeChunkAssets: new AsyncSeriesHook(["chunks"]),
-			/** @type {SyncHook<Chunk[]>} */
-			afterOptimizeChunkAssets: new SyncHook(["chunks"]),
-			/** @type {AsyncSeriesHook<CompilationAssets>} */
-			optimizeAssets: new AsyncSeriesHook(["assets"]),
-			/** @type {SyncHook<CompilationAssets>} */
-			afterOptimizeAssets: new SyncHook(["assets"]),
-
-			/** @type {SyncBailHook} */
+			// ...
 			needAdditionalSeal: new SyncBailHook([]),
-			/** @type {AsyncSeriesHook} */
 			afterSeal: new AsyncSeriesHook([]),
 
-			/** @type {SyncHook<Chunk, Hash>} */
 			chunkHash: new SyncHook(["chunk", "chunkHash"]),
-			/** @type {SyncHook<Module, string>} */
 			moduleAsset: new SyncHook(["module", "filename"]),
-			/** @type {SyncHook<Chunk, string>} */
 			chunkAsset: new SyncHook(["chunk", "filename"]),
-
-			/** @type {SyncWaterfallHook<string, TODO>} */
 			assetPath: new SyncWaterfallHook(["filename", "data"]), // TODO MainTemplate
 
-			/** @type {SyncBailHook} */
 			needAdditionalPass: new SyncBailHook([]),
-
-			/** @type {SyncHook<Compiler, string, number>} */
 			childCompiler: new SyncHook([
 				"childCompiler",
 				"compilerName",
 				"compilerIndex"
 			]),
-
-			// TODO the following hooks are weirdly located here
-			// TODO move them for webpack 5
-			/** @type {SyncHook<object, Module>} */
 			normalModuleLoader: new SyncHook(["loaderContext", "module"]),
 
-			/** @type {SyncBailHook<Chunk[]>} */
 			optimizeExtractedChunksBasic: new SyncBailHook(["chunks"]),
-			/** @type {SyncBailHook<Chunk[]>} */
 			optimizeExtractedChunks: new SyncBailHook(["chunks"]),
-			/** @type {SyncBailHook<Chunk[]>} */
 			optimizeExtractedChunksAdvanced: new SyncBailHook(["chunks"]),
-			/** @type {SyncHook<Chunk[]>} */
 			afterOptimizeExtractedChunks: new SyncHook(["chunks"])
 		};
 		this._pluginCompat.tap("Compilation", options => {
@@ -146,23 +70,14 @@ class Compilation extends Tapable {
 					break;
 			}
 		});
-		/** @type {string=} */
 		this.name = undefined;
-		/** @type {Compiler} */
 		this.compiler = compiler;
 		this.resolverFactory = compiler.resolverFactory;
 		this.inputFileSystem = compiler.inputFileSystem;
 		this.requestShortener = compiler.requestShortener;
+// ...
 
-		const options = compiler.options;
-		this.options = options;
-		this.outputOptions = options && options.output;
-		/** @type {boolean=} */
-		this.bail = options && options.bail;
-		this.profile = options && options.profile;
-		this.performance = options && options.performance;
-
-		this.mainTemplate = new MainTemplate(this.outputOptions);
+		this.mainTemplate = new MainTemplate(this.outputOptions);//生成主模块js
 		this.chunkTemplate = new ChunkTemplate(this.outputOptions);
 		this.hotUpdateChunkTemplate = new HotUpdateChunkTemplate(
 			this.outputOptions
@@ -178,78 +93,41 @@ class Compilation extends Tapable {
 
 		this.semaphore = new Semaphore(options.parallelism || 100);
 
-		this.entries = [];
-		/** @private @type {{name: string, request: string, module: Module}[]} */
+		this.entries = []; //入口
 		this._preparedEntrypoints = [];
 		this.entrypoints = new Map();
-		/** @type {Chunk[]} */
-		this.chunks = [];
-		/** @type {ChunkGroup[]} */
+		this.chunks = [];//所有的chunk
 		this.chunkGroups = [];
-		/** @type {Map<string, ChunkGroup>} */
 		this.namedChunkGroups = new Map();
-		/** @type {Map<string, Chunk>} */
 		this.namedChunks = new Map();
-		/** @type {Module[]} */
-		this.modules = [];
-		/** @private @type {Map<string, Module>} */
+		this.modules = []; //所有module
 		this._modules = new Map();
 		this.cache = null;
 		this.records = null;
-		/** @type {string[]} */
 		this.additionalChunkAssets = [];
-		/** @type {CompilationAssets} */
-		this.assets = {};
-		/** @type {WebpackError[]} */
+		this.assets = {}; //保存所有生成的文件
 		this.errors = [];
-		/** @type {WebpackError[]} */
 		this.warnings = [];
-		/** @type {Compilation[]} */
-		this.children = [];
-		/** @type {Map<DepConstructor, ModuleFactory>} */
+		this.children = []; //保存子compilation对象，子compilation对象依赖它的上级compilation对象生成的结果
+		// 保存Dependency和ModuleFactory的对应关系，方便创建该依赖对应的Module。比如发现commonJS模块会创建commonJS工厂来创建这个模块
 		this.dependencyFactories = new Map();
-		/** @type {Map<DepConstructor, DependencyTemplate>} */
+		// 每种模块对应的不同模板
 		this.dependencyTemplates = new Map();
-		// TODO refactor this in webpack 5 to a custom DependencyTemplates class with a hash property
-		// @ts-ignore
 		this.dependencyTemplates.set("hash", "");
 		this.childrenCounters = {};
-		/** @type {Set<number|string>} */
 		this.usedChunkIds = null;
-		/** @type {Set<number>} */
 		this.usedModuleIds = null;
-		/** @type {Map<string, number>=} */
 		this.fileTimestamps = undefined;
-		/** @type {Map<string, number>=} */
 		this.contextTimestamps = undefined;
-		/** @type {Set<string>=} */
 		this.compilationDependencies = undefined;
-		/** @private @type {Map<Module, Callback[]>} */
 		this._buildingModules = new Map();
-		/** @private @type {Map<Module, Callback[]>} */
 		this._rebuildingModules = new Map();
-		/** @type {Set<string>} */
 		this.emittedAssets = new Set();
 	}
 
 	getStats() {
 		return new Stats(this);
 	}
-
-	/**
-	 * @typedef {Object} AddModuleResult
-	 * @property {Module} module the added or existing module
-	 * @property {boolean} issuer was this the first request for this module
-	 * @property {boolean} build should the module be build
-	 * @property {boolean} dependencies should dependencies be walked
-	 */
-
-	/**
-	 * @param {Module} module module to be added that was created
-	 * @param {any=} cacheGroup cacheGroup it is apart of
-	 * @returns {AddModuleResult} returns meta about whether or not the module had built
-	 * had an issuer, or any dependnecies
-	 */
 	addModule(module, cacheGroup) {
 		const identifier = module.identifier();
 		const alreadyAddedModule = this._modules.get(identifier);
@@ -310,30 +188,15 @@ class Compilation extends Tapable {
 		};
 	}
 
-	/**
-	 * Fetches a module from a compilation by its identifier
-	 * @param {Module} module the module provided
-	 * @returns {Module} the module requested
-	 */
 	getModule(module) {
 		const identifier = module.identifier();
 		return this._modules.get(identifier);
 	}
 
-	/**
-	 * Attempts to search for a module by its identifier
-	 * @param {string} identifier identifier (usually path) for module
-	 * @returns {Module|undefined} attempt to search for module and return it, else undefined
-	 */
 	findModule(identifier) {
 		return this._modules.get(identifier);
 	}
 
-	/**
-	 * @param {Module} module module with its callback list
-	 * @param {Callback} callback the callback function
-	 * @returns {void}
-	 */
 	waitForBuildingFinished(module, callback) {
 		let callbackList = this._buildingModules.get(module);
 		if (callbackList) {
@@ -343,16 +206,6 @@ class Compilation extends Tapable {
 		}
 	}
 
-	/**
-	 * Builds the module object
-	 *
-	 * @param {Module} module module to be built
-	 * @param {boolean} optional optional flag
-	 * @param {Module=} origin origin module this module build was requested from
-	 * @param {Dependency[]=} dependencies optional dependencies from the module to be built
-	 * @param {TODO} thisCallback the callback
-	 * @returns {TODO} returns the callback function with results
-	 */
 	buildModule(module, optional, origin, dependencies, thisCallback) {
 		let callbackList = this._buildingModules.get(module);
 		if (callbackList) {
@@ -417,11 +270,6 @@ class Compilation extends Tapable {
 		);
 	}
 
-	/**
-	 * @param {Module} module to be processed for deps
-	 * @param {ModuleCallback} callback callback to be triggered
-	 * @returns {void}
-	 */
 	processModuleDependencies(module, callback) {
 		const dependencies = new Map();
 
@@ -485,15 +333,6 @@ class Compilation extends Tapable {
 		);
 	}
 
-	/**
-	 * @param {Module} module module to add deps to
-	 * @param {SortedDependency[]} dependencies set of sorted dependencies to iterate through
-	 * @param {(boolean|null)=} bail whether to bail or not
-	 * @param {TODO} cacheGroup optional cacheGroup
-	 * @param {boolean} recursive whether it is recursive traversal
-	 * @param {function} callback callback for when dependencies are finished being added
-	 * @returns {void}
-	 */
 	addModuleDependencies(
 		module,
 		dependencies,
@@ -661,38 +500,15 @@ class Compilation extends Tapable {
 			}
 		);
 	}
-
-	/**
-	 *
-	 * @param {string} context context string path
-	 * @param {Dependency} dependency dependency used to create Module chain
-	 * @param {OnModuleCallback} onModule function invoked on modules creation
-	 * @param {ModuleChainCallback} callback callback for when module chain is complete
-	 * @returns {void} will throw if dependency instance is not a valid Dependency
-	 */
+// 模块构建的主要方法，同时保存模块间的依赖
 	_addModuleChain(context, dependency, onModule, callback) {
 		const start = this.profile && Date.now();
 		const currentProfile = this.profile && {};
 
-		const errorAndCallback = this.bail
-			? err => {
-					callback(err);
-			  }
-			: err => {
-					err.dependencies = [dependency];
-					this.errors.push(err);
-					callback();
-			  };
-
-		if (
-			typeof dependency !== "object" ||
-			dependency === null ||
-			!dependency.constructor
-		) {
-			throw new Error("Parameter 'dependency' must be a Dependency");
-		}
+		//...
 		const Dep = /** @type {DepConstructor} */ (dependency.constructor);
-		const moduleFactory = this.dependencyFactories.get(Dep);
+		// 模块类型的创造工厂
+		const moduleFactory = this.dependencyFactories.get(Dep); 
 		if (!moduleFactory) {
 			throw new Error(
 				`No dependency factory available for this dependency type: ${
@@ -702,7 +518,7 @@ class Compilation extends Tapable {
 		}
 
 		this.semaphore.acquire(() => {
-			moduleFactory.create(
+			moduleFactory.create( //工厂来创造新模块
 				{
 					contextInfo: {
 						issuer: "",
@@ -723,22 +539,23 @@ class Compilation extends Tapable {
 						afterFactory = Date.now();
 						currentProfile.factory = afterFactory - start;
 					}
-
+					// 拿到module将其加入compilation.modules里
 					const addModuleResult = this.addModule(module);
 					module = addModuleResult.module;
 
-					onModule(module);
+					onModule(module); // 调用了this.entries.push(module)
 
 					dependency.module = module;
 					module.addReason(null, dependency);
 
-					const afterBuild = () => {
+					const afterBuild = () => { //处理好入口文件后
 						if (currentProfile) {
 							const afterBuilding = Date.now();
 							currentProfile.building = afterBuilding - afterFactory;
 						}
 
 						if (addModuleResult.dependencies) {
+							// 处理模块依赖
 							this.processModuleDependencies(module, err => {
 								if (err) return callback(err);
 								callback(null, module);
@@ -755,6 +572,7 @@ class Compilation extends Tapable {
 					}
 
 					if (addModuleResult.build) {
+						// 对module进行build，此时loader生效
 						this.buildModule(module, false, null, null, err => {
 							if (err) {
 								this.semaphore.release();
@@ -778,37 +596,12 @@ class Compilation extends Tapable {
 		});
 	}
 
-	/**
-	 *
-	 * @param {string} context context path for entry
-	 * @param {Dependency} entry entry dependency being created
-	 * @param {string} name name of entry
-	 * @param {ModuleCallback} callback callback function
-	 * @returns {void} returns
-	 */
+
 	addEntry(context, entry, name, callback) {
 		this.hooks.addEntry.call(entry, name);
 
-		const slot = {
-			name: name,
-			// TODO webpack 5 remove `request`
-			request: null,
-			module: null
-		};
-
-		if (entry instanceof ModuleDependency) {
-			slot.request = entry.request;
-		}
-
-		// TODO webpack 5: merge modules instead when multiple entry modules are supported
-		const idx = this._preparedEntrypoints.findIndex(slot => slot.name === name);
-		if (idx >= 0) {
-			// Overwrite existing entrypoint
-			this._preparedEntrypoints[idx] = slot;
-		} else {
-			this._preparedEntrypoints.push(slot);
-		}
-		this._addModuleChain(
+		// ...slot
+		this._addModuleChain( 
 			context,
 			entry,
 			module => {
@@ -834,12 +627,6 @@ class Compilation extends Tapable {
 		);
 	}
 
-	/**
-	 * @param {string} context context path string
-	 * @param {Dependency} dependency dep used to create module
-	 * @param {ModuleCallback} callback module callback sending module up a level
-	 * @returns {void}
-	 */
 	prefetch(context, dependency, callback) {
 		this._addModuleChain(
 			context,
@@ -851,11 +638,6 @@ class Compilation extends Tapable {
 		);
 	}
 
-	/**
-	 * @param {Module} module module to be rebuilt
-	 * @param {Callback} thisCallback callback when module finishes rebuilding
-	 * @returns {void}
-	 */
 	rebuildModule(module, thisCallback) {
 		let callbackList = this._rebuildingModules.get(module);
 		if (callbackList) {
@@ -2078,10 +1860,7 @@ class Compilation extends Tapable {
 		this.hash = this.fullHash.substr(0, hashDigestLength);
 	}
 
-	/**
-	 * @param {string} update extra information
-	 * @returns {void}
-	 */
+
 	modifyHash(update) {
 		const outputOptions = this.outputOptions;
 		const hashFunction = outputOptions.hashFunction;
