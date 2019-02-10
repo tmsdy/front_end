@@ -19,7 +19,7 @@ class WebpackOptionsApply extends OptionsApply {
 			let NodeSourcePlugin;
 			let NodeTargetPlugin;
 			let NodeTemplatePlugin;
-// 对于不同的target的处理
+// 对于不同的target(web/webworker/node)挂上不同的Plugin
 			switch (options.target) {
 				case "web":
 					JsonpTemplatePlugin = require("./web/JsonpTemplatePlugin");

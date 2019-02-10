@@ -25,7 +25,7 @@
     }
     //原型继承继承构造函数的原型对象
     Son.prototype = new Parent() ;
-    // Son.prototype.constructor = Son ;//修复构造函数指向
+    Son.prototype.constructor = Son ;//修复构造函数指向(其实改不改都行)
 
     Son.prototype.sayAge = function(){
         console.log(this.age) ;
@@ -34,6 +34,8 @@
     let son1 = new Son("feifei",21) ;
     console.log(son1 instanceof Son) // true
     console.log(son1 instanceof Parent)// true 这两不管修不修正constructor结果都是true
+    console.log(Object.getPrototypeOf(son1)) //Parent
+    console.log(Object.isPrototypeOf(Parent))
     console.log(son1.colors) ;//["red","blue","green"]
     son1.sayName() ;//feifei
     son1.sayAge() ;//21

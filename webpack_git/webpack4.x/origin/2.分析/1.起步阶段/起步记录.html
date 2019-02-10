@@ -1,0 +1,27 @@
+<!-- 
+
+1.webpack过程
+  Compiler发号施令，Compilation专门解析，ModuleFactory生成模块，Parser解析源码，最后返回Compiler输出文件
+
+2. 激活options配置：根据传入的options，挂上各种插件
+compiler.options = new WebpackOptionsApply().process(options, compiler);
+  1)对于不同的target(web/webworker/node)挂上不同的Plugin
+  2)new JavascriptModulesPlugin().apply(compiler); 
+    生成js代码? 是parse的一个解析器，如果文件是js就会用到这个parse，在loader时候进行  
+  3)new EntryOptionPlugin().apply(compiler); 
+    入口的解析(SingleEntryPlugin/MultiEntryPlugin/DynamicEntryPlugin三者之一)，入口程序已经就绪等待后续命令
+	4)各种路径解析的钩子，根据我们自定义resolver来解析
+		compiler.resolverFactory.hooks.resolveOptions
+			.for("normal")
+			.tap("WebpackOptionsApply", resolveOptions => {
+				return Object.assign(
+					{fileSystem: compiler.inputFileSystem},
+					options.resolve,
+					resolveOptions
+				);
+			});
+			...
+
+
+
+ -->

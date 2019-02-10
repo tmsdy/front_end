@@ -132,7 +132,6 @@ class Compiler extends Tapable {
 
 		const finalCallback = (err, stats) => {
 			this.running = false;
-
 			if (callback !== undefined) return callback(err, stats);
 		};
 
@@ -196,7 +195,7 @@ class Compiler extends Tapable {
 
 				this.readRecords(err => {
 					if (err) return finalCallback(err);
-
+					
 					this.compile(onCompiled);
 				});
 			});

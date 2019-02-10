@@ -2,31 +2,32 @@
 
 (function() {
 
-	const importLocal = require("import-local");
-	// Prefer the local installation of webpack-cli
-	if (importLocal(__filename)) {
-		return;
-	}
+	
+		const importLocal = require("import-local");
+		// Prefer the local installation of webpack-cli
+		if (importLocal(__filename)) {
+			return;
+		}
 
-	require("v8-compile-cache");
-// ...
+		require("v8-compile-cache");
+	// ...
 
-	const yargs = require("yargs").usage(`webpack-cli ${
-		require("../package.json").version
-	}
+		const yargs = require("yargs").usage(`webpack-cli ${
+			require("../package.json").version
+		}
 
-Usage: webpack-cli [options]
-       webpack-cli [options] --entry <entry> --output <output>
-       webpack-cli [options] <entries...> --output <output>
-       webpack-cli <command> [options]
+	Usage: webpack-cli [options]
+				webpack-cli [options] --entry <entry> --output <output>
+				webpack-cli [options] <entries...> --output <output>
+				webpack-cli <command> [options]
 
-For more information, see https://webpack.js.org/api/cli/.`);
+	For more information, see https://webpack.js.org/api/cli/.`);
 
-	require("./config-yargs")(yargs);
+		require("./config-yargs")(yargs);
 
-	const DISPLAY_GROUP = "Stats options:";
-	const BASIC_GROUP = "Basic options:";
-
+		const DISPLAY_GROUP = "Stats options:";
+		const BASIC_GROUP = "Basic options:";
+	
 	yargs.options({
 		silent: {
 			type: "boolean",
@@ -180,65 +181,15 @@ For more information, see https://webpack.js.org/api/cli/.`);
 	});
 
 	yargs.parse(process.argv.slice(2), (err, argv, output) => {
-		Error.stackTraceLimit = 30;
-
-		// arguments validation failed
-		if (err && output) {
-			console.error(output);
-			process.exitCode = 1;
-			return;
-		}
-
-		// help or version info
-		if (output) {
-			console.log(output);
-			return;
-		}
-
-		if (argv.verbose) {
-			argv["display"] = "verbose";
-		}
+	//...
 
 		let options;
 		try {
 			options = require("./convert-argv")(argv); //读取命令行参数
 		} catch (err) {
-			if (err.name !== "ValidationError") {
-				throw err;
-			}
-
-			const stack = ErrorHelpers.cleanUpWebpackOptions(err.stack, err.message);
-			const message = err.message + "\n" + stack;
-
-			if (argv.color) {
-				console.error(`\u001b[1m\u001b[31m${message}\u001b[39m\u001b[22m`);
-			} else {
-				console.error(message);
-			}
-
-			process.exitCode = 1;
-			return;
+			// ...
 		}
-
-		/**
-		 * When --silent flag is present, an object with a no-op write method is
-		 * used in place of process.stout
-		 */
-		const stdout = argv.silent
-			? {
-				write: () => {}
-			  } // eslint-disable-line
-			: process.stdout;
-
-		function ifArg(name, fn, init) {
-			if (Array.isArray(argv[name])) {
-				if (init) init();
-				argv[name].forEach(fn);
-			} else if (typeof argv[name] !== "undefined") {
-				if (init) init();
-				fn(argv[name], -1);
-			}
-		}
+		// ...
 
 		function processOptions(options) {
 			// process Promise
@@ -266,29 +217,8 @@ For more information, see https://webpack.js.org/api/cli/.`);
 				// ...
 			}
 
-			if (argv.progress) {
-				const ProgressPlugin = require("webpack").ProgressPlugin;
-				new ProgressPlugin({
-					profile: argv.profile
-				}).apply(compiler);
-			}
 			// ...
-			if (firstOptions.watch || options.watch) {
-				const watchOptions =
-					firstOptions.watchOptions ||
-					firstOptions.watch ||
-					options.watch ||
-					{};
-				if (watchOptions.stdin) {
-					process.stdin.on("end", function(_) {
-						process.exit(); // eslint-disable-line
-					});
-					process.stdin.resume();
-				}
-				compiler.watch(watchOptions, compilerCallback);
-				if (outputOptions.infoVerbosity !== "none")
-					console.log("\nwebpack is watching the files…\n");
-			} else compiler.run(compilerCallback);
+			compiler.run(compilerCallback);
 		}
 
 		processOptions(options);

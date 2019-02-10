@@ -10,15 +10,26 @@
   
 </body>
 <script>
-var a = 1
+// var a = 1
 
-function fn() {
-  a = 2 ;
-  return
-  function a(){}
+// function fn() {
+//   a = 2 ;
+//   return
+//   function a(){} //函数提升a从函数到被赋值为2
+// }
+// fn()
+// console.log(a) //1
+
+
+var b = 0;
+function test() {
+    console.log(b); //undefined 函数和var b都提升了，这时候b还没被赋值为0
+    if(b){
+        var b = 1;
+        console.log(b) 
+    }
 }
-fn()
-console.log(a)
-
+test()
+console.log(b) // 0
 </script>
 </html>

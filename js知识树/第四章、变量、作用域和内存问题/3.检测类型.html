@@ -16,21 +16,29 @@
     var o = new Object() ;
     var arr = [1,2,3] ;
     var re = /d+/ ;
-// typeof 能有效检测出是什么基本数据类型，所有引用类型都是object，typeof检测不出
+    var date = new Date();
+    var error = new Error();
+// 1.typeof 能有效检测出是什么基本数据类型，所有引用类型都是object，typeof检测不出
     console.log(typeof s) ; //string
     console.log(typeof b) ; //boolean
     console.log(typeof i) ; //number
     console.log(typeof u) ; //undefined
     console.log(typeof n) ; //object 
     console.log(typeof o) ; //object
-//instanceof 检测出对象，返回真假
+//2.instanceof 检测出对象，返回真假
     console.log(n instanceof Object) ; //false
     console.log(o instanceof Object) ; //true
     console.log(arr instanceof Array) ; //true
     console.log(re instanceof RegExp) ; //true
-
-    // null不是对象，在 JS 的最初版本中使用的是 32 位系统，为了性能考虑使用低位存储变量的类型信息，
-    // 000 开头代表是对象，然而 null 表示为全零，所以将它错误的判断为 object
+    console.log(date instanceof Date) ; //true
+    console.log(error instanceof Error) ; //true
+//3.Object.prototype.toString.call 很强，基本都能判断出来
+    console.log(Object.prototype.toString.call(u)) //[object Undefined]
+    console.log(Object.prototype.toString.call(n)) //[object Null]
+    console.log(Object.prototype.toString.call(s)) //[object String]
+    console.log(Object.prototype.toString.call(date)) //[object Date]
+    console.log(Object.prototype.toString.call(error)) //[object Error]
+    
 
 </script>
 <body>

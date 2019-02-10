@@ -24,7 +24,7 @@ const webpack = (options, callback) => {
 		// 触发事件
 		compiler.hooks.environment.call();
 		compiler.hooks.afterEnvironment.call();
-		// 激活options：根据传入的options，挂上各种插件
+		// 激活options配置：根据传入的options，挂上各种插件
 		compiler.options = new WebpackOptionsApply().process(options, compiler);
 	} 
 	// ...
@@ -87,7 +87,7 @@ exportPlugins(exports, {
 	ProgressPlugin: () => require("./ProgressPlugin"),
 	ProvidePlugin: () => require("./ProvidePlugin"),
 	SetVarMainTemplatePlugin: () => require("./SetVarMainTemplatePlugin"),
-	SingleEntryPlugin: () => require("./3.1SingleEntryPlugin"),
+	SingleEntryPlugin: () => require("../Compiler/3.1SingleEntryPlugin"),
 	SourceMapDevToolPlugin: () => require("./SourceMapDevToolPlugin"),
 	Stats: () => require("./Stats"),
 	Template: () => require("./Template"),

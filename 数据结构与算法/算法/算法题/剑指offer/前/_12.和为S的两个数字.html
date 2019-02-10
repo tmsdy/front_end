@@ -26,17 +26,13 @@
   console.log(FindNumbersWithSum(arr,9))
 
 function FindNumbersWithSum(array, sum) {
-      var idx,
-        result = [],
-        min;
-      for (var i = 0; i<array.length-1&&array[i]<sum/2; i++) {
-        idx = array.indexOf(sum - array[i], i + 1);
-        if (idx != -1) {
-            return [array[i], array[idx]];
-        }
-      }
-      return result;
-    }
+  let idx
+  for(let i=0; i<array.length-1&&array[i]<sum/2; i++){
+    idx = array.indexOf(sum-array[i],i+1)
+    if(idx!=-1) return [array[i], array[idx]]
+  }
+  return []
+}
 
 </script>
 </html>
