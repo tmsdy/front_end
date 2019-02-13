@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input id="input" placeholder="请输入">
+</body>
+<script>
+let input = document.getElementById('input')
+let inputLock = false
+
+input.addEventListener('input',function(e){ //比如输入diannao（电脑）会触发7次input事件
+  if(!inputLock){
+    console.log(e.target.value)
+  }
+})
+input.addEventListener('compositionstart',function(e){
+  inputLock = true
+})
+input.addEventListener('compositionstart',function(e){
+  inputLock = false
+  // 触发相应事件
+})
+
+
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script src="./vue.js"></script>
+<body>
+  <div id="app" ref="msg">{{msg}}</div>
+</body>
+<script>
+let vm = new Vue({
+  el: '#app' ,
+  data:{
+    msg: 111
+  },
+  created(){
+    this.msg = 222
+    this.msg = 333
+    this.msg = 444
+    this.$nextTick(()=>{
+      console.log('nextTick:',this.$refs.msg.innerText) //999
+    })
+  },
+  watch:{
+    msg(val){ 
+      console.log(val) //只会打印一次999
+    }
+  }
+})
+vm.msg = 999
+console.log(document.getElementById('app').innerHTML) //444
+
+</script>
+</html>

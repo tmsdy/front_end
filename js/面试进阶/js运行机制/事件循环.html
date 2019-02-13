@@ -1,5 +1,6 @@
 <!--
-宏任务：setTimeout、requestAnimationFrame、I/O(点击事件等与程序的交互)
+宏任务：setTimeout、setImmediate、requestAnimationFrame、I/O(点击事件等与程序的交互)
+   MessageChannel、postMessage、
 微任务：promise的then和catch，MutationObserver，process.nextTick
 
 注意：
@@ -21,6 +22,8 @@
 
 3.浏览器去事件队列首部取出回调函数放入执行栈循环执行
 
+补充：
+  1.主线程的执行过程就是一个 tick
 
 
 

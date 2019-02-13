@@ -17,6 +17,14 @@ export default {
         MyHeader,
         Footer,
         Todo
+    },
+    created(){
+        var px = 1/window.devicePixelRatio ;
+        document.write('<meta name="viewport" content="width=device-width,initial-scale='+px+',minimum-scale=1,maximum-scale=1,user-scalable=no" />');
+        var html = document.documentElement ;
+        console.log(html.clientWidth)
+        html.style.fontSize = html.clientWidth/25+'px' ;
+        console.log(html.style.fontSize)
     }
 }
 </script>

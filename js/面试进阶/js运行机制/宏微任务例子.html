@@ -8,7 +8,7 @@
 <script>
   
   setTimeout(function(){ //宏任务，虽然先执行但是被放到事件队列了
-    console.log('1')
+    console.log('setTimeout')
   });
   //遇到微任务执行，把.then的放到微任务队列，不是一个队列，拿出来的时候先拿出微任务队列里的
   new Promise(function(resolve){

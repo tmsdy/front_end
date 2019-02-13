@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+    var px = 1/window.devicePixelRatio ;
+    document.write('<meta name="viewport" content="width=device-width,initial-scale='+px+',minimum-scale=1,maximum-scale=1,user-scalable=no" />');
+    var html = document.documentElement ;
+    console.log(html.clientWidth)
+    html.style.fontSize = html.clientWidth/25+'px' ;
+    console.log(html.style.fontSize)
+</script>
+<style>
+  *{margin: 0;padding: 0}
+.main{
+  /* 375px对应设计稿的750px，我们需要做到750/@rem=375px，750/x(rem)=375px,如果1rem=15px,x=30才行 */
+  /* width: 375px ; 我们在less中设@rem: 30rem就行了  */
+  width: 25rem ;
+  height: 30px ;
+  background: red ;
+}
+</style>
+<body>
+  <div class="main"></div>
+</body>
+</html>

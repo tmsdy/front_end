@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script src="./vue.js"></script>
+<body>
+  <div id="app">
+    <div ref="msg">
+      {{ msg }}
+    </div>
+    <button @click="change">change</button>
+  </div>
+</body>
+<script>
+let vm = new Vue({
+  el: '#app' ,
+  data(){
+    return {
+      msg: 111
+    }
+  },
+  methods:{
+    change(){
+      setTimeout(()=>{
+        console.log('setTimeout') //最后打印，优先级Promise.then()>setImmediate>MessageChannel>setTimeout
+      })
+      this.$nextTick(()=>{ //先往callback添加的先执行
+        console.log('nextTick:',this.$refs.msg.innerText) //111
+      })
+      this.$nextTick().then(()=>{ //相当于下一个tick里面的微任务队列
+        console.log('nextTick with promise:', this.$refs.msg.innerText) //222
+      })
+      this.msg = 222
+      console.log('sync',this.$refs.msg.innerText) // 111 数据变化nextTick渲染到dom是个异步过程
+      this.$nextTick(()=>{
+        console.log('nextTick:',this.$refs.msg.innerText) //222
+      })
+      this.$nextTick().then(()=>{
+        console.log('nextTick with promise:', this.$refs.msg.innerText) //222
+      })
+    }
+  }
+})
+
+</script>
+</html>

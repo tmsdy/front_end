@@ -62,22 +62,23 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@rem:30rem ;
     .helper {
         font-weight: 100; 
         display: flex; 
         justify-content: space-between; 
-        padding: 5px 0; 
-        line-height: 30px; 
+        padding: 5/@rem 0; 
+        line-height: 30/@rem; 
         background-color: #ffffff; 
-        font-size: 14px; 
+        font-size: 14/@rem; 
         font-smoothing: antialiased;
     }
     .left, .clear, .tabs {
-        padding:0 10px ; 
+        padding:0 10/@rem ; 
         box-sizing:border-box ; 
     }
     .left, .clear {
-        width: 150px; 
+        width: 150/@rem; 
     }
     .left {
         text-align:left ; 
@@ -87,17 +88,17 @@ export default {
         cursor: pointer ; 
     }
     .tabs {
-        width:200px ; 
+        width:200/@rem ; 
         display: flex; 
         justify-content:space-around ; 
         * {
             display:inline-block ; 
-            padding:0 10px ; 
+            padding:0 10/@rem ; 
             cursor:pointer ; 
-            border:1px solid rgba(175, 47, 47, 0) ; 
+            border:1/@rem solid rgba(175, 47, 47, 0) ; 
             &.actived {
                 border-color:rgba(175, 47, 47, 0.4) ; 
-                border-radius:5px ; 
+                border-radius:5/@rem ; 
             }
         }
     }

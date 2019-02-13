@@ -11,12 +11,13 @@ export default {
 </script>
 
 <style lang='less' scoped>
+@rem:30rem ;
  .main-header {
       text-align: center ; 
       h1 {
-          font-size: 100px ; 
+          font-size: 100/@rem ; 
           color: rgba(175, 47, 47, 0.4) ; 
-          margin: 20px ; 
+          margin: 20/@rem ; 
       }
   }
 </style>

@@ -7,7 +7,12 @@
 2.等Compiler.compile运行结束之后会回调run中名为onCompiled的函数，将编译后的内容生成文件
   里面shouldEmit判断是否编译成功，未成功则结束done，打印相应信息。成功则调用Compiler.emitAssets打包文件。  
 
-beforeCompile：编译前的准备，创建ModuleFactory并绑定到创建的Compilation上，同时处理一些不需要编译的模块
+beforeCompile：
+  编译前的准备，创建ModuleFactory并绑定到创建的Compilation上，同时处理一些不需要编译的模块
+make：
+  分析入口文件，一个入口一个compilation.addEntrycompilation真正编译，用SingleEntryPlugin创建模块保存到Compilation上
+    
+  
 
 3.
 

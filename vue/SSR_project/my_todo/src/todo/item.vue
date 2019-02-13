@@ -30,11 +30,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@rem:30rem ;
     .todo-item{
         position: relative; 
         background-color: #fff; 
-        font-size: 24px; 
-        border-bottom: 1px solid rgba(0,0,0,0.06); 
+        font-size: 24/@rem; 
+        border-bottom: 1/@rem solid rgba(0,0,0,0.06); 
         &:hover{
             .destroy:after{
                 content: '×'
@@ -43,8 +44,8 @@ export default {
         label{
             white-space: pre-line;
             word-break: break-all;
-            padding: 15px 60px 15px 15px;
-            margin-left: 45px;
+            padding: 15/@rem 60/@rem 15/@rem 15/@rem;
+            margin-left: 45/@rem;
             display: block;
             line-height: 1.2;
             transition: color 0.4s;
@@ -58,9 +59,9 @@ export default {
     }
     .toggle{
         text-align: center;
-        width: 40px;
-        height: 40px;
-        line-height: 40px ;
+        width: 40/@rem;
+        height: 40/@rem;
+        line-height: 40/@rem ;
         position: absolute;
         top: 0;
         bottom: 0;
@@ -68,7 +69,7 @@ export default {
         border: none;
         appearance: none;
         outline: none; 
-        padding-left: 5px; 
+        padding-left: 5/@rem; 
         cursor: pointer; 
         &:after{
             content: url('../assets/images/round.svg')
@@ -80,14 +81,14 @@ export default {
     .destroy{
         position: absolute;
         top: 0;
-        right: 10px;
+        right: 10/@rem;
         bottom: 0;
-        width: 40px;
-        height: 40px;
+        width: 40/@rem;
+        height: 40/@rem;
         margin: auto 0;
-        font-size: 30px;
+        font-size: 30/@rem;
         color: #cc9a9a;
-        margin-bottom: 11px;
+        margin-bottom: 11/@rem;
         transition: color 0.2s ease-out;
         background-color: transparent; 
         appearance: none; 
