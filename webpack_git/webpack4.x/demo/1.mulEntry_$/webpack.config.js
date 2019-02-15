@@ -1,4 +1,5 @@
 const path = require('path') ;
+const webpack = require('webpack') ;
 const CleanWebpackPlugin = require('clean-webpack-plugin') ;
 const HtmlWebpackPlugin = require('html-webpack-plugin') ;
 
@@ -14,8 +15,19 @@ module.exports = {
     },
     module:{
         rules:[
+            {   //把$变成全局变量
+                test: /^jquery$/,
+                // loader:'expose-loader?$' //简便写法
+                use:{
+                    loader: 'expose-loader',
+                    options:'$'
+                }
+            },
             {
                 test:/\.css$/,
+                // css-loader解析处理css文件中的url路径
+                // style-loader 可以把css文件变成style变迁插入head中
+                //多个loader从右往左写，转换的时候从右往左转换
                 loader:["style-loader","css-loader"]
             }
         ]

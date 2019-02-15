@@ -528,17 +528,7 @@ class Compilation extends Tapable {
 					dependencies: [dependency]
 				},
 				(err, module) => {
-					if (err) {
-						this.semaphore.release();
-						return errorAndCallback(new EntryModuleNotFoundError(err));
-					}
-
-					let afterFactory;
-
-					if (currentProfile) {
-						afterFactory = Date.now();
-						currentProfile.factory = afterFactory - start;
-					}
+					// ...
 					// 拿到module将其加入compilation.modules里
 					const addModuleResult = this.addModule(module);
 					module = addModuleResult.module;

@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <div id="cover"></div>
+        <div class="test"></div>
         <my-header></my-header>
         <Todo></Todo>
         <Footer></Footer>
@@ -30,21 +31,27 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    #app {
-        position: absolute ; 
-        left: 0 ; 
-        right:0; 
-        top: 0 ; 
-        bottom: 0 ; 
-    }
-    #cover {
-        position: absolute ; 
-        left: 0 ; 
-        right:0; 
-        top: 0 ; 
-        bottom: 0 ; 
-        background-color: #555 ;
-        opacity:0.5 ;
-        z-index:-1 ;
-    }
+@rem:30rem ;
+.test{
+    width: 740/@rem ;
+    height: 10px ;
+    background: red ;
+}
+#app {
+    position: absolute ; 
+    left: 0 ; 
+    right:0; 
+    top: 0 ; 
+    bottom: 0 ; 
+}
+#cover {
+    position: absolute ; 
+    left: 0 ; 
+    right:0; 
+    top: 0 ; 
+    bottom: 0 ; 
+    background-color: #555 ;
+    opacity:0.5 ;
+    z-index:-1 ;
+}
 </style>
