@@ -24,7 +24,7 @@ const defaultPlugins = [
 ]
 
 if(isDev){
-    config = merge(baseConfig,{
+    config = merge(baseConfig,{ //tx也有个merge
       // devtool:'#cheap-module-eval-source-map',//打包的代码映射成正常的方便调试
       module:{
         rules:[

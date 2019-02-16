@@ -1,0 +1,22 @@
+<!-- 
+1.webpack有默认配置支持0配置，直接npx webpack就能打包，webpack是node写出来的
+  可以在package.json里面写scripts来配置跑命令
+
+2.打包后的js直接就能用，webpack处理了require/import等实现了模块化的机制
+
+3.热重载原理：node_modules中有6个文件向bundle.js注入websocket客户端(打包进去的)，用来跟服务器通信
+  服务器的文件改了会重新编译并通知客户端刷新拿到最新的结果
+
+4.不同模块的变量是私有的不能共用
+
+5.loader和plugin的区别
+module里面配rules：只在模块转换(转换非js文件)用各种loader
+plugin实现各种功能的：合并代码、分割代码、产出新的文件(想干啥干啥)
+
+6.一个entry对应一个chunk，对应多个文件
+
+7.第三方框架库单独打包，只第一次加载费点时间，别的时候直接读缓存就行了
+
+8.DllPlugin配合DllReferencePlugin作动态链接库，大大提高构建速度
+
+ -->
