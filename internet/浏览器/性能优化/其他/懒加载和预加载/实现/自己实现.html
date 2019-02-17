@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .image_list{margin-left: 5%}
+  .image-item{
+      width: 60% ;
+      margin-right: 5% ;
+      display: inline-block ;
+      height: 180px ;
+      background: #666 ;
+      object-fit: contain ;
+  }
+  </style>
+<body>
+  <div class="image_list">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+    <img class="image-item" src="" data-src="http://rookiefeifei.top/pho002.jpg">
+  </div>
+</body>
+<script>
+
+var viewHeight = window.innerHeight //可视区的高度
+function lazyload(){
+  let elems = document.querySelectorAll('img[data-src]')
+  elems.forEach((item,index)=>{
+      if(item.dataset.src === '') return ;
+      var rect = item.getBoundingClientRect() ; //会产生回流，但获取元素offsetTop也会触发回流避免不了
+      if(rect.bottom>=0 && rect.top < viewHeight){ //top，bottom等是距当前窗口的上下左右值
+          console.log('触发')
+          item.src = item.dataset.src
+          item.removeAttribute('data-src') ;
+      }
+  })
+}
+lazyload() //一开始执行一下
+window.addEventListener('scroll',debounce(lazyload,300))
+
+function debounce(func,delay){
+    let timer = null
+    return function(){
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(()=>{
+            func.apply(this,arguments)
+        },delay)
+    }
+}
+
+
+</script>
+</html>

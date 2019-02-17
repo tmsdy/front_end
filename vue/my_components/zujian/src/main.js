@@ -1,7 +1,9 @@
 
 import Vue from 'vue'
 import App from './App'
+import VueLazyLoadImg from 'vue-lazy-load-img'
 
+Vue.use(VueLazyLoadImg)
 
 import '@/assets/css/reset.css'
 
