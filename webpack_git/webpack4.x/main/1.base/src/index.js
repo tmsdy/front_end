@@ -14,6 +14,15 @@ console.log(d)
 
 console.log(DEV)
 
+let button = document.createElement('button')
+button.innerHTML = 'hello'
+button.addEventListener('click',function(){
+  import('./source').then(data=>{
+    console.log(data.default) //需要的数据点击时才加载（懒加载，用jsonp实现的）
+  })
+})
+document.body.appendChild(button)
+
 let xhr = new XMLHttpRequest()
 // 默认访问当前http://localhost:8080/api/user，webpack-dev-server转发请求到9999端口
 xhr.open('GET','/api/user',true)
@@ -23,3 +32,4 @@ xhr.onload = function () {
 }
 
 xhr.send()
+

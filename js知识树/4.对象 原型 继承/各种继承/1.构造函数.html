@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+
+    function Parent (name) {
+      this.name = name ;
+      this.sayName = function () {
+        console.log(this.name) ;
+      }
+      Parent.prototype.num = 3 ;
+      Parent.prototype.sayAge = function () {
+        console.log(this.age) ;
+      }
+    }
+    var p1 = new Parent('feifei') ;
+// 优点：可向父级传参，避免了引用类型的属性被所有实例共享
+// 缺点：1.不能继承Parent的原型对象2.每次都要new Parent()影响性能
+    function Son (name) {
+      // Parent.call(this,name) ; //将父类的属性方法添加到this上
+     Parent.apply(this,[name]) ;
+    }
+    var son1 = new Son('heihei') ;
+    for(let key in son1){
+      console.log(key) //name sayName 说明会通过原型链向上找，找到的属性方法也会被枚举到
+    }
+    console.log(son1)
+    console.log(son1.name) ; //heihei
+    console.log(son1.num) ; //undefined 
+    son1.sayName() ;
+    son1.sayAge() ; //报错
+
+</script>
+<body>
+    
+</body>
+</html>

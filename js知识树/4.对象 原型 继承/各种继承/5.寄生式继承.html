@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+// 核心：在原型式继承的基础上，增强对象
+
+// 寄生式继承流程：
+function createAnother(origin){
+    var clone = Object.create(origin) ; //1.通过调用函数创建新对象 不一定非要Object，能返回对象的函数就行
+    clone.sayHi = function(){ // 2.以某种方式来增强这个对象
+        console.log('hi') ;
+    }
+    return clone //返回这个对象
+}
+let person = { name: 'feifei' , aaa: [1,2,3] }
+let subPerson = createAnother(person)
+
+subPerson.sayHi()
+
+</script>
+</html>

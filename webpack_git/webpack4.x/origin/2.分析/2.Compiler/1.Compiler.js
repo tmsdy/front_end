@@ -190,7 +190,7 @@ class Compiler extends Tapable {
 		this.hooks.beforeRun.callAsync(this, err => {
 			if (err) return finalCallback(err);
 
-			this.hooks.run.callAsync(this, err => { //处理缓存模块内，减少编译模块，加快编译速度
+			this.hooks.run.callAsync(this, err => { //处理缓存模块，减少编译模块，加快编译速度
 				if (err) return finalCallback(err);
 
 				this.readRecords(err => {

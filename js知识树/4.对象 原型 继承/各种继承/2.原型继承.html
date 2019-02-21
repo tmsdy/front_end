@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+function Parent(){
+  this.colors = ["red", "blue", "green"];
+}
+function Son(){}
+Son.prototype = new Parent(); //1.Son的原型上多了Parent自身的属性方法，内存上的浪费
+
+var son1 = new Son();
+son1.colors.push("black");
+console.log(son1)
+console.log(son1.colors); //"red,blue,green,black"
+
+var son2 = new Son();  
+console.log(son2)//2.因为Son原型上有colors,实例对colors的操作结果会篡改colors影响下个实例
+console.log(new Parent())
+console.log(son2.colors); //"red,blue,green,black"
+
+
+</script>
+</html>
