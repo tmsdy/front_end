@@ -14,15 +14,15 @@ let upper_dirname = upperArr.join('\\')
 function readFile(filename){
   return new Promise((resolve,reject)=>{
     fs.readFile(filename,'utf8',(err,data)=>{
-      // throw new Error('抛出异常')
+      throw new Error('抛出异常')
       err ? reject(err) : resolve(data)
     })
   })
 }
 
 // async function read(){ //async函数返回Promise
-//   try{
-//     let a = await readFile(upper_dirname+'/1.txt')
+//   try{ //如果await后面异步出错，相当于async函数返回Promise出错
+//     let a = await readFile(upper_dirname+'/1.txt') 
 //     console.log(a)
 //   }catch(err){
 //     console.error(err)
@@ -40,7 +40,7 @@ function read(){
     try{
       let a = yield readFile(upper_dirname+'/1.txt')
       console.log(a)
-    }catch(err){
+    }catch(err){ 
       console.error(err)
     }
     let b = yield readFile(upper_dirname+'/2.txt')

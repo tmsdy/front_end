@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+.wrapper{
+  height: 600px ;
+  /* padding: 20px ; */
+  background: #999 ;
+  position: relative;
+}
+.fu_z_index{
+  width: 100% ;
+  height: 560px ;
+  background: green ;
+  position: absolute ;
+  z-index: -2;
+}
+.zero_z_index{
+  width: 100% ;
+  height: 520px ;
+  background: pink ;
+  position: absolute ;
+  z-index: 0;
+}
+.kuaiji{
+  width: 100% ;
+  height: 520px ;
+  background: blue ;
+}
+</style>
+<body>
+  <div class="wrapper">
+    我是背景
+    <div class="fu_z_index">我是负值的z-index</div>
+    <div class="zero_z_index">我是0的z-index</div>
+    <div class="kuaiji">我是块级元素</div>
+  </div>
+</body>
+</html>

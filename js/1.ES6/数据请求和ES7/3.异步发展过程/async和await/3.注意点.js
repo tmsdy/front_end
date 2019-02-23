@@ -1,5 +1,5 @@
 /**
- * 1.await后面得跟 Promise(说是这么说)
+ * 1.await后面得跟 Promise(不然这种写法就没意义了)
  */
 let fs  = require('fs')
 let Promise = require('./bluebird') //有空再去看看promisifyAll

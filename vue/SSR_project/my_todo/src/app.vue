@@ -26,6 +26,12 @@ export default {
         console.log(html.clientWidth)
         html.style.fontSize = html.clientWidth/25+'px' ;
         console.log(html.style.fontSize)
+    },
+    mounted(){
+        this.$notify({
+            autoClose: 2000,
+            content: '哈哈哈'
+        })
     }
 }
 </script>

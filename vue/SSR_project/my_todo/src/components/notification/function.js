@@ -3,8 +3,8 @@ import Component from './func-notification'
 
 const NotificationConstructor = Vue.extend(Component)
 
-const instances = []
-let seed = 1
+const instances = [] //多个实例保存这儿
+let seed = 1 
 
 const removeInstance = (instance) => {
   if (!instance) return
@@ -24,25 +24,28 @@ const removeInstance = (instance) => {
 const notify = (options) => {
   if (Vue.prototype.$isServer) return
 
-  const {
-    autoClose,
-    ...rest
-  } = options
+  // const {
+  //   autoClose,
+  //   ...rest
+  // } = options
+  // const instance = new NotificationConstructor({
+  //   propsData: {
+  //     ...rest
+  //   },
+  //   data: {
+  //     autoClose: autoClose === undefined ? 3000 : autoClose
+  //   }
+  // })
   const instance = new NotificationConstructor({
-    propsData: {
-      ...rest
-    },
-    data: {
-      autoClose: autoClose === undefined ? 3000 : autoClose
-    }
+    propsData: options
   })
 
   const id = `notification_${seed++}`
-  instance.id = id
+  instance.id = id //给组件加id,方便删除
   instance.vm = instance.$mount()
   document.body.appendChild(instance.vm.$el)
   instance.vm.visible = true
-
+  console.log(instance)
   let verticalOffset = 0
   instances.forEach(item => {
     verticalOffset += item.$el.offsetHeight + 16

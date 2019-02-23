@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+// 高效率：1.只调用了一次Parent构造函数，避免了Child的prototype上创建多余的属性(Parent自身上的属性)
+function Parent(name){
+    this.name = name ;
+    this.colors = ['red','pink']
+}
+Parent.prototype.sayName = function(){
+    console.log(this.name) ;
+}
+
+function Child(name,age){
+    Parent.call(this,name) ;
+    this.age = age
+}
+inheritPrototype1(Child,Parent) ;
+
+Child.prototype.sayAge = function(){
+    console.log(this.age)
+}
+function inheritPrototype1(child,parent){ //对Child.prototype = new Parent()优化
+    // prototype = parent.prototype ;//这样不对的，这样父亲也有sayAge方法，constructor指向Child(即原型和儿子原型一样)
+    var prototype = Object.create(parent.prototype) //本质浅复制
+    prototype.constructor = child ;
+    child.prototype = prototype ;
+}
+let fei = new Child('feifei',22) ;
+fei.sayName()
+// fei.colors.push('ccc')
+console.log(fei)
+console.log(new Child('fei2')) 
+
+</script>
+</html>

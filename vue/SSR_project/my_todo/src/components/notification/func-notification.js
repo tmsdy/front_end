@@ -3,7 +3,7 @@ import Notification from './notification.vue'
 export default {
   extends: Notification,
   computed: {
-    style () {
+    style () { //可以覆盖.vue里写的style
       return {
         position: 'fixed',
         right: '20px',
