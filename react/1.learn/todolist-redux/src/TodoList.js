@@ -6,6 +6,7 @@ import Test from './Test'
 // import Lifecycle from './learn/Lifecycle'
 import './TodoList.css'
 import { Input,Button,List } from 'antd';
+import store from './store'
 
 class TodoList extends Component {
 
@@ -19,6 +20,7 @@ class TodoList extends Component {
     this.inputChange = this.inputChange.bind(this)
     this.btnClick = this.btnClick.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
+    console.log(store.getState())
   }
   componentDidMount(){ //组件被挂载到页面时执行一次，一般在这里ajax获取数据
     // axios.get('/api/todolist')
