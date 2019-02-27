@@ -7,6 +7,7 @@ import Test from './Test'
 import './TodoList.css'
 import { Input,Button,List } from 'antd';
 import store from './store'
+import {CHANGE_INPUT_VALUE,ADD_TODO_ITEM,DELETE_TODO_ITEM} from './store/actionTypes'
 
 class TodoList extends Component {
 
@@ -30,7 +31,7 @@ class TodoList extends Component {
   inputChange(e){
     let inputValue = e.target.value
     let action = {
-      type: "change_input_value",
+      type: CHANGE_INPUT_VALUE,
       value: inputValue
     }
     store.dispatch(action) //把action传给store,store自动把state,action转发给reducer
@@ -38,7 +39,7 @@ class TodoList extends Component {
   btnClick(){
     let {inputValue,count} = this.state
     let action = {
-      type: "add_todo_item",
+      type: ADD_TODO_ITEM,
       count: ++count ,
       item: {
         id: count,
@@ -46,26 +47,13 @@ class TodoList extends Component {
       }
     }
     store.dispatch(action)
-    // this.setState((prevState)=>{
-      
-    //   return {
-    //     list: [...list,{
-    //       id: ++count,
-    //       content:inputValue
-    //     }],
-    //     inputValue: '',
-    //     count
-    //   }
-    // },()=>{
-    //   console.log(this.state)
-    // })
   }
   deleteItem(id){
-    let {list} = this.state
-    list = list.filter(item=>item.id!==id)
-    this.setState(()=>({
-      list
-    }))
+    let action = {
+      type: DELETE_TODO_ITEM,
+      id
+    }
+    store.dispatch(action)
   }
   getTodoItem(){
     return this.state.list.map((item,i)=>{

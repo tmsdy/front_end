@@ -21,7 +21,12 @@ export class TodoItem extends Component {
     let {item} = this.props
     return (
       <Fragment>
-        <li >{item.content}<span className="item_delete" onClick={this.deleteItem}>删除</span></li>
+        <li >
+          {item.content}
+          <span 
+            style={{paddingLeft:20,cursor:'pointer'}} 
+            onClick={this.deleteItem}>删除</span>
+        </li>
       </Fragment>
     )
   }
