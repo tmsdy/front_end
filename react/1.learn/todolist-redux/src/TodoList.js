@@ -12,40 +12,53 @@ class TodoList extends Component {
 
   constructor(props){
     super(props)
-    this.state = { 
-      count: 10,
-      inputValue: '',
-      list: []
-    }
+    this.state = {}
     this.inputChange = this.inputChange.bind(this)
     this.btnClick = this.btnClick.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
-    console.log(store.getState())
+    this.hanleStoreChange = this.hanleStoreChange.bind(this)
+    this.state = store.getState()
+    store.subscribe(this.hanleStoreChange) //只要store改变就会调用一次hanleStoreChange
   }
   componentDidMount(){ //组件被挂载到页面时执行一次，一般在这里ajax获取数据
     // axios.get('/api/todolist')
   }
+  hanleStoreChange(){
+    // console.log('store changed')
+    this.setState(store.getState())
+  }
   inputChange(e){
     let inputValue = e.target.value
-    console.log(inputValue)
-    this.setState(()=>({ //新版异步的写法，多次数据改变结合成一次渲染，降低dom diff频率
-      inputValue
-    }))
+    let action = {
+      type: "change_input_value",
+      value: inputValue
+    }
+    store.dispatch(action) //把action传给store,store自动把state,action转发给reducer
   }
   btnClick(){
-    this.setState((prevState)=>{
-      let {inputValue,list,count} = prevState
-      return {
-        list: [...list,{
-          id: ++count,
-          content:inputValue
-        }],
-        inputValue: '',
-        count
+    let {inputValue,count} = this.state
+    let action = {
+      type: "add_todo_item",
+      count: ++count ,
+      item: {
+        id: count,
+        content: inputValue
       }
-    },()=>{
-      console.log(this.state)
-    })
+    }
+    store.dispatch(action)
+    // this.setState((prevState)=>{
+      
+    //   return {
+    //     list: [...list,{
+    //       id: ++count,
+    //       content:inputValue
+    //     }],
+    //     inputValue: '',
+    //     count
+    //   }
+    // },()=>{
+    //   console.log(this.state)
+    // })
   }
   deleteItem(id){
     let {list} = this.state
