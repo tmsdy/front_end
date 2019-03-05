@@ -4,6 +4,7 @@ import store from './store'
 import TodoItem from './TodoItem'
 import TodoListUI from './TodoListUI'
 import {getInputChangeAction,getAddTodoItemAction,getDeleteTodoItemAction} from './store/actionCreators'
+import axios from 'axios'
 
 class TodoList extends Component { //容器组件负责逻辑
 
@@ -13,13 +14,16 @@ class TodoList extends Component { //容器组件负责逻辑
     this.inputChange = this.inputChange.bind(this)
     this.btnClick = this.btnClick.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
-    this.hanleStoreChange = this.hanleStoreChange.bind(this)
+    this.handleStoreChange = this.handleStoreChange.bind(this)
     this.state = store.getState()
-    store.subscribe(this.hanleStoreChange) //只要store改变就会调用一次hanleStoreChange
+    store.subscribe(this.handleStoreChange) //只要store改变就会调用一次handleStoreChange
   }
   componentDidMount(){ 
+    // axios.get('/list.json').then((res)=>{
+    //   console.log(res)
+    // })
   }
-  hanleStoreChange(){
+  handleStoreChange(){
     this.setState(store.getState())
   }
   inputChange(e){
@@ -47,7 +51,7 @@ class TodoList extends Component { //容器组件负责逻辑
     // UI组件负责渲染
     let {inputValue} = this.state
     return (
-      <TodoListUI 
+      <TodoListUI //父组件把方法传给子组件用，数据还是在父组件变的，一变就又重新渲染了
         inputValue={inputValue}
         inputChange={this.inputChange}
         btnClick={this.btnClick}

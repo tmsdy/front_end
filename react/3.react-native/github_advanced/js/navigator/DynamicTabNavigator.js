@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator,createAppContainer } from 'react-navigation'
 import {BottomTabBar} from 'react-navigation-tabs'
+import {connect} from 'react-redux'
 
 type Props = {};
 import NavigationUtil from './NavigationUtil'
@@ -69,17 +70,22 @@ const TABS = { //配置页面的路由
   }
 }
 // 方便动态配置tab属性
-export default class DynamicTabNavigator extends Component<Props> {
+class DynamicTabNavigator extends Component<Props> {
   constructor(props){
     super(props)
     console.disableYellowBox = true //防止弹警告框的
   }
-  _tabNavigator() {
+  shouldComponentUpdate(){
+    return this.Tabs ? false: true 
+  }
+  _tabNavigator() { //props变化会重新调用这个方法
     const {PopularPage,TrendingPage,FavoritePage,MyPage} = TABS
     const tabs = {PopularPage,TrendingPage,FavoritePage,MyPage} //根据需要定制显示的tab
     FavoritePage.navigationOptions.tabBarLabel = '最爱' //可以动态配置的
-    return createBottomTabNavigator(tabs,{
-      tabBarComponent:TabBarComponent
+    return this.Tabs = createBottomTabNavigator(tabs,{
+      tabBarComponent:props=>{
+        return <TabBarComponent theme={this.props.theme} {...props}/>
+      }
     })
   }
   render() {
@@ -99,20 +105,17 @@ class TabBarComponent extends Component<Props> {
     }
   }
   render(){
-    let {routes,index} = this.props.navigation.state
-    console.log(routes,index)
-    if(routes[index].params){
-      let {theme} = routes[index].params
-      // 以最新的更新时间为主，防止被其他tab之前的修改覆盖掉
-      if(theme&&theme.updateTime>this.theme.updateTime){
-        this.theme = theme
-      }
-    }
     return <BottomTabBar 
       {...this.props}
-      activeTintColor={this.theme.tintColor||this.props.activeTintColor}
+      activeTintColor={this.props.theme}
     />
   }
 }
+
+const mapStateToProps = state => ({
+  theme: state.theme.theme,
+});
+
+export default connect(mapStateToProps)(DynamicTabNavigator);
 
 

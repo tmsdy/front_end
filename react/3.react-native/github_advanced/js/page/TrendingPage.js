@@ -1,23 +1,20 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View,Button} from 'react-native';
-
+import {connect} from 'react-redux'
+import actions from '../action/index'
+import { onThemeChange } from '../action/theme';
 type Props = {};
-export default class TrendingPage extends Component<Props> {
+class TrendingPage extends Component<Props> {
   
   render() {
-    let {navigation} = this.props
+    let {onThemeChange} = this.props
     return (
       <View>
        <Text>TrendingPage</Text>
        <Button 
         title="改变主题色为红色"
         onPress={()=>{
-          navigation.setParams({ //设置的属性
-            theme:{
-              tintColor: "red",
-              updateTime: new Date().getTime()
-            }
-          })
+          onThemeChange('red')
         }}
        />
       </View>
@@ -25,3 +22,9 @@ export default class TrendingPage extends Component<Props> {
   }
 }
 
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = dispatch => ({
+  onThemeChange: theme => dispatch(actions.onThemeChange(theme))
+})
+export default connect(mapStateToProps,mapDispatchToProps)(TrendingPage)

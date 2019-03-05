@@ -6,7 +6,7 @@ const defaultState = {
   list: [
     {
       id: 3,
-      content: "默认的"
+      content: "默认"
     }
   ]
 }

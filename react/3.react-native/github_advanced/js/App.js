@@ -1,29 +1,16 @@
+import React, {Component} from 'react';
+import {Provider} from 'react-redux';
+import AppNavigator from './navigator/AppNavigators';
+import store from './store'
 
-
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-// import AppContainer from './navigator/AppNavigators';
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import WelcomePage from './page/WelcomePage'
-import HomePage from './page/HomePage'
-import DetailPage from './page/DetailPage'
-
-// type Props = {};
+type Props = {};
 export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>123</Text>
-      </View>
-    )
-  }
+    render() {
+        /**
+         * 将store传递给App框架
+         */
+        return <Provider store={store}>
+            <AppNavigator/>
+        </Provider>
+    }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-});
-
