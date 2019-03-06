@@ -14,4 +14,6 @@
   2)不会有任何副作用:
     比如去改state就是副作用，不要去改
 
+4.immutable确保reducer中state不会被误改，immutable对象是不可改变的
+
 */

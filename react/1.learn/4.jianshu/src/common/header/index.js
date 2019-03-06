@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
+import {actionsCreator} from './store'
 import {
 	HeaderWrapper,
 	Logo,
@@ -54,22 +55,17 @@ const Header = (props) => { //无状态组件，组件只有render函数的时�
 
 const mapStateToProps = (state) => { //把store中的数据映射到当前组件props上
   return {
-    focused: state.focused
+    // focused: state.get('header').get('focused') //取header下的focused
+    focused: state.getIn(['header','focused'])
   }
 }
 const mapDispatchToProps = (dispatch) => { //让组件有能力用dispatch方法
   return {
     handleInputFocus() {
-      const action = {
-        type: 'search_focus'
-      }
-      dispatch(action)
+      dispatch(actionsCreator.searchFocus())
     },
     handleInputBlur() {
-      const action = {
-        type: 'search_blur'
-      }
-      dispatch(action)
+      dispatch(actionsCreator.searchBlur())
     }
   }
 }
