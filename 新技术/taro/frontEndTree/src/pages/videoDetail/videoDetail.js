@@ -8,8 +8,9 @@ export default class VideoDetail extends Component {
     navigationBarTitleText: '视频详情'
   }
   state = {
-    like: false,
+    favoritelike: false,
     favorite: false,
+    videoIndex: 1
   }
   componentWillMount () {
     console.log(this.$router.params)
@@ -18,13 +19,6 @@ export default class VideoDetail extends Component {
   componentDidMount () { }
 
   click_like(e){
-    // let {src_list} = this.state
-    // src_list.like_src = src_list.like_src === '../../assets/images/like_normal.png' 
-    // ? '../../assets/images/like_active.png'
-    // : '../../assets/images/like_normal.png'
-    // this.setState({
-    //   src_list
-    // })
     let {like} = this.state
     this.setState({
       like: !like
@@ -32,24 +26,37 @@ export default class VideoDetail extends Component {
   }
 
   clickFavorite(e){
-    console.log('clickFavorite')
-    
+    let {favorite} = this.state
+    this.setState({
+      favorite: !favorite
+    })
   }
 
   changeVideo(){
-    console.log('changeVideo')
+    let {videoIndex} = this.state
+    videoIndex = videoIndex === 1 ? 2 : 1
+    this.setState({
+      videoIndex
+    })
+  }
+
+  screenchange(){
+    console.log('screenchange')
   }
 
   render () {
-    let {src_list,like} = this.state
+    let {like,favorite,videoIndex} = this.state
+    console.log(videoIndex)
     return (
       <View className='v_d'>
         <Video
           className="vd_video"
-          src= {require('../../assets/video/React001.mp4')}
-          // { like 
-          //   ? require('../../assets/video/React001.mp4') 
-          //   : require('../../assets/video/React002.mp4')}
+          src= {videoIndex===1
+          ? require('../../assets/video/React001.mp4') 
+          : require('../../assets/video/React002.mp4')
+          }
+          OnFullScreenChange={this.screenchange}
+          bindfullscreenchange={this.screenchange}
           controls
           enable-progress-gesture
         />
