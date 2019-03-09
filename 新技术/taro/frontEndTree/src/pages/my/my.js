@@ -8,24 +8,32 @@ export default class My extends Component {
     navigationBarTitleText: '我的'
   }
   state = {
-    avatarUrl:'./user-unlogin.png',
+
     userInfo: {
+      avatarUrl:'http://rookiefeifei.top/frontEndTree/user-unlogin.png',
       nickName: '点击授权信息'
     }
   }
-  componentWillMount () { }
-
+  componentWillMount () {
+    let userInfo = Taro.getStorageSync('userInfo')
+    if(userInfo){
+      this.setState({
+        userInfo
+      })
+    }
+  }
   componentDidMount () { }
   getUserInfo(e){
-    // console.log(e)
     let userInfo = e.detail.userInfo
+    // console.log()
     this.setState({
       avatarUrl: userInfo.avatarUrl,
       userInfo
     })
+    Taro.setStorageSync('userInfo',userInfo)
   }
   render () {
-    let {avatarUrl,userInfo} = this.state
+    let {userInfo} = this.state
     return (
       <View className='m_wapper'>
         <Button
@@ -33,9 +41,14 @@ export default class My extends Component {
           openType='getUserInfo'
           onGetUserInfo={this.getUserInfo}
         >
-          <View className='userinfo-avatar' style={{backgroundImage: `url(${avatarUrl})`}}></View>
+          <View className='userinfo-avatar' style={{backgroundImage: `url(${userInfo.avatarUrl})`}}></View>
           <Text className='userinfo-nickname'>{userInfo.nickName}</Text>
         </Button>
+        <View className="my_menu">
+          <View className="menu_item">
+            收藏列表
+          </View>
+        </View>
       </View>
     )
   }

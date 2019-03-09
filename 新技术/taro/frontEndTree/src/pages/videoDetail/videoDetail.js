@@ -69,7 +69,7 @@ export default class VideoDetail extends Component {
           enable-progress-gesture
         />
         <View className="vd_header">
-          <Text className="title">React视频</Text>
+          <Text className="title">React教学视频</Text>
           <Image onClick={this.click_like.bind(this)} className="like"
             src={ like
               ? require('../../assets/images/like_active.png')

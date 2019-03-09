@@ -1,9 +1,21 @@
 .video_item{
+  position: relative;
   padding: 0 20rpx ;
   height: 200rpx ;
   border-bottom: 1rpx solid #8a8a8a ;
   display: flex ;
   align-items: center ;
+  &:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #bfbfbf;
+    -webkit-transform: scaleY(.5);
+    transform:scaleY(.5);
+  }
 }
 .vi_img{
   width: 140rpx ;
