@@ -1,5 +1,6 @@
 
 .v_d{
+  background: rgb(199, 199, 199) ;
   font-size: 0;
   .vd_video{
     width: 100vw ;
@@ -12,6 +13,7 @@
     align-items: center ;
     padding-left: 28px;
     border-bottom: 1px solid #8a8a8a ;
+    background: #fff ;
     .like{
       margin-left: auto ;
     }
@@ -23,7 +25,47 @@
       height: 34px ;
     }
   }
+  .vd_chapter::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: skyblue;
+    /* 如果不用 background-color, 使用 border-top:1px solid #f00; 效果是一样的*/
+    -webkit-transform: scaleY(.5);
+    transform:scaleY(.5);
+  }
+  .vd_chapter:active{
+    background: skyblue ;
+  }
   .vd_chapter_list{
-
+    height: 120px ;
+    margin-top: 20px ;
+    padding: 20px 0 ;
+    background: #fff ;
+    .vd_chapter{
+      display: flex ;
+      align-items: center ;
+      padding: 28px ;
+      position: relative ;
+      .video{
+        width: 36px ;
+        height: 30px ;
+      }
+      .chapter-right{
+        display: flex ;
+        flex-direction: column ;
+        margin-left: 38px ;
+        .title{
+          font-size: 30px ;
+        }
+        .small-gray{
+          font-size: 24px ;
+          color: #8a8a8a ;
+        }
+      }
+    }
   }
 }

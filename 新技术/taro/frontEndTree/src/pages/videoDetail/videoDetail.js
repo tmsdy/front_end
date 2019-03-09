@@ -10,7 +10,21 @@ export default class VideoDetail extends Component {
   state = {
     favoritelike: false,
     favorite: false,
-    videoIndex: 1
+    currentVideoId: 1,
+    videoList:[
+      {
+        id: 1 ,
+        title: 'React.js简介',
+        totalTime: '4分钟',
+        src: '../../assets/video/React001.mp4',
+      },
+      {
+        id: 2 ,
+        title: '开发环境搭建',
+        totalTime: '9分钟',
+        src: '../../assets/video/React002.mp4',
+      }
+    ]
   }
   componentWillMount () {
     console.log(this.$router.params)
@@ -32,47 +46,55 @@ export default class VideoDetail extends Component {
     })
   }
 
-  changeVideo(){
-    let {videoIndex} = this.state
-    videoIndex = videoIndex === 1 ? 2 : 1
+  changeVideo(id){
+    let {currentVideoId} = this.state
+    if(currentVideoId==id) return ;
+    console.log(id)
     this.setState({
-      videoIndex
+      currentVideoId: id
     })
   }
 
-  screenchange(){
-    console.log('screenchange')
-  }
-
   render () {
-    let {like,favorite,videoIndex} = this.state
-    console.log(videoIndex)
+    let {like,favorite,currentVideoId,videoList} = this.state
     return (
       <View className='v_d'>
         <Video
           className="vd_video"
-          src= {videoIndex===1
-          ? require('../../assets/video/React001.mp4') 
+          src= {currentVideoId===1
+          ? require('../../assets/video/React001.mp4')
           : require('../../assets/video/React002.mp4')
           }
-          OnFullScreenChange={this.screenchange}
-          bindfullscreenchange={this.screenchange}
           controls
           enable-progress-gesture
         />
         <View className="vd_header">
           <Text className="title">React视频</Text>
-          <Image onClick={this.click_like.bind(this)} className="like" 
-            src={ like 
-              ? require('../../assets/images/like_active.png') 
+          <Image onClick={this.click_like.bind(this)} className="like"
+            src={ like
+              ? require('../../assets/images/like_active.png')
               : require('../../assets/images/like_normal.png')}></Image>
-          <Image onClick={this.clickFavorite.bind(this)} className="favorite" 
-            src={ favorite 
-            ? require('../../assets/images/favorite_active.png') 
+          <Image onClick={this.clickFavorite.bind(this)} className="favorite"
+            src={ favorite
+            ? require('../../assets/images/favorite_active.png')
             : require('../../assets/images/favorite_normal.png')}></Image>
         </View>
         <View className="vd_chapter_list">
-          <Button onClick={this.changeVideo.bind(this)}>改变video</Button>
+          {
+            videoList.map((video,index)=>{
+              return (
+                <View className="vd_chapter"
+                  key={video.id}
+                  onClick={this.changeVideo.bind(this,video.id)}>
+                    <Image className="video" src={require('../../assets/images/icon/video.png')}></Image>
+                    <View className="chapter-right">
+                      <Text className="title">{video.title}</Text>
+                      <Text className="small-gray">{video.totalTime}</Text>
+                    </View>
+                </View>
+              )
+            })
+          }
         </View>
       </View>
     )
