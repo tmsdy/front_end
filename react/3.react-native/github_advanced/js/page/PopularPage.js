@@ -41,7 +41,7 @@ export default class PopularPage extends Component<Props> {
       }
     )
     let TopTabContainer = createAppContainer(TopTabNavigator)
-    return <TopTabContainer />
+    return <TopTabContainer/>
   }
 }
 class PopularTab extends Component<Props> {
@@ -49,11 +49,11 @@ class PopularTab extends Component<Props> {
     // console.log(this.props)
     const { navigation,tabLabel } = this.props
     return (
-      <View>
+      <View style={{marginTop:30}}>
         <Text>{tabLabel}</Text>
         <Text onPress={() => {
           NavigationUtil.goPage({ navigation }, "DetailPage")
-        }}>跳转到详情页</Text>
+        }}>跳转到详情页1</Text>
       </View>
     );
   }

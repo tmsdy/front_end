@@ -75,10 +75,11 @@ class DynamicTabNavigator extends Component<Props> {
     super(props)
     console.disableYellowBox = true //防止弹警告框的
   }
-  shouldComponentUpdate(){
-    return this.Tabs ? false: true 
-  }
+  // shouldComponentUpdate(){
+  //   return this.Tabs ? false: true 
+  // }
   _tabNavigator() { //props变化会重新调用这个方法
+    if(this.Tabs) return this.Tabs
     const {PopularPage,TrendingPage,FavoritePage,MyPage} = TABS
     const tabs = {PopularPage,TrendingPage,FavoritePage,MyPage} //根据需要定制显示的tab
     FavoritePage.navigationOptions.tabBarLabel = '最爱' //可以动态配置的
@@ -98,11 +99,6 @@ class DynamicTabNavigator extends Component<Props> {
 class TabBarComponent extends Component<Props> {
   constructor(props) {
     super(props)
-    // console.log(props)
-    this.theme = {
-      tintColor: props.activeTintColor,
-      updateTime: new Date().getTime()
-    }
   }
   render(){
     return <BottomTabBar 
