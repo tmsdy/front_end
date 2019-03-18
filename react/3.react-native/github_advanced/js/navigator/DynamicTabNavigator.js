@@ -39,7 +39,8 @@ const TABS = { //配置页面的路由
         size={26}
         style={{color:tintColor}}
         />
-      }
+      },
+      header: null, //似乎不起作用
     }
   },
   FavoritePage: {

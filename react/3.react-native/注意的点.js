@@ -4,7 +4,7 @@
     装个安卓模拟器： emulator -avd a81或者andriod studio
     用到RN的 BackHandler
 
-2.
+2.npm i react-native-easy-toast --save,老师写的RN toast组件有空可以看看咋做的
 
 
 */

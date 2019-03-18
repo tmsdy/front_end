@@ -16,8 +16,8 @@ const logger = store => next => action => { //自定义log中间件
 
 const middlewares = [
   middleware,
-  logger,
-  thunk
+  // logger,
+  thunk //实现异步的action
 ];
 
 /**
