@@ -10,13 +10,21 @@ export default class Index extends Component {
   state = {
     videoList: [
       {
-        v_id: 1 ,
-        v_src: ''
+        id: 1 ,
+        src: '',
+        title: '',
+        introduction:'',
+        level: '',
+        people_quntity: 1123,
       },
       {
-        v_id: 2 ,
-        v_src: ''
-      }
+        id: 1 ,
+        src: '',
+        title: '',
+        introduction:'',
+        level: '',
+        people_quntity: 1123,
+      },
     ]
   }
   componentWillMount () { }
