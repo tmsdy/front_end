@@ -48,6 +48,12 @@ export default class My extends Component {
           <View className="menu_item">
             收藏列表
           </View>
+          <View className="menu_item">
+            设置
+          </View>
+          <View className="menu_item">
+            联系我们
+          </View>
         </View>
       </View>
     )

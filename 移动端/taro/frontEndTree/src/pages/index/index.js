@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text,Image } from '@tarojs/components'
 import './index.less'
+import {videoList} from '../../videoList'
 
 export default class Index extends Component {
 
@@ -8,26 +9,12 @@ export default class Index extends Component {
     navigationBarTitleText: '精选视频'
   }
   state = {
-    videoList: [
-      {
-        id: 1 ,
-        src: '',
-        title: '',
-        introduction:'',
-        level: '',
-        people_quntity: 1123,
-      },
-      {
-        id: 1 ,
-        src: '',
-        title: '',
-        introduction:'',
-        level: '',
-        people_quntity: 1123,
-      },
-    ]
+    videoList: []
   }
-  componentWillMount () { }
+  componentWillMount () {
+    console.log(videoList)
+    this.setState({videoList})
+   }
   componentDidShow () { }
   enterVideoDetail(v_id){
     console.log(v_id)
@@ -48,13 +35,13 @@ export default class Index extends Component {
                     key={video.v_id}
                   >
                     <Image className='vi_img'
-                      src={require('../../assets/images/react.jpg')}
+                      src={video.src}
                       // mode="scaleToFill"
                       ></Image>
                     <View className='vi_right'>
-                      <View className='vi_title'>React教学视频</View>
-                      <View className='vi_details'>本课程主要针对有一定xxx基础，并想要深入的了解xxx的同学，课程中有基础的语法讲解和实际项目中的常用案例展示，帮助大家快速的掌握xxx技术</View>
-                      <View className='vi_tips'>中级 · 1218人学习</View>
+                      <View className='vi_title'>{video.title}</View>
+                      <View className='vi_details'>{video.introduction}</View>
+                      <View className='vi_tips'>{video.level} · {video.people_quntity}人学习</View>
                     </View>
                   </View>
                 })
