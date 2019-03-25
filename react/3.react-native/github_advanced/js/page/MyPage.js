@@ -1,26 +1,33 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View,Button} from 'react-native';
+import {connect} from 'react-redux'
+import actions from '../action/index'
+import NavigationBar from '../common/NavigationBar'
 
 type Props = {};
-export default class MyPage extends Component<Props> {
+class MyPage extends Component<Props> {
   render() {
-    let {navigation} = this.props
+    let {onThemeChange} = this.props
+    let statusBar = {
+      backgroundColor: '#666' ,
+      barStyle: 'light-content'
+    }
+    let navigationBar = <NavigationBar 
+        title={'最热'}
+        statusBar={statusBar}
+        style={{backgroundColor: "#666"}}
+      />
     return (
-      <View>
-       <Text>MyPage</Text>
-       <Button 
-        title="改变主题色为粉色"
-        onPress={()=>{
-          navigation.setParams({ //设置的属性
-            theme:{
-              tintColor: "pink",
-              updateTime: new Date().getTime()
-            }
-          })
-        }}
-       />
+      <View style={{marginTop:30}}>
+        {navigationBar}
       </View>
     );
   }
 }
 
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = dispatch => ({
+  onThemeChange: theme => dispatch(actions.onThemeChange(theme))
+})
+export default connect(mapStateToProps,mapDispatchToProps)(MyPage)

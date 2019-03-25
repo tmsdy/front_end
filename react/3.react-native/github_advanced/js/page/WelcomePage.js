@@ -8,7 +8,7 @@ export default class WelcomePage extends Component<Props> {
     let {navigation} = this.props
     this.timer = setTimeout(()=>{
       NavigationUtil.resetToHomPage({navigation})
-    },1000)
+    },500)
   }
   componentWillUnmount(){
     this.timer && clearTimeout(this.timer)

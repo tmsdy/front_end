@@ -1,5 +1,6 @@
 
 let str = require('./a')
+let a= 1 ;
 
 console.log(str)
 
