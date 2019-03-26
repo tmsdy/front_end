@@ -11,6 +11,8 @@
     2）报错：在UIManager中找不到“RNCWebView”
         解决办法：react-native link react-native-webview
     3）Webview要放在外层,或者用Fragment包起来
+
+4.需要安装fsevents这个包，有空了解下这个
     
 
 */
