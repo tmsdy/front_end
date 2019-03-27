@@ -8,6 +8,9 @@
       "type": "node",
       "request": "launch",
       "name": "启动程序",
+      // "env": {
+      //   "NODE_ENV": "dev"
+      // },
       // "program": "${workspaceFolder}/webpack_git\\webpack4.x\\origin\\2.start\\node_modules\\webpack-cli\\bin\\cli.js"
       // "program": "${workspaceFolder}/webpack_git\\webpack4.x\\demo\\img_lspcss\\node_modules\\webpack-cli\\bin\\cli.js"
       "program": "${workspaceFolder}/webpack_git\\webpack4.x\\origin\\2.start\\vscode-debugger.js"
