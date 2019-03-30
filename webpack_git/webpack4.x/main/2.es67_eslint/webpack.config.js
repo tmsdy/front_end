@@ -58,7 +58,7 @@ module.exports = {
   ],
 
   devServer: {
-    port: 3000,
+    port: 4000,
     contentBase: "./dist",
     compress: true //启用Gzip压缩
   }

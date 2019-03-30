@@ -1,11 +1,11 @@
 import 'bootstrap'
 import './style.css'
-import calc from './a'
+import {sum} from './a'
 // import { Provider } from 'react-redux'
 import React from 'react'
 
 // 1.import在生产环境默认tree-shaking,require不行，这是为什么前端用import
-console.log(calc.sum(1,2))
+console.log(sum(1,2))
 
 // 2.scope hosting 作用域提升
 let a = 1;

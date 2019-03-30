@@ -1,4 +1,4 @@
-import $ from 'jquery' //这样引当然可以的
+// import $ from 'jquery' //这样引当然可以的
 
 console.log('index') ;
 
