@@ -1,0 +1,392 @@
+// @charset "utf-8";
+html {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height:100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, figure, menu, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, select, th, td {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "PingFangSC-Regular","Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体",DIN Alternate;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%
+}
+body{
+    margin: 0;
+    padding:0;
+    font-size: 0;
+    width: 100%;
+    height:100%;
+    background: rgba(255, 91, 187, 0.534) 
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none !important;
+}
+.rightArrow{
+    width: 0.06rem ;
+    height: 0.06rem ;
+    margin-left: 0.02rem ;
+    border-right: 0.01rem solid #fff ;
+    border-bottom: 0.01rem solid #fff ;
+    transform: rotate(-45deg)
+}
+.midText{
+    font-size: .15rem ;
+    line-height: .16rem ;
+    color: #fff ;
+}
+.splitLine{
+    width: 0.01rem ;
+    height: 0.14rem ;
+    background: #FFB3A9 ;
+    transform: scaleX(0.5) ;
+    margin-left: auto ;
+    margin-right: .11rem ;
+}
+.container{
+    min-height: 100%;
+    padding: 0 .155rem  0;
+    background: url('http://statics-web.iqiyi.com/common/lottery/img/lottery_bg.png') left top / 100% no-repeat ;
+    position: relative;
+    .moreLotteryTip{
+        display: none ;
+        position: absolute ;
+        z-index: 222 ;
+        right: 0.025rem;
+        top: 0.12rem;
+        width: 1.7rem ;
+        height: .36rem;
+        background: #000 ;
+        border-radius: .36rem ;
+        color: #fff ;
+        line-height: .36rem;
+        font-size: .14rem ;
+        text-align: center ;
+        .traingle{
+            position: absolute ;
+            right: .12rem ;
+            top: -.16rem ;
+            width: 0;
+            height: 0;
+            border-width: .1rem;
+            border-style: solid;
+            border-color: transparent  transparent #000 transparent;
+        }
+    }
+    .topHeader{
+        width: 100% ;
+        display: flex ;
+        align-items: center;
+        padding-top: 0.15rem ;
+        .myIntegral{
+            margin-right: auto ;
+            font-size: .13rem ;
+            line-height: .24rem ;
+            color: #FFEBEC;
+            &.unlogin{
+                width: .9rem ;
+                height: .24rem ;
+                border-radius: .24rem ;
+                border: .01rem solid #FFEBEC ;
+                text-align: center ;
+            }
+        }
+        #myRewards{
+            display: flex ;
+            align-items: center ;
+            .awardText{
+                display: inline-block;
+                font-size: 0.12rem;
+                color: #FFFFFF;
+                vertical-align: middle;
+            }
+        } 
+    }
+    .marquee-wrapper{
+        opacity: .8;
+        width: 2rem ;
+        height: 0.2rem ;
+        margin: 0.96rem auto 0;
+        padding: 0 .1rem ;
+        border-radius: 0.2rem ;
+        background-color: rgba(83, 0, 6, 0.3) ;
+        transform: translateZ(0) ;
+        display: flex ;
+        align-items: center ;
+        #marquee{
+            height: 0.2rem ;
+            margin-left: .04rem ;
+        }
+        .icon-laba{
+            width: .15rem ;
+            height: .15rem ;
+            background: url('../css/img/laba@2x.png') top center/100% no-repeat ;
+        }
+    }
+    .choujiangConatainer{
+        .choujiangBox{
+            margin-top: 0.47rem;
+            width: 3.44rem;
+            height: 3.775rem;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            background: url('img/dipan.png') center no-repeat;
+            background-size: 3.44rem 3.775rem;
+            .smalltitle{
+                width: 2.26rem ;
+                height: .4rem ;
+                padding: 0 .2rem ;
+                border-radius: .4rem ;
+                background:linear-gradient(90deg,#FF58F2,#FFB63C); 
+                position: absolute;
+                left: .4rem;
+                top: -.2rem ;
+                display: flex;
+                align-items: center ;
+                .rightBox{
+                    display: flex ;
+                    align-items: center ;
+                    .fenxiangText{
+                        font-size: .13rem ;
+                        line-height: .16rem ;
+                        color: #fff ;
+                    }
+                }
+                &.unlogin{
+                    justify-content: center;
+                    .rightBox,.splitLine{
+                        display: none
+                    }
+                }
+            }
+            .itemList{
+                .listWrapper{
+                    padding-top: 0.41rem;
+                    padding-left: 0.12rem;
+                    font-size: 0;
+                    .wrapBox{
+                        display: inline-block;
+                        margin-left: 0.1rem;
+                        margin-bottom: 0.1rem;
+                        width: 0.93rem;
+                        height: 0.93rem;
+                        border-radius: .09rem ;
+                        vertical-align: middle;
+                        background-color: #FFEBEC ;
+                        .itemBox{
+                            width: 0.93rem;
+                            height: 0.93rem;
+                            display: inline-block;
+                            background-size: 0.93rem 0.93rem;
+                            .itemPic{
+                                width: 0.6rem;
+                                height: 0.6rem;
+                                margin-top: 0.05rem;
+                                margin-left: auto;
+                                margin-right: auto;
+                                display: block;
+                                margin-bottom: 0.02rem;
+                            }
+                            .itemName{
+                                display: block;
+                                font-size: 0.12rem;
+                                color: #F67F45;
+                                text-align: center;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+                        .selected{
+                            width: 0.95rem;
+                            height: 0.95rem;
+                            background: url('img/selected.png') center no-repeat;
+                            background-size: 0.95rem 0.95rem;
+                        }
+                        .go{
+                            width: 0.93rem;
+                            height: 0.93rem;
+                            font-size: .18rem ;
+                            line-height: 0.93rem ;
+                            letter-spacing: 0 ;
+                            color: #FF3B3B ;
+                            text-align: center ;
+                            display: inline-block;
+                            background: url('img/start@2x.png') center no-repeat;
+                            background-size: 0.93rem 0.93rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .bottomSection{
+        margin-top: .3rem;
+        display: flex ;
+        flex-direction: column ;
+        .footerTop{
+            display: flex ;
+            align-items: center ;
+            align-self: center ;
+            .tipText{
+                font-size: .15rem ;
+                color: #fff ;
+                margin: 0 .08rem;
+            }
+        }
+        .textItem{
+            margin-top: 0.16rem ;
+            font-size: 0.13rem ;
+            line-height: 0.23rem ;
+            color: #fff ;
+            opacity: 0.85;
+        }
+    }
+}
+.explainText{
+    align-self: center;
+    font-size: .13rem ;
+    line-height: .23rem ;
+    color: #fff ;
+    opacity: 0.6;
+    padding: 0.35rem 0 0.32rem 0
+}
+.sideLine{
+    width: .3rem ;
+    height: 0.015rem ;
+    opacity: 0.15;
+    background-color: #fff ;
+}
+
+.modalWrapper{
+    display: none;
+    position: relative;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    .modalBox{
+        width: 3.12rem;
+        height: 2.85rem;
+        border-radius: 0.10rem;
+        background: url('../css/img/win.png') top center/cover no-repeat;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        margin-top: -1.3rem;
+        margin-left: -1.56rem;
+        display: flex ;
+        flex-direction: column ;
+        align-items: center ;
+        .awardBox{
+            display: flex ;
+            width: 100% ;
+            justify-content: center;
+            margin-top: 0.79rem;
+            .awardItem{
+                display: flex ;
+                flex-direction: column ;
+                justify-content: center;
+                align-items: center ;
+                margin: 0 .02rem ;
+                width: 0.93rem;
+                height: 0.93rem;
+                background: url('../css/img/award_bg.png') top center/cover no-repeat;
+                .awardName{
+                    display: inline-block ;
+                    max-width: .88rem;
+                    overflow: hidden;
+                    white-space: nowrap ;
+                    text-overflow: ellipsis ;
+                    font-size: .12rem ;
+                    color: #DAA370;
+                }
+                .resultPic{
+                    width: .44rem;
+                    height: .44rem;
+                    margin-bottom: .06rem;
+                }
+            }
+        }
+        .checkPrice{
+            display: flex;
+            align-items: center ;
+            margin-top: 0.085rem ;
+            font-size: 0.14rem ;
+            line-height: .18rem ;
+            color: #fff ;
+            cursor: pointer;
+        }
+        .againBtn{
+            position: absolute ;
+            left: .17rem ;
+            bottom: .15rem ;
+            width: 2.78rem;
+            height: 0.4rem;
+            background-color: #FFEA4D;
+            border-radius: 0.4rem ;
+            .againText{
+                color: #FF4655;
+                font-size: 0.16rem;
+                text-align: center;
+                line-height: 0.4rem;
+            }
+        }
+        .failed{
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 0.06rem;
+        }
+        .closeBtn{
+            width: 0.14rem;
+            height: 0.145rem;
+            background: url('img/close@2x.png') no-repeat center;
+            display: inline-block;
+            position: absolute;
+            top: 0.1rem;
+            right: 0.1rem;
+            background-size: 0.14rem 0.145rem;
+        }        
+    }
+}
+.noticeTip{
+    display: none;
+    width: 2.13rem;
+    height: 0.36rem;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 2.13rem;
+    margin-left: -1.075rem;
+    position:fixed;
+    top:3rem;
+    left: 50%;
+    .tipContent{
+        font-size: 0.14rem;
+        color: #FFFFFF;
+        text-align: center;
+        line-height: 0.36rem;
+    }
+}

@@ -1,0 +1,27 @@
+//空态页
+.no-record {}
+
+.no-image {
+  display: block;
+  margin: 0 auto .9rem;
+  width: 3.1rem;
+  height: 2.25rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  .mix-res-background-image('public/none-list');
+  &.image-hammer {
+    .mix-res-background-image('public/none-list-hammer');
+  }
+  &.image-network {
+    .mix-res-background-image('public/none-list-network');
+  }
+}
+
+.no-record-content {
+  margin-bottom: .4rem;
+  line-height: .4rem;
+  text-align: center;
+  font-size: .28rem;
+  color: #666666;
+}

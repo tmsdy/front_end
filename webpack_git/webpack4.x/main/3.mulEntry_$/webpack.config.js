@@ -14,6 +14,9 @@ module.exports = {
         filename: '[name].[hash:8].js', //打包后的文件名
     },
     module:{
+        // noParse: function(content) { //不解析这些库的依赖 --- 不要用这个会导致jq没办法应用全局
+        //     return /jquery|lodash/.test(content);
+        // },
         rules:[
             {   //把$变成全局变量
                 test: /^jquery$/,

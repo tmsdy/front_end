@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta charSet='utf-8' />
+    <title>抽奖页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth>=640){
+                        docEl.style.fontSize = '100px';
+                    }else{
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    }
+                };
+            recalc();
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="moreLotteryTip">
+            <div class="traingle"></div>
+            <p>分享可赚更多抽奖机会</p>
+        </div>
+        <div class="topHeader">
+            <p class="myIntegral ">我的积分：0</p>
+            <div id="myRewards" data-name="myrewards">
+                <span class="awardText">我的收获</span>
+                <div class="rightArrow"></div>
+            </div>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="icon-laba"></div>
+            <div id="marquee"></div>
+        </div>
+        <div class="choujiangConatainer">
+            <div class="choujiangBox">
+                <div class="smalltitle" data-name="smalltitle">
+                    <span class="midText">您还有0次免费机会</span>
+                    <div class="splitLine"></div>
+                    <div class="rightBox" >
+                        <span class="fenxiangText" data-name="share">赚免费抽奖</span>
+                        <div class="rightArrow"></div>
+                    </div>
+                </div>
+                <div class="itemList">
+                    <ul class="listWrapper">
+                        <li class="wrapBox" data-node=1 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                        <li class="wrapBox" data-node=2 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                        <li class="wrapBox" data-node=3 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                        <li class="wrapBox" data-node=8 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                        <li class="wrapBox">
+                            <div class="go" data-btn='start'>
+                                立即抽奖
+                            </div>
+                        </li>
+                        <li class="wrapBox" data-node=4 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                        <li class="wrapBox" data-node=7 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                        <li class="wrapBox" data-node=6 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                        <li class="wrapBox" data-node=5 data-itemId="">
+                            <div class="itemBox">
+                                <img src="//www.iqiyipic.com/common/fix/headicons/male-130.png" alt="" class="itemPic">
+                                <span class="itemName">奖品的名称</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bottomSection">
+            <div class="footerTop">
+                <div class="sideLine"></div>
+                <div class="tipText">活动说明</div>
+                <div class="sideLine"></div>
+            </div>
+            <p class="ruleContent textItem"></p>
+            <p class="explainText">本活动解释权归爱奇艺所有</p>
+        </div>
+    </div>
+
+    <div class="noticeTip">
+        <p class="tipContent"></p>
+    </div>
+    <!-- 中奖弹框 -->
+    <div class="modalWrapper" data-name="wrapper">
+        <div class="modalBox">
+            <div class="awardBox">
+                <div class="awardItem">
+                    <img class="resultPic" data-name="successPic" src="http://m.iqiyipic.com/common/lego/20181107/2f50c642ba2e4cf0a216befada35f6b6.png" alt="">
+                    <span class="awardName">碳酸饮料</span>
+                </div>
+                <div class="awardItem">
+                        <img class="resultPic" data-name="successPic" src="http://m.iqiyipic.com/common/lego/20181107/2f50c642ba2e4cf0a216befada35f6b6.png" alt="">
+                        <span class="awardName">碳酸饮料</span>
+                    </div>
+                    <div class="awardItem">
+                            <img class="resultPic" data-name="successPic" src="http://m.iqiyipic.com/common/lego/20181107/2f50c642ba2e4cf0a216befada35f6b6.png" alt="">
+                            <span class="awardName">碳酸饮料</span>
+                        </div>
+            </div>
+            <div class="checkPrice" data-name="myrewards">
+                <span class="whiteText">查看奖品</span>
+                <div class="rightArrow"></div>
+            </div>
+            <div class="againBtn" data-name="againBtn">
+                <p class="againText">再来一次</p>
+            </div>
+            <span class="closeBtn" data-name="close"></span>
+        </div>
+    </div> 
+    <script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+    <script>
+    (function () {
+        var src = '//cdn.jsdelivr.net/npm/eruda';
+        if (!/eruda=true/.test(window.location) && localStorage.getItem('active-eruda') !== 'true') return;
+        document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+        document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+    })();
+    </script>
+</body>
+</html>

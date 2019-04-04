@@ -6,7 +6,10 @@
 
 3.抓https：Help -> SSL Proxying -> Install Charles Root Certificate，装ca证书
     要配好*:433的端口
-手机上用Help -> SSL Proxying -> 。。。。
+    手机上用Help -> SSL Proxying -> 。。。。下载的证书，要在安全性和隐私里面安装，我的是在系统安全->加密与凭据
+    我用的chrome浏览器。不要用小米手机自带的浏览器下载
+    还是有抓包失败: SSLHandshake: Received fatal alert: certificate_unknown
+    
 
 4.过滤网络请求：Proxy -> Recording Setting -> include添加白名单
 

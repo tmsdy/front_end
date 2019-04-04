@@ -1,0 +1,43 @@
+.loading {
+  position: absolute;
+  top: 1.08rem;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.32rem;
+  background-color: #ffffff;
+  .icon-loading {
+    position: relative;
+    width: .5rem;
+    height: .5rem;
+    top: 50%;
+    margin-top: -0.25rem;
+    overflow: hidden;
+    display: inline-block;
+    background: url(//www.iqiyipic.com/common/fix/h5-v3/am-update-icon.png) no-repeat;
+    background-size: 18rem .5rem;
+    -webkit-animation: loading 1.8s steps(36) infinite;
+    -moz-animation: loading 1.8s steps(36) infinite;
+    -o-animation: loading 1.8s steps(36) infinite;
+    animation: loading 1.8s steps(36) infinite;
+  }
+}
+
+@-webkit-keyframes loading {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -18rem;
+  }
+}
+
+@keyframes loading {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -18rem;
+  }
+}

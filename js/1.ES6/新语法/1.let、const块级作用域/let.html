@@ -10,7 +10,7 @@ if (true) {
   let aa_;
   var aa_; // Uncaught SyntaxError: Identifier 'aa_' has already been declared
 }
-3.不绑定全局作用域
+3.不绑定全局作用域 -- 比如限定次数就不能绑在window上不然会被改
 ES5的 var 和 function 声明的全局变量作为全局对象的属性，不利于模块化编程
 使用 let, const 命令声明的全局变量不属于全局对象的属性。
 let let_test = 'test';
