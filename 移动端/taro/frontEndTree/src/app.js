@@ -1,11 +1,9 @@
 import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index'
 import { Provider } from '@tarojs/redux'
-
-import configStore from './store'
 import './app.less'
 
-const store = configStore()
+// const store = configStore()
 
 class App extends Component {
 
@@ -21,22 +19,22 @@ class App extends Component {
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
     },
-    "tabBar": {
-      "selectedColor": "#16E124",
-      "borderStyle": "white",
-      "backgroundColor": "#F5F5F5",
-      "list": [
+    tabBar: {
+      selectedColor: "#16E124",
+      borderStyle: "white",
+      backgroundColor: "#F5F5F5",
+      list: [
         {
-          "pagePath": "pages/index/index",
-          "text": "精选视频",
-          "iconPath": "./assets/images/video_normal.png",
-          "selectedIconPath": "./assets/images/video_active.png"
+          pagePath: "pages/index/index",
+          text: "精选视频",
+          iconPath: "./assets/images/video_normal.png",
+          selectedIconPath: "./assets/images/video_active.png"
         },
         {
-          "pagePath": "pages/my/my",
-          "text": "我的",
-          "iconPath": "./assets/images/my_normal.png",
-          "selectedIconPath": "./assets/images/my_active.png"
+          pagePath: "pages/my/my",
+          text: "我的",
+          iconPath: "./assets/images/my_normal.png",
+          selectedIconPath: "./assets/images/my_active.png"
         }
       ]
     }
@@ -54,7 +52,7 @@ class App extends Component {
   // 请勿修改此函数
   render () {
     return (
-      <Provider store={store}>
+      <Provider>
         <Index />
       </Provider>
     )

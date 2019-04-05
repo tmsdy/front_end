@@ -41,6 +41,15 @@ export default class VideoDetail extends Component {
 
   clickFavorite(e){
     let {favorite} = this.state
+    if(!favorite){
+      Taro.showToast({
+        title: '收藏成功'
+      })
+    }else{
+      Taro.showToast({
+        title: '取消收藏成功'
+      })
+    }
     this.setState({
       favorite: !favorite
     })
