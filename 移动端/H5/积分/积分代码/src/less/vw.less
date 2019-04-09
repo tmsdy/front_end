@@ -1,0 +1,18 @@
+// 设计稿标准尺寸
+@vw_design: 750;
+// iPhone 6尺寸的根元素大小基准值
+@vw_fontsize: 100;
+// 换算比例
+@vw_percentage: @vw_fontsize / @vw_design;
+
+html {
+  font-size: @vw_percentage * 100vw;
+
+  @media screen and (max-width: 320px) {
+    font-size: (320 * @vw_percentage) * 1px;
+  }
+
+  @media screen and (min-width: 560px) {
+    font-size: (560 * @vw_percentage) * 1px;
+  }
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset='utf-8'/>
+    <title>话题打Call广场</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <script>
+      (function (doc, win) {
+        var docEl = doc.documentElement,
+          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+          recalc = function () {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            if (clientWidth >= 640) {
+              docEl.style.fontSize = '100px';
+            } else {
+              docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+            }
+          };
+        recalc();
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+      })(document, window);
+    </script>
+    <link rel="stylesheet" href="<%- getStatic('pkSquare.css') %>"/>
+    <link rel="stylesheet" href="//security.iqiyi.com/static/captcha/css/all.css">
+</head>
+<body>
+<div class="top-section">
+    <ul id="topSectionBox" class="top-section-box">
+        <li data-id="all" class="top-section-item">
+            <span class="top-section-text">全部话题</span>
+            <span class="top-section-line"></span>
+        </li>
+        <li data-id="my" class="top-section-item">
+            <span class="top-section-text">我参与的</span>
+            <span class="top-section-line"></span>
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div data-body="all" class="listBody">
+        <ul class="topicBox" id="list"></ul>
+        <div class="loading" id="loading">正在加载中，请稍候...</div>
+    </div>
+    <div class="noTopic" id="noList">
+        <div class="pic"></div>
+        <p class="text">居然没有参与任何话题呢~</p>
+    </div>
+    <div class="noTopic" id="netError">
+        <div class="pic net-error"></div>
+        <p class="text">网络未连接，请检查网络设置~</p>
+    </div>
+    <div class="noTopic" id="noLogin">
+        <div class="pic"></div>
+        <p class="text">登录后可查看我参与的话题~</p>
+        <span id="goToLogin" class="btn-login mt100">立即登录</span>
+    </div>
+</div>
+<div class="toast"><p></p></div>
+
+<% if (env === 'fat') { %>
+    <!--vconsole for test-->
+    <script src="//statics-web.iqiyi.com/common/jssdk/src/vconsole.min.js"></script>
+    <script>var vConsole = new VConsole()</script>
+<% } %>
+
+<script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>"></script>
+<script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+<script src="<%- getStatic('vendor.js') %>"></script>
+<script src="<%- getStatic('pkSquare.js') %>"></script>
+</body>
+</html>

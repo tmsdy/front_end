@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "module": "es6",
+      "baseUrl": ".",
+      "paths": {
+        "Common/*": ["./src/common/*"],
+        "Components/*": ["./src/components/*"],
+        "Less/*": ["./src/less/*"],
+        "Assets/*": ["./src/assets/*"],
+        "Res/*": ["./src/res/*"]
+      }
+    }
+  }

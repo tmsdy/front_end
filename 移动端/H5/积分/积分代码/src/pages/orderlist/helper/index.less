@@ -1,0 +1,57 @@
+@import "~Less/vw";
+@import "~Less/base";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+// 兑换记录帮助页
+.container {
+  padding-bottom: .44rem;
+}
+
+.helper-top {
+  line-height: .4rem;
+  padding: .4rem;
+  font-size: .28rem;
+  color: #333333;
+  font-weight: bold;
+}
+
+.helper-step {
+  padding: 0 .4rem;
+}
+
+.step-item {
+  padding-bottom: .2rem;
+  .step-desc {
+    line-height: .4rem;
+    font-size: .28rem;
+    color: #666666;
+  }
+  .step-click {
+    color: #FF7E00;
+    cursor: pointer;
+  }
+  .step-image-wrapper {
+    margin-top: 0.2rem;
+    text-align: left;
+  }
+  .step-image {
+    display: inline-block;
+    width: 100%;
+    height: 4rem;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    &.image-buy {
+      .mix-res-background-image('orderlist/buy-by-integral');
+    }
+    &.image-ticket {
+      .mix-res-background-image('orderlist/ticket');
+    }
+  }
+}

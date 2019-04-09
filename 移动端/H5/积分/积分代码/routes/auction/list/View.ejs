@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset='utf-8'/>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>抢拍英雄榜</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <link rel="stylesheet" href="<%- getStatic('res/css/mescroll.min.css') %>">
+    <link rel="stylesheet" href="<%- getStatic('auctionList.css') %>">
+</head>
+<body>
+<div class="list-container">
+    <div class="container-bg"></div>
+    <div class="inner-container common-wrapper">
+        <i class="wrapper-decoration decoration-left"></i>
+        <i class="wrapper-decoration decoration-right"></i>
+        <i class="border-decoration decoration-left"></i>
+        <span class="list-title">
+            <span class="title-content">最高<span data-id="max">0</span>/最低<span data-id="min">0</span></span>
+        </span>
+        <div id="mescroll" class="list-wrapper mescroll">
+            <ul id="listWrapper"></ul>
+        </div>
+    </div>
+</div>
+
+<% if (env === 'fat') { %>
+    <!--vconsole for test-->
+    <script src="//statics-web.iqiyi.com/common/jssdk/src/vconsole.min.js"></script>
+    <script>var vConsole = new VConsole()</script>
+<% } %>
+<% if (env !== 'production') { %>
+    <script>console.log('Node Server Environment:', '<%= env %>')</script>
+<% } %>
+
+<script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>"></script>
+<script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+<script src="<%- getStatic('res/scripts/lib/mescroll.min.js') %>"></script>
+<script src="<%- getStatic('vendor.js') %>"></script>
+<script src="<%- getStatic('auctionList.js') %>"></script>
+</body>
+</html>

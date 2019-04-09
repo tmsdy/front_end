@@ -1,0 +1,40 @@
+@bg-color-primary: #5332CD;
+@bg-color-light: #7572EC;
+@text-stroke-color: #FFB842;
+
+.mix-border-wrapper() {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: .02rem;
+  border: .15rem solid #f3b72c;
+  border-radius: .2rem;
+  box-shadow: 0 0 0 .02rem #000000, inset 0 0 0 .02rem #000000;
+  background-color: #ffffff;
+}
+
+.mix-border-title(@height: .42rem) {
+  position: absolute;
+  left: 0;
+  top: -@height;
+  z-index: 9;
+  width: 100%;
+  height: @height;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.mix-border-bottom-button(@width, @height) {
+  position: absolute;
+  left: 50%;
+  bottom: -.08rem;
+  z-index: 9;
+  transform: translate(-50%, 50%);
+  display: block;
+  width: @width;
+  height: @height;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

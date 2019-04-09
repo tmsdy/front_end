@@ -1,0 +1,168 @@
+@import "~Less/vw";
+@import "~Less/base";
+@import "~Less/publicPage";
+@import "~Components/toast/index.less";
+@import "~Components/dialog/index.less";
+@import "~Components/progress/index.less";
+@import "~Components/switchMenu/index.less";
+@import "../less/list.less";
+
+@coupon-height: 1.5rem;
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.snatch-scroll-container {
+  height: 85%;
+  height: calc(~"100% - 1.02rem");
+}
+
+.state-text {
+  display: inline-block;
+  height: .36rem;
+  line-height: .32rem;
+  margin-right: .08rem;
+  padding: 0 .08rem;
+  border-radius: .05rem;
+  border: 1px solid @border-primary;
+  color: @text-primary;
+  font-size: .2rem;
+  vertical-align: top;
+
+  &.state-disabled {
+    border-color: #CCCCCC;
+    color: #999999;
+  }
+}
+
+// 夺宝成功卡券列表
+.list-wrapper {
+  padding: .2rem .3rem;
+  &.expried {
+    .background-wrapper {
+      .mix-res-background-image('snatch/coupon-expried');
+    }
+    .unit, .price, item-title, record-validity {
+      color: @text-tips !important;
+    }
+    .btn-touse {
+      background-color: #cccccc !important;
+    }
+  }
+}
+
+.background-wrapper {
+  width: 6.9rem;
+  height: @coupon-height;
+  background-size: 6.9rem 1.5rem;
+  cursor: pointer;
+  .mix-res-background-image('snatch/coupon');
+
+  .layout-left {
+    .unit {
+      display: inline-block;
+      line-height: 1;
+      font-size: 0.37rem;
+      vertical-align: middle;
+    }
+
+    .price {
+      .single-line();
+      height: @coupon-height;
+      color: @color-primary;
+      font-size: 0.74rem;
+      line-height: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .layout-right {
+    height: 1.5rem;
+    padding: 0.32rem 0.26rem;
+
+    .item-content {
+      display: inline-block;
+      max-width: 100%;
+      vertical-align: middle;
+      &.with-button {
+        max-width: 66%;
+        max-width: calc(~"100% - 1.32rem - 0.3rem");
+      }
+
+      .item-title {
+        .single-line();
+        height: .46rem;
+        line-height: .46rem;
+        font-size: .28rem;
+        color: #333333;
+      }
+      .record-validity {
+        font-size: .24rem;
+        line-height: .4rem;
+      }
+    }
+
+    .button-wrapper {
+      float: right;
+      margin-top: .13rem;
+      width: 1.32rem;
+      .btn-touse {
+        width: 1.32rem;
+        height: .6rem;
+        line-height: .6rem;
+        padding: 0 .2rem;
+        text-align: center;
+        font-size: .28rem;
+      }
+    }
+  }
+}
+
+// 兑换记录弹窗
+#orderDetail {
+  .dialog-modal {
+    width: auto;
+  }
+}
+
+.order-content {
+  min-height: 4.1rem;
+  max-height: 5.6rem;
+  width: 5rem;
+  margin: .6rem .5rem .3rem;
+  overflow: auto;
+
+  .image-wrapper {
+    height: 1.5rem;
+    text-align: center;
+
+    .order-image {
+      display: inline-block;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .order-title {
+    line-height: 1;
+    margin: .2rem 0 .36rem;
+    text-align: center;
+    font-size: .32rem;
+    font-weight: bold;
+    color: #333333;
+  }
+}
+
+.red-icon {
+  width: .1rem;
+  height: .1rem;
+  border-radius: .05rem;
+  background-color: red;
+  display: inline-block;
+  margin-left: 0.1rem;
+  margin-bottom: 0.07rem;
+}

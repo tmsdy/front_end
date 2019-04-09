@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv="content-language" lang="zh-CN">
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <title>我的收获帮助页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <link rel="stylesheet" href="<%- getStatic('orderHelper.css') %>" />
+</head>
+<body>
+<div class="container">
+    <div class="container-box">
+        <div class="helper-top">积分兑换后的商品及发放的会员卡可在我的收获页查看，部分商品记录请根据以下提醒查看。</div>
+        <ul class="helper-step">
+            <li class="step-item">
+                <div class="layout-group label-w40">
+                    <div class="layout-label tl">1.</div>
+                    <span class="step-desc">在爱奇艺9.6.5及以前的版本中用积分兑换的商品，请 <span id="goToRecord" class="step-click">点击这里查看></span></span>
+                </div>
+            </li>
+            <li class="step-item">
+                <div class="layout-group label-w40">
+                    <div class="layout-label tl">2.</div>
+                    <span class="step-desc">通过积分购买的商品，请 <a class="step-click" href="https://mall.iqiyi.com/m/home/order.html">点击这里查看></a></span>
+                </div>
+                <div class="step-image-wrapper"><span class="step-image image-buy"></span></div>
+            </li>
+            <li class="step-item">
+                <div class="layout-group label-w40">
+                    <div class="layout-label tl">3.</div>
+                    <span class="step-desc">爱奇艺9.6.5及以前的版本中，在“精选好券”中兑换的卡券，请 <span id="goToCoupon" class="step-click">点击这里查看></span></span>
+                </div>
+                <div class="step-image-wrapper"><span class="step-image image-ticket"></span></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>"></script>
+<script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+<script src="<%- getStatic('vendor.js') %>"></script>
+<script src="<%- getStatic('orderHelper.js') %>"></script>
+</body>
+</html>

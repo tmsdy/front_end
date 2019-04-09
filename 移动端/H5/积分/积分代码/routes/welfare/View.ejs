@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset='utf-8' />
+    <title>公益星球</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth>=640){
+                        docEl.style.fontSize = '100px';
+                    }else{
+                        docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                    }
+                };
+            recalc();
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="<%- getStatic('welfare.css') %>" ></link>
+    <link rel="stylesheet" href="//security.iqiyi.com/static/captcha/css/all.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="playWrapper" data-btn="video">
+            <img src="" alt="" id="videoPic" class="videoPic">
+            <div class="playBtn">
+                <div class="triangle"></div>
+            </div>
+        </div>
+        <div class="infoWrapper">
+            <p class="title" id="title"></p>
+            <div class="processBox">
+                <div class="left">
+                    <p class="process"><span class="currentNum" data-node="currentNum"></span>/<span data-node="totalNum"></span></p>
+                    <div class="loadingBar">
+                        <div class="processBar" id="processBar"></div>
+                    </div>
+                </div>
+                <div class="right" data-btn="zhuli">
+                    <p class="word">助力</p>
+                    <span class="price" id="price"></span>
+                    <div class="zhulixin"></div>
+                </div>
+            </div>
+        </div>
+        <div class="middleWrapper">
+            <div class="title">
+                <span class="left"></span>
+                <span class="text">欢迎加入公益星球</span>
+                <span class="right"></span>
+            </div>
+            <p class="content">
+                公益星球致力于展出爱奇艺的公益项目，等待你的助力。
+                助力成功，我们会进行项目的执行。请大家随时关注项目的进度哦~
+            </p>
+            <img src="//statics-web.iqiyi.com/integral_rn/assets/gongyi/charity@2x.png" alt="" class="middleImg">
+            <p class="ruleQ">如何助力?</p>
+            <p class="ruleA">打开爱奇艺APP，进入“我的”页面，“公益”入口，在公益星球查看【星球攻略】即可。</p>
+        </div>
+        <div class="bottomBox" data-btn="callApp">
+            <p>打开爱奇艺APP，为爱心助力</p>
+        </div>
+        <div class="leftPic"></div>
+        <div class="rightPic"></div>
+        <div class="leftline"></div>
+    </div>
+
+    <script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>"></script>
+    <script src="<%- getStatic('vendor.js') %>"></script>
+    <script src="<%- getStatic('welfare.js') %>"></script>
+</body>
+</html>

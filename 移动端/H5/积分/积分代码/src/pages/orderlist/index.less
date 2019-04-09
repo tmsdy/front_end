@@ -1,0 +1,185 @@
+@import "~Less/vw";
+@import "~Less/base";
+@import "~Less/publicPage";
+@import "~Components/dialog/index.less";
+@import "~Components/toast/index.less";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.mescroll-upwarp {
+  padding-bottom: 1rem !important;
+}
+.mescroll-empty .empty-btn {
+  .mix-touch-active-single();
+}
+
+.record-helper {
+  display: none;
+  width: 100%;
+  height: .8rem;
+  line-height: .8rem;
+  padding: 0 .3rem;
+  font-size: .28rem;
+  color: #FF7E00;
+  background: #FFF7EA;
+  .mix-touch-active-colorful();
+}
+
+// 兑换记录页列表
+.downwarp-content {
+  .downwarp-progress {
+    width: .24rem !important;
+    height: .24rem !important;
+    color: #999999;
+  }
+  .downwarp-tip {
+    font-size: .24rem !important;
+    color: #999999;
+    vertical-align: middle;
+  }
+}
+
+.mescroll {
+  user-select: none;
+}
+
+.record-item {
+  .clearfix();
+  padding: 0 .3rem;
+  font-size: 0;
+  border-bottom: 1px solid #F2F2F2;
+  cursor: pointer;
+  &.disabled {
+    cursor: default;
+    .image-wrapper,
+    .record-validity {
+      opacity: .5;
+    }
+    .record-title {
+      color: rgba(51, 51, 51, .5);
+    }
+  }
+  .image-wrapper {
+    display: inline-block;
+    width: 1.4rem;
+    height: 1.2rem;
+    margin: .4rem 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .record-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-image: url("http://pic2.iqiyipic.com/common/lego/20180619/2a669dbc741a48629ea118b247fbf30b.png");
+  }
+  .record-content {
+    display: inline-block;
+    max-width: 3.2rem;
+    max-width: -webkit-calc(~"100% - 3rem");
+    max-width: calc(~"100% - 3rem");
+    padding: 0 .2rem;
+    vertical-align: middle;
+  }
+  .record-title {
+    .single-line();
+    width: 100%;
+    line-height: .36rem;
+    font-size: .3rem;
+    color: #333333;
+  }
+  .record-validity {
+    width: 100%;
+    margin-top: .28rem;
+    line-height: .3rem;
+    font-size: .24rem;
+    color: #999999;
+    .single-line();
+  }
+  .record-state {
+    float: right;
+    display: table;
+    height: 2rem;
+  }
+  .state-box {
+    display: table-cell;
+    width: 1.4rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .state-image {
+    display: inline-block;
+    width: .9rem;
+    height: .9rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    &.state-fail {
+      .mix-res-background-image('orderlist/buy-fail');
+    }
+    &.state-overdue {
+      .mix-res-background-image('orderlist/overdue');
+    }
+  }
+  .state-text {
+    display: inline-block;
+    height: .36rem;
+    line-height: .32rem;
+    margin-right: .08rem;
+    padding: 0 .08rem;
+    border-radius: .05rem;
+    border: .02rem solid #FF3B30;
+    color: #FF3B30;
+    font-size: .2rem;
+    vertical-align: top;
+    &.state-disabled {
+      border-color: #CCCCCC;
+      color: #999999;
+    }
+  }
+}
+
+// 兑换记录弹窗
+#orderDetail {
+  .dialog-modal {
+    width: auto;
+  }
+}
+
+.order-content {
+  min-height: 4.1rem;
+  max-height: 5.6rem;
+  width: 5rem;
+  margin: .6rem .5rem .3rem;
+  overflow: auto;
+  .image-wrapper {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.5rem;
+    text-align: center;
+    .order-image {
+      display: inline-block;
+      max-width: 1.5rem;
+      max-height: 1.5rem;
+      vertical-align: middle;
+    }
+  }
+  .order-title {
+    line-height: 1;
+    margin: .2rem 0 .36rem;
+    text-align: center;
+    font-size: .32rem;
+    font-weight: bold;
+    color: #333333;
+  }
+}
