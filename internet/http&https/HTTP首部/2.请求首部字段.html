@@ -25,8 +25,8 @@
 8.Range:只获取部分资源
     Range: bytes=5001-10000，能处理该范围请求时返回206，不能处理该范围请求时返回200。
 
-9.Referer: 哪个web页面发起的请求
-    Referer: www.hackr.jp/index.html
+9.Referer: 哪个web页面发起的请求，完整的请求url
+    Referer: http://test.h5.iqiyi.com:3333/?lotteryCode=freetest&ext=true&eruda=true&hideshare=0
 
 10.User-Agent: 
     1.判断浏览器类型，采用兼容方案
@@ -34,5 +34,8 @@
     3.标识H5容器，方便调用H5容器特定接口
     4.伪装成本低，不要过度依赖
     
+11.Origin:协议+域名+端口，Origin: http://test.h5.iqiyi.com:3333
+
+
 
  -->
