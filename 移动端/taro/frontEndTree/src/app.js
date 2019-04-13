@@ -12,6 +12,7 @@ class App extends Component {
       'pages/index/index',
       'pages/my/my',
       'pages/videoDetail/videoDetail',
+      'pages/favoriteList/favoriteList'
     ],
     window: {
       backgroundTextStyle: 'light',
