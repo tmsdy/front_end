@@ -13,6 +13,14 @@
     3）Webview要放在外层,或者用Fragment包起来
 
 4.需要安装fsevents这个包，有空了解下这个
+
+5.RN的1px，用hairlineWidth
+var styles = StyleSheet.create({
+    button: {
+        borderWidth : StyleSheet.hairlineWidth,
+        borderColor : 'red',
+    }
+});
     
 
 */

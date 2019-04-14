@@ -19,9 +19,5 @@
 window.location.href：
     "iqiyi://mobile/register_business/qyclient?pluginParams=%257B%2522biz_id%2522%253A100%252C%2522biz_plugin%2522%253A%2522qiyibase%2522%252C%2522biz_params%2522%253A%257B%2522biz_sub_id%2522%253A106%252C%2522biz_params%2522%253A%2522bizId%253DIntegralRN%2526componentName%253DRNIntegral%2522%252C%2522biz_dynamic_params%2522%253A%2522initParams%253D%257B%255C%2522pageName%255C%2522%253A%255C%2522MyGain%255C%2522%257D%2522%257D%257D"
 
-3.背景图不够长，用background-size: cover就行了，需要手动加前缀，iPhone X在app中打开有问题，在浏览器中打开正常
-原因：iPhoneX适配 wkWebView屏幕下方有间隙的问题
-解决方法：meta 加 viewport-fit=cover，body加padding-bottom: constant(safe-area-inset-bottom);
-https://blog.csdn.net/yelin042/article/details/79837757
 
 */
