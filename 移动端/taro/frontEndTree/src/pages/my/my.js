@@ -32,6 +32,12 @@ export default class My extends Component {
     })
     Taro.setStorageSync('userInfo',userInfo)
   }
+  goToFavorite(){
+    // Taro.navigateTo({
+    //   url:'pages/favoriteList/favoriteList'
+    // })
+    console.log('goToFavorite')
+  }
   render () {
     let {userInfo} = this.state
     return (
@@ -45,7 +51,7 @@ export default class My extends Component {
           <Text className='userinfo-nickname'>{userInfo.nickName}</Text>
         </Button>
         <View className="my_menu">
-          <View className="menu_item">
+          <View className="menu_item" onClick={this.goToFavorite.bind(this)}>
             收藏列表
           </View>
           <View className="menu_item">
