@@ -1,0 +1,296 @@
+@import "~Less/vw";
+@import "~Less/base";
+@import "~Less/publicPage";
+@import "~Components/toast/index.less";
+
+html, body {
+  background-color: @bg-default;
+}
+
+.fix-orange-button {
+  width: 5.6rem;
+  margin-bottom: .2rem;
+}
+.fix-default-button {
+  width: 5.6rem;
+  color: @color-primary-light;
+  border-color: @color-primary-light;
+}
+
+i{
+  &.i-rope {
+    display: inline-block;
+    height: .32rem;
+    width: .08rem;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    .mix-res-background-image('share/topicpk/rope');
+  }
+  &.i-pk-vs {
+    display: inline-block;
+    height: .9rem;
+    width: .9rem;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    .mix-res-background-image('share/topicpk/vs');
+  }
+  &.circle-yellow {
+    display: inline-block;
+    height: .14rem;
+    width: .14rem;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    .mix-res-background-image('share/topicpk/yellow');
+  }
+}
+
+.topic-top {
+  width: 100%;
+  text-align: center;
+  padding: .2rem 0 .18rem;
+  .top-wrapper {
+    position: relative;
+    display: inline-block;
+    height: .64rem;
+    padding: .12rem .28rem;
+    border-radius: .06rem;
+    vertical-align: top;
+    background-color: #FF8E8E;
+    .icon-left,
+    .icon-right {
+      position: absolute;
+      top: -.2rem;
+    }
+    .icon-left {
+      left: .18rem;
+    }
+    .icon-right {
+      right: .2rem;
+    }
+    .top-title {
+      height: .4rem;
+      line-height: .4rem;
+      font-size: .28rem;
+      color: #ffffff;
+    }
+  }
+}
+
+.topic-block {
+  display: flex ;
+  flex-direction: column ;
+  width: 6.9rem;
+  margin: .3rem auto 0;
+  padding: .2rem .2rem .3rem;
+  background: #FFFFFF;
+  border: 1px solid #E4E4E4;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.06);
+  border-radius: .1rem;
+  background-color: #ffffff;
+  .topic-title{
+    margin: .3rem 0 .28rem ;
+    align-self: center ;
+    font-size: .33rem ;
+    color: #333 ;
+    max-width: 5.5rem ;
+    text-align: center;
+  }
+  .top-tip{
+    font-size: .24rem ;
+    color: #666666 ;
+  }
+  .topic-tips {
+    align-self: center ;
+    display: inline-block;
+    padding: 0 .22rem;
+    margin-top: .66rem;
+    background: #FFF8F3;
+    border-radius: .44rem;
+    line-height: .44rem;
+    font-size: .24rem;
+    color: #2A2A2A;
+    text-align: center;
+  }
+}
+.highlight{
+  color: #FF6600;
+}
+
+.topic-view {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .pk-vs {
+    position: absolute;
+    left: calc(~"50% - .45rem");
+    top: calc(~"50% - .45rem");
+    z-index: 1;
+    background-color: #ffffff;
+    border-radius: 50%;
+  }
+  .image-view {
+    position: relative;
+    width: 3.2rem;
+    height: 2.8rem;
+    z-index: 0;
+    padding-bottom: .12rem;
+    border-radius: .1rem;
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    .mix-res-background-image('share/topicpk/default');
+    .select-btn{
+      position: absolute ;
+      left: .5rem;
+      bottom: -.4rem;
+      width: 2.2rem;
+      height: .8rem;
+      border-radius: .8rem;
+      color: #fff;
+      font-size: .32rem;
+      text-align: center;
+      line-height: .8rem;
+    }
+    &.view-left {
+      .select-btn{
+        background: #53A2FF;
+        box-shadow: 0 6px 4px -2px rgba(83,162,255,0.30);
+      }
+    }
+    &.view-right {
+      .select-btn{
+        background: #FF5F9C;
+        box-shadow: 0 6px 4px -2px rgba(255,95,156,0.30);
+      }
+    }
+  }
+  .view-mask {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 0;
+    width: 100%;
+    height: 1.7rem;
+    opacity: 0.7;
+    border-bottom-left-radius: .1rem;
+    border-bottom-right-radius: .1rem;
+  }
+  .view-title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: .12rem;
+    text-align: center;
+    line-height: .4rem;
+    font-size: .28rem;
+    color: #FFFFFF;
+  }
+}
+
+.rule-block {
+  margin-top: .94rem;
+  width: 100% ;
+  display: flex ;
+  flex-direction: column ;
+  align-items: center ;
+}
+
+.block-title {
+  display: block;
+  height: .32rem;
+  margin-bottom: .23rem;
+  text-align: center;
+
+  .block-bg-left,
+  .block-bg-right {
+    display: inline-block;
+    width: 1.47rem;
+    height: .04rem;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  .block-bg-left {
+    .mix-res-background-image('auction/block-title-bg-left');
+  }
+  .block-bg-right {
+    .mix-res-background-image('auction/block-title-bg-right');
+  }
+  .block-text {
+    display: inline-block;
+    padding: 0 .08rem;
+    line-height: .32rem;
+    color: @text-content;
+    font-size: .24rem;
+    font-weight: bold;
+    background-color: transparent;
+    vertical-align: middle;
+  }
+}
+
+.rules-list {
+  .rule-icon-wrapper {
+    text-align: left;
+    .circle-yellow {
+      margin-top: .1rem;
+      vertical-align: top;
+    }
+  }
+  .rule-text {
+    display: inline-block;
+    line-height: .34rem;
+    font-size: .24rem;
+    color: @color-tips;
+  }
+}
+
+.bottom-fixed-wrapper{
+  width: 100vw ;
+  position: fixed;
+  left: 0 ;
+  bottom: 0 ;
+  z-index: 222;
+  height: 1.1rem ;
+  background: #fff ;
+  padding: 0 .3rem ;
+  .flex-box{
+      height: 100% ;
+      display: flex ;
+      align-items: center ;
+  }
+  .icon-iqiyi{
+      width: .8rem ;
+      height: .8rem ;
+      margin-right: .14rem ;
+  }
+  .text-box{
+      font-size: .28rem ;
+      line-height: .4rem ;
+      color: #333 ;
+      .small-gray{
+          font-size: .24rem ;
+          line-height: .34rem ;
+          color: #999 ;
+      }
+  }
+  .open-btn{
+      position: absolute;
+      top: 0.2rem;
+      right: 0.3rem;
+      height: .7rem ;
+      background: #23CD1D ;
+      padding: 0 .35rem ;
+      display: flex ;
+      align-items: center ;
+      color: #fff ;
+      font-size: .28rem ;
+      border-radius: .7rem ;
+      cursor: pointer;
+  }
+}

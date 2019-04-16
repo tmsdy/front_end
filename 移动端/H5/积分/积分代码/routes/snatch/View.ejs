@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset='utf-8' />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <title>积分夺宝</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <link rel="stylesheet" href="<%- getStatic('res/css/mescroll.min.css') %>">
+    <link rel="stylesheet" href="<%- getStatic('snatch.css') %>" />
+</head>
+<body>
+
+<div id="mescroll" class="mescroll">
+    <div id="snatchTop" class="snatch-top">
+        <div class="snatch-banner"></div>
+        <span id="showRuleDialog" class="btn-sidebar">夺宝攻略 <i class="i-arrow-direction-right-image"></i></span>
+        <div id="snatchRecord" class="snatch-record">
+            <span class="record-text">
+                我的积分：<span id="userTotalScore" class="record-number mr40">0</span>
+                夺宝次数：<span id="totalParticipates" class="record-number">0</span>
+            </span>
+            <span class="record-entry">
+                <span id="visitRecord" class="record-entry-button">我的夺宝记录 <i class="i-arrow-direction-right-image"></i></span>
+                <div id="successFloating" class="success-floating">
+                    <i class="i-arrow direction-up floating-arrow"></i>
+                    <div class="success-floating-content">恭喜您夺宝成功！点击“我的夺宝记录”查看</div>
+                </div>
+            </span>
+        </div>
+    </div>
+    <div id="snatchBody" class="snatch-body">
+        <div id="noRecord"></div>
+        <div id="listContainer"></div>
+    </div>
+</div>
+
+<!-- 夺宝攻略弹窗内容 -->
+<div id="ruleDialogContent" class="rule-content" style="display: none;">
+    <h3 class="rule-title">夺宝攻略</h3>
+    <div class="container rule-wrapper">
+        <ul class="rule-list">
+            <% for (let i=0; i<ruleList.length; i++) { %>
+                <li class="layout-group label-w28">
+                    <span class="layout-label tl"><i class="title-circle circle-yellow icon-rule"></i></span>
+                    <%= ruleList[i] %>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</div>
+
+<!-- 首次夺宝弹窗内容 -->
+<div id="firstTimeSnatchDialogContent" class="first-time-snatch" style="display: none;">
+    <div class="container">
+        <p class="content-text">已夺宝1次</p>
+        <p class="content-text">多次参与中奖几率加倍哦</p>
+    </div>
+</div>
+
+<% if (env === 'fat') { %>
+    <!--vconsole for test-->
+    <script src="//statics-web.iqiyi.com/common/jssdk/src/vconsole.min.js"></script>
+    <script>var vConsole = new VConsole()</script>
+<% } %>
+
+<script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>"></script>
+<script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+<script src="<%- getStatic('res/scripts/lib/mescroll.min.js') %>"></script>
+<script src="<%- getStatic('vendor.js') %>"></script>
+<script src="<%- getStatic('snatch.js') %>"></script>
+</body>
+</html>

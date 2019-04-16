@@ -1,15 +1,20 @@
 <!-- 
 
 1.Allow : GET,HEAD 支持的HTTP请求方法
+	Access-Control-Allow-Credentials: true
+	Access-Control-Allow-Origin: http://test.h5.iqiyi.com:3333
 
-2.Content-Encoding: gzip 对实体主体部分压缩
+2.Content-Encoding: gzip 对实体主体部分压缩，一般就是对js和css进行压缩
+	抽奖的js：
+	css：25.3kb -> 14.1kb
 
 3.Content-language: 资源是什么语言(中文或者别的)
 
 4.Content-Type：服务器回应的时候，必须告诉客户端，数据是什么格式，以下是常见格式(总称MIME type)
-	text/plain  text/html   text/css
-	image/jpeg  image/png   image/svg+xml   audio/mp4   video/mp4
-    application/javascript  application/pdf application/zip application/atom+xml
+	js文件：application/x-javascript
+	png图片：image/png
+	css文件：text/css
+	xhr请求：application/json
     
 5.Expires:资源失效的日期
 

@@ -1,0 +1,647 @@
+@charset "utf-8";
+html {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height:100%;
+}
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, figure, menu, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, select, th, td {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体",DIN Alternate;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%
+}
+body{
+    margin: 0;
+    padding:0;
+    font-size: .14rem;
+    width: 100%;
+    height:100%;
+    background-color: #FFBDCA;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none !important;
+}
+.fix{
+    overflow: hidden;
+}
+.container{
+    background-color: #FFBDCA;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    .success{
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .goToLeft{
+        animation: goToLeft 0.5s;
+        -webkit-animation: goToLeft 0.5s;
+        -moz-animation: goToLeft 0.5s;
+        -o-animation: goToLeft 0.5s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes goToLeft {
+        from {
+            left: 0;
+        }
+        to {
+            left: -100%;
+        }
+    }
+    .rightPosition {
+        animation: rightPosition 0.5s ;
+        -webkit-animation: rightPosition 0.5s;
+        -moz-animation: rightPosition 0.5s;
+        -o-animation: rightPosition 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes rightPosition {
+        from {
+            left: 100%;
+        }
+        to {
+            left: 0;
+        }
+    }
+    .page8{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        display: none;
+        left: 900%;
+        .test{
+            background-color: #FFBDCA;
+            z-index: 200
+        }
+        .test{
+            z-index: 300
+        }
+    }
+    .loading{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        left: 0%;
+        .box{
+           width: 100%;
+           margin-top: 50%;
+            .lottieStart{
+                width: 100%;
+                height:1.5rem;
+                background: url('../../res/img/seven/cupid.gif') no-repeat center;
+                background-size: 100% 1.5rem;
+            }
+            p{
+                text-align: center;
+                font-size: 16px;
+            }
+        }
+    }
+    .resultLoading{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        left: 700%;
+        .box{
+            width: 100%;
+            margin-top: 50%;
+             .lottieStart{
+                 width: 100%;
+                 height: 0.9rem;
+                 background: url('../../res/img/seven/love.gif') no-repeat center;
+                 background-size: 100% 0.9rem;
+             }
+             p{
+                 text-align: center;
+                 font-size: 16px;
+             }
+         }
+    }
+    .resultPage{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 800%;
+        color: #FFFFFF;
+        display: none;
+        .contentBox{
+            width: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0.9rem;
+            .middle{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%,-50%);
+                .p1{
+                    font-size: 22px;
+                    font-weight: bold;
+                    line-height: 0.31rem;
+                    margin-left: 0.1rem;
+                }
+                .p2{
+                    font-size: 16px;
+                    margin-left: 0.1rem;
+                    line-height: 0.225rem;
+                }
+                .p3{
+                    font-size: 16px;
+                    margin-left: 0.1rem;
+                    line-height: 0.225rem;
+                }
+                .img{
+                    width: 3.31rem;
+                    height: 2.8rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    display: block;
+                }
+                .shareBtnApp{
+                    display: none;
+                    width: 2.22rem;
+                    height: 0.57rem;
+                    background: url('../../res/img/seven/single_female.png') no-repeat center;
+                    background-size: 2.22rem 0.57rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0.08rem;
+                    overflow: hidden;
+                    .text{
+                        color: #333333;
+                        font-size: 18px;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-top: 0.2rem;
+                    }
+                }
+                .shareBtnNotApp{
+                    width: 100%;
+                    height: 0.57rem;
+                    text-align: center;
+                    margin-top: 0.2rem;
+                    .leftBtn{
+                        display: inline-block;
+                        width: 1.57rem;
+                        height: 0.57rem;
+                        background: url('../../res/img/seven/save.png') no-repeat center;
+                        background-size: 1.57rem 0.57rem;
+                    }
+                    .rightBtn{
+                        display: inline-block;
+                        width: 1.57rem;
+                        height: 0.57rem;
+                        background: url('../../res/img/seven/share_male.png') no-repeat center;
+                        background-size: 1.57rem 0.57rem;
+                    }
+                }
+            }
+        }
+
+        .bottomBox{
+            width: 100%;
+            height: 0.9rem;
+            background-color: #FFFFFF;
+            overflow: hidden;
+            bottom: 0;
+            position: absolute;
+            .left{
+                position: absolute;
+                left: 0;
+                display: inline-block;
+                height: 0.9rem;
+                padding-top: 0.25rem;
+                padding-left: 0.25rem;
+                height: 100%;
+                p{
+                    // display: inline-block;
+                   font-size: 14px;
+                   color: #333333;
+                   line-height: 0.2rem;
+                   .pink{
+                       display: inline-block;
+                       color: #FB444E
+                   }
+                }
+            }
+            .right{
+                position: absolute;
+                right: 0;
+                height: 100%;;
+                display: inline-block;
+                width: 0.75rem;
+                margin-right: 0.1rem;
+                .getScore{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+                    right: 0;
+                    margin: auto;
+                    width:0.75rem;
+                    height: 0.75rem;
+                    background: url('../../res/img/seven/score.png') no-repeat center;
+                    background-size: 0.75rem 0.75rem
+                }
+            }
+        }
+    }
+    .large{
+        .contentBox{
+            .middle{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%,-50%);
+                .p1{
+
+                }
+                .p2{
+
+                }
+                .p3{
+
+                    margin-bottom: 0.3rem;
+                }
+                .img{
+
+                }
+                .shareBtnApp{
+                    display: none;
+                    width: 2.22rem;
+                    height: 0.57rem;
+                    background: url('../../res/img/seven/single_female.png') no-repeat center;
+                    background-size: 2.22rem 0.57rem;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0.3rem;
+                    overflow: hidden;
+                }
+                .shareBtnNotApp{
+                    width: 100%;
+                    height: 0.57rem;
+                    text-align: center;
+                    margin-top: 0.3rem;
+                    .leftBtn{
+                        display: inline-block;
+                        width: 1.57rem;
+                        height: 0.57rem;
+                        background: url('../../res/img/seven/save.png') no-repeat center;
+                        background-size: 1.57rem 0.57rem;
+                    }
+                    .rightBtn{
+                        display: inline-block;
+                        width: 1.57rem;
+                        height: 0.57rem;
+                        background: url('../../res/img/seven/share_male.png') no-repeat center;
+                        background-size: 1.57rem 0.57rem;
+                    }
+                }
+            }
+        }
+    }
+    .startPage{
+        width: 100%;
+        height: 100%;
+        background: url('../../res/img/seven/start_page.png') no-repeat center;
+        background-size: 100% 100%;
+        overflow: hidden;
+        position: absolute;
+        left: 100%;
+        .start{
+            width: 2.27rem;
+            height: 0.61rem;
+            background: url('../../res/img/seven/start_btn.png') no-repeat center;
+            background-size: 2.27rem 0.61rem;
+            position: absolute;
+            bottom: 0.9rem;
+            left: 50%;
+            margin-left: -1.135rem;
+        }
+    }
+    .wrap{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        display: none;
+        left: 100%;
+        .walk{
+            z-index: 200;
+            width: 1.5rem;
+            height: 1.6rem;
+            background: url('../../res/img/seven/male_walk.png') no-repeat center;
+            background-size: 1.5rem 1.6rem;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            margin-left: -0.75rem;
+            display: none;
+        }
+        .longBox{
+            width: 500%;
+            height: 100%;
+            background-position: bottom;
+            position: absolute;
+            transition-timing-function: ease-out;
+            transition-duration: 0.5s;
+            left: 0;
+            .bg{
+                width: 100%;
+                height: 3.75rem;
+                background: url('../../res/img/seven/long.png') no-repeat center;
+                background-size: 18.75rem 3.75rem;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                .dog{
+                    z-index: 200;
+                    width: 1.5rem;
+                    height: 1.6rem;
+                    background: url('../../res/img/seven/last_female.png') no-repeat center;
+                    background-size: 1.5rem 1.6rem;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                }
+            }
+
+        }
+        .female{
+            display: none;
+        }
+    }
+    .askName{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 600%;
+        text-align: center;
+        .questionTitle{
+            margin-top: 1rem;
+            font-size: 0.18rem;
+            color: #333333;
+            text-align: center;
+        }
+        input:-moz-placeholder { color: #333333; opacity: 0.1 }
+        ::-webkit-input-placeholder { color:#333333; opacity: 0.1}
+        input{
+            width: 2.675rem;
+            height: 0.3rem;
+            margin-left: auto;
+            margin-right: auto;
+            border-width: 0;
+            text-align: center;
+            font-size: 0.16rem;
+            margin-top: 0.35rem;
+            background-color: transparent;
+        }
+        .line{
+            width: 2.675rem;
+            height: 2px;
+            margin: 0 auto 0.3rem auto;
+            border-bottom: #333333 solid 2px;
+        }
+        .commit{
+            width: 1.28rem;
+            height: 0.46rem;
+            background: url('../../res/img/seven/commit.png') no-repeat center;
+            background-size: 1.28rem 0.46rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .grey{
+            opacity: 0.5;
+        }
+        .pic{
+            width: 100%;
+            height: 2.6rem;
+            background: url('../../res/img/seven/last.png') no-repeat center;
+            background-size: 100% 2.6rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    }
+    .quest1{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: none;
+        left: 100%;
+        .questionTitle{
+            margin-top: 1rem;
+            font-size: 0.18rem;
+            color: #333333;
+            text-align: center;
+        }
+        .sexSelect{
+            text-align: center;
+            margin-top: 0.35rem;
+            .male{
+                display: inline-block;
+                width: 1.6rem;
+                height: 2.31rem;
+                background: url('../../res/img/seven/male.png') no-repeat center;
+                background-size: 1.6rem 2.31rem;
+            }
+            .female{
+                display: inline-block;
+                background: url('../../res/img/seven/female.png') no-repeat center;
+                background-size: 1.6rem 2.31rem;
+            }
+        }
+        .sexBg{
+            width: 100%;
+            height: 1.55rem;
+            background: url('../../res/img/seven/sex_selecte.png') no-repeat center;
+            background-size: 100% 1.55rem;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+    .quest2{
+        width: 20%;
+        height: 100%;
+        position: absolute;
+        left: 0%;
+        .questionTitle{
+            margin-top: 0.4rem;
+            font-size: 0.18rem;
+            color: #333333;
+            text-align: center;
+            margin-bottom: 0.44rem;
+            max-width: 3rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .questBox{
+            .q1{
+                margin-left: auto;
+                margin-right: auto;
+                width: 3rem;
+                height: 0.4rem;
+                border-radius: 0.2rem;
+                border: 2px #333333 solid;
+                background-color: #FFFFFF;
+                line-height: 0.4rem;
+                margin-bottom: 0.13rem;
+                p{
+                    display: inline-block;
+                    line-height: 0.4rem;
+                    font-size: 0.16rem;
+                    color: #333333;
+                    vertical-align: middle;
+                }
+                .icon{
+                    margin-left: 0.15rem;
+                    width: 0.3rem;
+                    height: 0.3rem;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .a{
+                    background: url('../../res/img/seven/a.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+                .b{
+                    background: url('../../res/img/seven/b.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+                .c{
+                    background: url('../../res/img/seven/c.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+                .d{
+                    background: url('../../res/img/seven/d.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+            }
+            .selected{
+                background-color: #FB444E;
+                p{
+                    color: #FFFFFF;
+                }
+                .a{
+                    background: url('../../res/img/seven/a_.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+                .b{
+                    background: url('../../res/img/seven/b_.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+                .c{
+                    background: url('../../res/img/seven/c_.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+                .d{
+                    background: url('../../res/img/seven/d_.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+            }
+        }
+    }
+    .quest3{
+        left: 20%;
+    }
+    .quest4{
+        left: 40%;
+    }
+    .quest5{
+        left: 60%;
+    }
+    .quest6{
+        left: 80%;
+    }
+    .music{
+        position: fixed;
+        top: 0.1rem;
+        right: 0.1rem;
+        width: 0.4rem;
+        height: 0.4rem;
+        background: url('../../res/img/seven/music@3x.png') center no-repeat;
+        background-size: 0.4rem 0.4rem;
+    }
+
+    @-webkit-keyframes rotation {
+        from {-webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform:rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform:rotate(360deg);
+        }
+    }
+    .active {
+        -webkit-transform: rotate(360deg);
+        animation: rotation 3s linear infinite;
+        -moz-animation: rotation 3s linear infinite;
+        -webkit-animation: rotation 3s linear infinite;
+        -o-animation: rotation 3s linear infinite;
+    }
+    .musicno{
+        background: url('../../res/img/seven/musicno@3x.png') center no-repeat;
+        background-size: 0.4rem 0.4rem;
+    }
+}
+.female{
+    .wrap{
+        .walk{
+            background: url('../../res/img/seven/female_walk.png') no-repeat center;
+            background-size: 1.5rem 1.6rem;
+        }
+        .longBox .bg .dog{
+            background: url('../../res/img/seven/last_male.png') no-repeat center;
+            background-size: 1.5rem 1.6rem;
+        }
+    }
+    .resultPage{
+        .contentBox{
+            .middle{
+                .shareBtnApp{
+                    background: url('../../res/img/seven/single_male.png') no-repeat center;
+                    background-size: 2.22rem 0.57rem;
+                }
+                .shareBtnNotApp{
+                    .rightBtn{
+                        background: url('../../res/img/seven/share_female.png') no-repeat center;
+                        background-size: 1.57rem 0.57rem;
+                    }
+                }
+            }
+        }
+    }
+}

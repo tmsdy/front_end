@@ -1,0 +1,251 @@
+@import "~Less/vw";
+@import "~Less/base";
+@import "~Less/publicPage";
+@import "~Components/dialog/index.less";
+@import "~Components/toast/index.less";
+@import "./less/list.less";
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+}
+
+.layout-group {
+  margin-bottom: .14rem;
+  min-height: .35rem;
+  line-height: .35rem;
+  font-size: .24rem;
+}
+
+// 夺宝攻略弹窗内按钮
+.rule-dialog-btn {
+  width: 2.4rem !important;
+  height: .8rem !important;
+  line-height: .8rem !important;
+  font-size: .32rem !important;
+}
+
+// 夺宝空态页
+.mescroll-empty {
+  padding-top: 1.6rem;
+}
+
+.title-circle {
+  display: inline-block;
+  width: .44rem;
+  height: .44rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &.circle-blue {
+    .mix-res-background-image('snatch/blue');
+  }
+
+  &.circle-pink {
+    .mix-res-background-image('snatch/pink');
+  }
+
+  &.circle-yellow {
+    .mix-res-background-image('snatch/yellow');
+  }
+}
+
+// 夺宝攻略弹窗内容
+#ruleDialog .dialog-modal {
+  border-radius: .3rem;
+}
+
+.rule-content {
+  position: relative;
+  top: -.1rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center top;
+  .mix-res-background-image('snatch/modal-bg');
+
+  .rule-title {
+    width: 100%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    text-align: center;
+    font-size: .32rem;
+    font-weight: bold;
+    color: #333333;
+  }
+
+  .rule-wrapper {
+    padding: 0 .38rem .1rem;
+
+    .icon-rule {
+      width: 0.17rem;
+      height: 0.17rem;
+    }
+
+    .layout-label {
+      line-height: .32rem;
+    }
+  }
+}
+
+.first-time-snatch {
+  padding: .8rem 0 .5rem;
+  .content-text {
+    line-height: .5rem;
+    text-align: center;
+    font-size: .32rem;
+    color: @text-default;
+  }
+}
+.first-snatch {
+  width: 4.4rem;
+  height: .8rem;
+  line-height: .8rem;
+  text-align: center;
+  font-size: .32rem;
+}
+
+.snatch-top {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 4rem;
+  margin-bottom: .6rem;
+
+  .snatch-banner {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 3.5rem;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .mix-res-background-image('snatch/banner02');
+  }
+
+  .btn-sidebar {
+    position: absolute;
+    top: .1rem;
+    right: 0;
+    height: .5rem;
+    line-height: .24rem;
+    padding: 0.13rem 0 0.13rem 0.14rem;
+    font-size: 0.24rem;
+    color: @color-primary;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    cursor: pointer;
+  }
+
+  .snatch-record {
+    position: absolute;
+    bottom: -.44rem;
+    left: 50%;
+    z-index: 1;
+    width: 92%;
+    height: .88rem;
+    font-size: 0;
+    background: #ffffff;
+    box-shadow: 0 0 8px -2px #FFCEA4;
+    border-radius: 1rem;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+
+    .record-text {
+      display: inline-block;
+      max-width: 1.9rem;
+      max-width: calc(~"100% - 3.1rem");
+      line-height: .88rem;
+      margin-left: .3rem;
+      font-size: .24rem;
+      color: #333333;
+      overflow: auto;
+      white-space: nowrap;
+    }
+
+    .record-number {
+      color: @color-primary;
+    }
+
+    .record-entry {
+      float: right;
+      position: relative;
+      margin: .14rem .14rem .14rem 0;
+      .record-entry-button {
+        height: .6rem;
+        line-height: .6rem;
+        padding: 0 .3rem;
+        text-align: center;
+        color: #FF6600;
+        font-size: .28rem;
+        cursor: pointer;
+      }
+    }
+
+    .success-floating {
+      display: none;
+      position: absolute;
+      right: -.14rem;
+      bottom: -.72rem;
+
+      .floating-arrow {
+        position: absolute;
+        top: -.09rem;
+        right: 1.34rem;
+        border-bottom-color: #f65962;
+      }
+
+      .success-floating-content {
+        height: .6rem;
+        line-height: .6rem;
+        padding: 0 .3rem;
+        font-size: .28rem;
+        color: #ffffff;
+        background-image: linear-gradient(-236deg, #FF38E8 0%, #FF6143 100%);
+        border-radius: 1rem;
+        .single-line();
+        width: auto;
+      }
+    }
+  }
+}
+
+.snatch-body {
+  position: relative;
+  z-index: 0;
+  min-height: calc(~"100% - 4.6rem");
+  padding-top: .01rem;
+
+  .snatch-title {
+    width: 100%;
+    margin: .3rem 0 .2rem;
+    text-align: center;
+  }
+
+  .title-wrapper {
+    position: relative;
+    display: inline-block;
+
+    .title-circle {
+      position: absolute;
+      left: -.2rem;
+      top: -.1rem;
+      z-index: 0;
+    }
+  }
+
+  .title-text {
+    position: relative;
+    display: block;
+    z-index: 1;
+    height: .5rem;
+    line-height: .5rem;
+    font-size: .32rem;
+    font-weight: bold;
+  }
+}
+
+.item-title-after {
+  padding-top: .1rem;
+}

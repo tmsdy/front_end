@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset='utf-8'/>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
+    <title>夺宝详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <link rel="stylesheet" href="<%- getStatic('snatchDetail.css') %>"/>
+</head>
+<body>
+
+<div id="container" class="container page-container default-state">
+    <div data-id="header" class="page-header">
+        <span class="header-price"><span class="price-unit">￥</span><span data-id="priceCount" class="price-count">0</span></span>
+    </div>
+    <div data-id="orderTop" class="order-top">
+        <h3 data-id="title" class="order-title"></h3>
+    </div>
+    <div class="order-content-wrapper">
+        <h5 class="title-default">夺宝奖池</h5>
+        <div data-id="youhui" class="content-youhui"></div>
+    </div>
+    <div class="order-content-wrapper">
+        <h5 class="title-default">商品详情</h5>
+        <div data-id="detail" class="content-default"></div>
+    </div>
+    <div class="order-content-wrapper">
+        <h5 class="title-default">活动规则</h5>
+        <ul data-id="rules" class="rule-list"></ul>
+    </div>
+</div>
+<div id="button" class="page-footer"></div>
+
+<% if (env === 'fat') { %>
+    <!--vconsole for test-->
+    <script src="//statics-web.iqiyi.com/common/jssdk/src/vconsole.min.js"></script>
+    <script>var vConsole = new VConsole()</script>
+<% } %>
+
+<script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>"></script>
+<script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+<script src="<%- getStatic('vendor.js') %>"></script>
+<script src="<%- getStatic('snatchDetail.js') %>"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset='utf-8' />
+    <title>爱奇艺勋章</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if(clientWidth>=640){
+                        docEl.style.fontSize = '100px';
+                    }else{
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    }
+                };
+            recalc();
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="<%- getStatic('medalShare.css') %>" ></link>
+    <link rel="stylesheet" href="//security.iqiyi.com/static/captcha/css/all.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="medalBox">
+                <% if(channelCode == 'shopper') {%>
+                <div class="topBox">
+                   <img src="<%= medalPic%>" alt="" class="medal">
+                    <p class="medalName"><%= channelName%></p>
+                    <p class="description">我已解锁一张爱奇艺商城抵扣券</p>
+                    <p class="date"><%= date%></p>
+                    <img src="//statics-web.iqiyi.com/integral_rn/assets/5_coupon@2x.png" alt="" class="coupon">
+                    <img src="<%= userIcon%>" alt="" class="userIcon">
+                    <p class="userName"><%= userName%></p>
+                </div>
+                <%} else {%>
+                <div class="topBox">
+                    <img src="<%= medalPic%>" alt="" class="medal">
+                     <p class="medalName"><%= channelName%></p>
+                     <p class="description"><%= description%></p>
+                     <p class="date"><%= date%></p>
+                     <img src="<%= userIcon%>" alt="" class="userIcon">
+                     <p class="userName"><%= userName%></p>
+                 </div>
+                 <%}%>
+                <div class="bottomBox" data-node='goToIntegral'>
+                    <p class="text">点击查看我的勋章</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function(){
+          window.sharePic = "<%= medalPic%>"
+          window.medalName = "<%= channelName%>"
+        })()
+    </script>
+    <script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>"></script>
+    <script src="<%- getStatic('vendor.js') %>"></script>
+    <script src="<%- getStatic('medalShare.js') %>"></script>
+</body>
+</html>

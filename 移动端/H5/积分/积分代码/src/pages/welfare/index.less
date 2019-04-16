@@ -1,0 +1,267 @@
+@charset "utf-8";
+html {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height:100%;
+}
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, figure, menu, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, select, th, td {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: "Microsoft YaHei", Arial, Helvetica, sans-serif, "宋体",DIN Alternate;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%
+}
+body{
+    margin: 0;
+    padding:0;
+    font-size: .14rem;
+    width: 100%;
+    height:100%;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none !important;
+}
+.fix{
+    overflow: hidden;
+}
+.container{
+    position: relative;
+    .playWrapper{
+        width: 100%;
+        height: 4.22rem;
+        position: relative;
+        .videoPic{
+            width: 100%;
+            height: 4.22rem;
+        }
+        .playBtn{
+            width: 1.1rem;
+            height: 1.1rem;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 0.55rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -0.55rem;
+            margin-left: -0.55rem;
+            .triangle{
+                width: 0.4rem;
+                height: 0.4rem;
+                background: url('//statics-web.iqiyi.com/integral_rn/assets/gongyi/videoplay@2x.png') no-repeat center;
+                background-size: 0.4rem 0.4rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-top: -0.2rem;
+                margin-left: -0.2rem;
+            }
+        }
+    }
+    .infoWrapper{
+        padding: 0 0.3rem;
+        margin-top: 0.34rem;
+        .title{
+            font-size: 0.36rem;
+            color: #333333;
+            line-height: 0.5rem;
+        }
+        .processBox{
+            position: relative;
+            .left{
+                display: inline-block;
+                .process{
+                    font-size: 0.28rem;
+                    line-height: 0.48rem;
+                    .currentNum{
+                        color:#2AAF7D
+                    }
+                }
+                .loadingBar{
+                    width: 4.4rem;
+                    background-color: #DBF9C5;
+                    height: 0.08rem;
+                    border-radius: 0.04rem;
+                    position: relative;
+                    .processBar{
+                        width: 0;
+                        height: 0.08rem;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border-radius: 0.04rem;
+                        background: -webkit-linear-gradient(left, #009EFD , #2AF598); /* Safari 5.1 - 6.0 */
+                        background: -o-linear-gradient(right, #009EFD , #2AF598); /* Opera 11.1 - 12.0 */
+                        background: -moz-linear-gradient(right, #009EFD , #2AF598); /* Firefox 3.6 - 15 */
+                        background: linear-gradient(to right, #009EFD , #2AF598); /* 标准的语法 */
+                    }
+                }
+            }
+            .right{
+                width: 2rem;
+                height: 0.68rem;
+                background: -webkit-linear-gradient(bottom right, #2AF598, #009EFD); /* Safari 5.1 - 6.0 */
+                background: -o-linear-gradient(bottom right, #2AF598, #009EFD); /* Opera 11.1 - 12.0 */
+                background: -moz-linear-gradient(bottom right, #2AF598, #009EFD); /* Firefox 3.6 - 15 */
+                background: linear-gradient(to bottom right, #2AF598, #009EFD); /* 标准的语法 */
+                border-radius: 0.34rem;
+                display: inline-block;
+                text-align: center;
+                position: absolute;
+                right: 0;
+                .word{
+                    color: #FFFFFF;
+                    font-weight: bold;
+                    line-height: 0.68rem;
+                    display: inline-block;
+                    font-size: 0.26rem;
+                }
+                .price{
+                    color: #FFFFFF;
+                    font-size: 0.26rem;
+                }
+                .zhulixin{
+                    vertical-align: text-bottom;
+                    line-height: 0.68rem;
+                    width: 0.3rem;
+                    height: 0.3rem;
+                    display: inline-block;
+                    background: url('../../res/img/welfare/zhulibuttonaixin@3x.png') no-repeat center;
+                    background-size: 0.3rem 0.3rem;
+                }
+            }
+        }
+    }
+    .middleWrapper{
+        margin: 0.94rem 0.39rem;
+        background-color: transparent;
+        border-radius: 0.33rem;
+        text-align: center;
+        padding-bottom: 1.84rem;
+        border:0.01rem solid #32D296;
+        .title{
+            padding-top: 0.37rem;
+            .left{
+                width: 1.01rem;
+                height: 0.3rem;
+                background: url('../../res/img/welfare/left@3x.png') no-repeat center;
+                background-size: 1.01rem 0.3rem;
+                display: inline-block;
+            }
+            .text{
+                display:inline-block;
+                font-size: 0.32rem;
+                color: #2AAF7D;
+            }
+            .right{
+                width: 1.01rem;
+                height: 0.3rem;
+                background: url('../../res/img/welfare/right@3x.png') no-repeat center;
+                background-size: 1.01rem 0.3rem;
+                display: inline-block;
+            }
+        }
+        .content{
+            color: #555555;
+            line-height: 0.4rem;
+            padding-left: 0.42rem;
+            padding-right: 0.42rem;
+            text-align: left;
+            margin-top: 0.2rem;
+            font-size: 0.28rem;
+        }
+        .middleImg{
+            width: 5.5rem;
+            height: 2.8rem;
+        }
+        .ruleQ{
+            padding-left: 0.42rem;
+            padding-right: 0.42rem;
+            font-size: 0.26rem;
+            color: #2AAF7D;
+            line-height: 0.37rem;
+            text-align: left;
+            margin-bottom: 0.1rem;
+        }
+        .ruleA{
+            padding-left: 0.42rem;
+            padding-right: 0.42rem;
+            font-size: 0.28rem;
+            color: #555555;
+            line-height: 0.37rem;
+            text-align: left;
+            margin-bottom: 0.1rem;
+            .redHeart{
+                width: 0.2rem;
+                height: 0.2rem;
+                background: url('../../res/img/welfare/101_blue_star@3x.png') no-repeat center;
+                background-size: 0.2rem 0.2rem;
+                display: inline-block;
+                margin-left: 0.1rem;
+                margin-right: 0.1rem;
+            }
+            .redText{
+                color: #2AAF7D;
+                font-size: 0.24rem;
+            }
+        }
+    }
+    .bottomBox{
+        width: 6.58rem;
+        height: 0.8rem;
+        background: -webkit-linear-gradient(bottom,#2AF598, #009EFD); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(bottom,#2AF598, #009EFD); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(bottom,#2AF598, #009EFD); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to bottom,#2AF598, #009EFD);
+        border-radius: 0.4rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0.5rem;
+        p {
+            font-size: 0.32rem;
+             color: #FFFFFF;
+             text-align: center;
+             line-height: 0.8rem;
+        }
+    }
+    .leftPic{
+        width: 1.03rem;
+        height: 1.28rem;
+        background: url('../../res/img/welfare/101leftstar@3x.png') no-repeat center;
+        background-size: 1.03rem 1.28rem;
+        position: absolute;
+        top: 5.7rem;
+    }
+    .rightPic{
+        width: 2.7rem;
+        height: 2.2rem;
+        background: url('../../res/img/welfare/101bottomstar@3x.png') no-repeat top;
+        background-size: 2.7rem 2.68rem;
+        position: absolute;
+        bottom: 1rem;
+        right: 0;
+        overflow: hidden;
+    }
+    .leftline{
+        width: 0.89rem;
+        height: 0.31rem;
+        background: url('../../res/img/welfare/101bottomline@3x.png') no-repeat center;
+        background-size: 0.89rem 0.31rem;
+        position: absolute;
+        bottom: 1.2rem;
+        left: -0.2rem;
+    }
+}

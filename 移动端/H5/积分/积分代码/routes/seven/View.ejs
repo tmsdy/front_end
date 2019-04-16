@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset='utf-8' />
+    <title>七夕喜提对象指南</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <link rel="shortcut icon" href="//www.iqiyipic.com/common/images/logo.ico" type="image/icon">
+    <script>
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    if (clientWidth >= 640) {
+                        docEl.style.fontSize = '100px';
+                    } else {
+                        docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                    }
+                };
+            recalc();
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+    <link rel="stylesheet" href="<%- getStatic('seven.css') %>"></link>
+</head>
+
+<body>
+    <div class="container">
+        <div class="loading" data-page="1">
+            <div class="box">
+                <div class="lottieStart" id="startLoading"></div>
+                <p class="progress"></p>
+            </div>
+        </div>
+        <div class="startPage" data-page="2">
+            <div class="start" id="start"></div>
+        </div>
+        <div class="quest1" data-page="3">
+            <p class="questionTitle">请选择你的性别</p>
+            <div class="sexSelect" >
+                <div class="male"></div>
+                <div class="male female"></div>
+            </div>
+            <div class="sexBg"></div>
+        </div>
+        <div class="wrap" data-page="4">
+            <div class="walk" id="walk"></div>
+            <div class="longBox" id="questionMale">
+                <div class="bg">
+                    <div class="dog"></div>
+                </div>
+                <div class="quest2">
+                    <p class="questionTitle">你的前任数量?</p>
+                    <ul class="questBox">
+                        <li class="q1" data-node='1_a'>
+                            <span class="icon a"></span>
+                            <p>一直都是左右手</p>
+                        </li>
+                        <li class="q1" data-node='1_b'>
+                            <span class="icon b"></span>
+                            <p>1~3个</p>
+                        </li>
+                        <li class="q1" data-node='1_c'>
+                            <span class="icon c"></span>
+                            <p>能凑一桌麻将</p>
+                        </li>
+                        <li class="q1" data-node='1_d'>
+                            <span class="icon d"></span>
+                            <p>能凑一支拉拉队</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="quest2 quest3">
+                    <p class="questionTitle">你看女生第一眼会看哪里</p>
+                    <ul class="questBox">
+                        <li class="q1" data-node='2_a'>
+                            <span class="icon a"></span>
+                            <p>脸</p>
+                        </li>
+                        <li class="q1" data-node='2_b'>
+                            <span class="icon b"></span>
+                            <p>腿</p>
+                        </li>
+                        <li class="q1" data-node='2_c'>
+                            <span class="icon c"></span>
+                            <p>衣服</p>
+                        </li>
+                        <li class="q1" data-node='2_d'>
+                            <span class="icon d"></span>
+                            <p>鞋子</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="quest2 quest4">
+                    <p class="questionTitle">以下四款女生你会如何选择？</p>
+                    <ul class="questBox">
+                        <li class="q1" data-node='3_a'>
+                            <span class="icon a"></span>
+                            <p>长得好看+温柔</p>
+                        </li>
+                        <li class="q1" data-node='3_b'>
+                            <span class="icon b"></span>
+                            <p>大长腿+有钱</p>
+                        </li>
+                        <li class="q1" data-node='3_c'>
+                            <span class="icon c"></span>
+                            <p>聪明+活泼可爱</p>
+                        </li>
+                        <li class="q1" data-node='3_d'>
+                            <span class="icon d"></span>
+                            <p>胸大</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="quest2 quest5">
+                    <p class="questionTitle">假如给你一天假期，你会怎样度过？</p>
+                    <ul class="questBox">
+                        <li class="q1" data-node='4_a'>
+                            <span class="icon a"></span>
+                            <p>打球+看书</p>
+                        </li>
+                        <li class="q1" data-node='4_b'>
+                            <span class="icon b"></span>
+                            <p>玩一整天游戏</p>
+                        </li>
+                        <li class="q1" data-node='4_c'>
+                            <span class="icon c"></span>
+                            <p>躺床上看直播、追剧</p>
+                        </li>
+                        <li class="q1" data-node='4_d'>
+                            <span class="icon d"></span>
+                            <p>假期这种东西，不存在的</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="quest2 quest6">
+                    <p class="questionTitle">你更喜欢？</p>
+                    <ul class="questBox">
+                        <li class="q1" data-node='5_a'>
+                            <span class="icon a"></span>
+                            <p>升职加薪</p>
+                        </li>
+                        <li class="q1" data-node='5_b'>
+                            <span class="icon b"></span>
+                            <p>考试一门不挂科</p>
+                        </li>
+                        <li class="q1" data-node='5_c'>
+                            <span class="icon c"></span>
+                            <p>暗恋的女生突然发来了消息</p>
+                        </li>
+                        <li class="q1" data-node='5_d'>
+                            <span class="icon d"></span>
+                            <p>八倍镜</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="longBox female" id="questionFemale">
+                    <div class="bg">
+                        <div class="dog"></div>
+                    </div>
+                    <div class="quest2">
+                        <p class="questionTitle">你的前任数量?</p>
+                        <ul class="questBox">
+                            <li class="q1" data-node='1_a'>
+                                <span class="icon a"></span>
+                                <p>本仙女母胎单身</p>
+                            </li>
+                            <li class="q1" data-node='1_b'>
+                                <span class="icon b"></span>
+                                <p>1~3个</p>
+                            </li>
+                            <li class="q1" data-node='1_c'>
+                                <span class="icon c"></span>
+                                <p>能凑一桌麻将</p>
+                            </li>
+                            <li class="q1" data-node='1_d'>
+                                <span class="icon d"></span>
+                                <p>能让他们打一场篮球赛</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="quest2 quest3">
+                        <p class="questionTitle">你看男生第一眼会看哪里</p>
+                        <ul class="questBox">
+                            <li class="q1" data-node='2_a'>
+                                <span class="icon a"></span>
+                                <p>脸</p>
+                            </li>
+                            <li class="q1" data-node='2_b'>
+                                <span class="icon b"></span>
+                                <p>身材</p>
+                            </li>
+                            <li class="q1" data-node='2_c'>
+                                <span class="icon c"></span>
+                                <p>衣服</p>
+                            </li>
+                            <li class="q1" data-node='2_d'>
+                                <span class="icon d"></span>
+                                <p>鞋子</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="quest2 quest4">
+                        <p class="questionTitle">假如上天赐给你一个男朋友，你会选择哪款？</p>
+                        <ul class="questBox">
+                            <li class="q1" data-node='3_a'>
+                                <span class="icon a"></span>
+                                <p>长得好看+温柔</p>
+                            </li>
+                            <li class="q1" data-node='3_b'>
+                                <span class="icon b"></span>
+                                <p>大长腿+幽默</p>
+                            </li>
+                            <li class="q1" data-node='3_c'>
+                                <span class="icon c"></span>
+                                <p>聪明+忠诚+会烧饭</p>
+                            </li>
+                            <li class="q1" data-node='3_d'>
+                                <span class="icon d"></span>
+                                <p>八块腹肌+有钱</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="quest2 quest5">
+                        <p class="questionTitle">假如给你一天假期，你会怎样度过？</p>
+                        <ul class="questBox">
+                            <li class="q1" data-node='4_a'>
+                                <span class="icon a"></span>
+                                <p>运动一小时，减肥两公斤</p>
+                            </li>
+                            <li class="q1" data-node='4_b'>
+                                <span class="icon b"></span>
+                                <p>和闺蜜逛街拍照p图</p>
+                            </li>
+                            <li class="q1" data-node='4_c'>
+                                <span class="icon c"></span>
+                                <p>躺尸</p>
+                            </li>
+                            <li class="q1" data-node='4_d'>
+                                <span class="icon d"></span>
+                                <p>假期这种东西，不存在的</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="quest2 quest6">
+                        <p class="questionTitle">你更喜欢？</p>
+                        <ul class="questBox">
+                            <li class="q1" data-node='5_a'>
+                                <span class="icon a"></span>
+                                <p>升职加薪</p>
+                            </li>
+                            <li class="q1" data-node='5_b'>
+                                <span class="icon b"></span>
+                                <p>考试一门不挂科</p>
+                            </li>
+                            <li class="q1" data-node='5_c'>
+                                <span class="icon c"></span>
+                                <p>暗恋的男生突然发来了消息</p>
+                            </li>
+                            <li class="q1" data-node='5_d'>
+                                <span class="icon d"></span>
+                                <p>购物车被老爸清空</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        </div>
+        <div class="askName" data-page="5">
+            <p class="questionTitle">你希望你的TA怎么称呼你？</p>
+            <input type="text" outline="none" placeholder="可输入你的昵称哦" maxlength="10"/>
+            <div class="line"></div>
+            <div class="commit grey" id="commit"></div>
+            <div class="pic"></div>
+        </div>
+        <div class="resultLoading" data-page="6">
+            <div class="box">
+                <div class="lottieStart" id="endLoading"></div>
+                <p class="progress"></p>
+            </div>
+        </div>
+        <div class="resultPage" data-page="7">
+            <div class="contentBox">
+                <div class="middle">
+                        <p class="p1"></p>
+                        <p class="p2"></p>
+                        <p class="p3"></p>
+                        <img src="" alt="" class="img" id="imageEnd">
+                        <div class="shareBtnApp" id="singleShare"></div>
+                        <div class="shareBtnNotApp">
+                            <div class="leftBtn" id="save"></div>
+                            <div class="rightBtn" id="shareOut"></div>
+                        </div>
+                </div>
+            </div>
+            <div class="bottomBox">
+                    <div class="left">
+                        <p>不想等到那一天？来爱奇艺</p>
+                        <p><span class="pink">做任务领会员。</span>热门大剧抢先看！</p>
+                    </div>
+                    <div class="right">
+                        <div class="getScore"></div>
+                    </div>
+                </div>
+        </div>
+        <div data-page="8" id="body" class="page8"></div>
+        <div class="music active" id="music">
+            <audio id="musicBox" src="//statics-web.iqiyi.com/integral_rn/assets/music.mp4"></audio>
+
+        </div>
+    </div>
+    <!-- <script src="//statics-web.iqiyi.com/common/jssdk/src/vconsole.min.js"></script>
+    <script>
+        var vConsole = new VConsole();
+    </script> -->
+
+    <script src="<%- getStatic('res/scripts/lib/zepto-with-tap-i.min.js') %>" ></script>
+    <script src="//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js"></script>
+    <script src="<%- getStatic('vendor.js') %>"></script>
+    <script src="<%- getStatic('seven.js') %>"></script>
+</body>
+
+</html>

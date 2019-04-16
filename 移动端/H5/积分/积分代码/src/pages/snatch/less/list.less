@@ -1,0 +1,159 @@
+@import "~Components/progress/index.less";
+
+.list-wrapper {
+  padding: .25rem .25rem;
+  cursor: pointer;
+
+  .layout-group {
+    margin-bottom: 0;
+  }
+
+  .item-left {
+    .image-wrapper {
+      position: relative;
+      display: block;
+      width: 2.26rem;
+      height: 2.1rem;
+      padding-top: .15rem;
+      text-align: center;
+      background-color: #f9f9f9;
+
+      .item-image {
+        display: inline-block;
+        width: 1.8rem;
+        height: 1.8rem;
+        vertical-align: middle;
+      }
+
+      .tag-position {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+      }
+
+      .tag-unit {
+        display: inline-block;
+        font-size: .2rem;
+        line-height: 1;
+        vertical-align: baseline;
+      }
+    }
+  }
+
+  .item-right {
+    .item-title {
+      .single-line();
+      height: .38rem;
+      line-height: .38rem;
+      margin-top: 0.1rem;
+      font-size: .32rem;
+      color: #333333;
+      margin-bottom: .26rem;
+
+      .reward-title-before {
+        padding: 0 0.08rem;
+        border: 0.02rem solid #FF3644;
+        border-radius: 0.05rem;
+        font-size: 0.2rem;
+        height: 0.38rem;
+        line-height: 0.36rem;
+        color: #FF3644;
+        margin-right: 0.07rem;
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+
+        &.error-desc {
+          border-color: #cccccc;
+          color: #666666;
+        }
+      }
+    }
+
+    .item-desc {
+      .clearfix();
+      height: .32rem;
+      line-height: .32rem;
+      margin-bottom: .26rem;
+      font-size: .24rem;
+      color: #999999;
+      box-sizing: content-box;
+      &.desc-before {
+        padding-top: .16rem;
+      }
+    }
+
+    .item-extra {
+      line-height: 0;
+      margin-top: .12rem;
+      height: 0.6rem
+    }
+
+    .btn-fix {
+      .single-line();
+      float: right;
+      width: 1.6rem;
+      height: .6rem;
+      line-height: .28rem;
+      text-align: center;
+      padding: .16rem .2rem;
+      font-size: .28rem;
+      &.fix-default {
+        color: @color-word;
+        background-color: #eeeeee;
+        background-image: none;
+      }
+    }
+
+    .list-tips {
+      .single-line();
+      display: inline-block;
+      max-width: 100%;
+      padding: .05rem .26rem .05rem .05rem;
+      line-height: .6rem;
+      font-size: .24rem;
+      color: #333333;
+      background-color: #FFF7F3;
+      border-radius: 0 .3rem .3rem .3rem;
+
+      .item-left {
+        display: inline-block;
+        width: .5rem;
+        height: .5rem;
+        margin-right: .09rem;
+        border-radius: 50%;
+        vertical-align: top;
+
+        .left-content {
+          display: inline-block;
+          width: .5rem;
+          height: .5rem;
+          margin-right: .09rem;
+          border-radius: 50%;
+          vertical-align: top;
+        }
+      }
+    }
+
+    .list-progress {
+      margin-bottom: 0.06rem;
+    }
+  }
+}
+
+.bottom-block {
+  .clearfix();
+  .participate-price {
+    display: inline-block;
+    height: .6rem;
+    line-height: .6rem;
+    font-size: .32rem;
+    color: @text-primary;
+    vertical-align: top;
+    &.after {
+      color: @text-tips;
+    }
+  }
+}

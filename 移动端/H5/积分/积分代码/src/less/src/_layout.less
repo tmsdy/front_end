@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// 两列布局（左侧固定，右侧自适应）
+.layout-group {
+  min-height: .4rem;
+  line-height: .4rem;
+  margin-bottom: .1rem;
+  padding-left: 1.4rem;
+  text-align: left;
+  color: #666666;
+  word-break: break-all;
+  .clearfix();
+  .layout-label {
+    float: left;
+    width: 1.4rem;
+    line-height: .4rem;
+    margin-left: -1.4rem;
+    text-align: right;
+    font-size: .28rem;
+    &.tl {
+      text-align: left;
+    }
+  }
+  .layout-content {
+    display: inline-block;
+  }
+  &.label-w28 {
+    .label-width(.28rem);
+  }
+  &.label-w40 {
+    .label-width(.4rem);
+  }
+  &.label-w140 {
+    .label-width(1.4rem);
+  }
+  &.label-w200 {
+    .label-width(2rem);
+  }
+  &.label-w230 {
+    .label-width(2.3rem);
+  }
+  &.label-w246 {
+    .label-width(2.46rem);
+  }
+  &.label-w178 {
+    .label-width(1.78rem);
+  }
+}
