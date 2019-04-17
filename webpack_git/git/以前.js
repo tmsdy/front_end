@@ -19,7 +19,6 @@ git checkout - 回到上一个版本
 拿分支：
 git pull 把线上分支拉到本地 git pull origin 本地分支名:远程分支名
 
-
 git checkout 分支名 切换到分支
 git branch 查看所有分支
 

@@ -1,0 +1,6 @@
+[submodule "my_sub/learn_git"]
+	path = my_sub/learn_git
+	url = https://github.com/fairyMouse/learn_git
+[submodule "my_sub/tween_js"]
+	path = my_sub/tween_js
+	url = https://github.com/tweenjs/tween.js.git
