@@ -33,9 +33,9 @@ export default class My extends Component {
     Taro.setStorageSync('userInfo',userInfo)
   }
   goToFavorite(){
-    // Taro.navigateTo({
-    //   url:'pages/favoriteList/favoriteList'
-    // })
+    Taro.navigateTo({
+      url:'/pages/favoriteList/favoriteList'
+    })
     console.log('goToFavorite')
   }
   render () {

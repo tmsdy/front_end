@@ -34,6 +34,11 @@ export default class VideoDetail extends Component {
 
   click_like(e){
     let {like} = this.state
+    if(!like){
+      Taro.showToast({
+        title: '点赞成功'
+      })
+    }
     this.setState({
       like: !like
     })
