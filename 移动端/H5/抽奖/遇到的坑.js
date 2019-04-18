@@ -9,7 +9,7 @@ https://blog.csdn.net/yelin042/article/details/79837757
     1> ios默认有分享成功的气泡，基线可以干掉
     2> 分享的主标题配置，需要基线支持
 
-3.
+3.想重复触发animation动画行不通，处理方法定3个不同keyframe起相同的效果
 
 
 */
