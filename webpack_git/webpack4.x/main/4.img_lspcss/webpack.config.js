@@ -37,15 +37,6 @@ module.exports = {
                     'less-loader'
                 ]
             },
-            {
-                test: /\.scss/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'postcss-loader',
-                    'sass-loader'
-                ]
-            },
             { //file-loader解析图片地址，把图片从源位置拷贝到目标位置并且修改原引用地址
                 test:/\.(png|jpg|gif|svg|bmp)/,
                 use:{
@@ -53,6 +44,7 @@ module.exports = {
                     options:{
                         limit: 9*1024 , //小于9k的用url-loader生成base64直接嵌入html中减少http请求
                         outputPath: 'images/',
+                        name:'[name][hash:8].[ext]'
                         // publicPath: 'http://rookiefeifei.top/' 只是引用图片加这个
                     }
                 }
@@ -84,11 +76,11 @@ module.exports = {
     // css:219 jpg:51 html:6.68 js:25
     optimization:{
         minimizer: [
-            new UglifyJsPlugin({ //webpack默认用这个，自己配了就要写
-                cache: true,
-                parallel: true,//并发打包，一起压缩多个
-                sourceMap: true 
-            }),
+            // new UglifyJsPlugin({ //webpack默认用这个，自己配了就要写
+            //     cache: true,
+            //     parallel: true,//并发打包，一起压缩多个
+            //     sourceMap: true 
+            // }),
             new OptimizeCSSAssetsPlugin({})//css压缩
         ]
     },

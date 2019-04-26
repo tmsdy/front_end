@@ -1,19 +1,17 @@
 /*
+虽然是负责这个模块，也就负责维护
 
-1.$.ajax的请求参数timeout: 5e3,代表5s不出结果就报错。然后就出了订购成功但出了error里的问题
+1.订购：
+    1）先走联通的接口，$.ajax的请求参数timeout: 5e3,代表5s不出结果就报错。
+    2）然后就出了订购成功但出了error里的错误提示，后端设了nginx转发到联通的接口，很可能延迟5s以上甚至10s以上
+    3）然后走联通接口成功后回调用mapservice的trigger通知，然后别的地方mapservice的on来处理
+        再走我们这边的后端去查询结果，再来展示订购结果
 
-后端设了nginx转发到联通的接口，很可能延迟5s以上甚至10s以上
+2.加一些流量超市和各页面的pingback投递
 
-2.成功回调用mapservice的trigger通知，然后别的地方mapservice的on来处理
+3.根据需要改各个页面的展示和领取会员的入口的展示隐藏
 
-3.在//statics-web.iqiyi.com/common/jssdk/iqiyiJsBridge-v2-min.js，iqiyi的ready和init都能进入成功回调
-在//static.iqiyi.com/js/common/iqiyiJsBridge.min.js不行
-下面代码放在init里面才能生效
-iqiyi.commonInvoke( //兼容小程序，隐藏当前页面分享按钮
-    'JSBRIDGE_VIRTUAL_SWAN', {
-    'action': "shareHide"
-    },
-    function(data) {console.log(data.data)}
-);  
+4.各种分享的显示隐藏，改分享文案
+
 
 */
