@@ -21,7 +21,7 @@ checkscope(); //'local scope'
   }
 在函数预编译阶段时：checkscope函数被创建，保存当前作用域链到函数的内部属性[[scope]] ->体现了js的词法作用域
 checkscope.[[scope]] = [ globalContext.VO ];
-3.执行 checkscope 函数，创建 checkscope 函数执行上下文，checkscope 函数执行上下文被压入执行上下文栈
+3.执行 checkscope 函数时候，创建 checkscope 函数执行上下文，checkscope 函数执行上下文被压入执行上下文栈
 ECStack = [
   checkscopeContext,
   globalContext

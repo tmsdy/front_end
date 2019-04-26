@@ -32,6 +32,7 @@ class Parent extends React.Component {
             onChange={e => this.setState({ newContext: e.target.value })}
           />
         </div>
+        {/* React.createContext(新API)，上层组件用Provider，下层组件在哪用到数据就用Consumer */}
         <Provider value={this.state.newContext}>{this.props.children}</Provider>
       </>
     )
@@ -72,9 +73,9 @@ class Child2 extends React.Component {
 
 Child2.contextTypes = {
   value: PropTypes.string,
-  a: PropTypes.string,
+  a: PropTypes.string, //取离的最近的Parent2的a
 }
-
+// childContextTypes 对下层所有组件都能用，影响比较大，数据一更新下层即便没用该数据也要被完整渲染一次，react17将弃用
 Parent.childContextTypes = {
   value: PropTypes.string,
   a: PropTypes.string,

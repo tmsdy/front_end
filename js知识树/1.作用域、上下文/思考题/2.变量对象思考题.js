@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-<script>
 function foo() {
     console.log(a);
     a = 1;
@@ -33,5 +21,3 @@ AO = {
 没有 a 的值，然后就会到全局去找，全局也没有，所以会报错。
 当第二段执行 console 的时候，全局对象已经被赋予了 a 属性，这时候就可以从全局找到 a 的值，所以会打印 1。
 */
-</script>
-</html>

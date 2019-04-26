@@ -15,8 +15,11 @@
 
     // 函数表达式 创建一个函数并将它赋值给变量
     sayHello() ; //错误：函数还不存在
-    var sayHi = function(){
+    var sayHello = function(){
         console.log('hello') ;
+        setTimeout(()=>{
+            console.log('setTimeout')
+        })
     }
 /*
     函数声明 ： function 函数名(){}

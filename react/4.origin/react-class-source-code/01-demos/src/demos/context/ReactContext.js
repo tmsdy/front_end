@@ -35,9 +35,8 @@ export function createContext<T>(
   const context: ReactContext<T> = {
     $$typeof: REACT_CONTEXT_TYPE,
     _calculateChangedBits: calculateChangedBits,
-    _currentValue: defaultValue,
+    _currentValue: defaultValue,// Provider上的value有变化会更新到这里
     _currentValue2: defaultValue,
-    // These are circular
     Provider: (null: any),
     Consumer: (null: any),
   };

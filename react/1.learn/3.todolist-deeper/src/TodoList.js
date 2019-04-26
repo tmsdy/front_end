@@ -4,13 +4,13 @@ import store from './store'
 import TodoItem from './TodoItem'
 import TodoListUI from './TodoListUI'
 import {getInputChangeAction,getAddTodoItemAction,getDeleteTodoItemAction} from './store/actionCreators'
-import axios from 'axios'
 
 class TodoList extends Component { //容器组件负责逻辑
 
   constructor(props){
     super(props)
     this.state = {}
+    this.todoRef = React.createRef() // {current: null}
     this.inputChange = this.inputChange.bind(this)
     this.btnClick = this.btnClick.bind(this)
     this.deleteItem = this.deleteItem.bind(this)
@@ -19,9 +19,6 @@ class TodoList extends Component { //容器组件负责逻辑
     store.subscribe(this.handleStoreChange) //只要store改变就会调用一次handleStoreChange
   }
   componentDidMount(){ 
-    // axios.get('/list.json').then((res)=>{
-    //   console.log(res)
-    // })
   }
   handleStoreChange(){
     this.setState(store.getState())

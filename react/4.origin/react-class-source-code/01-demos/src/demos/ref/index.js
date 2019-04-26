@@ -13,6 +13,7 @@ export default class RefDemo extends React.Component {
     // console.log(`span2: ${this.ref2.textContent}`)
     // console.log(`span3: ${this.ref3.current.textContent}`)
     setTimeout(() => {
+      console.log(this.objRef)
       this.refs.stringRef.textContent = 'string ref got'
       this.methodRef.textContent = 'method ref got'
       this.objRef.current.textContent = 'obj ref got'
