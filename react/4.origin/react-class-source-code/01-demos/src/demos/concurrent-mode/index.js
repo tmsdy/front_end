@@ -30,7 +30,7 @@ class Parent extends React.Component {
         num: newNum,
       })
     } else {
-      flushSync(() => {
+      flushSync(() => { //可以提升setState优先级
         this.setState({
           num: newNum,
         })
@@ -80,6 +80,7 @@ class Parent extends React.Component {
 // }
 
 export default () => (
+  // ConcurrentMode下组件的setState更新都是第一优先级的
   <ConcurrentMode>
     <Parent />
   </ConcurrentMode>
