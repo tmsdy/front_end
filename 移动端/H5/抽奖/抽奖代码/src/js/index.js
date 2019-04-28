@@ -7,20 +7,22 @@ import {getParam_from,Pro,getShareLink} from "./helpers";
 import TWEEN from '@tweenjs/tween.js'
 import 'promise-polyfill/src/polyfill';
 import 'Components/toast'
-console.log(TWEEN)
+
 let currentItem = $('[data-node="1"]'); // 奖盘当前选中状态
-// let isLogin = getCookie('P00001'); // 用户是否登录
-let isLogin = true;
+let isLogin = getCookie('P00001'); // 用户是否登录
+// let isLogin = true;
 let PLATFORM = null; // 页面运行的平台 app  基线webview 
 let BTN_READY = false; // 奖盘初始化完成方可点击抽奖按钮
 let BTN_LOCK = false;  // 上次抽奖完成之后方可进行下一次抽奖
 let LOTTERY_DATA = {}; // 奖盘数据数组
 let NOT_WIN_LIST = []; // 未中奖列表
 let FILTER_DATA = {}; // 奖品id 位key的 对象，value为奖品详细信息包含图片标题等
-let promiseLock= false;
 let clickLock =false;
 let lotteryCode = GetQueryString('lotteryCode');
 let multiOff = false; //false: 单抽 true: 连抽三次
+let winReward = false; //是否有中奖
+let idList = [];
+let totalScore = 0
 
 pagePingback(LOTTERY_RPAGE,{from:getParam_from()})
 
@@ -38,7 +40,6 @@ function animate(time) {
 }
 requestAnimationFrame(animate);
 
-
 const labelShow = new LabelShow({
     container: '#marquee',
     list: [],
@@ -50,24 +51,15 @@ const labelShow = new LabelShow({
     userId: 12345624,
 */
 const baseParams = {
-    debugMode:'mdb',
-    userId: 12345699,
-    // userId: getUserId(),
+    // debugMode:'mdb',
+    // userId: 12345681,
+    userId: getUserId(),
     agenttype: isIos()? 20: 21,
     agentversion:'9.3.0', 
     srcplatform: isIos()? 20: 21,
     appver: '9.3.0',
-    authCookie: getCookie('P00001')||'111',
+    authCookie: getCookie('P00001'),
 }
-
-// addExtFreeTimes({
-//     ...baseParams,
-//     lotteryCode,
-//     times: 118,
-//     appKey:'lottery_h5'
-// }).then((res)=>{
-//     console.log(res)
-// })
 
 if(isLogin){
     getUserInfo({
@@ -76,9 +68,10 @@ if(isLogin){
         typeCode: 'point',
         appKey: 'lottery_h5'
     }).then((res)=>{
-        res[0] && $('.myIntegral').html(`我的积分：${res[0].totalScore}`)
+        totalScore = res[0] ? res[0].totalScore : 0
+        $('.myIntegral').html(`我的积分：${totalScore}`)
     })
-}else{
+} else {
     $('.myIntegral').addClass('unlogin').html('登录看积分')
     $('.smalltitle').addClass('unlogin').find('.midText').html('登录享免费抽奖，快来戳我！')
     $('.myIntegral').click(function(){
@@ -95,6 +88,7 @@ const shareOptions = {
     shareType: 1,   //（Android适用）用于标识分享的类型，默认为0
     imgUrl: '',
     link: getShareLink(),
+    dialogTitle: '分享成功赚2次免费抽奖',
     success: function () {
         if(isLogin){
             scoreAdd({
@@ -112,8 +106,9 @@ const shareOptions = {
                         if(!isIos()){
                             $.fn.toast({content: '分享成功，+2次免费机会'})
                         }
-                    },100)
-                }else{
+                    },500)
+                } else {
+                    shareOptions = {...shareOptions,dialogTitle: '分享至'}
                     $.fn.toast({content: '分享成功'})
                 }
             }, (res) => {
@@ -125,7 +120,7 @@ const shareOptions = {
         $.fn.toast({content: '分享失败'})
     },
     cancel: function () {
-        console.log('分享取消');
+        // console.log('分享取消');
     }
 }
 
@@ -149,8 +144,9 @@ iqiyi.onShare({
                         if(!isIos()){
                             $.fn.toast({content: '分享成功，+2次免费机会'})
                         }
-                    },100)
-                }else{
+                    },500)
+                } else {
+                    shareOptions = {...shareOptions,dialogTitle: '分享至'}
                     $.fn.toast({content: '分享成功'})
                 }
             }, (res) => {
@@ -162,27 +158,7 @@ iqiyi.onShare({
  
 const doBindThing = function(){
     if(!BTN_LOCK && BTN_READY){
-        goToLottery(LOTTERY_DATA)
-    }
-}
-const renderMyRewards = function(data){
-    if(data.exts.length){
-        let _url = data.exts.find((item)=>item.name==='myawards').value
-        $('[data-name="myrewards"]').on('click',function(){
-            clickPingback(LOTTERY_RPAGE, '', 'go_transpage')
-            if(PLATFORM === 'browser'){
-                goToApp({
-                    type: 'applink',
-                    value: 'webview',
-                    params: {
-                        url: location.href+"&from=share"
-                    },
-                })
-            }else{
-                isLogin ? location.href = _url : goToLogin()
-            }
-            
-        })
+        requestLottery(LOTTERY_DATA);
     }
 }
 
@@ -190,15 +166,11 @@ const init = function () {
     initLottery();
     $('[data-node="1"]').find('.itemBox').addClass('selected');
     Pro().then(flag=>{
-        flag ? PLATFORM='app' : PLATFORM = 'browser';
+        flag ? PLATFORM = 'app' : PLATFORM = 'browser';
         if(flag){
             hideShareBtn() // 隐藏右上角分享按钮
         }
-        promiseLock = true;
-        if(promiseLock && clickLock){
-            doBindThing();
-        }
-    });  
+    });
     bind();
  }
  const hideShareBtn = function(){
@@ -209,124 +181,25 @@ const init = function () {
           });
      }
  }
- const renderTitle = function(data){ // 渲染奖盘标题
-    let $lotteryText = $('[data-name="smalltitle"] .midText')
-    let free_lottery_times = data.user_free_lottery_times
-    if(free_lottery_times > 0 ){ // 抽奖类型，0:免费, 1:积分消耗
-        $lotteryText.html('您还有' + free_lottery_times + '次免费机会')
-    }else{
-        $lotteryText.html(data.price + '  积分每次')
-    }
- }
 
- const showToast = function(data,callBack){
+ const showToast = function(content,callBack){
      let $noticeTip = $('.noticeTip')
      $noticeTip.show();
-     $noticeTip.find('.tipContent').html(data);
+     $noticeTip.find('.tipContent').html(content);
     setTimeout(function(){
         $noticeTip.hide();
         BTN_LOCK = false;
         callBack && callBack()
     },4000)
  }
-
- const renderLotteryResult = function (data){
-     let rewardInfos = data.rewardInfos
-     let idList
-     if(data.winReward){ //  中奖
-        if(multiOff){
-            idList = rewardInfos.map((item,i)=>{
-                if(!item||!item.itemId){
-                    return 'thx'+ NOT_WIN_LIST[parseInt(Math.random()* (NOT_WIN_LIST.length-1))];
-                }else{
-                    return item.itemId
-                }
-            })
-            circle(idList,data)
-        }else{
-            circle([data.rewardInfo.itemId],data)
-        }
-     } else { //随机转到的一个没中奖的
-        if(multiOff){
-            idList = rewardInfos.map((item,i)=>{
-                return 'thx'+ NOT_WIN_LIST[parseInt(Math.random()* (NOT_WIN_LIST.length-1))];
-            })
-            circle(idList,data)
-        }else{
-            let noWinItemId = 'thx'+ NOT_WIN_LIST[parseInt(Math.random()* (NOT_WIN_LIST.length-1))];
-            circle([noWinItemId],data)
-        }
-     }
- }
- 
- const requestLottery = function(data){
-    BTN_LOCK = true;
-    let appInfo = {};
-    if(PLATFORM == 'app'){
-        iqiyi.init(function(result) {
-            if (result.result == 0) {
-              console.log('获取页面初始化数据失败');
-            } else {
-                appInfo = result.data;
-            }
-          });
-    } else {
-        appInfo['version'] = GetQueryString('agentversion')
-    }
-    if(multiOff){
-        clickPingback(LOTTERY_RPAGE, '200100', 'doublego')
-        multiDraw({
-            ...baseParams,
-            agentversion:appInfo.version || '9.3.0',
-            appver: appInfo.version || '9.3.0',
-            lotteryCode: data.code,
-            times: 3,
-            appKey:'lottery_h5',
-        }).then((res)=>{
-            renderLotteryResult(res);
-        },(data)=>{
-            if(data.code == 'A0001'){
-               showToast('积分不足，快去赚积分吧~')
-            } else {
-               showToast(data.message || '网络不给力哦，请再试一次~')
-            }
-        })
-    }else{
-        clickPingback(LOTTERY_RPAGE, '200200', 'go')
-        doLottery({
-            ...baseParams,
-            agentversion:appInfo.version || '9.3.0',
-            appver: appInfo.version || '9.3.0',
-            lotteryCode: data.code,
-            appKey:'lottery_h5',
-        }).then((data) => {
-            data.totalScore && $('.myIntegral').html(`我的积分：${data.totalScore}`)
-           renderLotteryResult(data);
-        },(data)=>{
-            if(data.code == 'A0001'){
-               showToast('积分不足，快去赚积分吧~',function(){
-                   goToApp({
-                      value: 'HomePage'
-                   })
-               })
-            } else {
-               showToast(data.message || '网络不给力哦，请再试一次~')
-            }
-        })
-    } 
- }
-
- const goToLottery = function(data){
-    requestLottery(LOTTERY_DATA);
- }
  
  const bind = function(){
     $('[data-btn="start"]').on('click',function(){
         if(!isLogin){
             goToLogin()
-        }else{
+        } else {
             clickLock = true
-            if(promiseLock && clickLock){
+            if(clickLock){
                 doBindThing()
             }
         }
@@ -348,7 +221,7 @@ const init = function () {
                     url: location.href+"&from=share"
                 }
             })
-        }else{
+        } else {
             iqiyi.share(shareOptions)
         }
         
@@ -368,9 +241,8 @@ const init = function () {
         appKey: 'lottery_h5',
         ext: GetQueryString('ext') || false
     }).then( data => {
-        // console.log('data:',data)
         BTN_READY = true;
-        // multiOff = data.user_free_lottery_times >= 3 ? true : false ;
+        multiOff = data.user_free_lottery_times >= 3 ? true : false ;
         LOTTERY_DATA = data;
         renderLottery(data)
         renderMarquee()
@@ -378,7 +250,7 @@ const init = function () {
         renderMyRewards(data)
         if(isLogin){renderTitle(data)}
     },() => {
-        console.log('接口请求失败')
+        // console.log('接口请求失败')
     })
  }
 
@@ -390,7 +262,7 @@ const init = function () {
         agentversion: '9.3.0',
         srcplatform: isIos()? 20: 21,
         appver:'9.3.0'
-    }).then(res=>{
+    }).then((res)=>{
         // console.log(res)
         let refreshLength = 60 ;//如果是2min刷新一次，2s一条，refreshLength就是60
         let newList = res && res.map((item,i)=>{
@@ -411,7 +283,7 @@ const init = function () {
                     labelShow.init()
                     renderMarquee()
                 })
-            }else{
+            } else {
                 labelShow.addList(newList,true,nextShow)
             }
         }
@@ -419,9 +291,6 @@ const init = function () {
     })
  }
 
- const renderBottom = function (data){
-    $('.ruleContent').html(data.description)
- }
  const renderLottery = function (data){
     let loteryList = new Array(8);
     let rewards = data.rewards;
@@ -449,11 +318,191 @@ const init = function () {
     }
     // console.log('FILTER_DATA:',FILTER_DATA)
  }
- 
- const showModalToast = function(idList,data){
+
+ const renderLotteryResult = function (data){
+    winReward = data.winReward
+    if(winReward){ //  中奖
+       if(multiOff){
+           idList = data.rewardInfos.map((item,i)=>{
+               if(!item||!item.itemId){
+                   return 'thx'+ NOT_WIN_LIST[parseInt(Math.random()* (NOT_WIN_LIST.length-1))];
+               } else {
+                   return item.itemId
+               }
+           })
+       } else {
+          idList = [data.rewardInfo.itemId] 
+       }
+    } else { //随机转到没中奖的
+       if(multiOff){
+           idList = data.rewardInfos.map((item,i)=>{
+               return 'thx'+ NOT_WIN_LIST[parseInt(Math.random()* (NOT_WIN_LIST.length-1))];
+           })
+       } else {
+           let noWinItemId = 'thx'+ NOT_WIN_LIST[parseInt(Math.random()* (NOT_WIN_LIST.length-1))];
+           idList = [noWinItemId]
+       }
+    }
+}
+
+const requestLottery = function(data){
+   BTN_LOCK = true;
+   let appInfo = {};
+   let $lotteryText = $('[data-name="smalltitle"] .midText')
+   let free_lottery_times = data.user_free_lottery_times
+
+   if(free_lottery_times===0 && totalScore<data.price){
+        showToast('积分不足，快去赚积分吧~',function(){
+            goToApp({
+            value: 'HomePage'
+            })
+        })
+        return
+   }
+   if(PLATFORM == 'app'){
+       iqiyi.init(function(result) {
+           if(result.result == 0) {
+            //  console.log('获取页面初始化数据失败');
+           } else {
+               appInfo = result.data;
+           }
+         });
+   } else {
+       appInfo['version'] = GetQueryString('agentversion')
+   }
+   if(multiOff){
+       clickPingback(LOTTERY_RPAGE, '200100', 'doublego')
+       $lotteryText.html('您还有' + (free_lottery_times-3) + '次免费机会')
+       multiDraw({
+           ...baseParams,
+           agentversion:appInfo.version || '9.3.0',
+           appver: appInfo.version || '9.3.0',
+           lotteryCode: data.code,
+           times: 3,
+           appKey:'lottery_h5',
+       }).then((data)=>{
+           renderLotteryResult(data);
+       },(data)=>{
+           showToast(data.message || '网络不给力哦，请再试一次~')
+       })
+   } else {
+       clickPingback(LOTTERY_RPAGE, '200200', 'go')
+       if(free_lottery_times>=1){
+         $lotteryText.html('您还有' + (free_lottery_times-1) + '次免费机会')
+       }
+       doLottery({
+           ...baseParams,
+           agentversion:appInfo.version || '9.3.0',
+           appver: appInfo.version || '9.3.0',
+           lotteryCode: data.code,
+           appKey:'lottery_h5',
+       }).then((data) => {
+           totalScore = data.totalScore ? data.totalScore : totalScore ;
+           $('.myIntegral').html(`我的积分：${totalScore}`)
+           renderLotteryResult(data);
+       },(data)=>{
+           if(data.code == 'A0001'){
+              showToast('积分不足，快去赚积分吧~',function(){
+                  goToApp({
+                     value: 'HomePage'
+                  })
+              })
+           } else {
+              showToast(data.message || '网络不给力哦，请再试一次~')
+           }
+       })
+   } 
+   circle()
+}
+
+ const circle = function(){ 
+    $('.itemBox').removeClass('shining shining2 shining3')
+    let tween = 
+        new TWEEN.Tween({n:0})
+            .to({n: 600}, 8000)
+            .easing(TWEEN.Easing.Sinusoidal.In)
+            .onUpdate(function(p){
+                let itemId = idList[0] ? idList[0] : ''
+                changeSelected(p.n/8)
+                if(multiOff && p.n>200 && currentItem.attr('date-itemId') == itemId){
+                    handleShining('shining')
+                    tween.stop();
+                    nextTween(p.n,idList[1],idList,false)
+                }
+                if(!multiOff && p.n>300 && idList.length){
+                    nextTween(p.n,idList[0],idList)
+                    tween.stop();
+                }
+                if(p.n>540 && !idList.length){
+                    showToast('网络不给力哦，请再试一次~')
+                    tween.stop();
+                }
+            })
+            .start()
+
+ }
+
+ const changeSelected = function(n){
+    let index = parseInt(currentItem.attr('data-node'));
+    let targetIndex = parseInt(n%8+1);
+    if(targetIndex!==index){
+        currentItem.find('.itemBox').removeClass('selected');
+        $('[data-node="'+targetIndex+'"]').find('.itemBox').addClass('selected');
+        currentItem = $('[data-node="'+targetIndex+'"]');
+    }
+}
+
+const handleShining = function(addClass,removeClass){
+    let $current = currentItem.find('.itemBox')
+    $current.addClass(addClass);
+    if(removeClass){
+        $current.removeClass(removeClass);
+    }
+}
+
+const nextTween = function(start,targetId,idList,stopOff){
+    // console.log(idList)
+    if(multiOff){
+        let new_tween = 
+                new TWEEN.Tween({n: start})
+                    .to({n: start+140}, 2000)
+                    .easing(TWEEN.Easing.Quadratic.InOut)
+                    .onUpdate(function(p){
+                        changeSelected(p.n/8)
+                        if(p.n>start+70 && currentItem.attr('date-itemId') == targetId){
+                            handleShining('shining2','shining')
+                            new_tween.stop();
+                            if(!stopOff){
+                                nextTween(p.n,idList[2],idList,true)
+                            } else {
+                                handleShining('shining3','shining2')
+                                setTimeout(()=>{
+                                    showModalToast(idList);
+                                },1000)
+                            }
+                        }
+                    })
+                .start()
+    } else {
+        let i = start/8
+        let time = setInterval(()=>{
+            i++
+            changeSelected(i)
+            if( i>start/8+4 && currentItem.attr('date-itemId') == targetId){
+                handleShining('shining')
+                clearInterval(time);
+                setTimeout(()=>{
+                    showModalToast(idList);
+                },1000)
+            }
+        },220)
+    }
+}
+
+const showModalToast = function(idList){
     let $modalBox = $('.modalBox');
     let html = ''
-     if(data.winReward){ // 中奖弹窗提示
+     if(winReward){ // 中奖弹窗提示
         $modalBox.css("background",`url(${require('../css/img/win.png')}) left center/100% 100% no-repeat`)
         $modalBox.find('.closeBtn').css('background',`url(${require('../css/img/close@2x.png')}) no-repeat center/cover;`)
         $modalBox.find('.awardBox').show()
@@ -480,91 +529,41 @@ const init = function () {
      initLottery();
  }
 
- const  circle = function(idList,data){
-    let itemId = idList[0]  
-    let positon={n: 0};
-    console.log(idList)
-    $('.itemBox').removeClass('shining shining2 shining3')
-    let tween = 
-        new TWEEN.Tween(positon)
-            .to({n: 300}, 4000)
-            .easing(TWEEN.Easing.Sinusoidal.In)
-            .onUpdate(function(p){
-                changeSelected(p.n/8)
-                if(multiOff && p.n>200 && currentItem.attr('date-itemId') == itemId){
-                    console.log('多抽第一次中奖')
-                    handleShining('shining')
-                    tween.stop();
-                    nextTween(p.n,idList[1],false,idList)
-                }
-            })
-            .start()
-            .onComplete(function(p){
-                console.log('onComplete111')
-                let i = p.n/8
-                let time = setInterval(()=>{
-                    i++
-                    changeSelected(i)
-                    if( i>p.n/8+4 && currentItem.attr('date-itemId') == itemId){
-                        console.log('单抽中奖了')
-                        handleShining('shining')
-                        clearInterval(time);
-                        setTimeout(()=>{
-                            showModalToast(idList,data);
-                        },1000)
-                    }
-                },220)
-            }) 
-
+const renderTitle = function(data){ // 渲染奖盘标题
+    let $lotteryText = $('[data-name="smalltitle"] .midText')
+    let free_lottery_times = data.user_free_lottery_times
+    if(free_lottery_times > 0 ){ // 抽奖类型，0:免费, 1:积分消耗
+        $lotteryText.html('您还有' + free_lottery_times + '次免费机会')
+    } else {
+        $lotteryText.html(data.price + '  积分每次')
+    }
  }
 
-function changeSelected(n){
-    let index = parseInt(currentItem.attr('data-node'));
-    let targetIndex = parseInt(n%8+1);
-    if(targetIndex!==index){
-        currentItem.find('.itemBox').removeClass('selected');
-        $('[data-node="'+targetIndex+'"]').find('.itemBox').addClass('selected');
-        currentItem = $('[data-node="'+targetIndex+'"]');
-    }
-}
-
-function handleShining(addClass,removeClass){
-    let $current = currentItem.find('.itemBox')
-    $current.addClass(addClass);
-    if(removeClass){
-        $current.removeClass(removeClass);
-    }
-}
-
-function nextTween(start,targetId,stopOff,idList){
-    let positon = {n: start}
-    let new_tween = 
-        new TWEEN.Tween(positon)
-            .to({n: start+140}, 2000)
-            .easing(TWEEN.Easing.Quadratic.InOut)
-            .onUpdate(function(p){
-                changeSelected(p.n/8)
-                if(p.n>start+70 && currentItem.attr('date-itemId') == targetId){
-                    console.log('获奖了23')
-                    handleShining('shining2','shining')
-                    new_tween.stop();
-                    if (!stopOff){
-                        nextTween(p.n,idList[2],true,idList)
-                    }else{
-                        console.log('onComplete222')
-                        handleShining('shining3','shining2')
-                        setTimeout(()=>{
-                            showModalToast(idList,{
-                                winReward:true
-                            });
-                        },1000)
-                    }
-                }
+ const renderMyRewards = function(data){
+    $('[data-name="myrewards"]').on('click',function(){
+        clickPingback(LOTTERY_RPAGE, '', 'go_transpage')
+        if(PLATFORM === 'browser'){
+            goToApp({
+                type: 'applink',
+                value: 'webview',
+                params: {
+                    url: location.href+"&from=share"
+                },
             })
-            .start()
-            .onComplete(function(){
-                
-            }) 
+        } else {
+            let _url
+            if(data.exts.length){
+                _url = data.exts.find((item)=>item.name==='myawards').value
+            }
+            isLogin ? location.href = _url : goToLogin()
+        }
+        
+    })
 }
+
+ const renderBottom = function (data){
+    $('.ruleContent').html(data.description)
+ }
+
 
  init();

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<script>
-    //map方法 便于由一个数组来派生一个新的想要的数组
+//map方法 便于由一个数组来派生一个新的想要的数组
 
 /**场景1
  * 假定有一个数值数组(A),将A数组中的值以双倍的形式放到B数组
@@ -28,10 +19,3 @@ var prices = cars.map(function(car){
         return car.price ;
 })
 console.log(prices) ; //["cheap" , "expensive"]
-
-
-</script>
-<body>
-    
-</body>
-</html>
