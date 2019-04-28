@@ -10,7 +10,7 @@
 <script>
 
 var obj1 = { a:1, arr: [2,3] };
-var obj2 = deepCopy2(obj1) ;
+var obj2 = deepCopy(obj1) ;
 
 obj1.a = 5 ;
 obj1.arr[1] = 5 ;
@@ -24,6 +24,7 @@ function isObject(x) { //通用的精准判断是不是object
 }
 function deepCopy(obj) {
     // 确认obj是数组还是对象
+    if(!obj) return obj
     var newObj = Array.isArray(obj) ? [] : {} ;
     
     if(obj && typeof obj === 'object') {
@@ -43,9 +44,9 @@ function deepCopy(obj) {
     return newObj ;
 
 }
-
+console.log(deepCopy(null))
 // JSON 方法 深拷贝
- JSON.parse(JSON.stringify(obj)) ;
+ JSON.parse(JSON.stringify(obj1)) ;
  //1.会忽略 undefined symbol
 // 2.不能序列化函数函数
 
