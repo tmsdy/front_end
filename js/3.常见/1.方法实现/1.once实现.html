@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button id="button">点击</button>
+<script>
+var oBtn = document.getElementById('button') ;
+
+once(oBtn,'click',function () {
+  console.log(111)
+})
+newOnce(oBtn,'click',function () {
+  console.log(222)
+})
+function once(dom, event, callback) {
+  // 这一步是为了避免修改形参
+  var temp = callback;
+  dom.addEventListener(event, function () {//问题: 事件处理函数依然存在
+    if (temp)
+      temp();
+    temp = null;
+  })
+}
+
+function newOnce(dom, event, callback) {
+  var handle = function() {
+    callback();
+    dom.removeEventListener(event, handle);
+  }
+  dom.addEventListener(event, handle)
+}    
+</script>
+</body>
+</html>
