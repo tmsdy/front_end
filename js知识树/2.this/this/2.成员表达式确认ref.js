@@ -1,12 +1,8 @@
-<!-- 
+/*
+
 函数调用的时候，如何确定 this 的取值?
 1.计算 MemberExpression 的结果赋值给 ref
 MemberExpression: 成员表达式
-  PrimaryExpression // 原始表达式 可以参见《JavaScript权威指南第四章》
-  FunctionExpression // 函数定义表达式
-  MemberExpression [ Expression ] // 属性访问表达式
-  MemberExpression . IdentifierName // 属性访问表达式
-  new MemberExpression Arguments // 对象创建表达式
 
 function foo() {
     console.log(this)
@@ -28,5 +24,4 @@ var foo = {
 foo.bar(); // MemberExpression 是 foo.bar
 所以简单理解 MemberExpression 其实就是()左边的部分。
 
-
- -->
+*/
