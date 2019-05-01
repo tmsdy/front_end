@@ -116,7 +116,7 @@ function runSyncOrAsync(fn, context, args, callback) {
 	};
 	try {
 		var result = (function LOADER_EXECUTION() {
-			return fn.apply(context, args);
+			return fn.apply(context, args); //执行loader的内容
 		}());
 		if(isSync) {
 			isDone = true;
@@ -152,12 +152,12 @@ function convertArgs(args, raw) {
 		args[0] = Buffer.from(args[0], "utf-8");
 }
 
-function iteratePitchingLoaders(options, loaderContext, callback) {
+function iteratePitchingLoaders(options, loaderContext, callback) { 
 	// abort after last loader
 	if(loaderContext.loaderIndex >= loaderContext.loaders.length)
 		return processResource(options, loaderContext, callback);
 
-	var currentLoaderObject = loaderContext.loaders[loaderContext.loaderIndex];
+	var currentLoaderObject = loaderContext.loaders[loaderContext.loaderIndex]; //拿loader
 
 	// iterate
 	if(currentLoaderObject.pitchExecuted) {
@@ -165,8 +165,7 @@ function iteratePitchingLoaders(options, loaderContext, callback) {
 		return iteratePitchingLoaders(options, loaderContext, callback);
 	}
 
-	// load loader module
-	loadLoader(currentLoaderObject, function(err) {
+	loadLoader(currentLoaderObject, function(err) { //加载loader模块
 		if(err) {
 			loaderContext.cacheable(false);
 			return callback(err);
@@ -175,9 +174,10 @@ function iteratePitchingLoaders(options, loaderContext, callback) {
 		currentLoaderObject.pitchExecuted = true;
 		if(!fn) return iteratePitchingLoaders(options, loaderContext, callback);
 
-		runSyncOrAsync(
+		runSyncOrAsync( //跑loader
 			fn,
-			loaderContext, [loaderContext.remainingRequest, loaderContext.previousRequest, currentLoaderObject.data = {}],
+			loaderContext, 
+			[loaderContext.remainingRequest, loaderContext.previousRequest, currentLoaderObject.data = {}],
 			function(err) {
 				if(err) return callback(err);
 				var args = Array.prototype.slice.call(arguments, 1);

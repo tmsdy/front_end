@@ -24,7 +24,7 @@ const webpack = (options, callback) => {
 		// 触发事件
 		compiler.hooks.environment.call();
 		compiler.hooks.afterEnvironment.call();
-		// 激活options配置：根据传入的options，挂上各种插件
+		// 激活options配置：根据传入的options，挂上各种内置插件
 		compiler.options = new WebpackOptionsApply().process(options, compiler);
 	} 
 	// ...

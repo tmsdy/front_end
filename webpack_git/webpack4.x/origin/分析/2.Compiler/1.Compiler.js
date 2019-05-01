@@ -53,8 +53,9 @@ class Compiler extends Tapable {
 
 		this.name = undefined;
 		this.parentCompilation = undefined;
-		this.outputPath = "";
+		this.outputPath = ""; //输出路径
 
+		// 初始化生成Compiler时NodeEnvironmentPlugin会给下面的输出、输入的文件系统赋值（引入fs模块）
 		this.outputFileSystem = null;
 		this.inputFileSystem = null;
 

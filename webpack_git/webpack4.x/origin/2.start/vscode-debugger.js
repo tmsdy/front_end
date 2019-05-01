@@ -6,6 +6,6 @@ require('child_process').exec("npm config get prefix", function(err, stdout, std
     // var webpackPath = path.resolve(path.join(stdout.replace("\n", ""), nixLib, 'node_modules', 'webpack-cli', 'bin', 'cli.js'));
     // path.join(__dirname,'src/index.js')
     var webpackPath = path.resolve(path.join(__dirname, 'node_modules', 'webpack-cli', 'bin', 'cli.js'));
-    console.log(webpackPath);
+
     require(webpackPath);
 });
