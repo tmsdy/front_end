@@ -1,9 +1,9 @@
 <!-- 
 从initState中的initProps和initData开始
 function initProps (vm, propsOptions) {
-  //...
+  ...
       defineReactive(props, key, value, function () { //把props上的对象变为响应式的
-  //...
+  ...
     if (!(key in vm)) {
       proxy(vm, "_props", key); // _props里面的数据变化代理到vm上
     }
@@ -12,7 +12,7 @@ function initData (vm) {
   var data = vm.$options.data; 
   data = vm._data = typeof data === 'function' 
     ? getData(data, vm) 
-    //如果写的是data(){return{}}这种会调用这个,这种写法数据中变量只在当前组件中生效，不会影响其他组件
+    如果写的是data(){return{}}这种会调用这个,这种写法数据中变量只在当前组件中生效，不会影响其他组件
     : data || {};
   ...
   while (i--) {

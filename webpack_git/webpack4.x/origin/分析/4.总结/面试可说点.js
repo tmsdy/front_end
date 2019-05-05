@@ -8,7 +8,10 @@
 异步并行钩子
     loader的加载：从后向前加载，必须是先加载一个才能再加载下一个loader
 
-2.webpack
+2.看webpack源码好处：
+    1）让webpack不在神秘，真正感觉是有掌握webpack的感觉
+    2）报错出现在什么源码的什么地方能迅速排查问题
 
+3.尝试实现less-loader，主要用的是less模块，用less-render就行了
 
 */

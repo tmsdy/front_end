@@ -1,8 +1,5 @@
 /*
 
-1.测试环境登录，要配相关host，下载测试的app，charles代理下证书
-
-2.有些是需要产品配置的，例如抽奖的code,我的收获跳转的
 
 4.webpack的主要改造
     1）配了less和postcss，引入了公共的less

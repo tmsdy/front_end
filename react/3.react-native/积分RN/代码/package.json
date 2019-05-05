@@ -1,0 +1,103 @@
+{
+  "name": "iqiyi-integral",
+  "version": "1.0.0",
+  "private": true,
+  "typings": "typings/index",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "bundle:android": "qrn_pack_new unbundle --entry-file index.android.js --bundle-output ./bundle/android/IntegralRN_android.bundle --id-suffix 10 --sourcemap-output ./bundle/android/IntegralRN_android.map --assets-dest ./bundle/android --platform android --dev false --reset-cache",
+    "bundle:ios": "qrn_pack_new unbundle --entry-file index.ios.js --bundle-output ./bundle/ios/IntegralRN.jsbundle --id-suffix 10 --sourcemap-output ./bundle/ios/IntegralRN.map --assets-dest ./bundle/ios --platform ios --dev false --reset-cache",
+    "lint": "eslint src",
+    "mockserver": "nodemon --watch mocks ./commands/MockServer.js",
+    "mock": "run-p mockserver start",
+    "cmock": "node ./commands/CreateMockFile",
+    "atcp": "adb reverse tcp:8081 tcp:8081 && adb reverse tcp:3001 tcp:3001",
+    "cpd": "jscpd ./src -c .jscpd.json; open ./report/jscpd/jscpd-report.html"
+  },
+  "dependencies": {
+    "@iqiyi/react-native-deck-swiper": "0.0.1",
+    "@iqiyi/rn-base-modules": "1.2.4",
+    "@iqiyi/rn-flat-list": "^1.0.1",
+    "@iqiyi/rn-gif-view": "latest",
+    "@iqiyi/rn-gradient-view": "1.0.0",
+    "@iqiyi/rn-loading-view": "1.0.1",
+    "@iqiyi/rn-lottie": "1.0.5",
+    "@iqiyi/rn-navigation": "3.3.8",
+    "@iqiyi/rn-net-error": "^0.1.3",
+    "@iqiyi/rn-new-list": "^1.0.7",
+    "@iqiyi/rn-refresh-view": "^0.3.1",
+    "@iqiyi/rn-safe-view": "^1.0.0",
+    "@iqiyi/rn-scroll-tab-view-beta": "0.0.3",
+    "@iqiyi/rn-scroll-view": "latest",
+    "@iqiyi/rn-snap-carousel": "0.0.3",
+    "@iqiyi/rn-swiper": "1.0.1",
+    "@iqiyi/rn-swiper-new": "1.0.1",
+    "@iqiyi/rn-ui": "1.5.9",
+    "@iqiyi/rn-utils": "^0.1.8",
+    "@iqiyi/rn-view-shot": "latest",
+    "@nart/react-native-swiper": "^1.5.13",
+    "@types/node": "^11.13.2",
+    "@types/react": "16.3.1",
+    "@types/react-native": "0.55.1",
+    "@types/react-redux": "^4.4.5",
+    "@types/redux-logger": "^2.6.1",
+    "@types/seamless-immutable": "^7.1.4",
+    "crypto-js": "^3.1.9-1",
+    "install": "^0.12.2",
+    "react": "16.3.1",
+    "react-native": "git+ssh://git@gitlab.qiyi.domain:10022/lixiaoxi/react-native.git#0.55",
+    "react-native-percentage-circle": "^1.0.7",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
+    "reselect": "^4.0.0",
+    "seamless-immutable": "^7.1.4"
+  },
+  "resolutions": {
+    "@iqiyi/rn-ui": "1.5.9",
+    "@iqiyi/rn-utils": "0.1.7",
+    "@iqiyi/rn-base-modules": "1.2.0",
+    "@iqiyi/rn-loading-view": "1.0.1",
+    "react": "16.3.1",
+    "prop-types": "15.6.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "babel-eslint": "^8.0.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-function-bind": "^6.22.0",
+    "babel-preset-react-native": "^1.9.2",
+    "colors": "^1.3.3",
+    "cors": "^2.8.3",
+    "eslint": "5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-native": "^3.6.0",
+    "express": "^4.15.3",
+    "husky": "^1.3.1",
+    "jscpd-badge-reporter": "^1.1.3",
+    "lint-staged": "^8.1.5",
+    "nodemon": "^1.18.8",
+    "npm-run-all": "^4.1.5",
+    "react-native-typescript-transformer": "^1.2.11",
+    "redux-logger": "^2.6.1",
+    "typescript": "^3.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,jsx,ts,tsx}": [
+        "eslint",
+        "git add"
+      ]
+    }
+  }
+}

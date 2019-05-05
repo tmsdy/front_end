@@ -1,3 +1,4 @@
+import './index.less'
 
 let name = require('./base')
 
