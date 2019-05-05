@@ -1,5 +1,14 @@
 <!-- 
 1.使用3D硬件加速提升动画性能时，最好给元素增加一个z-index属性，人为干扰复合层的排序，可以有效减少chrome创建不必要的复合层，
     提升渲染性能，移动端优化效果尤为明显。
+抽奖ul加了transform: translateY(0);transition: transform .8s;动画，导致文字抖动加模糊
+解决方法：人为把动画单独放在一个复合层里
+    1）transform: translateZ(0); //li里文字模糊
+    2）position: relative;加上z-index: 1; //li里文字在动画时候模糊，停止动画时候正常
+
+2.Webkit硬件加速的方式，会把需要渲染的元素放到特定的复合层中,chrome的layers可以看到
+
+3.chrome的performance monitor可以看动画性能表现
+
 
  -->
