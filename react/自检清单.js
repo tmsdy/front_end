@@ -11,7 +11,7 @@ TypeScript
 1.理解泛型、接口等面向对象的相关概念，TypeScript对面向对象理念的实现
 2.理解使用TypeScript的好处，掌握TypeScript基础语法
 3.TypeScript的规则检测原理
-4.可以在React、Vue等框架中使用TypeScript进行开发
+// 4.可以在React、Vue等框架中使用TypeScript进行开发
 
 React
 1.React和vue选型和优缺点、核心架构的区别
@@ -24,7 +24,7 @@ React
 8.基于React的特性和原理，可以手动实现一个简单的React
 
 Vue
-1.熟练使用Vue的API、生命周期、钩子函数
+// 1.熟练使用Vue的API、生命周期、钩子函数
 2.MVVM框架设计理念
 3.Vue双向绑定实现原理、Diff算法的内部实现
 4.Vue的事件机制
@@ -41,7 +41,7 @@ Vue
 
 开发和调试
 1.熟练使用各浏览器提供的调试工具
-2.熟练使用一种代理工具实现请求代理、抓包，如charls
+// 2.熟练使用一种代理工具实现请求代理、抓包，如charls
 3.可以使用Android、IOS模拟器进行调试，并掌握一种真机调试方案
 4.了解Vue、React等框架调试工具的使用
 
