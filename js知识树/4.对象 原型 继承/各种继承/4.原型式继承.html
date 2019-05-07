@@ -27,9 +27,9 @@
     let person3 = object(person1) ; 
     console.log(person3.name) ;//feifei
     console.log(person3.friends) ;//["fangfang","juanjuan","chaochao","hahaha"]
-    //person2和person3共享person1.friends，引用类型存在篡改问题
+    //1.person2和person3共享person1.friends，引用类型存在篡改问题
 
-    //ES5的Object.create()方法规范化了原型式继承，接收两个参数。也是没有避免篡改问题
+    //2.ES5的Object.create()方法规范化了原型式继承，接收两个参数。也是没有避免篡改问题
     //在传入一个参数的情况下和object()方法行为一样,第二个参数为新对象定义额外属性的对象
     let person = Object.create(person1,{
         name:{

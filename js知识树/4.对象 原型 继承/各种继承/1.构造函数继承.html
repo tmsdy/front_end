@@ -22,7 +22,7 @@
 /*
   缺点：
     1.不能继承Parent的原型对象
-    2.每次都要new Parent()影响性能
+    2.每次都要调用Parent.call影响性能
 */
     function Son (name) {
       // Parent.call(this,name) ; //将父类的属性方法添加到this上

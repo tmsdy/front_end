@@ -38,6 +38,11 @@
     son1.sayAge() ;//21
     console.log(son1)
 
+    son1.colors.push("black"); //因为实例上有colors了改color优先改实例的colors，这样不会影响下个实例的colors
+    let son2 = new Son("fangfang",22) ;
+    console.log(son2)
+
+
 </script>
 <body>
     
