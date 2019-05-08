@@ -33,8 +33,8 @@ config = merge(baseConfig,{
     new webpack.HotModuleReplacementPlugin()
   ]),
   devServer: {
-    port: 8888 ,
-    host: '0.0.0.0',//这样localhost和内网ip都能访问,方便手机访问内网ip来调试
+    port: 8889 ,
+    // host: '0.0.0.0',//这样localhost和内网ip都能访问,方便手机访问内网ip来调试
     overlay:{
       errors:true ,
     },
