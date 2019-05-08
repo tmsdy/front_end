@@ -149,7 +149,7 @@ export const createAppPageURL = ({type = 'pageName', value = '', params, integra
     if (router.name) {
       return getRegisterParams(router.name)
     }
-  } else if (type === 'applink') { // 第三方调起基线（非注册制） http://wiki.qiyi.domain/pages/viewpage.action?pageId=80531766
+  } else if (type === 'applink') { // 第三方调起基线（非注册制
     return generateURL(value, params, false)
   } else if (type === 'url') { // 根据指定url跳转
     return value
