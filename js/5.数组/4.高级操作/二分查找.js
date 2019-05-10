@@ -1,3 +1,4 @@
+
 function binary_search(arr, key) {
     let low = 0
     let high = arr.length-1
