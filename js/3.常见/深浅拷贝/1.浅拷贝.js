@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<script>
 // 浅复制常用 对象大，深复制会带来性能上的问题
 // 浅复制只会将对象的各个属性进行依次复制，并不会进行递归复制，而 JavaScript 存储对象都是存地址的
 // 浅复制会导致 obj1.arr 和 obj2.arr 指向同一块内存地址
@@ -31,9 +22,3 @@ console.log(obj2.arr[1]) ;// 5
 //   }
 //   return dst;
 // }
-
-</script>
-<body>
-    
-</body>
-</html>

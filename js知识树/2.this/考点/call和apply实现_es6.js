@@ -1,10 +1,9 @@
-//不传入第一个参数，那么默认为 window
-// 改变了 this 指向，让新的对象可以执行该函数。那么思路是否可以变成给新的对象添加一个函数，然后在执行完以后删除？
-Function.prototype.myCall = function (context) {
-  let _obj = context || window ;
-  // getValue.call(a, 'yck', '24') => a.fn = getValue 把构造函数变成指向对象的属性
-  _obj.fn = this;
-  _obj.fn(...[...arguments].slice(1));
+
+// 把函数加到指向的对象的属性上再执行，然后在执行完以后删除
+Function.prototype.myCall = function(ctx){
+  let _obj = ctx || window
+  _obj.fn = this
+  _obj.fn(...[...arguments].slice(1))
   delete _obj.fn
 }
 
@@ -23,7 +22,7 @@ function getValue(name, age) {
   console.log(age)
   console.log(this.value)
 }
-getValue.myCall(a, 'yck', '24') ;
+getValue.myCall2(a, 'yck', '24') ;
 getValue.myApply(a, ['yck', '24']) ;
 
 // 这里是用es6写的比较简便，冴羽那儿有es5的实现

@@ -1,4 +1,3 @@
-
 var _createClass = (function() {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -18,14 +17,16 @@ var _createClass = (function() {
 })();
 
 function _classCallCheck(instance, Constructor) {
+  // Parent('feifei')检测这种把类当做普通函数调用会报错，需要new Parent('ff')来用
   if (!(instance instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
 
-var Parent = (function() {//函数自执行实现私有作用域
+var Parent = (function() {
+  //函数自执行实现私有作用域
   function Parent(name) {
-    _classCallCheck(this, Parent);//类调用检查 Parent('feifei')没有new像这么调用报错
+    _classCallCheck(this, Parent); //类调用检查
 
     this.name = name;
   }

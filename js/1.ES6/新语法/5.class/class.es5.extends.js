@@ -90,8 +90,8 @@ var Child = (function(_Parent) {
 
   function Child(name, age) {
     _classCallCheck(this, Child);
-
-    var _this = _possibleConstructorReturn(
+  //类似Parent.call(this,...)，所以继承实现是寄生组合继承的。因为得有构造继承才不会出现引用类型篡改问题
+    var _this = _possibleConstructorReturn( 
       this,
       (Child.__proto__ || Object.getPrototypeOf(Child)).call(this, name) //就是获取子类proto
     );
