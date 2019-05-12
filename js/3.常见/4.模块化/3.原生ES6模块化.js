@@ -1,4 +1,4 @@
-<script>
+
   // 有 Babel 的情况下，可以直接使用 ES6 的模块化
 	// test.js
   let bar=function(){
@@ -29,4 +29,3 @@
     export default foo;
 
 
-</script>

@@ -58,6 +58,7 @@
             this._done(resolvedFn,rejectedFn) ;
         }
     }
+    
     MyPromise.all = function(promises) {
         return new MyPromise((resolve, reject) => {
           let done = gen(promises.length, resolve); //实例化gen
