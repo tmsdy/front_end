@@ -12,7 +12,8 @@ class App extends Component {
       'pages/index/index',
       'pages/my/my',
       'pages/videoDetail/videoDetail',
-      'pages/favoriteList/favoriteList'
+      'pages/favoriteList/favoriteList',
+      'pages/connectUs/connectUs'
     ],
     window: {
       backgroundTextStyle: 'light',

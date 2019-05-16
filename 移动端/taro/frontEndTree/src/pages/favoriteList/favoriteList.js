@@ -15,14 +15,6 @@ export default class favoriteList extends Component {
         introduction:'小白入门React教程, 最新最全精细讲解, 如何使用React进行开发以及如何使用Redux',
         level: '初级',
         people_quntity: 1883,
-      },
-      {
-        id: 2 ,
-        src: 'https://10.url.cn/qqcourse_logo_ng/ajNVdqHZLLBylP9zaaXkALowoB1XVr6mwIc0ia52chSdLnyF0ltmVL3qunJcViclOHx3nsshGKEVM/356',
-        title: 'ES6_Javascript_最全最新讲解',
-        introduction:'本视频详细讲解了ES6语言的核心知识并通过练习理解其作用，适合有JS基础的同学，快速进入ES6核心应用的大门',
-        level: '初级',
-        people_quntity: 1123,
       }
     ]
   }

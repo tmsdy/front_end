@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text,Image } from '@tarojs/components'
 import './index.less'
-import {videoList} from '../../videoList'
+import {videoList} from './videoList'
 
 export default class Index extends Component {
 
@@ -9,7 +9,14 @@ export default class Index extends Component {
     navigationBarTitleText: '精选视频'
   }
   state = {
-    videoList: []
+    videoList: [{
+      id: 1 ,
+      src: 'https://i04picsos.sogoucdn.com/2916c40f6b2bca10',
+      title: 'React开发教学',
+      introduction:'小白入门React教程, 最新最全精细讲解, 如何使用React进行开发以及如何使用Redux',
+      level: '初级',
+      people_quntity: 1883,
+    }]
   }
   componentWillMount () {
     console.log(videoList)

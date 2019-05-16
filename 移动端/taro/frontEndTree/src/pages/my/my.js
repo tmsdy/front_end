@@ -25,7 +25,7 @@ export default class My extends Component {
   componentDidMount () { }
   getUserInfo(e){
     let userInfo = e.detail.userInfo
-    // console.log()
+    console.log(e)
     this.setState({
       avatarUrl: userInfo.avatarUrl,
       userInfo
@@ -37,6 +37,11 @@ export default class My extends Component {
       url:'/pages/favoriteList/favoriteList'
     })
     console.log('goToFavorite')
+  }
+  goToContact(){
+    Taro.navigateTo({
+      url:'/pages/connactUs/connactUs'
+    })
   }
   render () {
     let {userInfo} = this.state
@@ -57,7 +62,7 @@ export default class My extends Component {
           <View className="menu_item">
             设置
           </View>
-          <View className="menu_item">
+          <View className="menu_item"  onClick={this.goToContact.bind(this)}>
             联系我们
           </View>
         </View>

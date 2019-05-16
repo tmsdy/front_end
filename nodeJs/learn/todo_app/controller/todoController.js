@@ -1,5 +1,7 @@
 var mongoose = require('mongoose') ;
-mongoose.connect('mongodb://todo_app:hf597232@ds123490.mlab.com:23490/todo_rekey') ;//链接数据库
+mongoose.connect('mongodb://todo_app:hf597232@ds123490.mlab.com:23490/todo_rekey',{
+    useNewUrlParser: true
+}) ;//链接数据库
 var  todo_schema = new mongoose.Schema({//创建图表
     item:String,
 });

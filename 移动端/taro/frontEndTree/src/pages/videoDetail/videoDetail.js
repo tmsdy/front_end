@@ -8,7 +8,7 @@ export default class VideoDetail extends Component {
     navigationBarTitleText: '视频详情'
   }
   state = {
-    favoritelike: false,
+    like: false,
     favorite: false,
     currentVideoId: 1,
     videoList:[
@@ -23,11 +23,41 @@ export default class VideoDetail extends Component {
         title: '开发环境搭建',
         totalTime: '9分钟',
         src: '../../assets/video/React002.mp4',
+      },
+      {
+        id: 3 ,
+        title: 'React组件',
+        totalTime: '7分钟',
+        src: '../../assets/video/React002.mp4',
+      },
+      {
+        id: 4 ,
+        title: 'React中最简单的JSX语法',
+        totalTime: '7分钟',
+        src: '../../assets/video/React001.mp4',
+      },
+      {
+        id: 5 ,
+        title: 'React中的虚拟DOM',
+        totalTime: '14分钟',
+        src: '../../assets/video/React001.mp4',
+      },
+      {
+        id: 6 ,
+        title: '深入理解虚拟DOM',
+        totalTime: '11分钟',
+        src: '../../assets/video/React002.mp4',
       }
     ]
   }
   componentWillMount () {
-    console.log(this.$router.params)
+    console.log('视频详情',this.$router.params)
+    let like = Taro.getStorageSync('liked') || false
+    let favorite = Taro.getStorageSync('favorite') || false
+      this.setState({
+        like,
+        favorite
+      })
   }
 
   componentDidMount () { }
@@ -38,10 +68,15 @@ export default class VideoDetail extends Component {
       Taro.showToast({
         title: '点赞成功'
       })
+    }else{
+      Taro.showToast({
+        title: '取消点赞成功'
+      })
     }
     this.setState({
       like: !like
     })
+    Taro.setStorageSync('liked',!like)
   }
 
   clickFavorite(e){
@@ -58,6 +93,7 @@ export default class VideoDetail extends Component {
     this.setState({
       favorite: !favorite
     })
+    Taro.setStorageSync('favorite',!favorite)
   }
 
   changeVideo(id){
@@ -71,13 +107,17 @@ export default class VideoDetail extends Component {
 
   render () {
     let {like,favorite,currentVideoId,videoList} = this.state
+          //     ? 'http://rookiefeifei.top/frontEndTree/React001.mp4'
+          // : 'http://rookiefeifei.top/frontEndTree/React002.mp4'
+          // ? require('../../assets/video/React001.mp4')
+            // : require('../../assets/video/React002.mp4')
     return (
       <View className='v_d'>
         <Video
           className="vd_video"
           src= {currentVideoId===1
-          ? require('../../assets/video/React001.mp4')
-          : require('../../assets/video/React002.mp4')
+               ? 'http://rookiefeifei.top/frontEndTree/React001.mp4'
+               : 'http://rookiefeifei.top/frontEndTree/React002.mp4'
           }
           controls
           enable-progress-gesture
