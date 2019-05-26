@@ -1,4 +1,4 @@
-const optionsSchema = require("./optionsSchema.json");
+const optionsSchema = require("./optionsSchema.json.js");
 
 const nestedProperties = ["anyOf", "oneOf", "allOf"];
 

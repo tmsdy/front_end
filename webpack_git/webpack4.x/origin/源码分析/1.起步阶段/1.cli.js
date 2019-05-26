@@ -13,7 +13,7 @@
 	// ...
 
 		const yargs = require("yargs").usage(`webpack-cli ${
-			require("../package.json").version
+			require("../package.json.js").version
 		}
 
 	Usage: webpack-cli [options]

@@ -1,0 +1,18 @@
+<!-- 
+1.调用compile开启编译
+2.创建Compilation对象(最核心的一个类)
+  1)负责整个编译过程
+  2)内部保留对compiler对象引用-this.compiler
+  3)this.entries 入口
+  4)this.modules 所有模块
+  5)this.chunks 代码块
+  6)this.assets 所有资源
+  7)template 不同的时候的代码不一样用的不一样的模板 js.165
+    1>this.mainTemplate 主模块模板(能拼接最后生成的bundle.js代码的字符串)
+    2>this.chunkTemplate 异步加载模块模板
+    3>this.hotUpdateChunkTemplate 热更新模块模板
+    4>this.runtimeTemplate
+    5>this.moduleTemplates 入口模块模板
+
+
+ -->
