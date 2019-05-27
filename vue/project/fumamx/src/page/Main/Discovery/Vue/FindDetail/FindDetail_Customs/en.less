@@ -1,0 +1,132 @@
+.en {
+    .FindDetail {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        @titleBarHeight: 132px;
+        @notLinkedTitleBarHeight: @titleBarHeight - 36px;
+        &.notLinked {
+            .TitleBar {
+                height: @notLinkedTitleBarHeight;
+            }
+            .mainBox {
+                top: @notLinkedTitleBarHeight;
+            }
+        }
+        .TitleBar {
+            color: #fff;
+            height: @titleBarHeight;
+            padding: 0 20px 0 16px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(207, 48, 79, 1) 0%, rgba(162, 22, 39, 1) 100%);
+
+            .titleBox {
+                padding-top: 20px;
+                margin-right: 350px;
+                .title {
+                    font-size: 24px;
+                    margin-bottom: 5px;
+                    height: 28px;
+                }
+                .infoItem {
+                    margin-right: 20px;
+                    &:nth-last-of-type(1) {
+                        margin-right: 0;
+                    }
+                    .text {
+                        margin-left: 5px;
+                    }
+                }
+            }
+            .btnBox {
+                position: absolute;
+                right: 20px;
+                top: 28px;
+                .btn {
+                    cursor: pointer;
+                    float: left;
+                    padding: 0 12px;
+                    min-width: 60px;
+                    height: 32px;
+                    text-align: center;
+                    line-height: 30px;
+                    border: 1px solid #fff;
+                    border-radius: 2px;
+                    margin-right: 10px;
+                    &:nth-last-of-type(1) {
+                        margin-right: 0;
+                    }
+                    &.disabled {
+                        cursor: not-allowed;
+                        opacity: .5;
+                    }
+                }
+                .returnBtn {
+                    border: none 0;
+                    padding-right: 0;
+                }
+            }
+
+            .NavBar {
+                position: absolute;
+                bottom: 0;
+                .navItem {
+                    cursor: pointer;
+                    float: left;
+                    width: 86px;
+                    text-align: center;
+                    margin-right: 2px;
+                    height: 36px;
+                    line-height: 36px;
+                    border-radius: 5px 5px 0 0;
+                    background-color: rgba(0, 0, 0, 0.2);
+                    &.active {
+                        background-color: #fff;
+                        color: #D0021B;
+                    }
+                }
+            }
+            @btnH: 32px;
+            @boxH: 38px;
+            .optBox {
+                position: absolute;
+                right: 20px;
+                height: @boxH;
+                bottom: 0;
+                .dropdownItem {
+                    margin-top: 10px;
+                    .el-dropdown-link {
+                        color: #fff;
+                        cursor: pointer;
+                        font-size: 12px;
+                    }
+                }
+
+                .btnItem {
+                    margin-right: 10px;
+                    &:nth-last-of-type(1) {
+                        margin-right: 0;
+                    }
+                }
+                .select {
+                    width: 116px;
+                    margin-top: (@boxH - @btnH)/2;
+                }
+            }
+
+        }
+        .mainBox {
+            position: absolute;
+            top: @titleBarHeight;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0 32px;
+
+            &.MXscroll {
+                overflow: auto;
+            }
+        }
+
+    }
+}

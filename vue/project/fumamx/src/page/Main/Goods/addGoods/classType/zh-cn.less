@@ -1,0 +1,89 @@
+.zh-cn,
+.zh-tw {
+    .title {
+        min-height: 40px;
+        color: #606266;
+        position: relative;
+        padding-left:80px;
+        .labelTitle{
+            position: absolute;
+            left: 0;
+            top: 6px;
+        }
+        .lable{
+            padding: 6px 8px 6px 12px;
+            border-radius:3px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            max-width: 240px;
+            display: inline-block;
+        }
+        .lable1{
+            color: #D0021B;
+            border: 1px solid #D0021B;
+        }
+        .lable2{
+            border: 1px solid #DFE2E4;
+        }
+    }
+    .search{
+        position: relative;
+        .searchValue{
+            width: 540px;
+        }
+        .searchClick{
+            color: white;
+            display: inline-block;
+            padding: 0 16px;
+            height:40px;
+            line-height: 40px;
+            background:linear-gradient(45deg,rgba(255,105,124,1) 0%,rgba(208,2,27,1) 100%);
+            border-radius:4px;
+            float: right;
+        }
+        .listBox{
+            width: 550px;
+            max-height: 300px;
+            overflow: auto;
+            position: absolute;
+            left: 0;
+            top: 45px;
+            background: white;
+            border-radius: 3px;
+            z-index: 100;
+            box-shadow:0px 2px 12px 0px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            .list{
+                height: 36px;
+                line-height: 36px;
+                padding: 0 20px;
+                &:hover{
+                    background: #FCF2F3;
+                }
+            }
+            .nodata{
+                text-align: center;
+                color: #909399;
+            }
+        }
+    }
+    .contentBox{
+        margin-top: 20px;
+        border: 1px solid #DFE2E4;
+        border-radius:4px;
+        height: 380px;
+    }
+    .footer{
+        text-align: center;
+        margin-top: 20px;
+        height: 40px;
+    }
+    .hover:hover {
+        cursor: pointer;
+    }
+    .hoverRed:hover {
+        cursor: pointer;
+        color: #D0021B;
+        border:1px solid #D0021B;
+    }
+}

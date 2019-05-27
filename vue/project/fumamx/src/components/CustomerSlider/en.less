@@ -1,0 +1,94 @@
+.en {
+    .CustomerSlider {
+        // .closeBg{
+        //     border: 1px solid red;
+        //     position: fixed;
+        //     left: 0;
+        //     top: 0;
+        //     right: 0;
+        //     bottom: 0;
+        //     z-index: 88;
+        // }
+        .sliderBg {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 88;
+            &::after {
+                content: '';
+                position: fixed;
+                left: 0;
+                top: 55px;
+                right: 0;
+                bottom: 0;
+                z-index: 88;
+                background-color: rgba(0, 0, 0, .2);
+            }
+        }
+        .sliderBody {
+            width: 830px;
+            position: fixed;
+            top: 55px;
+            right: 0;
+            bottom: 0;
+            z-index: 99;
+            background-color: #fff;
+            word-wrap: break-word;
+            word-break: normal;
+            box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            >.title {
+                color: #222;
+                padding: 0 15px;
+                height: 40px;
+                line-height: 40px;
+                border-bottom: 1px solid #eaedef;
+                .iconfont {
+                    font-size: 12px;
+                    color: #909399;
+                    &:hover {
+                        color: #d0021b;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .custMain {
+                // border: 1px solid red;
+                overflow: auto;
+                position: absolute;
+                top: 40px;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            .iconNotice {
+                margin-bottom: 5px;
+                >i {
+                    font-size: 76px;
+                    color: #ddd;
+                }
+            }
+        }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+        .slider-customer-enter-active {
+            //定义vue下滑动画样式
+            transition: all .3s ease;
+        }
+        .slider-customer-leave-active {
+            transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slider-customer-enter,
+        .slider-customer-leave-to {
+            transform: translateX(500px);
+            opacity: 0;
+        }
+    }
+}

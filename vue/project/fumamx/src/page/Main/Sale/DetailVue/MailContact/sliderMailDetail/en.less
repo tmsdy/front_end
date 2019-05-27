@@ -1,0 +1,85 @@
+.en {
+    .sliderMailDetail {
+        .sliderBody {
+            width: 700px;
+            position: fixed;
+            top: 55px;
+            right: 0;
+            bottom: 0;
+            z-index: 99;
+            background-color: #fff;
+            box-shadow:-2px 0px 10px 0px rgba(0,0,0,0.1);
+            word-wrap: break-word;
+            word-break: normal;
+            >.header {
+                height: 40px;
+                line-height: 40px;
+                padding: 0 15px;
+                // background-color: #eee;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                >.close {
+                    width: 30px;
+                    text-align: center;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    right: 15px;
+                    z-index: 999999;
+                }
+            }
+            >.body {
+                // border: 1px solid red;
+                position: absolute;
+                left: 0;
+                top: 40px;
+                right: 0;
+                bottom: 0;
+                overflow: auto;
+                >ul{
+                    // border: 1px solid red;
+                    margin-bottom: 5px;
+                    >li{
+                        // border: 1px solid blue;
+                        clear: both;
+                        line-height: 22px;
+                        >.label{
+                            float: left;
+                            min-width: 60px;
+                            color: #666;
+                        }
+                        >.values{
+                            margin-left: 60px;
+                            dd{
+                                display: inline-block;
+                                margin:0 8px 0 0;
+                            }
+                        }
+                        &::after{
+                            content:"."; display:block; 
+                            height:0; visibility:hidden; clear:both;
+                        }
+                    }
+                }
+            }
+        }
+        .windowMode{
+            //窗口模式
+            width: auto!important;
+            left:0!important;
+            right:830px!important;
+        }
+        .slider-customer-enter-active {
+            //定义vue下滑动画样式
+            transition: all .3s ease;
+        }
+        .slider-customer-leave-active {
+            transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slider-customer-enter,
+        .slider-customer-leave-to {
+            transform: translateX(500px);
+            opacity: 0;
+        }
+    }
+}

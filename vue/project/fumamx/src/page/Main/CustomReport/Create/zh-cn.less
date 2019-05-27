@@ -1,0 +1,91 @@
+.zh-cn,
+.zh-tw {
+    .Create {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        padding-top: 54px;
+        .createBox {
+            padding: 5px 15px 0 15px;
+            width: 100%;
+            height: 100%;
+            .createWrap {
+                background: #fff;
+                border-radius: 8px;
+                width: 100%;
+                height: 100%;
+                position: relative;
+                // display: flex;
+                // box-orient: vertical;
+                .createMain {
+                    overflow-y: auto;
+                    width: 100%;
+                    top: 71px;
+                    position: absolute;
+                    bottom: 0;
+                    // height: calc(100% - 100px);
+                }
+                .stepBox {
+                    overflow: hidden;
+                    position: absolute;
+                    height: 70px;
+                    width: 100%;
+                    top: 0;
+                    border-bottom: 1px solid #EAEDEF;
+                    li {
+                        float: left;
+                        width: 25%;
+                        background: url(/static/customReport/1.png) no-repeat 100% center;
+                        background-size: 20px 70px;
+                        .stepitem {
+                            height: 70px;
+                            overflow: hidden;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            i {
+                                font-size: 16px;
+                                width: 32px;
+                                text-align: center;
+                                height: 32px;
+                                border-radius: 50%;
+                                border: 1px solid #C0C4CC;
+                                color: #C0C4CC;
+                                display: block;
+                                line-height: 32px;
+                                margin-right: 15px;
+                                cursor: pointer;
+                            }
+                            div {
+                                h2 {
+                                    font-weight: normal;
+                                    font-size: 14px;
+                                    color: #C0C4CC;
+                                }
+                                p {
+                                    font-size: 12px;
+                                    color: #C0C4CC;
+                                }
+                            }
+                        }
+                    }
+                    :last-child {
+                        background: none;
+                    }
+                    li.active {
+                        i {
+                            border-color: #D0021B;
+                            color: #D0021B !important;
+                        }
+                        p {
+                            color: #D0021B !important;
+                        }
+                        h2 {
+                            color: #D0021B !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

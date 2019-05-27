@@ -1,0 +1,151 @@
+.zh-tw,
+.zh-cn {
+    .mailOperation {
+        //单邮件操作栏
+        height: 45px;
+        line-height: 45px;
+        padding: 0 10px;
+        overflow: hidden;
+        background-color: #fff;
+        border-bottom: 1px solid rgb(238, 237, 237);
+
+        .pull-right {
+            padding: 0 21px;
+
+            i {
+                width: 32px;
+                height: 32px;
+                border-radius: 4px;
+                border: 1px solid #DFE2E4;
+                background-color: #FFFFFF;
+                padding: 8px;
+                font-size: 15px;
+
+                &:hover {
+                    border-color: #E6001F;
+                    color: #E6001F;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        >ul {
+            margin: 0 10px;
+            padding: 3px 0; //  border: 1px solid red;
+
+            >li {
+                border: 1px solid #DFE2E4; // border: 1px solid red; // #DFE2E4;
+                display: inline-block;
+                width: 40px;
+                height: 32px;
+                line-height: 32px; // text-align: center; // color: #fff;
+                background-color: #fff;
+                margin: 0 6px 0 0;
+                border-radius: 4px;
+                position: relative; // .el-dropdown-link i {
+                color: #909399; // } // padding: 3px;
+                padding: 0px 3px;
+
+                .iconfont {
+                    font-size: 15px;
+                    margin: 0 1px 0 1px;
+                }
+
+                &.downBtn {
+                    margin-right: 3px;
+
+                    .el-dropdown {
+                        width: 15px;
+                        height: 15px;
+                        line-height: 15px; // padding: 0px 2px;
+                        position: absolute; // right: -14px;
+                        bottom: 6px;
+                        z-index: 1;
+                    }
+
+                    .icon-arrow-down {
+                        font-size: 4px;
+                        color: #999;
+
+                        &:hover {
+                            color: #E6001F;
+                        }
+                    }
+                }
+
+                &.nodown {
+                    text-align: center;
+
+                    .icon-more {
+                        color: RGBA(144, 147, 153, 1);
+                    }
+                }
+
+                &:hover {
+                    border-color: #E6001F;
+                    color: #E6001F;
+                    cursor: pointer;
+
+                    .icon-more {
+                        color: #E6001F;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        // >ul {
+        //     margin: 1px 10px 0 10;
+        //     >li {
+        //         display: inline-block;
+        //         width: 28px;
+        //         height: 28px;
+        //         line-height: 28px;
+        //         text-align: center;
+        //         color: #fff;
+        //         background-color: #999;
+        //         margin: 0 6px 0 0;
+        //         border-radius: 50%;
+        //         position: relative;
+        //         .el-dropdown-link i {
+        //             color: #fff;
+        //         }
+        //         &.downBtn {
+        //             margin-right: 16px;
+        //             .el-dropdown {
+        //                 width: 15px;
+        //                 height: 15px;
+        //                 line-height: 15px;
+        //                 position: absolute;
+        //                 right: -14px;
+        //                 bottom: -2px;
+        //                 z-index: 1;
+        //             }
+        //             .icon-arrow-down {
+        //                 font-size: 12px;
+        //                 color: #999;
+        //                 &:hover {
+        //                     color: #E6001F;
+        //                 }
+        //             }
+        //         }
+        //         &.lineRight {
+        //             margin-right: 26px;
+        //             &:after {
+        //                 content: '';
+        //                 width: 1px;
+        //                 background-color: #ddd;
+        //                 position: absolute;
+        //                 top: 2px;
+        //                 right: -19px;
+        //                 bottom: 2px;
+        //             }
+        //         }
+        //         &:hover {
+        //             background-color: #666;
+        //             cursor: pointer;
+        //         }
+        //     }
+        // }
+    }
+}

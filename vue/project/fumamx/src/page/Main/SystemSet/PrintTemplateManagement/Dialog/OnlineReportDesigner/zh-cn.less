@@ -1,0 +1,63 @@
+.zh-cn,
+.zh-tw {
+    .FullScreen {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        overflow: hidden;
+        margin: 0;
+        z-index: 2000;
+
+        .suspensionDesigner {
+            background: #336699;
+            width: 150px;
+            height: 50px;
+            position: fixed;
+            line-height: 52px;
+            text-align: center;
+            color: #fff;
+            top: 2px;
+            right: 0;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+        }
+
+        .suspensionPreview {
+            background: #336699;
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            line-height: 52px;
+            text-align: center;
+            color: #fff;
+            top: 2px;
+            right: 0;
+
+            .leftclass {
+                float: left;
+                display: inline-block;
+
+            }
+
+            .titleclass {
+                line-height: 50px;
+                font-weight: bold;
+                width: 200px;
+                display: inline-block;
+            }
+
+            .rightclass {
+                line-height: 50px;
+                float: right;
+                display: inline-block;
+                width: 180px;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,78 @@
+.en {
+    .CurrentApp {
+        >ul {
+            // border: 1px solid red;
+            padding: 35px 12px 10px;
+            >li {
+                float: left;
+                width: 190px;
+                height: 190px;
+                background: #ACACAC;
+                margin: 0 15px 30px;
+                padding: 20px 15px;
+                border-radius: 4px;
+                color: #fff;
+                .appName {
+                    // border:1px solid red;
+                    float: left;
+                    width: 110px;
+                    height: 55px;
+                    font-size: 16px;
+                    .iconfont {
+                        font-size: 33px;
+                    }
+                }
+                .pull-right {
+                    // border:1px solid red;
+                    font-size: 12px;
+                    text-align: right;
+                    margin-top: 5px;
+                    .el-switch {
+                        margin-bottom: 10px;
+                        opacity: .65;
+                    }
+                }
+                .appDescr {
+                    // border: 1px solid red;
+                    clear: both;
+                    margin-top: 18px;
+                    max-height: 85px;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 5;
+                    overflow: hidden;
+                }
+                &.active:first-child {
+                    background: #5EA3F6;
+                }
+                &.active:nth-child(2) {
+                    background: #FFB735;
+                }
+                &.active:nth-child(3) {
+                    background: #FF7165;
+                }
+                &.active:nth-child(4) {
+                    background: #9B80F2;
+                }
+                &.active:nth-child(5) {
+                    background: #37CBE3;
+                }
+                &.active:nth-child(6) {
+                    background: #BFBF17;
+                }
+                &.active:nth-child(7) {
+                    background: #8BD867;
+                }
+                &.active:nth-child(8) {
+                    background: #FF7165;
+                }
+                &.active:nth-child(9) {
+                    background: #763626;
+                }
+                &.active:nth-child(10) {
+                    background: #909399;
+                }
+            }
+        }
+    }
+}

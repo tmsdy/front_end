@@ -1,0 +1,59 @@
+.en {
+    .Receivables{
+        min-height: 80px;
+        padding-bottom: 20px;
+        .contactTitle{
+            height: 40px;
+            line-height: 40px;
+            padding-left:16px;
+            color: black;
+            font-weight: bold;
+            background: #FAFAFA;
+        }
+        .miniButton{
+            color:#D0021B;
+            border-color:#D0021B;
+            margin:0 13px 0 16px;
+            padding: 6px 12px;
+        }
+        .ReceivablesBox{
+            padding: 0 16px;
+            font-size: 12px;
+            color: #222222;
+            .list{
+                height: 40px;
+                line-height: 40px;
+                border-bottom: 1px solid #EAEAEA;
+                position: relative;
+                padding-left: 66px;
+                .type{
+                    position: absolute;
+                    left: 10px;
+                }
+                .name{
+                    color: #606266;
+                }
+                .optBox{
+                    display: none;
+                    position: absolute;
+                    right: 10px;
+                    top: 0;
+                    width: 40px;
+                    line-height: 40px;
+                    .iBox {
+                        color: #909399;
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &:hover{
+                    background: #fafafa;
+                    .optBox{
+                        display: inline;
+                    }
+                }
+            }
+        }
+    }
+}

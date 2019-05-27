@@ -1,0 +1,145 @@
+.en {
+    .Interactive {
+        .main {
+            position: absolute;
+            top: 52px;
+            bottom: 0;
+            width: 100%;
+            .tabBar {
+                height: 56px;
+                border-top: 1px solid #f1f3f4;
+                background-color: #fff;
+                .tabBox {
+                    height: 56px;
+                    line-height: 56px;
+                    padding-left: 40px;
+                    .tabItem {
+                        float: left;
+                        margin-right: 30px;
+                        cursor: pointer;
+                        &.active {
+                            position: relative;
+                            &:after {
+                                content: '';
+                                position: absolute;
+                                height: 2px;
+                                width: 100%;
+                                bottom: 0;
+                                left: 0;
+                                background-color: #D0021B;
+                            }
+                        }
+                        .iconfont {
+                            width: 16px;
+                            height: 16px;
+                            line-height: 16px;
+                            text-align: center;
+                            display: inline-block;
+                            /* float: left; */
+                            font-size: 12px;
+                            color: #fff;
+                            margin-right: 5px;
+                        }
+                        .facebookIcon {
+                            background-color: #3B5999;
+                        }
+                    }
+                }
+            }
+            .resBox {
+                overflow: auto;
+                position: absolute;
+                top: 56px;
+                bottom: 0;
+                width: 100%;
+                padding: 16px 16px 0 16px;
+                .noDataBox {
+                    background-color: rgba(0, 0, 0, 0);
+                }
+                .resListBox {
+                    margin: 16px 0 40px 0;
+                    .lookMore {
+                        .btn {
+                            cursor: pointer;
+                            width: 100px;
+                            text-align: center;
+                            line-height: 40px;
+                            height: 40px;
+                            border-radius: 4px;
+                            margin: 0 auto;
+                            border: 1px solid #eff2f4;
+                        }
+                    }
+                    .resItem {
+                        /*  height: 256px; */
+                        padding: 16px;
+                        margin-bottom: 8px;
+                        background-color: #fff;
+                        border-radius: 4px;
+                        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+
+                    }
+                    .userBox {
+                        height: 40px;
+                        .avatar {
+                            float: left;
+                            height: 40px;
+                            width: 40px;
+                        }
+                        .avatarIcon {
+                            float: left;
+                            height: 40px;
+                            width: 40px;
+                            text-align: center;
+                            border-radius: 50%;
+                            line-height: 40px;
+                            color: #fff;
+                            font-size: 16px;
+                            background-color: #3B5999;
+                        }
+                        .infoBox {
+                            margin-left: 50px;
+                            height: 40px;
+                            .name,
+                            .time {
+                                line-height: 20px;
+                                font-size: 14px;
+                            }
+                            .name {
+                                color: #008CEE;
+                            }
+                            .time {
+                                color: #909399;
+                            }
+                        }
+                    }
+                    .contentBox {
+                        margin-top: 10px;
+                        font-size: 14px;
+                        max-width: 800px;
+                        color: #606266;
+                        .link {
+                            color: #008CEE;
+                        }
+                    }
+                    .pictureBox {
+                        margin-top: 10px;
+                        .pictureItem {
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
+                    .dynamicBox {
+                        font-size: 14px;
+                        color: #008CEE;
+                        margin-top: 10px;
+                        .zanItem {
+                            margin-right: 14px;
+                        }
+                        .iconfont {}
+                    }
+                }
+            }
+        }
+    }
+}

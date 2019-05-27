@@ -1,0 +1,46 @@
+.zh-cn,
+.zh-tw {
+    .MyFollow {
+        .tabBox {
+            margin-top: 4px;
+        }
+        .mainBox {
+            position: absolute;
+            top: 52px;
+            width: 100%;
+            bottom: 0;
+            padding: 16px 16px 0 16px;
+            overflow-y: auto;
+            &.hasPage {
+                bottom: 40px;
+            }
+            .cardBody {
+                position: absolute;
+                padding: 5px 20px;
+                left: 16px;
+                right: 16px;
+                min-height: calc(100% - 16px);
+                background-color: #fff;
+            }
+
+        }
+        .noDataBox {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .atCenter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .page {
+            position: absolute;
+            bottom: 0;
+            height: 40px;
+            width: 100%;
+            background-color: #fff;
+            line-height: 40px;
+            text-align: center;
+        }
+    }
+}

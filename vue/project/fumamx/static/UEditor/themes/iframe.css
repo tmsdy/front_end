@@ -1,0 +1,14 @@
+/*可以在这里添加你自己的css*/
+
+/*以下修正图片在编辑内撑大问题*/
+img {
+  max-width: 100%; /*图片自适应宽度*/
+}
+.view input.M_scrawl {border:none; border-radius: 3px; background: #008CEE; color:#fff; font-size: 12px; padding:2px 5px; margin-right:3px;}
+.vote_area {display: block;}
+.vote_iframe {
+  background-color: transparent;
+  border: 0 none;
+  height: 100%;
+}
+#edui1_imagescale{display:none !important;} /*去除点击图片后出现的拉伸边框*/

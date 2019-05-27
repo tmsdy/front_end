@@ -1,0 +1,298 @@
+.en {
+    .treeWrap {
+        // border: 1px solid red;
+        position: absolute;
+        left: 0;
+        top: 90px;
+        right: 0;
+        bottom: 35px;
+        overflow: auto;
+
+        .treeItem {
+            border-bottom: 1px solid #fff;
+
+            .title {
+                // border:1px solid red;
+                color: #222222;
+                height: 36px;
+                line-height: 36px;
+                padding: 0 10px 0 22px;
+                position: relative;
+
+                >.el-dropdown {
+                    // border: 1px solid red;
+                    position: absolute;
+                    left: 43px;
+                    right: 0;
+                    font-weight: normal;
+
+                    .currentMail {
+                        float: left;
+
+                        >.textFull {
+                            float: left;
+                            font-style: normal;
+                            max-width: 110px;
+                            color: #222;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+
+                        >.numBG {
+                            background: linear-gradient(45deg, #FF697C, #D0021B);
+                            position: relative;
+                            top: -1px;
+                            padding: 1px 6px;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 12px;
+                            color: #fff;
+                            border-radius: 10px;
+                            margin-left: 3px;
+                        }
+                    }
+
+                    .pull-right {
+                        margin-right: 16px;
+                        color: #909399;
+                    }
+                }
+
+                >.el-select {
+                    // border:1px solid blue;
+                    position: absolute;
+                    top: 0;
+                    right: 10px;
+                    left: 43px;
+                }
+
+                i.iconThis {
+                    font-size: 15px;
+                    color: #999;
+                    margin-right: 2px;
+
+                    &.icon-mail-not {
+                        font-size: 18px;
+                        color: #FF2626;
+                        position: relative;
+                        top: 3px;
+                    }
+
+                    &.icon-star {
+                        color: #FFBF00;
+                    }
+
+                    &.openBtn {
+                        color: #fff;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+                        font-size: 10px;
+                        padding: 2px;
+
+                        &:hover {
+                            background-color: #8C0000;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                &:hover,
+                &.active {
+                    background: rgba(208, 2, 27, 0.05);
+                    cursor: pointer;
+                }
+            }
+
+            ul.T_down {
+                //菜单树
+                // border: 1px solid red;
+                padding-left: 15px;
+
+                li {
+                    line-height: 31px;
+
+                    >h3 {
+                        border-top: 1px solid #fff;
+                        font-weight: normal;
+                        font-size: 14px;
+                        padding-left: 18px;
+                        white-space: nowrap;
+                        cursor: default;
+                        position: relative;
+                        margin-left: 14px;
+
+                        >i.iconfont {
+                            // border: 1px solid red;
+                            display: inline-block;
+                            width: 23px;
+                            height: 100%;
+                            text-align: center;
+                            font-size: 12px;
+                            color: #666;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+
+                            &:hover {
+                                color: #d0021b;
+                                cursor: pointer;
+                            }
+                        }
+
+                        >span.label {
+                            display: inline-block;
+                            height: 100%;
+
+                            >em {
+                                font-size: 12px;
+                                font-style: normal;
+                                color: #888;
+                                margin-left: -2px;
+                            }
+
+                            .labelColor {
+                                // border: 1px red solid;
+                                position: relative;
+                                top: 0;
+                                z-index: 1;
+                                float: left;
+                                border-radius: 10px;
+                                padding: 0 6px;
+                                margin-top: 4px;
+                                max-width: 100px;
+                                line-height: 22px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+
+                                &:hover {
+                                    cursor: pointer;
+                                    opacity: .9;
+
+                                    &+.T_set {
+                                        display: none;
+                                    }
+                                }
+                            }
+
+                            .numTip {
+                                // border: 1px solid red;
+                            }
+
+                            &::before {
+                                content: '';
+                                display: inline-block;
+                                // border: 1px solid red;
+                            }
+
+                            &::after {
+                                content: '';
+                                display: table;
+                                height: 0;
+                                clear: both;
+                            }
+                        }
+
+                        span.labelCustmer {
+                            background: linear-gradient(135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+                            display: inline-block;
+                            font-size: 12px;
+                            font-style: normal;
+                            width: 20px;
+                            height: 20px;
+                            line-height: 20px;
+                            text-align: center;
+                            border-radius: 50%;
+                            // margin-left: 5px; // background-color: #f60;
+                            position: relative;
+                            z-index: 1;
+                            color: #fff;
+
+                            &:hover {
+                                cursor: pointer;
+                                // border: 1px black solid;
+                                // color: #222222;
+                            }
+                        }
+
+                        span.T_set {
+                            display: none;
+                            position: absolute;
+                            top: 50%;
+                            margin-top: -16px;
+                            right: 10px;
+                            z-index: 2;
+
+                            >i.iconfont {
+                                display: inline-block;
+                                padding: 0 2px;
+                                font-size: 13px;
+
+                                &:hover {
+                                    color: #d0021b;
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .el-dropdown {
+                                i.iconfont {
+                                    font-size: 13px;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+
+                        &.active {
+                            span.labelColor {
+                                color: #D0021B;
+                            }
+
+                            &::before,
+                            &::after {
+                                content: '';
+                            }
+                        }
+
+                        &:hover {
+
+                            &::before,
+                            &::after {
+                                content: '';
+                            }
+
+                            span.T_set {
+                                display: block;
+                            }
+
+                            .numTip {
+                                display: none;
+                            }
+                        }
+
+                        &::before {
+                            content: none;
+                            background: rgba(208, 2, 27, 0.05);
+                            position: absolute;
+                            left: 0;
+                            margin-left: -100px;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                        }
+
+                        &::after {
+                            content: none;
+                            width: 2px;
+                            background-color: #D0021B;
+                            position: absolute;
+                            top: 0;
+                            right: 226px;
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

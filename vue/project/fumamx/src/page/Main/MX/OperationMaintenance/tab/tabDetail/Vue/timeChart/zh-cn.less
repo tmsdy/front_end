@@ -1,0 +1,100 @@
+.zh-cn,
+.zh-tw {
+    .timeChart{
+        box-shadow:0px 0px 5px 0px rgba(0,0,0,0.1);
+        border-radius:4px;
+        .title{
+            height: 40px;
+            padding-top: 5px;
+            background:rgba(244,244,244,1);
+            border-radius:4px 4px 0px 0px;
+            padding-left: 15px;
+            position: relative;
+            .onlineTabs{
+                width: 210px;
+                display: inline-block;
+                .onlineTab{
+                    width: 102px;
+                    height: 35px;
+                    line-height: 35px;
+                    border-radius:4px 4px 0px 0px;
+                    display: inline-block;
+                    vertical-align: top;
+                    text-align: center;
+                }
+                .active-onlineTab{
+                    background: white;
+                    font-weight:500;
+                }
+            }
+            .titleRight{
+                width: 118px;
+                position: absolute;
+                right: 20px;
+                top: 4px;
+            }
+        }
+        .contentBox{
+            padding: 20px 50px 10px 493px;
+            height: 300px;
+            position: relative;
+            color: #606266;
+            .titleLeft{
+                width: 121px;
+                position: absolute;
+                left: 0;
+                top: 20px;
+                border-right:1px solid #DFE2E4;
+                .titleList{
+                    height: 40px;
+                    line-height: 40px;
+                    padding-left: 36px;
+                    &:hover{
+                        color: #D0021B;
+                        cursor: pointer;
+                        background: #FCF2F3;
+                    }
+                }
+                .titleListCheck{
+                    color: #D0021B;
+                    background: #FCF2F3;
+                    border-right:2px solid #D0021B;
+                }
+            }
+            .contentLeft{
+                position: absolute;
+                left: 121px;
+                top: 20px;
+                width: 372px;
+                padding: 0 82px 0 30px;
+                .countTitle{
+                    height: 40px;
+                    line-height: 40px;
+                    color: #303133;
+                }
+                .countBox{
+                    padding-top: 18px;
+                    .countList{
+                        width: 130px;
+                        float: left;
+                        height: 82px;
+                        text-align: center;
+                        .count{
+                            height: 28px;
+                            line-height: 28px;
+                            font-size: 20px;
+                            color: #303133;
+                        }
+                        .countName{
+                            font-size: 12px;
+                            margin-top: 6px;
+                        }
+                    }
+                }
+            }
+            .contentRight{
+                height: 280px;
+            }
+        }
+    }
+}

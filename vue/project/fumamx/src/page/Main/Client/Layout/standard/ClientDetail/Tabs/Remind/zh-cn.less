@@ -1,0 +1,70 @@
+.zh-cn,
+.zh-tw {
+    .Remind {
+        // border: 1px solid red;
+        padding: 3px 15px 30px;
+        position: relative;
+        .listWrap {
+            // border: 1px solid red;
+            .date {
+                color: #999;
+                padding: 10px 0 7px;
+            }
+            .listBox {
+                border-top: 1px solid #EAEAEA;
+                // background-color: #FAFAFA;
+                // border-radius: 4px;
+                li {
+                    border-bottom: 1px #EAEAEA solid;
+                    position: relative;
+                    padding: 8px 10px;
+                    .time {
+                        color: #666;
+                    }
+                    .describe {
+                        color: #555;
+                        margin-left: 3px;
+                        >span {
+                            color: #d0021b;
+                        }
+                    }
+                    .operation {
+                        // border: 1px solid red;
+                        height: 24px;
+                        line-height: 24px;
+                        position: absolute;
+                        top: 50%;
+                        margin-top: -12px;
+                        right: 15px;
+                        // display: none;
+                        >span {
+                            margin-left: 10px;
+                            float: left;
+                            width: 24px;
+                            height: 24px;
+                            line-height: 24px;
+                            text-align: center;
+                            border-radius: 50%;
+                            color: #d0021b;
+                            .iconfont {
+                                font-size: 18px;
+                            }
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    // &:last-child {
+                    //     border-bottom: none;
+                    // }
+                    &:hover {
+                        background: #FAFAFA;
+                        .operation {
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

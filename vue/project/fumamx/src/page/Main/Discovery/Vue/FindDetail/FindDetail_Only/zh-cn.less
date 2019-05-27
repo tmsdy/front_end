@@ -1,0 +1,336 @@
+.zh-cn,
+.zh-tw {
+    .RecordDetail {
+        .detailCut {
+            position: absolute;
+            right: 80px;
+            top: 0;
+            z-index: 2;
+            height: 44px;
+            line-height: 44px;
+        }
+        .border {
+            /*  border: 1px solid #eaeaea; */
+        }
+        .detailBox {
+            position: absolute;
+            top: 44px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: auto;
+            &>div {
+                margin: 0 16px;
+                padding-top: 16px;
+            }
+            .leftBox {
+                .border;
+                width: 400px;
+                background-color: #fff;
+                padding: 30px;
+                min-height: 732px;
+                position: relative;
+                overflow: hidden;
+
+                .tagBox {
+                    width: 100px;
+                    height: 100px;
+                    right: 0;
+                    top: 0;
+                    position: absolute;
+                    transform: translate(50%, -50%) rotate(45deg);
+                    background-color: #FFEF00;
+                    .text {
+                        position: absolute;
+                        left: 50%;
+                        width: 100%;
+                        bottom: 8px;
+                        height: 20px;
+                        line-height: 25px;
+                        transform: translateX(-50%);
+                        text-align: center;
+                        font-size: 14px;
+                        color: #D0021B;
+                    }
+                }
+                .logoBox {
+                    text-align: center;
+                    .imgBox {
+                        display: block;
+                        height: 120px;
+                        width: 120px;
+                        margin: 0 auto;
+                        position: relative;
+                        img {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            max-width: 120px;
+                            max-height: 120px;
+                        }
+                    }
+                    .name {
+                        font-size: 20px;
+                        margin: 12px auto;
+                        color: #303133;
+                    }
+                    .btn {
+                        cursor: pointer;
+                        width: 94px;
+                        height: 32px;
+                        line-height: 32px;
+                        color: #fff;
+                        margin: 0 auto;
+                        background: linear-gradient(45deg, rgba(255, 105, 124, 1) 0%, rgba(208, 2, 27, 1) 100%);
+                        box-shadow: 0px 0px 10px 0px rgba(208, 2, 27, 0.5);
+                        border-radius: 16px;
+                    }
+                }
+                .title {
+                    color: #303133;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+                .infoBox {
+                    margin-top: 20px;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #EAEDEF;
+                    .infoList {
+                        .label {
+                            color: #606266;
+                            font-size: 14px;
+                            width: 100px;
+                            padding-right: 10px;
+                        }
+                        .info {
+                            width: 240px;
+                            text-align: right;
+                            color: #606266;
+                            * {
+                                color: #606266;
+                            }
+                        }
+                        margin-top:10px;
+                        li {
+                            margin-bottom: 10px;
+                            &:nth-last-of-type(1) {
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+
+                }
+                .explainBox {
+                    margin-top: 20px;
+                    .explain {
+                        margin-top: 20px;
+                    }
+                }
+            }
+            .rightBox {
+
+                margin-left: 420px;
+                .title {
+                    color: #303133;
+                    font-size: 16px;
+                    padding: 0 20px;
+                    height: 52px;
+                    line-height: 52px;
+                    .optBtn {
+                        border-radius: 16px;
+                    }
+                    .deeptime {
+                        margin-right: 10px;
+                        font-size: 12px;
+                    }
+                }
+                .socialBox {
+                    .border;
+                    background-color: #fff;
+                    margin-bottom: 20px;
+                    padding-bottom: 20px;
+                    border-radius: 4px;
+                    min-height: 312px;
+                    .socialList {
+                        padding: 0 20px;
+                        overflow: hidden;
+                        .item {
+                            width: 202px;
+                            height: 60px;
+                            margin-bottom: 20px;
+                            margin-right: 20px;
+                            padding: 10px;
+                            background-color: #f7f8f9;
+                            border: 1px solid #EAEDEF;
+                            .imgBox {
+                                width: 40px;
+                                height: 40px;
+                                position: relative;
+                                border-radius: 20px;
+                                overflow: hidden;
+                                img {
+                                    max-width: 40px;
+                                    max-height: 40px;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                }
+                            }
+                            .socialInfo {
+                                margin-left: 50px;
+                                .name {
+                                    height: 20px;
+                                    line-height: 20px;
+                                    a {
+                                        color: #008CEE;
+                                    }
+                                }
+                                .sname {
+                                    margin-top: 3px;
+                                    height: 17px;
+                                    line-height: 17px;
+                                    font-size: 12px;
+                                    color: #303133;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                .contactsBox {
+                    .border;
+                    background-color: #fff;
+                    margin-bottom: 20px;
+                    border-radius: 4px;
+                    height: 400px;
+                    position: relative;
+
+                    .tableBox {
+                        position: absolute;
+                        top: 52px;
+                        bottom: 0;
+                        width: 100%;
+                        &.hasPage {
+                            bottom: 40px;
+                        }
+                        .headerBox {
+                            height: 40px;
+                            line-height: 40px;
+                            background-color: #EFF2F4;
+                            color: #909399;
+                            .item {
+                                padding-left: 20px;
+                            }
+                        }
+                        .bodyBox {
+                            position: absolute;
+                            width: 100%;
+                            top: 40px;
+                            bottom: 0;
+                            overflow: auto;
+                        }
+                        .line {
+                            min-height: 40px;
+                            padding: 12px 0;
+                            border-bottom: 1px solid #EAEDEF;
+                            .item {
+                                padding-left: 20px;
+                                word-wrap: break-word;
+                                &.nameItem {
+                                    padding-left: 45px;
+                                    position: relative;
+                                }
+                                .avatarImg {
+                                    position: absolute;
+                                    height: 30px;
+                                    width: 30px;
+                                    top: 50%;
+                                    border-radius: 15px;
+                                    transform: translateY(-50%);
+                                    left: 10px;
+                                }
+                                .jobTag {
+                                    padding: 2px 4px;
+                                    margin-left: 4px;
+                                    font-size: 12px;
+                                    background-color: #FFF3F2;
+                                    color: #FF7165;
+                                }
+                                .socialIconBox {
+                                    .iconfont {
+                                        width: 16px;
+                                        height: 16px;
+                                        line-height: 16px;
+                                        text-align: center;
+                                        float: left;
+                                        font-size: 12px;
+                                        color: #fff;
+                                        margin-right: 5px;
+                                    }
+                                    .facebookIcon {
+                                        background-color: #3B5999;
+                                    }
+                                    .twitterIcon {
+                                        background-color: #00AEF4;
+                                    }
+                                    .linkedinIcon {
+                                        background-color: #0073b1;
+                                    }
+                                }
+                                .operationBox {
+                                    display: none;
+                                    position: relative;
+                                    .optItems {
+                                        position: absolute;
+                                        left: 0;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                    }
+                                    .iconfont {
+                                        cursor: pointer;
+                                        float: left;
+                                        margin-right: 6px;
+                                        width: 24px;
+                                        height: 24px;
+                                        background: linear-gradient(135deg, #ff697c, #d0021b);
+                                        color: #fff;
+                                        border-radius: 50%;
+                                        line-height: 24px;
+                                        text-align: center;
+                                        font-size: 12px;
+                                        &:hover {
+                                            background: linear-gradient(135deg, #ff94a1, #f7243e)
+                                        }
+                                        &:nth-last-of-type(1) {
+                                            margin-right: 0;
+                                        }
+                                    }
+                                }
+
+                            }
+                            &:hover {
+                                background: #fdf2f3;
+                                .item {
+                                    .operationBox {
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .page {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 40px;
+                        line-height: 40px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

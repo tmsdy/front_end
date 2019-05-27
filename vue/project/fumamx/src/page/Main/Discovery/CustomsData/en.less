@@ -1,0 +1,182 @@
+.en {
+    .Search {
+        @borderColor: #eaeaea;
+        .SearchPage {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            padding-top: 16px;
+            .SearchBox {
+                @h: 40px;
+                @w: 80px;
+                margin: 0 16px;
+                height: @h ;
+                /* padding-top: 27px; */
+                position: relative;
+                @typeBoxWidth: 110px;
+                .SearchTypeBox {
+                    width: @typeBoxWidth;
+                    position: absolute;
+                    height: 100%;
+                    line-height: @h;
+                    text-align: center;
+                    border: 1px solid rgba(234, 234, 234, 1);
+                    border-right: none 0;
+                    .dropdown {
+                        width: @typeBoxWidth;
+                        .el-dropdown-link {
+                            cursor: pointer;
+                        }
+                    }
+                }
+                .InputBox {
+                    position: absolute;
+                    left: @typeBoxWidth;
+                    width: calc(100% - @typeBoxWidth);
+                    height: 100%;
+                }
+                .iconfont {
+                    position: absolute;
+                    width: @h;
+                    height: @h;
+                    line-height: @h;
+                    text-align: center;
+                    left: 0;
+                    bottom: 0;
+                    color: #C0C4CC;
+                }
+                .input {
+                    height: @h;
+                    padding-left: @h;
+                    width: calc(100% - @w);
+                    outline: none 0;
+                    border: 1px solid rgba(234, 234, 234, 1);
+                }
+                .btn {
+                    cursor: pointer;
+                    width: @w;
+                    height: @h;
+                    line-height: @h;
+                    width: @w;
+                    text-align: center;
+                    background-color: #D0021B;
+                    color: #fff;
+                    border-radius: 0 3px 3px 0;
+                }
+
+            }
+            .mainBox {
+                overflow: auto;
+                position: absolute;
+                top: 65px;
+                bottom: 0;
+                width: 100%;
+                padding: 0 16px;
+            }
+            .TypeBox {
+                margin: 16px 0;
+                padding: 10px 16px;
+                border-radius: 2px;
+                position: relative;
+                border: 1px solid @borderColor;
+                @labelW: 94px;
+                .typeLabel {
+                    width: @labelW;
+                    color: #222;
+                    line-height: 28px;
+                    margin-bottom: 10px;
+                }
+                .typeList {
+                    /*  width: calc(100% - @labelW); */
+                    margin-left: @labelW;
+                    &.countryList {
+                        margin-right: 100px;
+                        height: 38px;
+                        overflow: hidden;
+                        &.isOpen {
+                            height: initial;
+                        }
+                    }
+
+                }
+                .lookMore {
+                    user-select: none;
+                    cursor: pointer;
+                    position: absolute;
+                    right: 16px;
+                    top: 16px;
+                    height: 20px;
+                    line-height: 20px;
+                    color: #008CEE;
+                    .iconfont {
+                        float: right;
+                        text-align: center;
+                        margin-left: 4px;
+                        font-size: 12px;
+                        transition: transform .2s ease-in-out;
+                        transform: rotate(0deg);
+                        &.isOpen {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                }
+                .typeItem {
+                    cursor: pointer;
+                    color: #606266;
+                    height: 28px;
+                    line-height: 28px;
+                    padding: 0 12px;
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    border-radius: 2px;
+                    border: 1px solid @borderColor;
+                    &:nth-last-of-type(1) {
+                        margin-right: 0;
+                    }
+                    &.active {
+                        color: #D0021B;
+                        border-color: #D0021B;
+                    }
+                }
+            }
+            .ResultBox {
+                .resTitle {
+                    margin-bottom: 16px;
+                    font-size: 12px;
+                    color: #222;
+                    .mergeBtn {
+
+                        font-size: 12px;
+                        margin-left: 10px;
+                    }
+                }
+                .tableHeader {
+                    line-height: 32px;
+                    height: 32px;
+                    color: #606266;
+                    background-color: #F7F8F9;
+                    overflow: hidden;
+                    .firstCol {
+                        padding-left: 32px;
+                    }
+                    .sortBtn {
+                        cursor: pointer;
+                        margin-left: 5px;
+                        font-size: 12px;
+                        color: #C0C4CC;
+                        &.active {
+                            color: #D0021B;
+                        }
+                    }
+                }
+
+                /* .tableBody {} */
+            }
+            .page {
+                text-align: center;
+            }
+        }
+    }
+}

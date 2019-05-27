@@ -1,0 +1,154 @@
+.en {
+    .DialogDoc {
+        .tabBox {
+            ul {
+                width: 240px;
+                margin: 0 auto;
+                border: 1px solid #eee;
+                li {
+                    display: block;
+                    float: left;
+                    width: 50%;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    cursor: pointer;
+                    &:nth-of-type(1) {
+                        border-right: 1px solid #eee;
+                    }
+                    &.active {
+                        background-color: #e6001f;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        .docNav {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            height: 40px;
+            line-height: 40px;
+            .pageName {
+                color: #303133;
+                font-size: 14px;
+                &.canClick {
+                    cursor: pointer;
+                    color: #909399;
+                    &:hover {
+                        color: #D0021B;
+                    }
+                }
+                &.iconfont {
+                    margin: 0 5px;
+                }
+            }
+        }
+        .listBox {
+            height: 300px;
+            position: relative;
+            .loadingBox {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .resList {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            overflow-y: auto;
+            .myTableBody {
+                .itemName {
+                    width: 70%;
+                }
+                .itemSize {
+                    width: 20%;
+                }
+                .itemFun {
+                    width: 10%;
+                }
+                width: 100%;
+                height: 70px;
+                padding: 15px 0;
+                background-color: #fff;
+                border-bottom: 1px solid #eaedef;
+                &>div {
+                    float: left;
+                    padding-left: 20px;
+                    height: 40px;
+                    position: relative;
+                    .liSelect {
+                        width: 16px;
+                        height: 16px;
+                        overflow: hidden;
+                    }
+                    .iconBox {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 6px;
+                        line-height: 40px;
+                        position: relative;
+                        @size: 40px;
+                        overflow: hidden;
+                        img.imgIcon {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: @size;
+                            height: @size;
+                        }
+                        .iconfont {
+                            color: #76787d;
+                            font-size: @size;
+                        }
+                        .iconSVG {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            /*  width: 50px;
+                                height: 50px; */
+                            font-size: 40px;
+                        }
+                    }
+                    &.itemName {
+                        padding-left: 5px;
+                        .contentBox {
+                            font-size: 12px;
+                            .docTitle {
+                                color: #303133;
+                                font-size: 14px;
+                            }
+                            .docDes {
+                                color: #606266;
+                            }
+                            left: 60px;
+                            right: 0;
+                        }
+                    }
+                    .contentBox,
+                    .funBox {
+                        overflow: hidden;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                    &.itemSize {
+                        .contentBox {
+                            font-size: 12px;
+                            color: #606266;
+                        }
+                    }
+                    &.itemFun {
+                        padding-left: 40px;
+                    }
+                }
+                &:hover {
+                    background: #fdf2f3;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

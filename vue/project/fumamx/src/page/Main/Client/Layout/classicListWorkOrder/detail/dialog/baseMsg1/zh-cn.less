@@ -1,0 +1,187 @@
+@import '../../../../public-zh-cn.less';
+.zh-cn,
+.zh-tw {
+    .FeedbackDetail {
+        // 公共样式初始化
+        position: relative;
+        background: white;
+        // 公共样式初始化
+        overflow: auto;
+        height: 100%;
+        padding: @pagePadding; //列表
+        padding-right:285px; 
+        .FeedbackBox{
+            color:#666;
+            margin-top: 16px;
+            font-size: 14px;
+            padding-bottom:30px; 
+            .title{
+                min-height: 74px;
+                border: 1px solid #f2f2f2;
+                padding:0 15px;
+                .titleList1{
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 12px;
+                    border-bottom:1px solid #f2f2f2;
+                    .titleContent{
+                        color: black;
+                        min-height: 50px;
+                        margin-left: 15px;
+                    }
+                }
+                .titleList1:last-child{
+                    border-bottom:0;
+                }
+                .titleList2{
+                    min-height: 40px;
+                    line-height: 20px;
+                    font-size: 12px;
+                    padding:10px 0 15px; 
+                }
+            }
+            .historyTitle{
+                height: 35px;
+                line-height: 35px;
+                padding-left:15px;
+                background: #f5f6fa;
+                color: black;
+                border-bottom: 1px solid #f2f2f2;
+            }
+            .history{
+                min-height: 108px;
+                border: 1px solid #f2f2f2;
+                margin-top:10px;
+                .historyContent{
+                    min-height: 73px;
+                    background: white;
+                    font-size: 12px;
+                    padding: 0 15px;
+                    .historyContentNo{
+                        padding: 20px 0;
+                    }
+                    .historyContentBox{
+                        min-height:72px;
+                        position: relative;
+                        border-bottom:1px dashed  #f2f2f2;
+                        padding-top: 20px;
+                        .historyContentImg{
+                            position: absolute;
+                            top:20px;
+                            left:0;
+                            width: 50px;
+                            height: 35px;
+                            img{
+                                width: 35px;
+                                height: 35px;
+                                border-radius: 50%;
+                            }
+                        }
+                        .historyContentMsg{
+                            padding: 0 0 15px 50px;
+                            >div{
+                                min-height: 22px;
+                                position: relative;
+                                >span{
+                                    display: inline-block;
+                                }
+                                
+                                .starMask{
+                                    height: 100%;
+                                    width: 100%;
+                                    position: absolute;
+                                    left: 0;
+                                    top: 0;
+                                }
+                            }
+                        }
+                    }
+                    .historyContentBox:last-child{
+                        border: 0;
+                    }
+                }  
+            }
+            .addFeedback{
+                min-height: 326px;
+                border: 1px solid #f2f2f2;
+                margin-top:10px; 
+                .addFeedbackBox{
+                    padding: 24px 30px 24px 15px;
+                    >div{
+                        max-width:800px;
+                    }
+                    .iconfileBox{
+                        float: left;
+                        width: 80px;
+                        text-align: center;
+                        position: relative;
+                        padding-top: 4px;
+                        cursor: pointer;
+                        .name{
+                            display: inline-block;
+                            width: 50px;
+                        }
+                        .name1{
+                            display: inline-block;
+                            width: 30px; 
+                        }
+                        .cancel{
+                            border: 1px solid #ccc;
+                            display: none;
+                            width: 14px;
+                            height: 13px;
+                            line-height: 12px;
+                            text-align: center;
+                            background-color: #fff;
+                            border-radius: 50%;
+                            position: absolute;
+                            top: -6px;
+                            right: 3px;
+                            overflow: hidden;
+                        }
+                    }
+                    .iconfileBox:hover .cancel{
+                        display: inline-block;
+                    }
+                }
+                .addFeedbackFoot{
+                    height: 50px;
+                    max-width:800px;
+                    position: relative;
+                    margin:50px 30px 0 15px;
+                }
+            }
+            .baseMsg{
+                position: absolute;
+                top:16px;
+                right:10px;
+                width: 250px;
+                min-height: 608px;
+                border: 1px solid #f2f2f2;
+                .baseMsgContent{
+                    padding-left: 15px;
+                    font-size: 12px;
+                    .baseMsgList{
+                        min-height: 46px;
+
+                        line-height: 46px;
+                        position: relative;
+                        padding-left:100px;
+                        .fieldName{
+                            position: absolute;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .TransferOrderBox{
+            min-height: 100px;
+            padding:0px 40px 0 80px;
+        }
+        .closeProblemBox{
+            padding: 20px 128px 23px 114px;
+            text-align: center;
+        }
+    }
+}

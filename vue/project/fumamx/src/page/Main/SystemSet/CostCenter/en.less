@@ -1,0 +1,104 @@
+@import '../../public-en.less';
+.en {
+    .CostCenter {
+        // 公共样式初始化
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 50px 15px 0;
+        height: 100%;
+        margin-right: 15px;
+        border-radius:4px;
+        position: relative;
+        .pageTab{
+            padding-top:5px; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 27px;
+        }
+        .borderBox{
+            min-height: 200px;
+            width: 100%;
+            border:1px solid rgba(242, 242, 242, 1);
+            margin-bottom: 11px;
+            position: relative;
+            background: white;
+            padding-bottom: 30px;
+            .borderImg{
+                text-align:center;
+                img{
+                    margin-top:30px;
+                }
+            }
+            .userInfo{
+                .userName{
+                    font-size: 22px;
+                    color: RGBA(48, 49, 51, 1);
+                    margin-top:43px;
+                    height: 30px;
+                }
+                .userTip{
+                    font-size: 16px;
+                    color: RGBA(144, 147, 153, 1);
+                    margin-top:14px;
+                    height: 66px;
+                }
+                .money{
+                    font-size: 14px;
+                    color: RGBA(144, 147, 153, 1);
+                    margin-top:27px;
+                    .moneyShow{
+                        font-size:18px;
+                        color:RGBA(48, 49, 51, 1);
+                    }
+                    .moneyAdd{
+                        margin-left:55px;
+                        background:RGBA(139, 216, 103, 1);
+                        border:RGBA(139, 216, 103, 1);
+                        height:40px;
+                        width: 100px;
+                    }
+                }
+            }
+        }
+    }
+    .consume{
+        height: 100%;
+        overflow: auto;
+        border-radius:4px;
+        .pageTab{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 27px;
+            padding-top: 5px;
+        }
+        .overView{
+            height: 52px;
+            line-height: 52px;
+            background: white;
+            margin-right:10px;
+            padding: 0 10px;
+            .selectBox{
+                display: inline-block;
+                width: 640px;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 10px 0 18px;
+                background: #f7f8f9;
+                .selectItem{
+                    padding:5px 10px;
+                    margin: 0 5px 0 10px;
+                }
+                .selectItem1{
+                    background: white;
+                }
+            }
+            .addButton{
+                float: right;
+                position: relative;
+                top: 10px;
+            }
+        }
+    }
+}

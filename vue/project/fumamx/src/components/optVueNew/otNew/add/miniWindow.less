@@ -1,0 +1,58 @@
+.FM-MiniBtn {
+    position: absolute;
+    top: 18px;
+    right: 43px;
+    cursor: pointer;
+    color: #909399;
+    &:hover {
+        color: #d0021b;
+    }
+
+}
+
+
+.FM-MiniWindow {
+    @flagWidth: 30px;
+    @w: 150px;
+    cursor: pointer;
+    position: fixed;
+    z-index: 2000;
+    text-align: center;
+    line-height: 50px;
+    width: @w;
+    height: 50px;
+    padding-left: @flagWidth;
+    border-radius: 3px;
+    overflow: hidden;
+    color: #909399;
+    background-color: #fff;
+    right: 0;
+    bottom: 10px;
+    user-select: none;
+    box-shadow: 0 2px 4px 2px #909399;
+    transition: all .2s;
+    animation: show 1.4s ease-in-out;
+    transform: translate3d(@w - @flagWidth, 0, 0);
+    &:hover {
+        transform: translate3d(0, 0, 0);
+    }
+    .flag {
+        position: absolute;
+        height: 100%;
+        width: @flagWidth;
+        text-align: center;
+        color: #fff;
+        left: 0;
+        top: 0;
+        background-color: #8bd867;
+    }
+    @keyframes show {
+        from {
+            transform: translate3d(-10px, 0, 0)
+        }
+        to {
+            transform: translate3d(@w - @flagWidth, 0, 0)
+        }
+    }
+
+}

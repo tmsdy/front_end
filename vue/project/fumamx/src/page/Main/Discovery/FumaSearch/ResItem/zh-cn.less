@@ -1,0 +1,137 @@
+.zh-cn,
+.zh-tw {
+    .noPower {
+        cursor: not-allowed !important;
+    }
+    @red: #D0021B;
+    .ResItem {
+        margin-top: 16px;
+        padding: 16px 30px;
+        height: 123px;
+        background: #fff;
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        position: relative;
+        .leftBox {
+            max-width: 730px;
+            .titleBox {
+                line-height: 24px;
+                .Chip {
+                    @c: #ff6600;
+                    width: 70px;
+                    cursor: pointer;
+                    margin-left: 10px;
+                    display: inline-block;
+                    height: 20px;
+                    line-height: 20px;
+                    border-radius: 10px;
+                    background-color: #fcede9;
+                    font-size: 12px;
+                    color: @c;
+                    padding-right: 5px;
+                    &>span {
+                        float: left;
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 5px;
+                        border-radius: 10px;
+                        text-align: center;
+                        background-color: @c;
+                        color: #fff;
+                    }
+                }
+            }
+            .title {
+                font-size: 18px;
+                color: #303133;
+                max-width: 620px;
+                font-weight: 600;
+            }
+            .infoIcon {
+                margin-left: 10px;
+                cursor: pointer;
+                color: #757779;
+            }
+            .description {
+                height: 40px;
+                line-height: 20px;
+                margin: 4px 0 5px 0;
+                color: #606266;
+            }
+            .link {
+                a {
+                    color: #437ab2;
+                    /*  &:hover {
+                        color: @red;
+                    } */
+                }
+            }
+        }
+        .deepFlag {
+            position: absolute;
+            right: 190px;
+            padding-left: 20px;
+            top: 50%;
+            font-size: 12px;
+            color: #606266;
+            transform: translateY(-50%);
+            &.notFollow {
+                right: 120px;
+            }
+        }
+        .btn {
+            cursor: pointer;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            width: 68px;
+            height: 32px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 3px;
+            transform: translateY(-50%);
+            .deepBtn {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+            .iconfont {
+                font-size: 12px;
+                margin-right: 3px;
+            }
+            &.btn01 {
+                color: #D0021B;
+                border: 1px solid #D0021B;
+                &:hover {
+                    box-shadow: 0px 2px 8px 0px rgba(208, 2, 27, 0.5);
+                }
+            }
+            &.btn02 {
+                color: #909399;
+                border: 1px solid #909399;
+                &:hover {
+                    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+                }
+            }
+            &.followBtn {
+                right: 110px;
+                border: 1px solid #D0021B;
+                color: #D0021B;
+                &:hover {
+                    box-shadow: 0px 2px 8px 0px rgba(208, 2, 27, 0.5);
+                }
+                &.isAtte {
+                    color: #909399;
+                    border-color: #909399;
+                    &:hover {
+                        box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+                    }
+                }
+            }
+
+        }
+
+    }
+}

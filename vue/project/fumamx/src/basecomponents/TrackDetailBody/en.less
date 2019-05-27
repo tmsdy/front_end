@@ -1,0 +1,183 @@
+.en {
+    .TrackDetailBody {
+        .detailHeader {
+            background: #fff;
+
+            // margin-top: 55px;
+            .item {
+                padding: 20px;
+
+                >dl {
+                    display: inline-block; // border:1px solid black;
+                    position: relative;
+                    // padding-left: 58px;
+                    color: #303133;
+                    line-height: 22px;
+                    text-align: left;
+
+                    .icon {
+                        // float: left;
+                        position: absolute;
+                        width: 44px;
+                        height: 44px;
+                        line-height: 44px;
+                        background: #FF7165;
+                        border-radius: 50%;
+                        text-align: center;
+                        color: #fff;
+                        left: 0;
+
+                        i {
+                            font-size: 22px;
+                        }
+                    }
+
+                    dt {
+                        color: #909399;
+
+                        span {
+                            color: #1B1B1B;
+                        }
+                    }
+
+                    dd {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+
+        .detailTable {
+            margin-top: 15px;
+
+            .linkJump {
+                // border: 1px solid red;
+                line-height: 18px;
+                padding: 5px 0;
+                color: #437ab2;
+                width: 100%;
+            }
+        }
+
+        .detailTimeAxis {
+            margin: 15px 0 22px;
+            background: #fff;
+            padding: 33px 18px 20px;
+            text-align: center;
+            overflow: hidden;
+
+            >ul {
+                // border:1px solid blue;
+                position: relative;
+                padding: 0 88px;
+
+                >li {
+                    width: 33.3333%;
+                    float: left;
+                    text-align: center;
+                    padding: 25px 0;
+                    position: relative;
+                    border-bottom: 2px solid #E4E4E4;
+
+                    &:nth-child(1),
+                    &:nth-child(2),
+                    &:nth-child(3) {
+                        border-top: 2px solid #E4E4E4;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 12px;
+                        height: 12px;
+                        left: 50%;
+                        margin-left: -7px;
+                        top: -9px;
+                        border: 2px solid #606266;
+                        background: #fff;
+                        border-radius: 50%;
+                    }
+
+                    &:first-child::after {
+                        content: "";
+                        position: absolute;
+                        left: -20px;
+                        top: -9px;
+                        width: 0;
+                        height: 0;
+                        border-top: 8px solid transparent;
+                        border-right: 20px solid #E4E4E4;
+                        border-bottom: 8px solid transparent;
+                    }
+
+                    &:nth-child(3)::after,
+                    &:nth-child(9)::after,
+                    &:nth-child(15)::after {
+                        content: '';
+                        position: absolute;
+                        width: 150px;
+                        height: 140px;
+                        right: -70px;
+                        top: -2px;
+                        border: 2px solid #E4E4E4;
+                        border-left: none;
+                        border-radius: 0 50% 50% 0;
+                        z-index: 1;
+                    }
+
+                    &:nth-child(4)::after,
+                    &:nth-child(10)::after,
+                    &:nth-child(16)::after {
+                        content: '';
+                        position: absolute;
+                        width: 150px;
+                        height: 140px;
+                        left: -70px;
+                        top: -2px;
+                        border: 2px solid #E4E4E4;
+                        border-right: none;
+                        border-radius: 50% 0 0 50%;
+                        z-index: 1;
+                    }
+
+                    >dl {
+                        width: 200px;
+                        height: 90px;
+                        padding: 6px 15px;
+                        margin: 0 auto;
+                        background: rgba(247, 248, 249, 1);
+                        border-radius: 4px;
+                        border: 1px solid rgba(234, 237, 239, 1);
+                        position: relative;
+                        text-align: left;
+                        line-height: 25px;
+                        color: #303133;
+
+                        dt {
+                            font-size: 15px;
+                        }
+
+                        dd {
+                            color: #909399;
+                        }
+
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            width: 15px;
+                            height: 15px;
+                            left: 50%;
+                            margin-left: -8px;
+                            top: -8px;
+                            background: rgba(247, 248, 249, 1);
+                            -webkit-transform: rotate(45deg);
+                            transform: rotate(45deg);
+                            border-left: 1px solid rgba(234, 237, 239, 1);
+                            border-top: 1px solid rgba(234, 237, 239, 1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

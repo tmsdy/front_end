@@ -1,0 +1,104 @@
+.zh-cn,
+.zh-tw {
+    .DeptBriefReport {
+        
+        .workBody {
+            // border: 1px solid red;
+            background-color: #fff;
+            padding: 0 0 15px;
+            >table {
+                table-layout: fixed;
+                color: #606266;
+                tr {
+                    //通用
+                    td {
+                        padding: 10px 15px;
+                        font-size: 12px;
+                        position: relative;
+                        &:first-child {
+                            padding: 10px 30px;
+                            color: #606266;
+                        }
+                    }
+                }
+                thead {
+                    tr {
+                        &:first-child {
+                            td {
+                                font-size: 14px;
+                                padding-left: 0;
+                            }
+                        }
+                        &:nth-child(2) {
+                            td {
+                                &::after {
+                                    content: '';
+                                    width: 3px;
+                                    height: 18px;
+                                    background:linear-gradient(136.4deg,rgba(255,122,109,1),rgba(255,77,62,1));
+                                    border-radius: 4px;
+                                    opacity: 0.8;
+                                    position: absolute;
+                                    left: 0;
+                                    top: 50%;
+                                    margin-top: -9px;
+                                }
+                                &:first-child::after {
+                                    content: none;
+                                }
+                                &:nth-child(3)::after {
+                                    background: linear-gradient(136.4deg, rgba(93, 219, 224, 1), rgba(0, 188, 218, 1));
+                                }
+                                &:nth-child(4)::after {
+                                    background:linear-gradient(136.4deg,rgba(59,220,72,1),rgba(92,209,46,1));
+                                }
+                                &:nth-child(5)::after {
+                                    background:linear-gradient(136.4deg,rgba(254,190,43,1),rgba(255,163,0,1));
+                                }
+                                &:nth-child(6)::after {
+                                    background:linear-gradient(136.4deg,rgba(255,122,109,1),rgba(255,77,62,1));
+                                }
+                                &:nth-child(7)::after {
+                                    background: linear-gradient(136.4deg, rgba(93, 219, 224, 1), rgba(0, 188, 218, 1));
+                                }
+                                &:nth-child(8)::after {
+                                    background:linear-gradient(136.4deg,rgba(59,220,72,1),rgba(92,209,46,1));
+                                }
+                                &:nth-child(9)::after {
+                                    background:linear-gradient(136.4deg,rgba(254,190,43,1),rgba(255,163,0,1));
+                                }
+                                &:nth-child(10)::after {
+                                    background:linear-gradient(136.4deg,rgba(86,171,254,1),rgba(52,138,243,1));
+                                }
+                                &:nth-child(11)::after {
+                                    background:linear-gradient(136.4deg,rgba(148,117,247,1),rgba(119,83,233,1));
+                                }
+                            }
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        border-bottom: 1px solid #f2f2f2;
+                        td {
+                            color: #303133;
+                            padding-left: 18px;
+                        }
+                        &:hover {
+                            background: rgba(208, 2, 27, 0.05);
+                        }
+                        // &:last-child{
+                        //     border-bottom: none;
+                        // }
+                    }
+                }
+            }
+            .showMore{
+                text-align: center;
+                font-size: 12px;
+                color: #606266;
+                padding-top: 5px;
+            }
+        }
+    }
+}

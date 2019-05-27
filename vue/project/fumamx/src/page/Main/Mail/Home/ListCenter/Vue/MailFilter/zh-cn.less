@@ -1,0 +1,242 @@
+.zh-cn,
+.zh-tw {
+    .mailFilter {
+
+        //邮件过滤栏
+        .topBtn {
+            // border-right: 1px solid #EAEDEF;
+            border-bottom: 1px solid #EAEDEF;
+            background-color: #fff;
+            height: 45px;
+            text-align: center;
+            position: relative;
+
+            // z-index: 1;
+
+            .btnHign {
+                position: absolute;
+                right: 20px;
+                top: 14px;
+                color: #909399;
+
+                &:hover {
+                    color: #E6001F;
+                }
+            }
+
+            .btnOpen {
+                // border: 1px solid red;
+                color: #666;
+                margin-top: 6px;
+
+                i {
+                    font-size: 12px;
+                }
+
+                &:hover {
+                    color: #E6001F;
+                }
+            }
+        }
+
+        .topSearch {
+            background-color: #fff; // border: 1px solid #f00;
+            padding: 0 15px;
+            height: 44px;
+            line-height: 44px;
+            position: absolute;
+            left: 3px;
+            top: 0;
+            right: 1px;
+            z-index: 1;
+
+            .dropClass {
+                color: #909399;
+                font-size: 10px;
+            }
+
+
+
+            >input {
+                // border: 1px solid red;
+                width: 55%;
+                outline: 0;
+                border: none;
+                margin-left: 5px;
+                font-size: 12px;
+            }
+
+            >input::-webkit-input-placeholder {
+                color: #c0c4cc;
+            }
+
+            >input:-moz-placeholder {
+                color: #c0c4cc;
+            }
+
+            >input::-moz-placeholder {
+                color: #c0c4cc;
+            }
+
+            >input:-ms-input-placeholder {
+                color: #c0c4cc;
+            }
+
+            .btnOpen2 {
+                position: absolute;
+                color: #008CEE;
+                font-size: 12px;
+                right: 40px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+            }
+
+            .close {
+                transform: scale(0.8);
+                height: 100%;
+
+                // 
+                // margin: 15px 15px 12px;
+                &:hover {
+                    color: #f00;
+                }
+            }
+        }
+
+        .filterBox {
+            box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            padding: 20px 20px 3px;
+
+            >dl {
+                // border: 1px red solid;
+                margin: 0 0 18px;
+                padding-left: 45px;
+                position: relative; // span.tagSpan,
+
+                >div,
+                >dt,
+                >dd {
+                    // 
+                    float: left;
+                }
+
+                >div {
+                    // border: 1px solid green;
+                    position: absolute;
+                    left: 0;
+                    top: 2px;
+                    padding: 0;
+                }
+
+                >dt,
+                >dd {
+                    padding: 4px 12px;
+                    border: 1px solid #DFE2E4;
+                    font-size: 12px;
+                    border-radius: 14px;
+                    margin: 1px 1px 1px 13px;
+                    color: #222222;
+
+                    &:hover,
+                    &.active {
+                        border-color: #E6001F;
+                        color: #E6001F;
+                        cursor: pointer;
+                    }
+                }
+
+                span.tagSpan .el-tag {
+
+                    // border: 1px solid transparent;
+                    // color: #ddd;
+                    &:hover {
+                        opacity: .8; // background-color: red;
+                    }
+                }
+
+                span.active .el-tag {
+                    border-color: #E6001F;
+                    background-color: #fff;
+                    color: #E6001F;
+                }
+
+                >dt {
+                    background-color: #FFFFFF;
+                    margin: 1px;
+                    margin-right: 10px; // border: 1px blue solid;
+                }
+
+                >dd {
+                    background-color: #FFFFFF; //   
+
+                    //   border: 1px blue solid;
+                    &.comment {
+                        background-color: transparent;
+                        padding: 5px 0 10px;
+                        width: 28px;
+                        height: 28px; // line-height: 18px;
+                        // margin-top: 5px;
+                        margin-bottom: 5px;
+                        text-align: center;
+
+                        i {
+                            font-size: 16px; // border: 1px solid red;
+                            // margin-top: 10px;
+                        }
+                    }
+
+                    &.com1 {
+                        // margin-left: -6px;
+                        color: #ddd;
+                    }
+
+                    &.com2 {
+                        color: #E6001F;
+                    }
+
+                    &.com3 {
+                        color: #f00;
+                    }
+
+                    &.com4 {
+                        color: #f65e5e;
+                    }
+
+                    &.com5 {
+                        color: green;
+                    }
+
+                    &.com6 {
+                        color: purple;
+                    }
+
+                    &.com7 {
+                        color: #9a89b9;
+                    }
+
+                    &.com8 {
+                        color: #f6bf26;
+                    }
+
+                    &.com9 {
+                        color: #5ec9f6;
+                    }
+
+                    &.com10 {
+                        color: #78c06e;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    display: block;
+                    clear: both;
+                }
+            }
+        }
+    }
+}

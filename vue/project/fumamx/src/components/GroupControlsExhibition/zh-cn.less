@@ -1,0 +1,26 @@
+.GroupControlsExhibition {
+    // border: 1px solid #999;
+    line-height: 30px;
+    .labelGroup {
+        float: left;
+        margin: 8px 0 0 0;
+        line-height: 16px;
+        border: 1px solid transparent;
+        overflow: hidden;
+        // border: 1px solid red;        
+    }
+    .contentGroup {
+        border-top: 1px solid transparent;
+        // border:1px solid blue;
+        &::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }    
+}

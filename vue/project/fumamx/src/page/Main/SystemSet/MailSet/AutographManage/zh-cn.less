@@ -1,0 +1,23 @@
+@import '../../../public-zh-cn.less';
+.zh-cn,
+.zh-tw {
+    .AutographManage {
+        overflow: auto;
+        .pull-right {
+            display: none;
+            background: linear-gradient( 135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+            border-radius: 50%;
+            padding: 2px 7px;
+            color: #fff;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .columnClass tr {
+            &:hover {
+                .pull-right {
+                    display: block;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,208 @@
+.en {
+    .FoldersTree {
+        // border: 2px solid red;
+        width: 240px;
+        height: 100%;
+        background-color: #fff;
+        overflow: auto;
+        font-style: normal;
+        color: #222;
+        font-weight: 500;
+        border-radius: 8px 0 0 0;
+        padding: 20px 0 20px;
+        .treeBar {
+            margin-bottom: 5px;
+            &.router-link-active {
+                ul.D_tree li>h3 {
+                    &.active {
+                        // border:1px solid red;
+                        &::before {
+                            content: '';
+                            background-color: #fdf2f3;
+                        }
+                    }
+                    &:hover {
+                        &:before {
+                            background-color: #fdf2f3;
+                        }
+                    }
+                }
+                .title {
+                    background-color: #fdf2f3;
+                    position: relative;
+                    &::before {
+                        display: block;
+                        content: "";
+                        position: absolute;
+                        height: 100%;
+                        width: 2px;
+                        background: #d0021b;
+                        left: 0;
+                        top: 0;
+                    }
+                }
+            }
+            .title {
+                // border: 1px solid #f00;
+                height: 32px;
+                line-height: 32px;
+                font-size: 14px;
+                padding: 0 10px 0 23px;
+                position: relative;
+                i.iconThis {
+                    font-size: 15px;
+                    color: #e8384e;
+                    margin-right: 14px;
+                    width: 16px;
+                    float: left;
+                    &.folderIocn {
+                        font-size: 10px;
+                        color: #fff;
+                        width: 16px;
+                        height: 16px;
+                        margin-top: 8px;
+                        line-height: 16px;
+                        text-align: center;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+                    }
+                }
+                .btnAdd {
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    border-radius: 50%;
+                    text-shadow: 0 0 0;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -10px;
+                    right: 15px;
+                    i {
+                        font-size: 12px;
+                        color: #909399;
+                    }
+                    &:hover {
+                        background-color: #eee;
+                        color: #D0021B;
+                        i {
+                            color: #D0021B;
+                        }
+                    }
+                }
+                &:hover {
+                    background-color: #fdf2f3;
+                    cursor: pointer;
+                }
+            }
+            ul.D_tree {
+                //菜单树
+                // border: 1px solid red;
+                padding-left: 12px;
+                line-height: 32px;
+                li {
+                    >h3 {
+                        font-weight: normal;
+                        font-size: 14px;
+                        padding-left: 15px;
+                        white-space: nowrap;
+                        cursor: default;
+                        position: relative;
+                        margin-bottom: 1px;
+                        &.hasAvatarImg {
+                            padding-left: 25px;
+                        }
+                        >i.iconfont {
+                            &.folderListIcon {
+                                font-size: 15px;
+                                color: #909399;
+                            }
+                            display: block;
+                            width: 15px;
+                            height: 100%;
+                            text-align: center;
+                            font-size: 12px;
+                            position: absolute;
+                            left:0;
+                            top: 0;
+                        }
+                        >span.label {
+                            position: relative;
+                            z-index: 1;
+                            >em {
+                                font-size: 12px;
+                                font-style: normal;
+                                margin-left: -2px;
+                            }
+                            .labelColor {
+                                color: #606266;
+                                border-radius: 3px;
+                                padding: 1px 3px;
+                            }
+                        }
+                        .avatarImg {
+                            width: 24px;
+                            height: 24px;
+                            border-radius: 50%;
+                            border: none 0;
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            transform: translateY(-50%);
+                        }
+                        span.D_set {
+                            display: none;
+                            height: 35px;
+                            line-height: 35px;
+                            position: absolute;
+                            top: 50%;
+                            margin-top: -17px;
+                            right: 10px;
+                            z-index: 2;
+                            >i.iconfont {
+                                display: inline-block;
+                                padding: 0 2px;
+                                font-size: 13px;
+                                color: #909399;
+                            }
+                            .el-dropdown {
+                                i.iconfont {
+                                    font-size: 12px;
+                                    color: #909399;
+                                    font-weight: bold;
+                                }
+                            }
+                            i.iconfont:hover {
+                                color: #D0021B;
+                                cursor: pointer;
+                            }
+                        }
+                        &:hover {
+                            // background-color: #ddd;
+                            &::before {
+                                content: '';
+                            }
+                            span.D_set {
+                                display: block;
+                            }
+                        }
+                        &::before {
+                            content: none;
+                            background-color: #fdf2f3;
+                            position: absolute;
+                            left: 0;
+                            margin-left: -100%;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+            &>ul.D_tree {
+                padding-left: 50px;
+                position: relative;
+            }
+        }
+    }
+}

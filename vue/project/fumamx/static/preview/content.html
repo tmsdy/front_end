@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>FumaMX</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        #previewContent {
+            font-family: -apple-system, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="previewContent" v-html="content"></div>
+    <script>
+        window.vm = new Vue({
+            el: '#previewContent',
+            data: {
+                content: '<div style="text-align:center">loading...</div>'
+            },
+            methods: {
+                showContent: function(html) {
+                    this.content = html;
+                }
+            }
+        });
+    </script>
+</body>
+
+
+</html>

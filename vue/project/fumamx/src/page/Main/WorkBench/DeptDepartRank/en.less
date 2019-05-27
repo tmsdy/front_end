@@ -1,0 +1,103 @@
+.en {
+    .DeptDepartRank {
+        margin: auto 8px;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        overflow: hidden;
+        .workBody {
+            height: 200px;
+            background-color: #fff;
+            position: relative;
+            .rightList {
+                // border: 1px solid red;
+                clear: both;
+                height: 210px;
+                padding: 10px 15px 20px;
+                overflow: auto;
+                counter-reset: num;
+                /* 创建一个计数器 */
+                >li {
+                    // border: 1px solid red;
+                    height: 36px;
+                    line-height: 36px;
+                    padding-left: 85px;
+                    position: relative;
+                    font-size: 12px;
+                    .avatar {
+                        width: 28px;
+                        height: 28px;
+                        position: absolute;
+                        left: 16px;
+                        top: 50%;
+                        margin-top: -14px;
+                        >img {
+                            width: 100%;
+                        }
+                    }
+                    >span {
+                        display: inline-block;
+                        width: 31%;
+                        text-align: center;
+                    }
+                    >span:first-child {
+                        text-align: left;
+                        color: #303133;
+                    }
+                    .icon-arrow-up-solid {
+                        color: red;
+                        font-size: 13px;
+                    }
+                    .icon-arrow-down-solid {
+                        color: #78c06e;
+                        font-size: 13px;
+                    }
+                    .icon-minus {
+                        font-size: 13px;
+                        font-weight: bold;
+                    }
+                }
+                >li:nth-child(1)::before {
+                    background: linear-gradient(136.4deg, rgba(255, 122, 109, 1), rgba(255, 77, 62, 1));
+                    color: #fff;
+                }
+                >li:nth-child(2)::before {
+                    background: linear-gradient(136.4deg, rgba(254, 190, 43, 1), rgba(255, 163, 0, 1));
+                    color: #fff;
+                }
+                >li:nth-child(3)::before {
+                    background: linear-gradient(136.4deg, rgba(59, 220, 72, 1), rgba(92, 209, 46, 1));
+                    color: #fff;
+                }
+                >li::before {
+                    content: counter(num);
+                    counter-increment: num;
+                    height: 20px;
+                    width: 20px;
+                    line-height: 20px;
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    margin-top: -10px;
+                    background: #fff;
+                    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
+                    font-weight: bold;
+                    font-size: 10px;
+                    text-align: center;
+                    border-radius: 50%;
+                    z-index: 1;
+                }
+                >li,
+                >li::before {
+                    -webkit-transition: all 0.3s ease-out;
+                    -moz-transition: all 0.3s ease-out;
+                    -ms-transition: all 0.3s ease-out;
+                    -o-transition: all 0.3s ease-out;
+                    transition: all 0.3s ease-out;
+                }
+                >li:hover {
+                    cursor: default;
+                }
+            }
+        }
+    }
+}

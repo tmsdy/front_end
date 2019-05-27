@@ -1,0 +1,51 @@
+// media.less (css3媒体查询，针对特殊窗口电脑处理)
+@media only screen and (max-width: 767px) {
+    // 平板
+}
+@media only screen and (min-width: 768px) and (max-width: 1361px) {
+    .TwolevelNav {
+        width: 180px !important;
+    }
+    .SystemSet .mainWindow,
+    .MX .mainWindow,
+    .AM .mainWindow,
+    .Goods .mainWindow,
+    .CustomReport .mainWindow,
+    .Client .mainWindow,
+    .Sale .mainWindow {
+        margin-left: 180px !important;
+    }
+    //
+    .FoldersTree {
+        width: 210px !important;
+    }
+    .Document .childrenWindow {
+        left: 210px !important;
+    }
+    // 
+    .TreeMenu {
+        width: 200px !important;
+    }
+    .Subordinate .rightWindow {
+        left: 200px !important;
+    }
+    // 客户列表
+    // .screenMenus .screenMenuRow {
+    //     margin-right: 100px !important;
+    // }
+    // 左二级菜单树
+    .MenuNav ul.menuBox li.menuItem .itemTitle .text {
+        max-width: 115px !important;
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+    // 默认
+}
+
+// 10-12英寸（上网本）1024×600、1366×768
+// 13.3-15.6英寸大部分是1366×768
+// 13英寸有1280×800、1600×900
+// 14英寸也有1024×768（已淘汰）、1440×900、1600×900的高分屏
+// 15英寸有1600×900、1920×1080（单屏最高分辨率）
+// 还有18、19英寸的，分辨率也是1920×1080

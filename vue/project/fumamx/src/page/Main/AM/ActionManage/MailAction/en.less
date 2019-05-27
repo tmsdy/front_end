@@ -1,0 +1,113 @@
+.en {
+    .MailAction {
+        .actionManageBox {
+            position: absolute;
+            top: 44px;
+            width: 100%;
+            bottom: 0;
+            overflow: auto;
+            padding: 16px 16px 0px 16px;
+
+            &.hasPage {
+                bottom: 40px;
+            }
+
+            .toolBar {
+                border-radius: 4px 4px 0 0;
+                padding: 0 10px;
+                height: 47px;
+                line-height: 47px;
+                background-color: #fff;
+                // margin-bottom: 15px;
+                padding-left: 30px;
+
+                .search {
+                    width: 150px;
+                    margin-right: 10px;
+                }
+            }
+
+            .table,
+            .tableBox {
+                .headerBox {
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 14px;
+                    color: #909399;
+                    background-color: #EFF2F4;
+
+                    .item {
+                        padding-left: 10px;
+                    }
+                }
+
+                .list {
+                    height: 64px;
+                    line-height: 64px;
+                    background-color: white;
+                    border-bottom: 1px solid #f7f8f9;
+                    font-size: 12px;
+
+                    .item {
+                        padding-left: 10px;
+
+                    }
+
+                    .listCol4 {
+                        .listCol4Item {
+                            display: none;
+                            width: 187px;
+                            float: right;
+
+                            .optButton {
+                                display: inline-block;
+                                width: 24px;
+                                height: 24px;
+                                background: linear-gradient(135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+                                border-radius: 12px;
+                                color: white;
+                                text-align: center;
+                                line-height: 24px;
+                                font-size: 12px;
+
+                                &:hover {
+                                    cursor: pointer;
+                                    background: linear-gradient(135deg, rgba(255, 148, 161, 1), rgba(247, 36, 62, 1));
+                                }
+
+                                &:link {
+                                    cursor: pointer;
+                                    background: linear-gradient(135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        background: #fcf2f3;
+
+                        .listCol4 {
+                            .listCol4Item {
+                                display: inline;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .page {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40px;
+            overflow: hidden;
+            line-height: 40px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+    }
+
+}

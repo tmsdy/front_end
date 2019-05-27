@@ -1,0 +1,106 @@
+.zh-cn,
+.zh-tw {
+    .ImgEdit {
+        // border: 1px solid red;
+        // height: 100%;
+        >.el-button {
+            position: absolute;
+            top: 6px;
+            right: 15px;
+            border-radius: 18px;
+            z-index: 999;
+        }
+        ul.editBody {
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            top: 55px;
+            bottom: 0;
+            border-radius: 4px 4px 0 0;
+            overflow: auto;
+            background-color: #fff;
+            padding: 15px 25px 33px;
+            >li {
+                width: 620px;
+                margin-bottom: 25px;
+                clear: both;
+                // border:1px solid red;
+                .activityContent {
+                    // border:1px solid red;
+                    min-height: 55px;
+                    >dl {
+                        // margin: 8px 0;
+                        // border:1px solid red;
+                        position: relative;
+                        >dt {
+                            position: absolute;
+                            left: 0;
+                            top: 15px;
+                            color: #303133;
+                        }
+                        >dd {
+                            // border:1px solid blue;
+                            margin-left: 80px;
+                            padding: 8px 0;
+                            color: #606266;
+                            .marginR {
+                                margin-right: 8px;
+                            }
+                        }
+                    }
+                }
+                >div.label {
+                    margin-bottom: 12px;
+                    color: #303133;
+                    small {
+                        color: #909399;
+                        margin-left: 5px;
+                    }
+                }
+                .pickImg {
+                    float: left;
+                    width: 150px;
+                    height: 150px;
+                    border: 1px dashed #909399;
+                    border-radius: 5px;
+                    padding: 5px;
+                    position: relative;
+                    background: #dfdfdf;
+                    margin-right: 15px;
+                    margin-bottom: 28px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 5px;
+                    }
+                    .pickBtn {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0; // border:1px solid blue;
+                        text-align: center;
+                        color: #fff;
+                        display: flex;
+                        justify-content: center;
+                        align-items: Center;
+                        cursor: pointer;
+                        >i {
+                            font-size: 33px;
+                            opacity: .6;
+                        }
+                        &:hover::before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            background: rgba(0, 0, 0, .2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

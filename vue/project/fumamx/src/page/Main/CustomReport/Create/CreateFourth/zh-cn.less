@@ -1,0 +1,107 @@
+.createfourth {
+    padding: 20px;
+    .userList {
+        border: 1px solid #EAEDEFFF;
+        margin-bottom: 20px;
+        .userListHeader {
+            background: #EFF2F4FF;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            .el-row {
+                div {
+                    border-right: 1px solid #EAEDEFFF;
+                }
+                :last-child {
+                    border-right: none;
+                }
+            }
+        }
+        .userListItem {
+            padding: 0 20px;
+            text-align: left;
+        }
+        .userListBody {
+            text-align: center;
+            .listBodyrow {
+                height: 54px;
+                line-height: 54px;
+                border-bottom: 1px solid #EAEDEFFF;
+                .el-col-3 {
+                    border-right: 1px solid #EAEDEFFF;
+                }
+                .el-col-4 {
+                    border-right: 1px solid #EAEDEFFF;
+                }
+                .el-col-5 {
+                    border-right: 1px solid #EAEDEFFF;
+                }
+                .el-col-12 {
+                    position: relative;
+                    .el-checkbox {
+                        width: 25%;
+                        margin-left: 0;
+                        border-right: 1px solid #EAEDEFFF;
+                    }
+                    :last-child {
+                        border-right: none;
+                    }
+                    .optButton {
+                        width: 24px;
+                        height: 24px;
+                        background: linear-gradient(135deg, #ff697c, #d0021b);
+                        border-radius: 12px;
+                        color: white;
+                        text-align: center;
+                        line-height: 24px;
+                        margin-left: 6px;
+                        font-size: 12px;
+                        display: inline-block;
+                        cursor: pointer;
+                    }
+                    .iconBox {
+                        display: none;
+                        position: absolute;
+                        right: 20px;
+                        top: 0;
+                    }
+                }
+                :last-child {
+                    border-right: none;
+                }
+            }
+            :last-child {
+                border-bottom: none;
+            }
+            &:hover {
+                background: #FCF2F3FF;
+                .iconBox {
+                    display: block !important;
+                }
+            }
+        }
+    }
+}
+.addBtn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.owner {
+    overflow: hidden;
+    margin-top: 10px;
+    span {
+        margin-right: 10px;
+        height: 32px;
+        line-height: 32px;
+        em {
+            color: #ff4949;
+            margin-right: 5px;
+        }
+    }
+}
+.tips {
+    color: #D0021BFF;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+}

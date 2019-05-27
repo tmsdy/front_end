@@ -1,0 +1,323 @@
+.zh-cn,
+.zh-tw {
+    .DeleteFile {
+        position: relative;
+        font-size: 12px;
+    }
+    .searchBox {
+        height: 93px;
+        background: #fff;
+        width: 100%;
+        &>div {
+            padding: 0 22px 0 17px;
+        }
+        .searchStrip {
+            height: 45px;
+            line-height: 44px;
+            border-bottom: 1px solid #f8f8f8;
+            .pageName {
+                color: #303133;
+                font-size: 14px;
+            }
+            .canClick {
+                cursor: pointer;
+                color: #D0021B;
+            }
+            .searchInput {
+                // border: 1px solid blue;
+                position: relative;
+                .iconfont {
+                    color: #909399;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    right: 15px;
+                    &:hover {
+                        cursor: pointer;
+                        color: #222;
+                    }
+                }
+                &>input {
+                    border: 1px solid #EAEDEF;
+                    height: 32px;
+                    line-height: 30px;
+                    width: 260px;
+                    padding: 0 35px 0 12px;
+                    border-radius: 16px;
+                    outline: 0;
+                    -webkit-transition: all 0.3s ease-out;
+                    -moz-transition: all 0.3s ease-out;
+                    -ms-transition: all 0.3s ease-out;
+                    -o-transition: all 0.3s ease-out;
+                    transition: all 0.3s ease-out;
+                    color: #606266;
+                    &:hover {
+                        border-color: #C0C4CC;
+                    }
+                    &:focus {
+                        border-color: #d0021d;
+                    }
+                }
+                >input::-webkit-input-placeholder {
+                    color: #c0c4cc;
+                }
+                >input:-moz-placeholder {
+                    color: #c0c4cc;
+                }
+                >input::-moz-placeholder {
+                    color: #c0c4cc;
+                }
+                >input:-ms-input-placeholder {
+                    color: #c0c4cc;
+                }
+            }
+        }
+        .typeStrip {
+            padding-left: 34px;
+            height: 48px;
+            font-size: 13px;
+            line-height: 48px;
+            .searchCondition {
+                margin-top: 6px;
+                line-height: 36px;
+                margin-left: 14px;
+                span {
+                    display: block;
+                    float: left;
+                    margin-right: 40px;
+                    cursor: pointer;
+                    text-align: center;
+                    font-size: 14px;
+                    color: #909399;
+                }
+                span.active {
+                    color: #D0021B;
+                    border-bottom: 2px solid #D0021B;
+                }
+            }
+        }
+    }
+    .searchRes {
+        position: absolute;
+        top: 93px;
+        bottom: 0;
+        width: 100%;
+        .noDataBox {
+            background-color: transparent;
+        }
+        .loadingBox,
+        .noDataBox {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            .iconfont {
+                font-size: 70px;
+            }
+        }
+        .resBox {
+            position: relative;
+            height: 100%;
+            .title {
+                span {
+                    color: #ff0000;
+                }
+                color:#303133;
+                font-size: 14px;
+                background: #fff;
+                height: 45px;
+                line-height: 45px;
+                padding-left: 65px;
+            }
+            .paging {
+                position: absolute;
+                bottom: 0;
+                height: 40px;
+                width: 100%;
+                padding: 4px 0;
+                text-align: center
+            }
+            .toolStrip {
+                position: absolute;
+                bottom: 0;
+                height: 40px;
+                line-height: 40px;
+                width: 100%;
+                background-color: #fff;
+                border-top: 1px solid #eee;
+                padding: 0 18px 0 26px;
+                .toolItem {
+                    cursor: pointer;
+                    font-size: 14px;
+                    color: #222222;
+                    margin-left: 20px;
+                    &:hover {
+                        color: rgba(208, 2, 27, 1);
+                        .toolIcon {
+                            background: rgba(208, 2, 27, 1);
+                        }
+                    }
+                }
+                .toolIcon {
+                    width: 24px;
+                    height: 24px;
+                    margin: 7px 6px 7px 0;
+                    float: left;
+                    line-height: 24px;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 12px;
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+                }
+            }
+        }
+        .myTableHeader {
+            height: 32px;
+            line-height: 32px;
+            background-color: #EFF2F4;
+            border-radius: 4px 4px 0px 0px;
+            margin-top: 14px;
+            color: #909399;
+            font-size: 14px;
+            div {
+                float: left;
+                padding-left: 40px;
+            }
+        }
+        .myTableHeader,
+        .myTableBody {
+            &>div {
+                float: left;
+                padding-left: 20px;
+            }
+            .itemName {
+                width: 48%;
+                padding-left: 48px;
+            }
+            .itemDate {
+                width: 20%;
+            }
+            .itemSize {
+                width: 15%;
+            }
+            .itemPeople {
+                width: 17%;
+            }
+        }
+        .resList {
+            position: absolute;
+            top: 45px;
+            bottom: 40px;
+            padding: 0 15px 0 17px;
+            width: 100%;
+            overflow-y: auto;
+            .myTableBody {
+                width: 100%;
+                height: 70px;
+                padding: 15px 0;
+                background-color: #fff;
+                border-bottom: 1px solid #eaedef;
+                &>div {
+                    height: 40px;
+                    position: relative;
+                    .liSelect {
+                        position: absolute;
+                        left: 15px;
+                        top: 12px;
+                        width: 16px;
+                        /* height: 16px; */
+                        overflow: hidden;
+                    }
+                    .iconBox {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 6px;
+                        line-height: 40px;
+                        position: relative;
+                        @size: 40px;
+                        overflow: hidden;
+                        img.imgIcon {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: @size;
+                            height: @size;
+                        }
+                        .iconfont {
+                            color: #76787d;
+                            font-size: @size;
+                        }
+                        .iconSVG {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            /*  width: 50px;
+                                height: 50px; */
+                            font-size: 45px;
+                        }
+                    }
+                    &.itemName .contentBox {
+                        font-size: 12px;
+                        .docTitle {
+                            color: #303133;
+                            font-size: 14px;
+                        }
+                        .docDes {
+                            color: #606266;
+                        }
+                        left: 137px;
+                        right: 0;
+                    }
+                    .contentBox,
+                    .funBox {
+                        overflow: hidden;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                    &.itemDate,
+                    &.itemSize,
+                    &.itemPeople {
+                        .contentBox {
+                            font-size: 12px;
+                            color: #606266;
+                        }
+                        .funBox {
+                            display: none;
+                            .iconfont {
+                                width: 24px;
+                                height: 24px;
+                                background: linear-gradient(135deg, rgba(255, 105, 124, 1), rgba(208, 2, 27, 1));
+                                border-radius: 50%;
+                                margin-right: 10px;
+                                font-size: 12px;
+                                line-height: 24px;
+                                display: block;
+                                float: left;
+                                color: #fff;
+                                text-align: center;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    background: #fdf2f3;
+                    &>div {
+                        &.itemPeople {
+                            .contentBox {
+                                display: none;
+                            }
+                            .funBox {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

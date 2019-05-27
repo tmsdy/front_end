@@ -1,0 +1,87 @@
+.zh-cn,
+.zh-tw {
+  .GoodsCatalog {
+    // border:1px solid red;
+    .fm-table {
+      width: 100%;
+      >thead {
+        // background: red;
+        th {
+          text-align: left;
+          padding: 10px 15px;
+          font-weight: normal;
+          background-color: #eff2f4;
+          color: #909399;
+        }
+      }
+      >tbody {
+        background: #fff;
+        tr.subTr {
+          td.name {
+            padding-left: 45px;
+          }
+        }
+        tr {
+          td {
+            padding: 10px 15px;
+            border-top: 1px solid #eaedef;
+            &.name {
+              padding-left: 35px;
+              position: relative;
+              >div {
+                // background: red;
+                width: 150px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                cursor: default;
+              }
+              >span {
+                border: 1px solid #909399;
+                color: #909399;
+                position: absolute;
+                left: 15px;
+                top: 50%;
+                margin-top: -7px;
+                border-radius: 3px;
+                width: 14px;
+                height: 14px;
+                line-height: 12px;
+                text-align: center;
+                i {
+                  font-size: 12px;
+                }
+                &:hover {
+                  color: #d0021b;
+                  border-color: #d0021b;
+                }
+              }
+            }
+            &.move {
+              // background: #909399;
+              .text-no {
+                color: #ccc;
+              }
+              >i {
+                font-size: 14px;
+                margin-right: 1px;
+              }
+            }
+          } // &:hover{
+          //     background: rgba(208, 2, 27, 0.05);
+          // }
+        }
+      }
+    }
+    .pagination {
+      //分页
+      // border: 1px solid red;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      padding: 5px 0;
+    }
+  }
+}

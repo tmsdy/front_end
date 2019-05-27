@@ -1,0 +1,186 @@
+@import '../../public-en.less';
+.en {
+    .BizDict {
+        ul.nav {
+            width: 210px;
+            padding: 15px 0;
+            position: absolute;
+            left: 15px;
+            top: 58px;
+            bottom: 0;
+            z-index: 1;
+            overflow: auto;
+            box-shadow: 4px 0px 5px 0px rgba(0, 0, 0, 0.05);
+            background: #fff;
+            border-radius: 6px 0 0;
+            >li {
+                height: 40px;
+                line-height: 40px;
+                margin-top: 1px;
+                padding-left: 45px;
+                border-left: 2px solid transparent;
+                &:hover,
+                &.active {
+                    background: #FCF2F3;
+                    border-left-color: #d0021b;
+                    color: #d0021b;
+                    cursor: pointer;
+                }
+            }
+        }
+        .navWindow {
+            position: absolute;
+            left: 225px;
+            top: 58px;
+            right: 15px;
+            bottom: 0;
+            background: #fff;
+            border-radius: 0 4px 0 0;
+            .navWindowTitle {
+                padding: 10px 15px;
+                margin-bottom: 7px;
+                font-size: 14px;
+                font-weight: normal;
+                color: #303133;
+                >span {
+                    display: inline-block;
+                    padding-top: 5px;
+                }
+            }
+            .dragBody {
+                padding-bottom: 20px;
+                position: absolute;
+                left: 0;
+                top: 90px;
+                right: 0;
+                bottom: 0;
+                overflow: auto;
+            }
+            .dragList {
+                //表格
+                display: table;
+                width: 100%;
+                min-height: 30px;
+                color: #222;
+                font-size: 12px;
+                table.dragGroup {
+                    // border:1px solid red; 
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 9;
+                    td {
+                        width: 13%;
+                        height: 35px;
+                        padding: 0 15px;
+                        border-bottom: 1px solid #EAEDEF;
+                        &:nth-child(1),
+                        &:nth-child(5),
+                        &:nth-child(6) {
+                            width: 9%;
+                        }
+                    }
+                    tr {
+                        &:last-child {
+                            td {
+                                border-bottom: none;
+                            }
+                        }
+                        &:hover {
+                            .editBtn {
+                                >em {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+                >div {
+                    display: table-row;
+                    >span {
+                        display: table-cell;
+                        vertical-align: middle;
+                        width: 13%;
+                        padding: 7px 15px;
+                        position: relative;
+                        border-bottom: 1px solid #EAEDEF;
+                        &:nth-child(1),
+                        &:nth-child(5),
+                        &:nth-child(6) {
+                            width: 9%;
+                        }
+                        .handle {
+                            display: inline-block;
+                            width: 38px;
+                            height: 38px;
+                            line-height: 40px;
+                            text-align: center;
+                            cursor: move;
+                            .iconfont {
+                                font-size: 21px;
+                            }
+                        }
+                        .handleDisabled {
+                            display: inline-block;
+                            width: 30px;
+                            height: 30px;
+                            line-height: 32px;
+                            text-align: center;
+                            cursor: no-drop;
+                            color: #eee;
+                            .iconfont {
+                                font-size: 25px;
+                            }
+                        }
+                        .editBtn {
+                            position: relative;
+                            >em {
+                                display: none;
+                                width: 30px;
+                                text-align: center;
+                                height: 30px;
+                                line-height: 30px;
+                                position: absolute;
+                                top: 50%;
+                                margin-top: -14px;
+                                right: -35px;
+                                color: #C0C4CC;
+                                &:hover {
+                                    color: #E6001F;
+                                    cursor: pointer;
+                                }
+                                .iconfont {
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                    }
+                    &:hover {
+                        span {
+                            >.editBtn {
+                                >em {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .dragHeader {
+                background-color: #EFF2F4;
+                color: #909399;
+                font-size: 14px; // font-weight: bold;
+                >div {
+                    >span {
+                        padding: 10px 15px;
+                    }
+                }
+            }
+            .sortable-chosen {
+                //拖拽
+                background: #f7f8f9;
+            }
+        }
+    }
+}

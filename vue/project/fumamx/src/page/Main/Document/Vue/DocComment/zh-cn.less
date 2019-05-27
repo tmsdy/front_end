@@ -1,0 +1,80 @@
+.zh-cn,
+.zh-tw {
+    .DocComment {
+        .mask {
+            position: fixed;
+            left: 0;
+            top: 55px;
+            right: 0;
+            bottom: 0;
+            z-index: 87;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .commentBox {
+            width: 400px;
+            position: fixed;
+            top: 55px;
+            right: 0;
+            bottom: 0;
+            z-index: 98;
+            background-color: #fff;
+            word-wrap: break-word;
+            word-break: normal;
+            box-shadow: -2px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            animation: toShow 0.3s;
+            &>.title {
+                font-size: 14px;
+                color: #222;
+                padding: 0 15px;
+                height: 40px;
+                line-height: 40px;
+                border-bottom: 1px solid #eaedef;
+            }
+            &>.formBox {
+                padding: 15px 10px;
+                .comment {
+                    height: 130px;
+                }
+            }
+            &>.commentList {
+                position: absolute;
+                top: 232px;
+                bottom: 32px;
+                width: 100%;
+                padding: 0 10px;
+                overflow-y: scroll;
+                .commentItem {
+                    margin-bottom: 15px;
+                    &:nth-last-of-type(1) {
+                        margin-bottom: 0px;
+                    }
+                    .avatar img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                    }
+                    .contentBox {
+                        margin-left: 50px;
+                        .content {
+                            margin: 5px 0;
+                        }
+                    }
+                }
+            }
+            &>.paging {
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+        @keyframes toShow {
+            from {
+                transform: translateX(100%)
+            }
+            to {
+                transform: translateX(0)
+            }
+        }
+    }
+}

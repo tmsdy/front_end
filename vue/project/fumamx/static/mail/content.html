@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>FumaMX</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <style>
+        body {
+            font-family: -apple-system, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', Arial, sans-serif;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+    </style>
+    <script>
+        function openlink(e, _this) {
+            if (e && e.preventDefault) {
+                e.preventDefault()
+            } else {
+                window.event.returnValue = false
+            }
+            parent.window.openlink(_this.getAttribute('href'))
+        }
+        window.vm = {}
+        vm.showContent = function (html, sendH, sendW) {
+            if (navigator.userAgent.indexOf('Electron') !== -1) {
+                html = html.replace(/<a /igm, "<a target='_blank' onclick='openlink(event,this)' ")
+            } else {
+                html = html.replace(/<a /igm, "<a target='_blank' ")
+            }
+            document.getElementById('mailContent').innerHTML = html
+            setTimeout(function () {
+                if (document.body.scrollHeight == 0) {
+                    var bodyT = document.getElementsByTagName('body')[0].children
+                    var heigthT = 0
+                    var WidthT = 0
+                    for (var i = 0; i < bodyT.length; i++) {
+                        bodyT[i].style.styleFloat = 'none'
+                        heigthT = bodyT[i].scrollHeight + heigthT
+                        WidthT = bodyT[0].innerWidth
+                    }
+                    sendH(heigthT + 20) // 把文档高传过去
+                    if (typeof sendW === 'function') {
+                        sendW(WidthT)
+                    }
+
+                } else {
+                    sendH(document.body.scrollHeight + 20) // 把文档高传过去
+                    if (typeof sendW === 'function') {
+                        sendW(document.body.scrollWidth)
+                    }
+                }
+            }, 200)
+
+        }
+
+    </script>
+</head>
+
+<body id="mailContent">
+
+</body>
+
+</html>

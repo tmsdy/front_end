@@ -1,0 +1,111 @@
+.en {
+    @red: #D0021B;
+    .RecoredItem {
+        margin-top: 16px;
+        padding: 16px 30px;
+        height: 140px;
+        background: #fff;
+        box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        position: relative;
+        .imgBox {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin-top: 4px;
+            img {
+                max-width: 100px;
+                max-height: 100px;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        .leftBox {
+            position: absolute;
+            left: 146px;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 730px;
+            .title {
+                float: left;
+                max-width: 690px;
+                font-size: 18px;
+                color: #303133;
+                font-weight: 600;
+            }
+            .titleTag {
+                float: left;
+                padding: 2px 4px;
+                margin-left: 4px;
+                font-size: 12px;
+                background-color: #FFF3F2;
+                color: #FF7165;
+            }
+            .description {
+                height: 40px;
+                line-height: 20px;
+                margin: 4px 0 5px 0;
+                color: #606266;
+            }
+            .link {
+                a {
+                    color: #437ab2;
+                    /* &:hover {
+                        color: @red;
+                    } */
+                }
+            }
+            .time {
+                color: #909399;
+                font-size: 12px;
+            }
+        }
+        .delBtn {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: 110px;
+            text-align: center;
+            line-height: 30px;
+            width: 32px;
+            height: 32px;
+            transform: translateY(-50%);
+            border-radius: 16px;
+            color: #909399;
+            box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+            border: 1px solid #909399;
+            .iconfont {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+            }
+        }
+        .btn {
+            cursor: pointer;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            width: 68px;
+            height: 32px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 16px;
+
+            transform: translateY(-50%);
+            &.btn01 {
+                color: @red;
+                box-shadow: 0px 2px 8px 0px rgba(208, 2, 27, 0.5);
+                border: 1px solid @red;
+            }
+            &.btn02 {
+                color: #909399;
+                box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+                border: 1px solid #909399;
+            }
+        }
+
+    }
+}

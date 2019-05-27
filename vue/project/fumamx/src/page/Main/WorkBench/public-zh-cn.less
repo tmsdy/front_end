@@ -1,0 +1,82 @@
+.dashboardBox {
+  background: #fff;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.leftmargin {
+  margin-left: 13px;
+}
+
+.workTitle {
+  padding: 0 13px;
+  color: #303133;
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  .name {
+    display: inline-block;
+    color: #222;
+    font-weight: bold;
+    font-size: 16px;
+    padding-top: 3px;
+  }
+  .remind {
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #c0c4cc;
+    color: #222;
+    padding: 0 10px 0 8px;
+    font-size: 12px;
+    margin-left: 10px;
+    .iconfont {
+      font-size: 10px;
+    }
+    &:hover {
+      cursor: pointer;
+      background: rgba(208, 2, 27, 0.13);
+    }
+  }
+  ul.tabWrap {
+    //  border: 1px solid red;
+    float: left;
+    height: 100%;
+    font-size: 14px;
+    padding-top: 5px;
+    >li {
+      display: inline-block;
+      >span {
+        // border: 1px solid red;
+        display: block;
+        width: 66px;
+        text-align: center;
+        height: 35px;
+        line-height: 35px;
+        overflow: hidden;
+        color: #606266;
+        border-bottom-width: 2px;
+      }
+      &:hover span {
+        color: #222;
+        cursor: pointer;
+      }
+      &.active span {
+        border-radius: 3px 3px 0 0;
+        background: #fff;
+        color: #d0021b;
+        border-bottom: 2px solid #d0021b;
+        cursor: default;
+      }
+    }
+  }
+  .el-select {
+    width: 80px;
+    margin-left: 10px;
+    margin-top: 1px;
+    float: right;
+  }
+}

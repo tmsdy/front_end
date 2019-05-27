@@ -1,0 +1,62 @@
+.en {
+    .editGoods{
+        // border:1px solid red;
+        .goodsList {
+            padding: 15px;
+            min-height: 120px;
+            >li{
+                // display: inline-block;
+                float: left;
+                width: 55px;
+                height: 55px;
+                line-height: 55px;
+                text-align: center;
+                border:1px dashed #ddd;
+                border-radius: 3px;
+                font-size: 12px;
+                margin-right: 10px;
+                margin-bottom: 15px;
+                position: relative;
+                .delGoods {
+                    position: absolute;
+                    width: 16px;
+                    height: 16px;
+                    line-height: 16px;
+                    text-align: center;
+                    border:1px solid #ddd;
+                    background: #fff;
+                    border-radius: 50%;
+                    top: -8px;
+                    right: -3px;
+                    color: #ddd;
+                    i{
+                        display: inline-block;
+                        -webkit-transform:scale(0.8);
+                        transform: scale(0.8);
+                        font-size: 12px;
+                    }
+                    &:hover{
+                        // border-color: #d0021b;                        
+                        cursor: pointer;
+                        i{
+                            color: #d0021b;
+                            font-weight: bold;
+                        }
+                    }
+                }
+                img {
+                    width: 100%;
+                }
+                .iconfont {
+                    font-size: 22px;
+                    color: #909399;
+                }
+            }
+        }
+        .itemBox {
+            padding: 8px 15px;
+            margin-bottom: 0;
+            border-top: 1px solid #ddd;
+        }
+    }
+}

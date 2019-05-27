@@ -1,0 +1,184 @@
+.zh-cn,
+.zh-tw {
+    .ItemProcedure {
+        height: 120px;
+        border: 1px solid #EAEAEA;
+        width: 100%;
+        .header {
+            padding: 0 15px;
+            height: 32px;
+            background: #F7F8F9;
+            position: relative;
+            .itemTitle {
+                position: absolute;
+                color: #222;
+                font-size: 14px;
+                height: 32px;
+                line-height: 32px;
+                left: 15px;
+                top: 0;
+            }
+            .switch {
+                position: absolute;
+                right: 200px;
+                top: 5px;
+            }
+            .tips {
+                cursor: pointer;
+                position: absolute;
+                right: 160px;
+                top: 5px;
+                i {
+                    font-size: 22px;
+                }
+            }
+            .stop {
+                cursor: pointer;
+                position: absolute;
+                right: 105px;
+                top: 5px;
+                i {
+                    font-size: 21px;
+                }
+            }
+            .edit {
+                cursor: pointer;
+                position: absolute;
+                right: 65px;
+                top: 5px;
+                i {
+                    font-size: 21px;
+                }
+            }
+        }
+        .optBox {
+            position: relative;
+            height: 88px;
+            margin-top: 10px;
+            .optLine {
+                width: 96%;
+                height: 10px;
+                background: #f2f2f2;
+                box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.05);
+                border-radius: 5px;
+                position: absolute;
+                top: 5px;
+                left: 2%;
+            }
+            .optListBox {
+                position: absolute;
+                top: 0;
+                left: 2%;
+                width: 96%;
+                .optItemBox {
+                    width: 32%;
+                    position: relative;
+                }
+                .optItemBoxOver {
+                    position: absolute;
+                    right: 0;
+                    text-align: right;
+                }
+                .optItemBox,
+                .optItemBoxOver {
+                    display: inline-block;
+                    vertical-align: top;
+                    .optItemColorBox {
+                        display: inline-block;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 10px;
+                        line-height: 20px;
+                        background: #f2f2f2;
+                        box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.05);
+                        text-align: center;
+                        .optItemColor {
+                            display: inline-block;
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 6px;
+                        }
+                        .optItemColor1 {
+                            background: #909399;
+                        }
+                        .optItemColor2 {
+                            background: #FFB735;
+                        }
+                        .optItemColor3 {
+                            background: #00C2B3;
+                        }
+                        .optItemColor4 {
+                            background: #D0021B;
+                        }
+                    }
+                    .itemLine {
+                        position: absolute;
+                        left: 20px;
+                        top: 8px;
+                        width: 80%;
+                        height: 4px;
+                        border-radius: 2px;
+                    }
+                    .lineBg1 {
+                        background: linear-gradient(270deg, rgba(144, 147, 153, 0.2) 0%, rgba(144, 147, 153, 1) 100%);
+                    }
+                    .lineBg2 {
+                        background: linear-gradient(270deg, rgba(255, 220, 101, 1) 0%, rgba(255, 183, 53, 1) 100%);
+                    }
+                    .lineBg3 {
+                        background: linear-gradient(270deg, rgba(101, 235, 225, 1) 0%, rgba(0, 194, 179, 1) 100%);
+                    }
+                    .lineBg4 {
+                        background: linear-gradient(270deg, rgba(255, 105, 124, 1) 0%, rgba(208, 2, 27, 1) 100%);
+                    }
+                    .optItemContentBox {
+                        color: #909399;
+                        font-size: 12px;
+                        .contentTit {
+                            color: #222222;
+                            font-weight: 500;
+                            font-size: 14px;
+                            margin-top: 8px;
+                            .notice {
+                                display: none;
+                                position: relative;
+                                .noticeNum {
+                                    display: none;
+                                    width: 16px;
+                                    height: 16px;
+                                    background: rgba(208, 2, 27, 1);
+                                    border-radius: 12px;
+                                    text-align: center;
+                                    line-height: 16px;
+                                    color: white;
+                                    position: absolute;
+                                    top: -8px;
+                                    right: -8px;
+                                    font-size: 12px;
+                                }
+                                &:hover {
+                                    .noticeNum {
+                                        display: inline-block;
+                                    }
+                                }
+                            }
+                        }
+                        >div {
+                            margin-top: 2px;
+                            .iconfont {
+                                font-size: 12px;
+                            }
+                        }
+                        &:hover {
+                            .contentTit {
+                                .notice {
+                                    display: inline-block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

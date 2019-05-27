@@ -1,0 +1,86 @@
+.zh-cn,
+.zh-tw {
+    .DeptActCustDist {
+        .workBody {
+            height: 350px;
+            background-color: #fff;
+            position: relative;
+            .progressData {
+                // border: 1px solid red;
+                height: 15px;
+                line-height: 15px;
+                overflow: hidden;
+                position: relative;
+                >span.bar {
+                    float: left;
+                    width: 100%;
+                    height: 6px;
+                    margin-top: 4px;
+                    background: rgba(239, 239, 239, 1);
+                    border-radius: 4px;
+                    position: relative;
+                    >i {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 0;
+                        background: linear-gradient(136.4deg, rgba(59, 220, 72, 1), rgba(92, 209, 46, 1));
+                        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+                        border-radius: 4px;
+                    }
+                }
+                .num {
+                    float: right;
+                }
+            }
+            .content {
+                // border: 1px solid red; // margin-top: 15px;
+            }
+            .rightTable {
+                // border: 1px solid red;
+                height: 345px;
+                font-size: 12px;
+                color: #606266;
+                padding-top: 2px;
+                .rightHeader>span,
+                .rightBody>div>span {
+                    float: left;
+                    width: 25%;
+                    text-align: center;
+                }
+                .rightHeader>span:nth-child(1),
+                .rightBody>div>span:nth-child(1) {
+                    width: 15%;
+                }
+                .rightHeader>span:nth-child(2),
+                .rightBody>div>span:nth-child(2) {
+                    width: 30%;
+                }
+                .rightHeader>span:nth-child(3),
+                .rightBody>div>span:nth-child(3) {
+                    width: 40%;
+                }
+                .rightHeader>span:nth-child(4),
+                .rightBody>div>span:nth-child(4) {
+                    width: 15%;
+                }
+                .rightHeader {
+                    // border: 1px solid red;
+                    height: 38px;
+                    line-height: 38px;
+                }
+                .rightBody {
+                    // border: 1px solid red;
+                    height: 270px;
+                    // >div:hover {
+                    //     background: #f9f9f9;
+                    // }
+                    >div {
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,197 @@
+.en {
+    .UploadDownload {
+        width: 54px;
+        height: 100%;
+        float: right;
+        position: relative;
+        margin-right: 1px;
+        >.icon {
+            text-align: center;
+            line-height: 54px;
+            color: #909399;
+            >.iconfont {
+                font-size: 22px;
+            }
+            &:hover,
+            &.iconActive {
+                color: #d0021b;
+                cursor: pointer;
+            }
+        }
+        .sliderBg {
+            position: fixed;
+            left: 0;
+            top: 55px;
+            right: 0;
+            bottom: 0;
+            z-index: 88;
+            background-color: rgba(0, 0, 0, .2);
+        }
+        .sliderBody {
+            width: 800px;
+            position: fixed;
+            top: 55px;
+            right: 0;
+            bottom: 0;
+            z-index: 99;
+            background-color: #fff;
+            word-wrap: break-word;
+            word-break: normal;
+            box-shadow:-2px 0px 10px 0px rgba(0,0,0,0.1);
+            .recordPage {
+                //分页
+                // border: 1px solid red;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 45px;
+                text-align: center;
+            }
+            .loadingPic {
+                // border: 1px solid red;
+                padding: 0;
+                float: left;
+                margin: 3px 5px 0 0;
+            }
+            >.title {
+                color: #222;
+                padding: 10px 15px;
+                border-bottom: 1px solid #eaedef;
+                .pull-right {
+                    margin-top: 2px;
+                }
+                .iconfont {
+                    font-size: 12px;
+                    color: #909399;
+                    &:hover {
+                        color: #d0021b;
+                        font-weight: bold;
+                    }
+                }
+            }
+            >ul.tabs {
+                >li {
+                    display: inline-block;
+                    margin:0 3px;
+                    padding: 8px 12px;
+                    color: #909399;
+                    &:hover,
+                    &.active {
+                        color: #222;
+                        cursor: pointer;
+                        border-bottom: 2px solid transparent;
+                    }
+                    &.active {
+                        color: #d0021b;
+                        border-bottom-color: #d0021b;
+                    }
+                }
+            }
+            >.titleList {
+                height: 40px;
+                padding: 0 15px;
+                background: #EFF2F4;
+                >span {
+                    font-size: 13px;
+                    color: #909399;
+                    height: 40px;
+                    line-height: 40px;
+                    float: left;
+                }
+            }
+            .fileName {
+                width: 220px;
+                // background: red;
+            }
+            .action {
+                width: 135px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .startTime {
+                width: 100px;
+                // background: red;
+            }
+            .status {
+                width: 285px;                
+                .statusContent {
+                    float: left;
+                    width: 110px;
+                }
+                .statusDescr {
+                    // border:1px solid red;
+                    display: inline-block;
+                    font-size:12px;color:#999;
+                    max-width: 175px;
+                    white-space:nowrap; 
+                    text-overflow:ellipsis;
+                    overflow: hidden;
+                }
+            }
+            
+            >.tableList {
+                // border: 1px solid red;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 117px;
+                bottom: 54px;
+                overflow-y: auto;
+                >li.list {
+                    height: 45px;
+                    line-height: 45px;
+                    padding: 0 15px;
+                    border-bottom: 1px #EAEDEF solid;
+                    &:hover {
+                        background: rgba(208, 2, 27, 0.05);
+                    }
+                    >div {
+                        float: left;
+                        height: 45px;
+                        line-height: 45px;
+                        padding-right: 10px;
+                        white-space: nowrap;
+                    }
+                    >.fileName {
+                        font-size: 13px;
+                        color: #6B6B6B;
+                    }
+                    >.action {
+                        font-size: 13px;
+                        color: #6B6B6B;
+                    }
+                    >.startTime {
+                        font-size: 13px;
+                        color: #6B6B6B;
+                    }
+                    >.status {
+                        font-size: 13px;
+                        color: #6B6B6B;
+                    }
+                }
+            }
+        }
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: opacity .5s;
+        }
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+        .slider-customer-enter-active {
+            //定义vue下滑动画样式
+            transition: all .3s ease;
+        }
+        .slider-customer-leave-active {
+            transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slider-customer-enter,
+        .slider-customer-leave-to {
+            transform: translateX(500px);
+            opacity: 0;
+        }
+    }
+}

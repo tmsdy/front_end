@@ -1,0 +1,162 @@
+.en {
+  .Login {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    .rightTopBtn {
+      // border:1px solid red;
+      position: fixed;
+      right: 3%;
+      top: 25px;
+    }
+    .reg_logo {
+      // border: 1px solid red;
+      width: 138px;
+      height: 58px;
+      line-height: 50px;
+      position: absolute;
+      left: 3%;
+      top: 25px;
+      z-index: 9;
+      color: #fff;
+      overflow: hidden;
+    }
+    .reg_logo i {
+      font-size: 133px;
+    }
+    .reg_logo>span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      line-height: 15px;
+      letter-spacing: 3px;
+      font-size: 12px;
+    }
+    .reg_logo:hover {
+      color: #eee;
+    }
+    .reg_img {
+      // border: 2px solid black;
+      width: 62%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+    }
+    .reg_box {
+      width: 38%;
+      background: #fff;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: Center;
+      overflow: hidden;
+      .reg_body {
+        // border: 1px solid red;
+        margin-top: -180px;
+        width: 360px;
+        position: relative;
+        z-index: 999;
+      }
+    }
+    .reg_box h1 {
+      color: #d0021b;
+      font-size: 32px;
+      line-height: normal;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+    .reg_box .copyright {
+      // 版权
+      position: absolute;
+      left: 0;
+      bottom: 30px;
+      right: 0;
+      text-align: center;
+      color: #909399;
+      >ul {
+        // border:1px solid blue;
+        margin-bottom: 50px;
+        >li {
+          display: inline-block;
+          width: 98px;
+          height: 100px;
+          margin: 0 3px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          color: #303133;
+          position: relative;
+          text-align: center;
+          overflow: hidden;
+          i.iconfont {
+            display: inline-block;
+            font-size: 48px;
+            margin-top: 15px;
+          }
+          img {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            margin-top: 3px;
+          }
+          .todo {
+            display: none;
+          }
+          p {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 8px;
+            font-size: 12px;
+          }
+          &:hover {
+            cursor: pointer;
+            border-color: #c0c4cc;
+            color: #909399;
+            p{
+              color: #303133;
+            }
+            .todo {
+              display: block;
+            }
+            .tip {
+              display: none;
+            }
+          }
+        }
+      }
+      a {
+        color: #909399;
+        &:hover {
+          color: #d0021b;
+        }
+      }
+    }
+    .verificationCodeImgBox {
+      width: 70px;
+      height: 25px;
+      position: absolute;
+      right: 0;
+      top: 8px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+    }
+    .getPWD {
+      // border:1px solid red;
+      margin-bottom: 28px;
+      .getPWDtext {
+        float: right;
+        color: #606266;
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.en {
+    .PreferenceSetting {
+        .title {
+            font-size: 14px;
+            color: #303133;
+            margin-bottom: 10px;
+        }
+        .listBox {
+            margin-bottom: 10px;
+            .item {
+                cursor: pointer;
+                float: left;
+                height: 32px;
+                padding: 0 20px;
+                font-size: 14px;
+                margin-right: 15px;
+                margin-bottom: 10px;
+                color: #606266;
+                line-height: 32px;
+                border: 1px solid rgba(223, 226, 228, 1);
+                &.active {
+                    border: none 0;
+                    padding: 0 21px;
+                }
+
+            }
+            &.countrys {
+                .item.active {
+                    background-color: #EFF3FC;
+                    color: #818EA9;
+                }
+            }
+            &.industrys {
+                .item.active {
+                    background-color: #FFF3F2;
+                    color: #FF7165;
+                }
+            }
+        }
+        .dialog-footer {
+            text-align: center;
+        }
+    }
+}

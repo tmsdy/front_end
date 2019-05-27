@@ -1,0 +1,33 @@
+.zh-cn,
+.zh-tw {
+    .allBox{
+        height: 240px;
+        position: relative;
+        padding-top: 40px;
+        overflow: hidden;
+        .searchBox{
+            position: absolute;
+            top: 2px;
+            left: 0;
+            right: 0;
+            padding: 6px 10px 4px;
+            background: white;
+            z-index: 10;
+            .clearItem{
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                margin-top: -6px;
+            }
+        }
+        .listBox{
+            max-height: 200px;
+            overflow: auto;
+            margin-bottom:2px;
+            .nodata{
+                padding: 8px 16px;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+.zh-cn,
+.zh-tw {
+    .AddNotice {
+        .mainBox {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 44px;
+            bottom: 0;
+            padding: 24px;
+            border-radius: 4px 4px 0 0;
+            margin: 16px 16px 0 16px;
+            background-color: #fff;
+            overflow: auto;
+            .longItem {
+                width: 480px;
+                line-height: normal;
+                &.subject {
+                    padding: 3px 10px;
+                    color: #606266;
+                    font-size: 14px;
+                    position: relative;
+                    display: inline-block;
+                    height: 32px;
+                    line-height: 26px;
+                    border: 1px solid #dfe2e4;
+                    border-radius: 3px;
+                    box-sizing: border-box;
+                    &:hover,
+                    &:focus {
+                        outline: 0;
+                        border-color: #ff7f7f;
+                    }
+                }
+            }
+            .personBox {
+                float: left;
+                min-height: 76px;
+                border-radius: 3px;
+                border: 1px solid rgba(223, 226, 228, 1);
+                .persionItem {
+                    padding: 0 25px 0 10px;
+                    height: 25px;
+                    line-height: 25px;
+                    position: relative;
+                    .removeBtn {
+                        cursor: pointer;
+                        display: none;
+                        position: absolute;
+                        right: 5px;
+                        top: 0;
+                        width: 20px;
+                        height: 20px;
+                    }
+                    &:hover {
+                        background-color: #fdf2f3;
+                        .removeBtn {
+                            display: block;
+                        }
+                    }
+                }
+            }
+            .addPersonBtn,
+            .insetFieldBtn {
+                margin-left: 20px;
+                cursor: pointer;
+                color: #5EA3F6;
+            }
+            .noticeTimeBox {
+                .remindTimeItem {
+                    float: left;
+                    display: block;
+                    margin-right: 10px;
+                    &:nth-last-of-type(1) {
+                        margin-right: 0;
+                    }
+                }
+                .remindTime01 {
+                    width: 180px;
+                }
+                .remindTime02 {
+                    width: 65px;
+                }
+                .remindTime03 {
+                    width: 65px;
+                }
+                .remindTime04 {
+                    width: 140px;
+                }
+            }
+        }
+    }
+}

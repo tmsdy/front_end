@@ -1,0 +1,179 @@
+.ControlsExhibition {
+    // border: 1px solid #ddd;
+    line-height: 30px;
+    .label {
+        float: left;
+        margin: 6px 0;
+        line-height: 16px;
+        border: 1px solid transparent;
+        overflow: hidden;
+        &.margin0 {
+            margin: 0 !important;
+        }
+    }
+    // &.Web .fieldShow .showVal {
+    //     border:1px solid red;
+    //     word-wrap:break-word;
+    // }
+    .content {
+        // border-top: 1px solid red;
+        padding-left: 8px;
+        color: #222;
+        position: relative;
+        .editShow{
+            // 编辑呈现时
+            position: absolute;
+        }
+        .editClose {
+            display: inline-block;
+            margin-left: 3px;
+            i {
+                font-size: 12px;
+            }
+            &:hover {
+                color: #d0021b;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+        .fieldShow {
+            float: left;
+            position: relative;
+            &.MultilineText {
+                // border:1px solid red;
+                .textContent {
+                    // border:1px solid red;
+                    // font-size: 14px;
+                    display: inline-block;
+                    white-space:pre-wrap;
+                    line-height: 18px;
+                    margin-top: 5px;
+                    padding-right: 15px;
+                    max-height: 120px;
+                    // overflow-y: scroll;
+                    max-width: 450px;
+                    word-wrap: break-word;
+                }
+            }
+            .showVal{
+                // border:1px solid red;
+                float: left;
+                max-width: 190px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .edit {
+                color: #222;
+                width: 16px;
+                height: 16px;
+                line-height: 16px;
+                text-align: center;
+                border-radius: 50%;
+                position: absolute;
+                right: -25px;
+                top: 50%;
+                margin-top: -8px;
+                display: none;
+                .iconfont{
+                    font-size: 18px;
+                }
+                &:hover{
+                    cursor: pointer;
+                    color: #d0021b;
+                }
+            }
+        }
+        
+        .openImgBox {
+            //图片控件
+            width: 150px;
+            margin: 3px 0 2px;
+            .openImg {
+                width: 35px;
+                height: 35px;
+                border-radius: 3px;
+                display: block;
+                float: left;
+                position: relative;
+                border: 1px #cccccc solid;
+                margin: 3px 5px 3px 0;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    border-radius: 3px;
+                }
+                .close {
+                    border: 1px solid #ccc;
+                    display: inline-block;
+                    width: 18px;
+                    height: 18px;
+                    line-height: 16px;
+                    text-align: center;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -6px;
+                    right: -3px;
+                    display: none;
+                    i {
+                        font-size: 8px;
+                    }
+                }
+                &:hover {
+                    .close {
+                        display: inline-block;
+                        &:hover {
+                            color: #d0021c;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .add {
+                border-radius: 3px;
+                width: 35px;
+                height: 35px;
+                line-height: 33px;
+                display: block;
+                float: left;
+                border: 1px #EAEDEF solid;
+                background: #f7f8f9;
+                text-align: center;
+                margin: 3px 5px 3px 0;
+                .PictureAddFile {
+                    display: none;
+                }
+                i {
+                    font-size: 18px;
+                    color: #c0c4cc;
+                }
+                &:hover {
+                    cursor: pointer;
+                    border-color: #d0021c;
+                    i {
+                        color: #d0021c;
+                    }
+                }
+            }
+            &::after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+        }        
+    }
+    &:hover {
+        .edit {
+            display: inline-block !important;
+        }
+    }
+    &::after {
+        content: '';
+        display: table;
+        height: 0;
+        clear: both;
+    }
+}

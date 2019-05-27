@@ -1,0 +1,87 @@
+.en {
+    .BatchOperation {
+        //邮件批量操作，悬浮栏
+        height: 38px;
+        line-height: 38px;
+        padding: 0 10px;
+        overflow: hidden;
+        background-color: #fff;
+        position: absolute;
+        left: 2px;
+        top: 0;
+        right: 1px;
+        z-index: 2;
+
+        >label {
+            float: left;
+        }
+
+        .pull-right {
+            i {
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                padding: 3px;
+                font-size: 12px;
+
+                &:hover {
+                    border-color: #E6001F;
+                    color: #E6001F;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        >ul {
+            margin: 4px 10px;
+            float: left;
+            height: 35px; // border: 1px red solid;
+
+            >li {
+                // border: 1px red solid;
+                display: inline-block;
+                width: 28px;
+                height: 28px;
+                line-height: 28px;
+                text-align: center;
+                color: #fff;
+                background-color: #999;
+                margin-left: 6px;
+                border-radius: 50%; // padding-bottom: 2px;
+                position: relative;
+
+                .el-dropdown-link i {
+                    color: #fff;
+                }
+
+                &.downBtn {
+                    margin-right: 16px;
+
+                    .el-dropdown {
+                        // border: 1px solid red;
+                        width: 15px;
+                        height: 15px;
+                        line-height: 15px;
+                        position: absolute; // text-align: center;
+                        right: -16px; // bottom: -2px;
+                        z-index: 1;
+                        line-height: 28px;
+                    }
+
+                    .icon-arrow-down {
+                        font-size: 12px;
+                        color: #999;
+
+                        &:hover {
+                            color: #E6001F;
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: #E6001F;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

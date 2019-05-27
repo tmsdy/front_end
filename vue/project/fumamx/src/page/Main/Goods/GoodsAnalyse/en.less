@@ -1,0 +1,128 @@
+.en {
+    .GoodsAnalyseBox{
+        height: 100%;
+        .GoodsAnalyse {
+            height: 100%;
+            overflow: auto;
+            position: relative;
+            .listBox{
+                background: white;
+                min-height: 300px;
+                border-radius:4px;
+                position: relative;
+                >.title, .content{
+                    padding:0 15px 0 20px;
+                }
+                >.title{
+                    height: 60px;
+                    line-height: 60px;
+                    border-bottom: 1px solid #EAEDEF;
+                    color: #303133;
+                    font-size: 14px;
+                    .addInput{
+                        float: right;
+                        .right10{
+                            margin-right: 10px;
+                        }
+                    }
+                }
+                >.content{
+                    .contentList{
+                        height: 122px;
+                        border-bottom: 1px solid #EAEDEF;
+                        .contentTitle{
+                            color: #303133;
+                            font-size: 14px;
+                            font-weight: bold;
+                            height: 48px;
+                            line-height: 48px;
+                        }
+                        .contentBox{
+                            height: 74px;
+                            .typeList{
+                                width: 264px;
+                                float: left;
+                                padding-left: 38px;
+                                position: relative;
+                                .iconBox{
+                                    position: absolute;
+                                    top: 3px;
+                                    left: 0;
+                                    >i{
+                                        font-size: 20px;
+                                    }
+                                }
+                                .count{
+                                    height: 30px;
+                                    font-size: 24px;
+                                    color: #D0021B;
+                                    font-weight: bold;
+                                }
+                                .countTitle{
+                                    font-size: 12px;
+                                    color: #606266;
+                                }
+                            }
+                        }
+                    }
+                    .list{
+                        height:40px;
+                        line-height:40px;
+                        background:rgba(239,242,244,1);
+                        color: RGBA(144, 147, 153, 1);
+                        padding-left: 10px;
+                    }
+                    .list1{
+                        height: 102px;
+                        color: RGBA(34, 34, 34, 1);
+                        border-bottom:1px solid  #f7f8f9;
+                        background: white;
+                        position: relative;
+                        padding-top: 16px;
+                        padding-left: 10px;
+                        .listContent{
+                            min-width: 100px;
+                            min-height: 90px;
+                            padding-left: 80px;
+                            position: relative;
+                            >.listContentBox1{
+                                height: 20px;
+                                line-height: 20px;
+                                color:#303133;
+                                font-size: 14px;
+                            }
+                            >.listContentBox2{
+                                line-height: 14px;
+                                height: 28px;
+                                color:#606266;
+                                font-size:12px;
+                                margin-top: 2px;
+                            }
+                            >img{
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                            }
+                        }
+                        .goodsMsg{
+                            padding-top: 35px;
+                            color: #303133
+                        }
+                        .right10{
+                            margin-right: 10px;
+                        }
+                        &:hover{
+                            background:#fcf2f3;
+                        }
+                    }
+                }
+            }
+            .listBox1{
+                position: absolute;
+                top: 422px;
+                width: 100%;
+                padding-bottom: 67px; 
+            }
+        }
+    }
+}

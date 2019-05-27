@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>FumaMX</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="./template.css">
+    <link rel="stylesheet" href="./toolbar.css">
+    <link rel="stylesheet" href="./icon-font/iconfont.css">
+
+    <script src="./jquery-2.2.3.min.js"></script>
+    <script src="./sortable.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .templateWrap ul,
+        .templateWrap li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .templateWrap {
+            font-family: -apple-system, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            padding: 12px 0;
+            color: #666;
+        }
+
+        .templateWrap a {
+            text-decoration: none;
+        }
+
+        .templateWrap .template {
+            background-color: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .templateWrap .template .moduleList {
+            min-width: 120px;
+            position: relative;
+        }
+
+        .templateWrap table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        .templateWrap table.col3 td {
+            width: 33.33333%;
+        }
+
+        .templateWrap table.col2 td {
+            width: 50%;
+        }
+
+        .templateWrap .template .moduleItem {
+            position: relative;
+        }
+
+        .templateWrap .template .moduleItem .imageBox .imageObj img {
+            width: 100%;
+        }
+
+        .templateWrap .template .moduleItem .imageBox .imageObj .btnPic {
+            display: none
+        }
+        .templateWrap .M_scrawl {
+            border:none;
+            border-radius: 3px;
+            background: #008cee;
+            color:#fff;
+            font-size: 12px;
+            margin-right: 3px;
+        }
+
+        @media only screen and (max-width: 640px) {
+            .templateWrap{
+                padding: 0!important;
+            }
+            .templateWrap table td {
+                display: block !important;
+                width: 100% !important;
+            }
+        }
+
+        .moduleGoods td{
+            width: 50%;
+        }
+
+        .goodsListCard .goodsItem{
+            display: inline-block;
+            width: 290px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            vertical-align: top;
+        }
+        .goodsListCard .goodsItem:nth-child(2n) {
+            float: right;
+        }
+        .goodsListCard .goodsItem .goodsPic {
+            width: 290px;
+            height: 290px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+        .goodsListCard .goodsItem .goodsName {
+            margin: 8px 0 2px;
+            color: #303133;
+        }
+        .goodsListCard .goodsItem .goodsDescr {
+            color: #909399;
+        }
+        .goodsListCard .goodsItem .goodsPrice {
+            color: red;
+        }
+
+        .goodsListLine .goodsItem{
+            clear: both;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .goodsListLine .goodsItem .goodsPic {
+            width: 200px;
+            height: 200px;
+            margin-right: 15px;
+            float: left;
+        }
+        .goodsListLine .goodsItem .goodsName {
+            margin: 8px 0 2px;
+            color: #303133;
+        }
+        .goodsListLine .goodsItem .goodsDescr {
+            color: #909399;
+        }
+        .goodsListLine .goodsItem .goodsPrice {
+            color: red;
+        }
+
+    </style>
+    <div class="templateWrap">
+        <div class="template">
+            <section> class="moduleList" id="moduleList1">
+                <li class="moduleItem">
+                    <div class="moduleTxt">使用这个区域来为你的邮件内容提供一个简短的说明。</div>
+                </li>
+
+                <li class="moduleItem">
+                    <div class="imageBox">
+                        <div class="imageObj">
+                            <span class="btnPic" onclick="getPic(this)">浏览</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="moduleItem">
+                    <div class="moduleTxt">
+                        <div style="font-size: 33px;font-weight: bold;color:#666">设计你的邮件</div>
+                        <div style="font-size: 18px;font-weight: bold;margin:5px 0;color:#666">轻松创建优雅的邮件</div>
+                        <div>现在你已经选择了一个邮件模板，你可以拖拽内容模块来对你的邮件进行排版和布局。不用担心，你可以随时删除模块和重新布局。然后点击设计栏来定义字体、颜色和样式。</div>
+                    </div>
+                </li>
+            </section>
+
+            <table class="col3">
+                <tr>
+                    <td valign="top">
+                        <section> class="moduleList" id="moduleList2">
+                            <li class="moduleItem">
+                                <div class="imageBox">
+                                    <div class="imageObj">
+                                        <span class="btnPic" onclick="getPic(this)">浏览</span>
+                                    </div>
+                                </div>
+                                <div class="moduleTxt">这是你的文字说明，你可以在设置栏改变它的位置和宽度。</div>
+                            </li>
+                        </section>
+                    </td>
+                    <td valign="top">
+                        <section> class="moduleList" id="moduleList3">
+                            <li class="moduleItem">
+                                <div class="imageBox">
+                                    <div class="imageObj">
+                                        <span class="btnPic" onclick="getPic(this)">浏览</span>
+                                    </div>
+                                </div>
+                                <div class="moduleTxt">这是你的文字说明，你可以在设置栏改变它的位置和宽度。</div>
+                            </li>
+                        </section>
+                    </td>
+                    <td valign="top">
+                        <section> class="moduleList" id="moduleList4">
+                            <li class="moduleItem">
+                                <div class="imageBox">
+                                    <div class="imageObj">
+                                        <span class="btnPic" onclick="getPic(this)">浏览</span>
+                                    </div>
+                                </div>
+                                <div class="moduleTxt">这是你的文字说明，你可以在设置栏改变它的位置和宽度。</div>
+                            </li>
+                        </section>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="col2">
+                <tr>
+                    <td valign="top">
+                        <section> class="moduleList" id="moduleList2">
+                            <li class="moduleItem">
+                                <div class="imageBox">
+                                    <div class="imageObj">
+                                        <span class="btnPic" onclick="getPic(this)">浏览</span>
+                                    </div>
+                                </div>
+                                <div class="moduleTxt">这是你的文字说明，你可以在设置栏改变它的位置和宽度。</div>
+                            </li>
+                        </section>
+                    </td>
+                    <td valign="top">
+                        <section> class="moduleList" id="moduleList3">
+                            <li class="moduleItem">
+                                <div class="imageBox">
+                                    <div class="imageObj">
+                                        <span class="btnPic" onclick="getPic(this)">浏览</span>
+                                    </div>
+                                </div>
+                                <div class="moduleTxt">这是你的文字说明，你可以在设置栏改变它的位置和宽度。</div>
+                            </li>
+                        </section>
+                    </td>
+                </tr>
+            </table>
+            <div id="moduleList4"></div>
+
+            <table class="col2">
+                <tr>
+                    <td valign="top">
+                        <section> class="moduleList" id="moduleList2">
+                            <li class="moduleItem">
+                                <div class="imageBox">
+                                    <div class="imageObj">
+                                        <span class="btnPic" onclick="getPic(this)">浏览</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="moduleItem">
+                                <div class="imageBox">
+                                    <div class="imageObj">
+                                        <span class="btnPic" onclick="getPic(this)">浏览</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </section>
+                    </td>
+                    <td valign="top">
+                        <section> class="moduleList" id="moduleList3">
+                                <li class="moduleItem">
+                                        <div class="moduleTxt">
+                                            <div style="font-size: 33px;font-weight: bold;color:#666">设计你的邮件</div>
+                                            <div style="font-size: 18px;font-weight: bold;margin:5px 0;color:#666">轻松创建优雅的邮件</div>
+                                            <div>现在你已经选择了一个邮件模板，你可以拖拽内容模块来对你的邮件进行排版和布局。</div>
+                                        </div>
+                                    </li>
+                                    <li class="moduleItem">
+                                            <div class="moduleTxt">
+                                                <div style="font-size: 33px;font-weight: bold;color:#666">设计你的邮件</div>
+                                                <div style="font-size: 18px;font-weight: bold;margin:5px 0;color:#666">轻松创建优雅的邮件</div>
+                                                <div>现在你已经选择了一个邮件模板，你可以拖拽内容模块来对你的邮件进行排版和布局。</div>
+                                            </div>
+                                        </li>
+                        </section>
+                    </td>
+                </tr>
+            </table>
+            <div id="moduleList4"></div>
+
+            <section> class="moduleList" id="moduleList5">
+                <li class="moduleItem">
+                    <div class="moduleTxt">
+                        <div style="padding:15px 0">Copyright © 2018 fumamx.com, All rights reserved.</div>
+                    </div>
+                </li>
+                <li class="moduleItem">
+                    <div class="moduleGoods">
+                        <div class="goodsListCard">
+                            <div class="goodsItem">
+                                <div class="goodsPic"><img width="100%" height="100%" src="https://sf.fumamx.com/img/orig/2,3d77417a2c0b"></div>
+                                <div class="goodsName">此处显示商品名称</div>
+                                <div class="goodsPrice">￥888.00</div>
+                            </div>
+                            <div class="goodsItem">
+                                <div class="goodsPic"><img width="100%" height="100%" src="https://sf.fumamx.com/img/orig/2,3d77417a2c0b"></div>
+                                <div class="goodsName">此处显示商品名称</div>
+                                <div class="goodsPrice">￥888.00</div>
+                            </div>
+                            <div class="goodsItem">
+                                <div class="goodsPic"><img width="100%" src="https://sf.fumamx.com/img/orig/2,3d77417a2c0b"></div>
+                                <div class="goodsName">此处显示商品名称</div>
+                                <div class="goodsPrice">￥888.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </section>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="content-type" content="no-cache, must-revalidate" />
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+    <meta http-equiv="expires" content="0">
+    <title>外贸saas_外贸crm营销 - 孚盟MX</title>
+    <meta name="keywords" content="外贸crm_外贸saas营销-孚盟MX" />
+    <meta name="description" content="江西孚盟网络科技有限公司是上海孚盟软件有限公司旗下公司。主要产品有：外贸crm、外贸saas等多种外贸营销。公司深耕外贸管理信息化领域十几年，为国家高新技术企业，是国内知名的外贸软件企业，也是专业的外贸行业解决方案专业提供商。">
+
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+
+    <% if (process.env.NODE_ENV === 'production'){ %>
+    <!-- prod env use -->
+    <script type="text/javascript" src="/i18n/js/i18n.js"></script>
+    <script>
+        //服务端返回[#]
+        //定义个人配置信息，使初始化的值为 系统默认配置信息或二级域名获取简单企业信息
+        var _individualConfigInfo = {
+            dateFormat: '<%= "\<%= dateFormat %\>" %>',
+            localLanguage: '<%=  "\<%= localLanguage %\>"  %>',
+            timeFormat: '<%=  "\<%= timeFormat %\>"  %>',
+            timeZone: '<%=  "\<%= timeZone %\>"  %>'
+        }
+        var version = '<%=  "\<%= config.version %\>"  %>'; //版本号
+        var runtime = '<%=  "\<%= config.STAGE_ENV %\>"  %>'; //运行环境
+        var IP = '<%=  "\<%= IP %\>"  %>'; //用户IP
+        var logoPhoto = '<%= "\<%= logoPhoto %\>" %>'; //登录头像
+        var localTimezone = '<%=  "\<%= timeZone %\>"  %>' || "+8"; //时区
+        var logoFormImage = '<%=  "\<%= logoFormImage %\>"  %>'; //首页背景图片
+        var localLanguage = '<%=  "\<%= localLanguage %\>"  %>' || "zh-cn"; //服务端的语言[#]
+
+    </script>
+    <% }else{ %>
+    <!-- dev env use -->
+    <script type="text/javascript" src="https://tools.laifuyun.com/pcapi/internal/creatFile?type=2&dataType=javascript&moduleCode=api,const,api-am,mxpcweb,fumamx-web-templateeditor"></script>
+    <script>
+        //服务端返回[#]
+        //定义个人配置信息，使初始化的值为 系统默认配置信息或二级域名获取简单企业信息
+        var _individualConfigInfo = {
+            dateFormat: "yyyy-MM-dd",
+            localLanguage: "zh-cn",
+            timeFormat: "HH:mm:ss",
+            timeZone: "+8"
+        }
+        var version = "00000000"; //版本号
+        var runtime = "dev"; //运行环境
+        var IP = "0.0.0.0"; //用户IP
+        var logoPhoto = "1,0987b307ba17"; //登录头像
+        var localTimezone = "+8"; //时区
+        var logoFormImage = "5,097c5bd7b58a"; //首页背景图片
+        var localLanguage = "zh-cn"; //服务端的语言[#]
+
+    </script>
+    <% } %>
+    <!-- The third party libs css  -->
+    <link async href="//s0.pstatp.com/cdn/expire-1-M/lightbox2/2.10.0/css/lightbox.min.css" rel="stylesheet">
+    <!-- <link async href="/static/libs/instead/lightbox/css/lightbox.min.css" rel="stylesheet"> -->
+    <link href="/static/libs/startDependent/icon-font/iconfont.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id=app></div>
+    <!-- The third party libs -->
+    <script>
+        /* 兼容 electron */
+        if (typeof module === 'object') {
+            window.module = module;
+            module = undefined;
+        }
+
+    </script>
+    <script src="//s2.pstatp.com/cdn/expire-1-M/jquery/3.3.1/jquery.min.js" type="application/javascript"></script>
+    <script>
+        window.jQuery || document.write('<script src="/static/libs/instead/jquery-3.3.1.min.js" ><\/script>')
+
+    </script>
+
+    <script src="//s0.pstatp.com/cdn/expire-1-M/underscore.js/1.9.1/underscore-min.js" type="application/javascript"></script>
+    <script>
+        window._ || document.write('<script src="/static/libs/instead/underscore-min.js" ><\/script>')
+
+    </script>
+
+    <script src="//s0.pstatp.com/cdn/expire-1-M/js-cookie/2.2.0/js.cookie.min.js" type="application/javascript"></script>
+    <script>
+        window.Cookies || document.write("<script src='/static/libs/instead/js.cookie-2.2.0.min.js'><\/script>")
+
+    </script>
+
+    <script src="//s1.pstatp.com/cdn/expire-1-M/Clamp.js/0.5.1/clamp.min.js" type="application/javascript"></script>
+    <script>
+        window.$clamp || document.write("<script src='/static/libs/instead/clamp.min.js'><\/script>")
+
+    </script>
+
+    <script src="//s3.pstatp.com/cdn/expire-1-M/eventproxy/1.0.0/eventproxy.min.js" type="application/javascript"></script>
+    <script>
+        window.EventProxy || document.write("<script src='/static/libs/instead/eventproxy.js'><\/script>")
+
+    </script>
+
+    <script src="//s1.pstatp.com/cdn/expire-1-M/lightbox2/2.10.0/js/lightbox.min.js" type="application/javascript"></script>
+    <script>
+        window.lightbox || document.write("<script src='/static/libs/instead/lightbox/js/lightbox.min.js'><\/script>")
+
+    </script>
+    <!-- mount libs  -->
+    <script type="text/javascript">
+        window.ep = new EventProxy();
+        if (window.module) module = window.module; // 处理electron的兼容问题
+
+    </script>
+    <script async src="/static/libs/startDependent/icon-font-file/iconfont.js"></script>
+    <script async defer src="/static/UEditor/ueditor.config.js"></script>
+    <script async defer src="/static/UEditor/ueditor.all.js"></script>
+</body>
+
+</html>
