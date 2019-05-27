@@ -32,3 +32,6 @@ aaa()
 console.log('aaa'.includes('a'))
 
 console.log(qw)
+
+let md5 = require('../utils/md5')
+console.log(md5('123'))

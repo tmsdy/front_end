@@ -1,12 +1,10 @@
 {
-  "presets": [
-    ["env", {
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-      }
-    }],
-    "stage-2"
-  ],
-  "plugins": ["transform-vue-jsx", "transform-runtime"]
+  // "presets": ["@babel/preset-stage-0"],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }], //处理装饰器等
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    "@babel/plugin-transform-runtime", //处理async等
+    "@babel/plugin-proposal-export-default-from",
+    "transform-vue-jsx"
+  ]
 }
