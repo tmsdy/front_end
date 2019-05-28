@@ -1,21 +1,23 @@
 'use strict'
 const path = require('path')
-const utils = require('./utils')
+const {styleLoaders, assetsPath} = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptmizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
 const env = require('../config/prod.env')
+const smp = new SpeedMeasurePlugin() // 监控构建流程
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
-    rules: utils.styleLoaders({
+    rules: styleLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true,
       usePostCSS: true
@@ -24,42 +26,67 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    filename: assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: assetsPath('js/[id].[chunkhash].js')
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',   // initial、async和all
+      minSize: 30000,   // 形成一个新代码块最小的体积
+      maxAsyncRequests: 5,   // 按需加载时候最大的并行请求数
+      maxInitialRequests: 3,   // 最大初始化请求数
+      automaticNameDelimiter: '~',   // 打包分割符
+      name: true,
+      cacheGroups: {
+        vendors: { // 项目基本框架等
+          chunks: 'all',
+          test: /element-ui/,
+          priority: 100,
+          name: 'vendors',
+        }
+      }
+    },
+    minimizer: [
+      new UglifyJsPlugin({
+        parallel: true,
+        cache: true,
+        // 生产环境devtools如果开启sourceMap，则sourceMap必须为true
+        sourceMap: config.build.productionSourceMap,
+        uglifyOptions: {
+          compress: {
+              drop_console: true, // 删除所有的 `console` 语句，可以兼容ie浏览器
+              collapse_vars: true, // 内嵌定义了但是只用到一次的变量
+              reduce_vars: true, // 提取出出现多次但是没有定义成变量去引用的静态值
+          },
+          warnings: false, // 在UglifyJs删除没有用到的代码时不输出警告
+          output: {
+              beautify: false, // 最紧凑的输出
+              comments: false,// 删除所有的注释
+          }
+        }
+      }),
+      new OptmizeCssAssetsWebpackPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require('cssnano'),
+        cssProcessorOptions: {
+           safe: true,
+           discardComments: {
+             removeAll: true
+          }
+        }
+      })
+    ],
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: config.build.productionSourceMap,
-      parallel: true
+    
+    new MiniCssExtractPlugin({
+      filename: assetsPath('css/[name].[contenthash].css'),
+      // allChunks: true,
     }),
-    // extract css into its own file
-    new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css'),
-      // Setting the following option to `false` will not extract CSS from codesplit chunks.
-      // Their CSS will instead be inserted dynamically with style-loader when the codesplit chunk has been loaded by webpack.
-      // It's currently set to `true` because we are seeing that sourcemaps are included in the codesplit bundle as well when it's `false`, 
-      // increasing file size: https://github.com/vuejs-templates/webpack/issues/1110
-      allChunks: true,
-    }),
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: config.build.productionSourceMap
-        ? { safe: true, map: { inline: false } }
-        : { safe: true }
-    }),
-    // generate dist index.html with correct asset hash for caching.
-    // you can customize output by editing /index.html
-    // see https://github.com/ampedandwired/html-webpack-plugin
+
     new HtmlWebpackPlugin({
       filename: config.build.index,
       template: 'index.html',
@@ -68,47 +95,11 @@ const webpackConfig = merge(baseWebpackConfig, {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
       },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
-    // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
-    // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
-    // split vendor js into its own file
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks (module) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        )
-      }
-    }),
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity
-    }),
-    // This instance extracts shared chunks from code splitted chunks and bundles them
-    // in a separate chunk, similar to the vendor chunk
-    // see: https://webpack.js.org/plugins/commons-chunk-plugin/#extra-async-commons-chunk
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'app',
-      async: 'vendor-async',
-      children: true,
-      minChunks: 3
-    }),
-
-    // copy custom static assets
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
@@ -142,4 +133,4 @@ if (config.build.bundleAnalyzerReport) {
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
-module.exports = webpackConfig
+module.exports = smp.wrap(webpackConfig)

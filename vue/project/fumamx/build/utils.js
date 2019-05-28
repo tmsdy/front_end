@@ -1,10 +1,21 @@
 'use strict'
 const path = require('path')
 const config = require('../config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageConfig = require('../package.json')
+const HappyPack = require('happypack')
 
-exports.assetsPath = function (_path) {
+const isProduction = process.env.NODE_ENV === 'production'
+const sourceMapEnabled = isProduction
+  ? config.build.productionSourceMap
+  : config.dev.cssSourceMap
+
+const resolve = function(dir) {
+    return path.join(__dirname, '..', dir)
+}
+
+const assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
     : config.dev.assetsSubDirectory
@@ -12,7 +23,7 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 
-exports.cssLoaders = function (options) {
+const cssLoaders = function (options) {
   options = options || {}
 
   const cssLoader = {
@@ -29,7 +40,6 @@ exports.cssLoaders = function (options) {
     }
   }
 
-  // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
@@ -42,19 +52,17 @@ exports.cssLoaders = function (options) {
       })
     }
 
-    // Extract CSS when that option is specified
-    // (which is the case during production build)
     if (options.extract) {
-      return ExtractTextPlugin.extract({
-        use: loaders,
-        fallback: 'vue-style-loader'
-      })
+      return [
+        // 'vue-style-loader',
+        MiniCssExtractPlugin.loader,
+        ...loaders
+      ]
     } else {
       return ['vue-style-loader'].concat(loaders)
     }
   }
 
-  // https://vue-loader.vuejs.org/en/configurations/extract-css.html
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),
@@ -66,10 +74,18 @@ exports.cssLoaders = function (options) {
   }
 }
 
-// Generate loaders for standalone style files (outside of .vue)
-exports.styleLoaders = function (options) {
+const createLintingRule = function(){
+  return {
+    test: /\.(js|vue)$/,
+    use: 'Happypack/loader?id=eslint',
+    enforce: 'pre',
+    include: [resolve('src'), resolve('test')],
+  }
+}
+
+const styleLoaders = function (options) {
   const output = []
-  const loaders = exports.cssLoaders(options)
+  const loaders = cssLoaders(options)
 
   for (const extension in loaders) {
     const loader = loaders[extension]
@@ -82,7 +98,7 @@ exports.styleLoaders = function (options) {
   return output
 }
 
-exports.createNotifierCallback = () => {
+const createNotifierCallback = function() {
   const notifier = require('node-notifier')
 
   return (severity, errors) => {
@@ -98,4 +114,79 @@ exports.createNotifierCallback = () => {
       icon: path.join(__dirname, 'logo.png')
     })
   }
+}
+
+// vueLoader配置
+const vueLoaderConfig = function () {
+  return {
+    loaders: cssLoaders({
+      sourceMap: sourceMapEnabled,
+      extract: isProduction
+    }),
+    cssSourceMap: sourceMapEnabled,
+    cacheBusting: config.dev.cacheBusting,
+    transformToRequire: {
+      video: ['src', 'poster'],
+      source: 'src',
+      img: 'src',
+      image: 'xlink:href'
+    }
+  }
+}
+
+// 多线程打包配置
+const happyPackConfig = [
+  new HappyPack({
+    id:'babel',
+    use:[
+      {
+        loader: 'babel-loader',
+        options:{
+          presets: [
+            ["env", {
+              "modules": false,
+              "targets": {
+                "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+              }
+            }],
+            "stage-2"
+          ],
+          plugins: ["transform-vue-jsx", "transform-runtime"]
+        }
+      }
+    ]
+  }),
+  new HappyPack({
+    id:'vue',
+    use:[
+      {
+        loader: 'vue-loader',
+        options: vueLoaderConfig,
+        plugins: ["vue-loader/lib/plugin"]
+      }
+    ]
+  }),
+  new HappyPack({
+    id:'eslint',
+    use:[
+      {
+        loader: 'eslint-loader',
+        options: {
+          formatter: require('eslint-friendly-formatter'),
+          emitWarning: !config.dev.showEslintErrorsInOverlay
+        }
+      }
+    ]
+  })
+]
+
+module.exports = {
+  resolve,
+  assetsPath,
+  cssLoaders,
+  createLintingRule,
+  styleLoaders,
+  createNotifierCallback,
+  vueLoaderConfig,
+  happyPackConfig
 }

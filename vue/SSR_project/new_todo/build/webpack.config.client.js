@@ -7,7 +7,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const VueClientPlugin = require('vue-server-renderer/client-plugin')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
+const smp = new SpeedMeasurePlugin() // 监控构建流程
 const isDev = process.env.NODE_ENV === 'development'
 
 let config
@@ -114,13 +116,6 @@ if(isDev){
       //单独打包webpack的runtimeChunk，不然加个插件loader的话对公共框架类库的长缓存就失效了
       runtimeChunk:{name: "manifest"},
       minimizer: [// 压缩代码
-          new UglifyJsPlugin({
-            cache: true,
-            parallel: true,
-            sourceMap: false,
-            drop_console: true,//去掉线上的console
-            pure_funcs: ['console.log']
-          }),
           new OptimizeCSSPlugin({})
       ]
     }
@@ -129,4 +124,4 @@ if(isDev){
 
 }
 
-module.exports = config
+module.exports = smp.wrap(config)
