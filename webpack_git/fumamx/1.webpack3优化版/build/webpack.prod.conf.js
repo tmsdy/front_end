@@ -1,6 +1,6 @@
 'use strict'
 const path = require('path')
-const {styleLoaders, assetsPath} = require('./utils')
+const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
@@ -10,14 +10,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
-const smp = new SpeedMeasurePlugin() // 监控构建流程
+
 const env = require('../config/prod.env')
+const smp = new SpeedMeasurePlugin() // 监控构建流程
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
-    rules: styleLoaders({
+    rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true,
       usePostCSS: true
@@ -26,10 +26,11 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: assetsPath('js/[id].[chunkhash].js')
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
+    // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
@@ -43,7 +44,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       parallel: true
     }),
     new ExtractTextPlugin({
-      filename: assetsPath('css/[name].[contenthash].css'),
+      filename: utils.assetsPath('css/[name].[contenthash].css'),
       allChunks: true,
     }),
     new OptimizeCSSPlugin({
@@ -63,7 +64,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     new webpack.HashedModuleIdsPlugin(),
+    // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
+    // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks (module) {
@@ -87,6 +90,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       minChunks: 3
     }),
 
+    // copy custom static assets
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

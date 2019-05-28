@@ -1,13 +1,14 @@
 'use strict'
 const path = require('path')
-const utils = require('./utils')
+const {
+  resolve,
+  assetsPath,
+  happyPackConfig,
+  createLintingRule
+} = require('./utils')
+const { VueLoaderPlugin } = require('vue-loader');
+// const HappyPack = require('happypack')
 const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
-const HappyPack = require('happypack')
-
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -24,30 +25,28 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
     }
   },
   module: {
     rules: [
+      ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
-        // loader: 'vue-loader',
-        use: 'Happypack/loader?id=vue',
-        // options: vueLoaderConfig
+        // use: 'Happypack/loader?id=vue',
+        use:'vue-loader'
       },
       {
         test: /\.js$/,
-        use: 'Happypack/loader?id=js',
+        use: 'Happypack/loader?id=babel',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
-        exclude: /node_modules/,
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          name: assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
@@ -55,7 +54,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
+          name: assetsPath('media/[name].[hash:7].[ext]')
         }
       },
       {
@@ -63,41 +62,14 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+          name: assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]
   },
   plugins:[
-    new HappyPack({
-      id:'js',
-      use:[
-        {
-          loader: 'babel-loader',
-          options:{
-            presets:[
-              ["env", {
-                "modules": false,
-                "targets": {
-                  "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-                }
-              }],
-              "stage-2"
-            ],
-            plugins:["transform-vue-jsx", "transform-runtime"]
-          }
-        }
-      ]
-    }),
-    new HappyPack({
-      id:'vue',
-      use:[
-        {
-          loader: 'vue-loader',
-          options: vueLoaderConfig
-        }
-      ]
-    })
+    ...happyPackConfig,
+    new VueLoaderPlugin()
   ],
   node: {
     setImmediate: false,

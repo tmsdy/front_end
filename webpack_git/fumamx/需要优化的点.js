@@ -2,8 +2,8 @@
 /*
 
 1.目前还是webpack3版本
- 1）npm run dev跑了200多秒
- 2）npm run build打包跑了320秒，39mb大小
+ 1）npm run dev跑了3分半
+ 2）npm run build打包跑了5分40，39mb大小
 
 2.首页pageSpeed跑了51分
 
