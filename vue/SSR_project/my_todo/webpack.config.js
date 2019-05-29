@@ -16,6 +16,9 @@ const config = {
     filename:'bundle.[hash:8].js',
     path: path.join(__dirname,'dist')
   },
+  stats: {
+    warnings: false
+  },
   plugins: [
     new CleanWebpackPlugin([path.join(__dirname,'dist')]) ,
     new VueLoaderPlugin(),
@@ -33,8 +36,9 @@ const config = {
             loader:'vue-loader'
         },
         {
-          test:/\.jsx$/,
-          loader:'babel-loader'
+          test:/\.(js|jsx)$/,
+          loader:'babel-loader',
+          include:path.resolve('src'),
         },
         {
           test: /\.css$/,
@@ -106,9 +110,10 @@ if(isDev){ //开发环境
   );
   config.optimization = {
     splitChunks: {
-        chunks: 'async',// 必须三选一： "initial" | "all" | "async"(默认就是异步)
+        chunks: 'all',// 必须三选一： "initial" | "all" | "async"(默认就是异步)
         // 大于30KB才单独分离成chunk
         minSize: 30000,
+        minChunks: 1,
         maxAsyncRequests: 5,
         maxInitialRequests: 3,// 最大初始化请求数，默认1
         name: true,
@@ -123,7 +128,6 @@ if(isDev){ //开发环境
                 priority: -10,      // 缓存组优先级
                 chunks: "all"       // 必须三选一： "initial" | "all" | "async"(默认就是异步)
             },
-            
             echarts: {
                 name: 'echarts',
                 chunks: 'all',
@@ -141,13 +145,41 @@ if(isDev){ //开发环境
     // 压缩代码
     minimizer: [
         // js mini
+        // new UglifyJsPlugin({
+        //   cache: true,
+        //   parallel: true,
+        //   sourceMap: false // set to true if you want JS source maps
+        // }),
+        // // // css mini
+        // new OptimizeCSSPlugin({})
         new UglifyJsPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: false // set to true if you want JS source maps
-        }),
-        // css mini
-        new OptimizeCSSPlugin({})
+        parallel: true,
+        cache: true,
+        // 生产环境devtools如果开启sourceMap，则sourceMap必须为true
+        sourceMap: true,
+        uglifyOptions: {
+          compress: {
+              drop_console: true, // 删除所有的 `console` 语句，可以兼容ie浏览器
+              collapse_vars: true, // 内嵌定义了但是只用到一次的变量
+              reduce_vars: true, // 提取出出现多次但是没有定义成变量去引用的静态值
+          },
+          warnings: false, // 在UglifyJs删除没有用到的代码时不输出警告
+          output: {
+              beautify: false, // 最紧凑的输出
+              comments: false,// 删除所有的注释
+          }
+        }
+      }),
+      new OptimizeCSSPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require('cssnano'),
+        cssProcessorOptions: {
+           safe: true,
+           discardComments: {
+             removeAll: true
+          }
+        }
+      })
     ]
 }
 
