@@ -29,6 +29,9 @@ module.exports = {
     }
   },
   module: {
+    noParse: function(content) {//不去解析下列库有没有依赖提高构建性能 9s->7.5s
+      return /jquery|lodash|underscore|echarts/.test(content);
+    },
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
       {

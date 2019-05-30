@@ -140,19 +140,7 @@ const happyPackConfig = [
     id:'babel',
     use:[
       {
-        loader: 'babel-loader',
-        options:{
-          presets: [
-            ["env", {
-              "modules": false,
-              "targets": {
-                "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
-              }
-            }],
-            "stage-2"
-          ],
-          plugins: ["transform-vue-jsx", "transform-runtime"]
-        }
+        loader: 'babel-loader'
       }
     ]
   }),
@@ -161,8 +149,7 @@ const happyPackConfig = [
     use:[
       {
         loader: 'vue-loader',
-        options: vueLoaderConfig,
-        plugins: ["vue-loader/lib/plugin"]
+        options: vueLoaderConfig
       }
     ]
   }),

@@ -11,11 +11,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const OptmizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin')
 
 const env = require('../config/prod.env')
-const smp = new SpeedMeasurePlugin() // 监控构建流程
+const smp = new SpeedMeasurePlugin() // 测打包速度
 
 const webpackConfig = merge(baseWebpackConfig, {
+  target:'web',
   module: {
     rules: styleLoaders({
       sourceMap: config.build.productionSourceMap,
@@ -26,26 +28,46 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: assetsPath('js/[id].[chunkhash].js')
+    filename: assetsPath('js/[name].[chunkhash:8].js'),
+    chunkFilename: assetsPath('js/[id].[chunkhash:8].js')
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',   // initial、async和all
-      minSize: 30000,   // 形成一个新代码块最小的体积
-      maxAsyncRequests: 5,   // 按需加载时候最大的并行请求数
-      maxInitialRequests: 3,   // 最大初始化请求数
-      automaticNameDelimiter: '~',   // 打包分割符
+      chunks: 'all', // 把异步同步加载的第三方库都抽离，默认只抽离异步(async)
+      minSize: 30000, // 大于30kb才会对代码分割
+      minChunks: 1, //打包生成的文件，当一个模块至少用多少次时才会进行代码分割
+      maxAsyncRequests: 5, // 同时加载的模块数最多是5个
+      maxInitialRequests: 3, // 入口文件最多3个模块会做代码分割，否则不会
+      automaticNameDelimiter: '~', // 打包分割符
       name: true,
-      cacheGroups: {
-        vendors: { // 项目基本框架等
-          chunks: 'all',
-          test: /element-ui/,
-          priority: 100,
-          name: 'vendors',
+      cacheGroups: { //设置缓存的 chunks
+        vendors: {
+            name: 'vendors', // 要缓存的 分隔出来的 chunk 名称
+            test: /[\\/]node_modules[\\/]/, //正则规则验证 符合就提取 chunk
+            priority: -10, // 缓存组优先级
+            chunks: "all" // 必须三选一： "initial" | "all" | "async"(默认就是异步)
+        },
+        common: {
+          minChunks: 2,
+          name:'commons',
+          chunks: 'async',
+          priority: 10,
+          reuseExistingChunk: true,
+          enforce: true
+        },
+        echarts: {
+            name: 'echarts',
+            chunks: 'all',
+            priority: 20, // 对echarts进行单独优化，优先级较高
+            test: function(module){
+                var context = module.context;
+                return context && (context.indexOf('echarts') >= 0 || context.indexOf('zrender') >= 0)
+            }
         }
-      }
+    }
     },
+    //单独打包webpack的runtimeChunk，不然加个插件loader的话对公共框架类库的长缓存就失效了
+    runtimeChunk:{name: "manifest"},
     minimizer: [
       new UglifyJsPlugin({
         parallel: true,
@@ -81,10 +103,14 @@ const webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    
+
+    new FilterWarningsPlugin({
+        exclude: /mini-css-extract-plugin[^]*Conflicting order between:/,
+    }),
+  
     new MiniCssExtractPlugin({
-      filename: assetsPath('css/[name].[contenthash].css'),
-      // allChunks: true,
+      filename: assetsPath('css/[name].[contenthash].css'),//直接引用的css文件
+			chunkFilename: assetsPath('css/[name].chunk.[contenthash].css')//间接引用的css文件
     }),
 
     new HtmlWebpackPlugin({
@@ -98,8 +124,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       chunksSortMode: 'dependency'
     }),
+
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

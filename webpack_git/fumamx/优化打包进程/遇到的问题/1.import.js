@@ -5,7 +5,7 @@ webpack版本 >= 4.29会出现
 npm选择将acorn-dynamic-import依赖项提升到根node_modules目录。
 acorn-dynamic-import使用的acorn和webpack使用的acorn不是一个
 
-1.将webpack降级到4.28.4
+1.将webpack降级到4.28.4,有时候直接npm i的4.28.4还不行还得重装才行
 
 2.用yarn安装
 
