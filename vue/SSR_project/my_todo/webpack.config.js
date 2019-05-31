@@ -6,6 +6,7 @@ const webpack = require('webpack') ;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') ;
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin") ;
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin') ;
+const HappyPack = require('happypack') 
 
 const isDev = process.env.NODE_ENV=='development'
 
@@ -33,11 +34,22 @@ const config = {
     rules:[ 
         {
             test:/\.vue$/,
-            loader:'vue-loader'
+            // loader:'vue-loader'
+            use: [
+              {
+                loader: 'vue-loader',
+                options: {
+                  loaders: {
+                    js: 'happypack/loader?id=babel'
+                  }
+                }
+              }
+            ]
         },
         {
           test:/\.(js|jsx)$/,
-          loader:'babel-loader',
+          // loader:'babel-loader',
+          use: 'Happypack/loader?id=babel',
           include:path.resolve('src'),
         },
         {
@@ -106,6 +118,14 @@ if(isDev){ //开发环境
   config.plugins.push(
       new MiniCssExtractPlugin({
           filename: "css/[name].[chunkhash:8].css"
+      }),
+      new HappyPack({
+        id:'babel',
+        use:[
+          {
+            loader: 'babel-loader'
+          }
+        ]
       })
   );
   config.optimization = {
@@ -144,13 +164,6 @@ if(isDev){ //开发环境
     runtimeChunk:{name: "manifest"},
     // 压缩代码
     minimizer: [
-        // js mini
-        // new UglifyJsPlugin({
-        //   cache: true,
-        //   parallel: true,
-        //   sourceMap: false // set to true if you want JS source maps
-        // }),
-        // // // css mini
         // new OptimizeCSSPlugin({})
         new UglifyJsPlugin({
         parallel: true,
