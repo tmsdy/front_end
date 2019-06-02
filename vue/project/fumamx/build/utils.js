@@ -1,13 +1,13 @@
-'use strict'
 const path = require('path')
 const config = require('../config')
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageConfig = require('../package.json')
 const HappyPack = require('happypack')
+const os = require('os');
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
-const isProduction = process.env.NODE_ENV === 'production'
-const sourceMapEnabled = isProduction
+const isProd = process.env.NODE_ENV === 'production'
+const sourceMapEnabled = isProd
   ? config.build.productionSourceMap
   : config.dev.cssSourceMap
 
@@ -26,35 +26,21 @@ const assetsPath = function (_path) {
 const cssLoaders = function (options) {
   options = options || {}
 
-  const cssLoader = {
-    loader: 'css-loader',
-    options: {
-      sourceMap: options.sourceMap
-    }
-  }
+  const cssLoader = 'happypack/loader?id=css'
 
   const postcssLoader = {
     loader: 'postcss-loader',
-    options: {
-      sourceMap: options.sourceMap
-    }
   }
 
-  function generateLoaders (loader, loaderOptions) {
+  function generateLoaders (loader) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
-      loaders.push({
-        loader: loader + '-loader',
-        options: Object.assign({}, loaderOptions, {
-          sourceMap: options.sourceMap
-        })
-      })
+      loaders.push(`happypack/loader?id=${loader}`)
     }
 
     if (options.extract) {
       return [
-        // 'vue-style-loader',
         MiniCssExtractPlugin.loader,
         ...loaders
       ]
@@ -67,10 +53,6 @@ const cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
-    stylus: generateLoaders('stylus'),
-    styl: generateLoaders('stylus')
   }
 }
 
@@ -79,7 +61,7 @@ const createLintingRule = function(){
     test: /\.(js|vue)$/,
     use: 'Happypack/loader?id=eslint',
     enforce: 'pre',
-    include: [resolve('src'), resolve('test')],
+    include: resolve('src'),
   }
 }
 
@@ -121,7 +103,7 @@ const vueLoaderConfig = function () {
   return {
     loaders: cssLoaders({
       sourceMap: sourceMapEnabled,
-      extract: isProduction
+      extract: isProd
     }),
     cssSourceMap: sourceMapEnabled,
     cacheBusting: config.dev.cacheBusting,
@@ -135,37 +117,46 @@ const vueLoaderConfig = function () {
 }
 
 // 多线程打包配置
-const happyPackConfig = [
-  new HappyPack({
-    id:'babel',
-    use:[
-      {
-        loader: 'babel-loader'
-      }
-    ]
-  }),
-  new HappyPack({
-    id:'vue',
-    use:[
-      {
-        loader: 'vue-loader',
-        options: vueLoaderConfig
-      }
-    ]
-  }),
-  new HappyPack({
-    id:'eslint',
-    use:[
-      {
-        loader: 'eslint-loader',
-        options: {
-          formatter: require('eslint-friendly-formatter'),
-          emitWarning: !config.dev.showEslintErrorsInOverlay
-        }
-      }
-    ]
-  })
-]
+const genHappyPacks = function () {
+  let happyPacks = [
+    new HappyPack({
+      id:'babel',
+      use:[{ loader: 'babel-loader'} ],
+      threads: 5,
+      threadPool: happyThreadPool
+    }),
+    new HappyPack({
+      id: 'css',
+      loaders: ['css-loader'],
+      threads: 5,
+      threadPool: happyThreadPool
+    }),
+    new HappyPack({
+      id: 'less',
+      loaders: ['less-loader'],
+      threadPool: happyThreadPool
+    })
+  ]
+  if(!isProd){
+    happyPacks.push(
+      new HappyPack({
+        id: 'eslint',
+        threads: 5,
+        threadPool: happyThreadPool,
+        use:[
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: require('eslint-friendly-formatter'),
+              emitWarning: !config.dev.showEslintErrorsInOverlay
+            }
+          }
+        ],
+      })
+    )
+  }
+  return happyPacks
+}
 
 module.exports = {
   resolve,
@@ -175,5 +166,5 @@ module.exports = {
   styleLoaders,
   createNotifierCallback,
   vueLoaderConfig,
-  happyPackConfig
+  genHappyPacks
 }

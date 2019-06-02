@@ -1,4 +1,3 @@
-'use strict'
 const path = require('path')
 const {styleLoaders, assetsPath} = require('./utils')
 const webpack = require('webpack')
@@ -18,9 +17,9 @@ const smp = new SpeedMeasurePlugin() // 测打包速度
 
 const webpackConfig = merge(baseWebpackConfig, {
   target:'web',
+  mode: 'production',
   module: {
     rules: styleLoaders({
-      sourceMap: config.build.productionSourceMap,
       extract: true,
       usePostCSS: true
     })
@@ -123,6 +122,10 @@ const webpackConfig = merge(baseWebpackConfig, {
         removeAttributeQuotes: true
       },
       chunksSortMode: 'dependency'
+    }),
+    new webpack.DllReferencePlugin({
+      //先去找manifest.json清单，找不到再去打包
+      manifest: path.resolve(__dirname,'../dll','vender.manifest.json') 
     }),
 
     new webpack.HashedModuleIdsPlugin(),

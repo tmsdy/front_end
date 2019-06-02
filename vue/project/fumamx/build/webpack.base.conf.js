@@ -1,14 +1,13 @@
-'use strict'
 const path = require('path')
 const {
   resolve,
   assetsPath,
-  happyPackConfig,
+  genHappyPacks,
   createLintingRule
 } = require('./utils')
 const { VueLoaderPlugin } = require('vue-loader');
-// const HappyPack = require('happypack')
 const config = require('../config')
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
@@ -18,9 +17,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath: isProd ? config.build.assetsPublicPath : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -29,20 +26,32 @@ module.exports = {
     }
   },
   module: {
-    noParse: function(content) {//不去解析下列库有没有依赖提高构建性能 9s->7.5s
+    noParse: function(content) {
       return /jquery|lodash|underscore|echarts/.test(content);
     },
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      ...(isProd ? [] : [createLintingRule()]),
       {
         test: /\.vue$/,
-        // use: 'Happypack/loader?id=vue',
-        use:'vue-loader'
+        // loader: 'vue-loader'
+        use: [
+          {
+            loader: 'vue-loader',
+            options: {
+              loaders: {
+                css: 'happypack/loader?id=css',
+                less: 'happypack/loader?id=less',
+                js: 'happypack/loader?id=babel'
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
         use: 'Happypack/loader?id=babel',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+        // include: [resolve('src'),resolve('node_modules/webpack-dev-server/client')],
+        include: resolve('src')
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -71,7 +80,7 @@ module.exports = {
     ]
   },
   plugins:[
-    ...happyPackConfig,
+    ...genHappyPacks(),
     new VueLoaderPlugin()
   ],
   node: {

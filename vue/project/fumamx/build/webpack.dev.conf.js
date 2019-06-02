@@ -15,7 +15,7 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
-    rules: styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: styleLoaders({ usePostCSS: true })
   },
   devtool: config.dev.devtool,
 
