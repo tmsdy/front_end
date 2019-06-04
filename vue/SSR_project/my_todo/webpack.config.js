@@ -12,7 +12,7 @@ const isDev = process.env.NODE_ENV=='development'
 
 const config = {
   target:'web',
-  entry: path.join(__dirname,'src/index.js') ,
+  entry: ['@babel/polyfill','./src/index.js'],
   output:{
     filename:'bundle.[hash:8].js',
     path: path.join(__dirname,'dist')
@@ -29,6 +29,18 @@ const config = {
       }
     }),
     new HtmlWebpackPlugin() ,
+    new HappyPack({
+      id:'babel',
+      use:[{ loader: 'babel-loader'} ]
+    }),
+    new HappyPack({
+      id: 'css',
+      use: ['css-loader']
+    }),
+    new HappyPack({
+      id: 'less',
+      use: ['less-loader']
+    }),
   ],
   module:{ // 配置加载资源
     rules:[ 
@@ -40,7 +52,9 @@ const config = {
                 loader: 'vue-loader',
                 options: {
                   loaders: {
-                    js: 'happypack/loader?id=babel'
+                    css: 'Happypack/loader?id=css',
+                    less: 'Happypack/loader?id=less',
+                    js: 'Happypack/loader?id=babel'
                   }
                 }
               }
@@ -48,8 +62,7 @@ const config = {
         },
         {
           test:/\.(js|jsx)$/,
-          // loader:'babel-loader',
-          use: 'Happypack/loader?id=babel',
+          loader:'Happypack/loader?id=babel',
           include:path.resolve('src'),
         },
         {
@@ -76,8 +89,10 @@ if(isDev){ //开发环境
         test: /\.less/,
         use: [
             'style-loader',
+            // 'Happypack/loader?id=css',
             'css-loader',
-            {loader: 'postcss-loader',options: {}},'less-loader'
+            'postcss-loader',
+            'Happypack/loader?id=less'
         ]
     });
   config.devtool = '#cheap-module-eval-source-map',//打包的代码映射成正常的方便调试
@@ -105,27 +120,15 @@ if(isDev){ //开发环境
     test: /\.less/,
     use: [
         extractLoader,
+        // 'Happypack/loader?id=css',
         'css-loader',
-        {
-            loader: 'postcss-loader',
-            options: {
-                sourceMap: true
-            }
-        },
-        'less-loader'
+        'postcss-loader',
+        'Happypack/loader?id=less'
     ]
   });
   config.plugins.push(
       new MiniCssExtractPlugin({
           filename: "css/[name].[chunkhash:8].css"
-      }),
-      new HappyPack({
-        id:'babel',
-        use:[
-          {
-            loader: 'babel-loader'
-          }
-        ]
       })
   );
   config.optimization = {

@@ -37,7 +37,7 @@ export default {
       filter:'all'
     }
   },
-  mounted(){
+  async mounted(){
     console.log(this)
   },
   computed:{
