@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./node_modules/art-template/lib/template-web.js"></script>
+<script src="./node_modules/@ccint/sg_new/dist/sg.min.js"></script>
+<script src="./node_modules/@ccint/sg_new/dist/switch.min.js"></script>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<body>
+<div id="app" style="text-align: center; margin-top: 138px;">
+
+</div>
+</body>
+<script>
+    sg.init();
+    sg.Component.define('Pagination', {
+        properties: {
+            total: 10,
+            current: 2,
+            middleNum:3,
+            searchInput:false,
+            pageArrow:true,
+            onChange: null
+        },
+        template: `<nav aria-label="Page navigation">
+                        <ul class="pagination">
+
+                        </ul>
+                        {{if searchInput}}
+                        <input id="search" placeholder="输入页数">
+                        {{/if}}
+                    </nav>
+
+`,
+        onBeforeRender: function (next) {
+            let self = this;
+            next({
+                current:self.current,
+                searchInput:self.searchInput,
+                pageArrow:self.pageArrow
+            })
+        },
+        setValue: function(num) {
+            var self = this;
+            let $pagination = self.$dom.find('.pagination') ;
+            if(num !== undefined) {
+                self.current = parseInt(num) ;
+                self.onChange && self.onChange(self.current);
+            }
+            let pageData = {
+                pageArrow:self.pageArrow,
+                showBtn: self.showBtn(self.total,self.current),
+                current: self.current
+            };
+            sg.View.require("_Pagination").render($pagination, pageData) ;
+        },
+        getValue: function() {
+            return this.current
+        },
+        onRender: function () {
+            let self = this ;
+            let $pagination = self.$dom.find('.pagination') ;
+            self.setValue();
+            $pagination.on('click',function (e) {
+                let sTry = e.target.dataset.try ;
+                let num = e.target.dataset.num ;
+                if(num){
+                    self.setValue(num);
+                }
+                if(sTry==='decrease'){
+                    if(self.current===1){
+                        alert('已经是第一页了')
+                    }else{
+                        self.setValue(self.current - 1);
+                    }
+                }else if(sTry==='add'){
+                    if(self.current===self.total){
+                        alert('已经是最后一页了')
+                    }else {
+                        self.setValue(self.current + 1);
+                    }
+                }
+            });
+            self.$dom.find('#search').on('keydown',function (e) {
+                if(e && e.keyCode==13){
+                    let num = $(this).val();
+                    if(!isNaN(num)){
+                        self.setValue(num);
+                    }
+                }
+            })
+        },
+        showBtn(pageNum,index){
+            let m_num = this.middleNum ;
+            let arr = [];
+            if(pageNum<1){
+                return arr
+            }
+            if (index <= m_num-1) {
+                for (let i = 1; i <= m_num; i++) {
+                    arr.push(i)
+                }
+                return [...arr,0,pageNum] ;
+            }
+            if (index >= pageNum - m_num + 2) {
+                for (let i = m_num-1; i >= 0; i--) {
+                    arr.push(pageNum-i) ;
+                }
+                return [1,0,...arr] ;
+            }
+            if (index === m_num) {
+                for (let i = 1; i <= m_num+1; i++) {
+                    arr.push(i) ;
+                }
+                return [...arr, 0, pageNum]
+            };
+            let n = parseInt(m_num/2) ;
+            for (let i = 0 ; i <m_num ; i++) {
+                arr.push(index-n+i) ;
+            }
+            return [1, 0, ...arr, 0, pageNum]
+
+        }
+    });
+
+    sg.View.define('_Pagination', {
+        template: `
+        {{if pageArrow}}
+        <li><a data-try="decrease" href="javascript:;" aria-label="Previous"><span data-try="decrease" aria-hidden="true">«</span></a></li>
+           {{/if}}
+            {{each showBtn item i}}
+                {{if item}}
+                <li class="{{if item==current}} active{{/if}}"><a data-num="{{item}}" href="javascript:;">{{item}}</a></li>
+                {{else}}
+                <li><a href="javascript:;"v-else>···</a></li>
+                {{/if}}
+            {{/each}}
+     {{if pageArrow}}
+        <li><a data-try="add" href="javascript:;" aria-label="Next"><span data-try="add" aria-hidden="true">»</span></a></li>
+    {{/if}}
+`
+    })
+
+    var com_switch = sg.Component.Pagination($('#app'), {
+        total: 15,
+        current: 1,
+        middleNum:4,
+        pageArrow:true,
+        searchInput:true,
+        onChange: function(value) {
+            console.log(value)
+        }
+    });
+
+</script>
+</html>
