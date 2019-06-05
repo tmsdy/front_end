@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="./node_modules/art-template/lib/template-web.js"></script>
+<script src="./node_modules/@ccint/sg_new/dist/sg.min.js"></script>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+	#app {
+		width: 100vw;
+	}
+	.sx_box {
+		width: 225px;
+		height: 40px;
+		margin: 40px auto;
+		box-sizing: border-box;
+		cursor: pointer;
+		position: relative;
+	}
+	.sx_select{
+		width: 100%;
+		padding-left: 15px;
+		box-sizing: border-box;
+		border-radius: 4px;
+		border: 1px solid #DCDFE6;
+	}
+	.sx_box.show .sx_select{
+		border-color: #409eff;
+	}
+	.sx_value {
+		line-height: 40px;
+		font-size: 16px;
+		color: #666;
+	}
+	.rotate_icon {
+		position: absolute;
+		right: 12px;
+		top:  12px;
+		width: 8px;
+		height: 8px;
+		border-right: 2px solid #999;
+		border-bottom: 2px solid #999;
+		transform-origin: 6px 6px;
+		transform: rotate(45deg);
+		transition: 0.4s;
+	}
+	.sx_box.show .rotate_icon{
+		transform: rotate(-135deg);
+	}
+	.sx_dropdown_wraper{
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 46px;
+		z-index: 120;
+		border: 1px solid #e4e7ed;
+		border-radius: 4px;
+		background-color: #fff;
+		box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+		box-sizing: border-box;
+		transform-origin: 0 0;
+		transform: scaleY(0);
+		transition: 0.4s;
+		opacity: 0;
+	}
+	.sx_box.show .sx_dropdown_wraper{
+		transform: scaleY(1);
+		opacity: 1;
+	}
+	.sx_dropdown_item{
+		width: 100%;
+		font-size: 14px;
+		padding: 0 20px;
+		position: relative;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #606266;
+		height: 34px;
+		line-height: 34px;
+		box-sizing: border-box;
+		cursor: pointer;
+	}
+	.sx_dropdown_item:hover{
+		background-color: #f5f7fa;
+	}
+	.sx_dropdown_item.selected{
+		color: #409eff;
+		font-weight: 700;
+	}
+
+</style>
+<body>
+	<div id="app">
+
+	</div>
+</body>
+<script>
+
+  sg.init();
+  sg.Component.define('singleXz', {
+    properties: {
+      options: [{
+        id: '1',
+        value: '黄金糕'
+      }, {
+        id: '2',
+        value: '双皮奶'
+      }, {
+        id: '3',
+        value: '蚵仔煎'
+      }, {
+        id: '4',
+        value: '龙须面'
+      }, {
+        id: '5',
+        value: '北京烤鸭'
+      }],
+      value:'黄金糕',
+    },
+    template: `
+        <div class="sx_box">
+            <div class="sx_select">
+				<span class="sx_value">{{value}}</span>
+		        <div class="rotate_icon"></div>
+			</div>
+            <div class="sx_dropdown_wraper">
+				{{each options item i}}
+					<div class="sx_dropdown_item" data-val="{{item.value}}">{{item.value}}</div>
+				{{/each}}
+			</div>
+		</div>
+
+	`,
+    onBeforeRender: function (next) {
+      let self = this;
+      next({
+        value:self.value,
+        options:self.options,
+      })
+    },
+    onRender: function () {
+      var self = this;
+      var $sx_box = self.$parent.find('.sx_box');
+      var $sx_wraper = self.$parent.find('.sx_dropdown_wraper') ;
+      self.value = self.options[0].value ;
+      var $sx_value = self.$parent.find('.sx_value');
+
+      $sx_box.on('click','.sx_select',function (e) {
+        var show = $sx_box.hasClass('show') ;
+        if(!show){
+          $sx_box.addClass('show') ;
+        }else {
+          $sx_box.removeClass('show');
+        }
+      })
+      $sx_wraper.on('click','.sx_dropdown_item',function () {
+        self.value = $(this).data('val') ;
+        $sx_box.removeClass('show')
+        $(this).addClass('selected').siblings().removeClass('selected') ;
+        $sx_value.text(self.value) ;
+      })
+      
+      $(document).on('click',self.events.domClick)
+    },
+    events: {
+      domClick: function (e) {
+        var $target = $(e.target) ;
+        var $menu = $target.closest('.sx_box');
+        var $sx_box = this.$parent.find('.sx_box');
+        if($menu.length){
+          return ;
+        }else{
+          $sx_box.removeClass('show') ;
+        }
+      }
+    },
+
+  });
+
+
+  var sx = sg.Component.singleXz($('#app'), {
+    options: [{
+      id: '1',
+      value: '黄金糕'
+    }, {
+      id: '2',
+      value: '双皮奶'
+    }, {
+      id: '3',
+      value: '蚵仔煎'
+    }, {
+      id: '4',
+      value: '龙须面'
+    }, {
+      id: '5',
+      value: '北京烤鸭'
+    }],
+  });
+
+</script>
+</html>
