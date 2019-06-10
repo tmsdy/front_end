@@ -1,5 +1,4 @@
-'use strict'
-const {styleLoaders, createNotifierCallback} = require('./utils')
+const {createNotifierCallback} = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
@@ -15,7 +14,17 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
-    rules: styleLoaders({ usePostCSS: true })
+    rules: [
+      {
+        test: /\.less/,
+        use: [
+            'vue-style-loader',
+            'css-loader',
+            'postcss-loader',
+            'Happypack/loader?id=less'
+        ]
+    }
+    ]
   },
   devtool: config.dev.devtool,
 
@@ -27,6 +36,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       ],
     },
     hot: true,
+    disableHostCheck: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
     host: HOST || config.dev.host,

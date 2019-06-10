@@ -1,15 +1,11 @@
 const path = require('path')
 const config = require('../config')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageConfig = require('../package.json')
 const HappyPack = require('happypack')
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 const isProd = process.env.NODE_ENV === 'production'
-const sourceMapEnabled = isProd
-  ? config.build.productionSourceMap
-  : config.dev.cssSourceMap
 
 const resolve = function(dir) {
     return path.join(__dirname, '..', dir)
@@ -23,39 +19,6 @@ const assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 
-const cssLoaders = function (options) {
-  options = options || {}
-
-  const cssLoader = 'happypack/loader?id=css'
-
-  const postcssLoader = {
-    loader: 'postcss-loader',
-  }
-
-  function generateLoaders (loader) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
-
-    if (loader) {
-      loaders.push(`happypack/loader?id=${loader}`)
-    }
-
-    if (options.extract) {
-      return [
-        MiniCssExtractPlugin.loader,
-        ...loaders
-      ]
-    } else {
-      return ['vue-style-loader'].concat(loaders)
-    }
-  }
-
-  return {
-    css: generateLoaders(),
-    postcss: generateLoaders(),
-    less: generateLoaders('less'),
-  }
-}
-
 const createLintingRule = function(){
   return {
     test: /\.(js|vue)$/,
@@ -63,21 +26,6 @@ const createLintingRule = function(){
     enforce: 'pre',
     include: resolve('src'),
   }
-}
-
-const styleLoaders = function (options) {
-  const output = []
-  const loaders = cssLoaders(options)
-
-  for (const extension in loaders) {
-    const loader = loaders[extension]
-    output.push({
-      test: new RegExp('\\.' + extension + '$'),
-      use: loader
-    })
-  }
-
-  return output
 }
 
 const createNotifierCallback = function() {
@@ -98,42 +46,19 @@ const createNotifierCallback = function() {
   }
 }
 
-// vueLoader配置
-const vueLoaderConfig = function () {
-  return {
-    loaders: cssLoaders({
-      sourceMap: sourceMapEnabled,
-      extract: isProd
-    }),
-    cssSourceMap: sourceMapEnabled,
-    cacheBusting: config.dev.cacheBusting,
-    transformToRequire: {
-      video: ['src', 'poster'],
-      source: 'src',
-      img: 'src',
-      image: 'xlink:href'
-    }
-  }
-}
-
 // 多线程打包配置
 const genHappyPacks = function () {
   let happyPacks = [
     new HappyPack({
       id:'babel',
-      use:[{ loader: 'babel-loader'} ],
-      threads: 5,
-      threadPool: happyThreadPool
-    }),
-    new HappyPack({
-      id: 'css',
-      loaders: ['css-loader'],
-      threads: 5,
+      loaders: ['babel-loader?cacheDirectory'],
       threadPool: happyThreadPool
     }),
     new HappyPack({
       id: 'less',
-      loaders: ['less-loader'],
+      loaders: [
+        'less-loader',
+      ],
       threadPool: happyThreadPool
     })
   ]
@@ -141,7 +66,6 @@ const genHappyPacks = function () {
     happyPacks.push(
       new HappyPack({
         id: 'eslint',
-        threads: 5,
         threadPool: happyThreadPool,
         use:[
           {
@@ -158,13 +82,29 @@ const genHappyPacks = function () {
   return happyPacks
 }
 
+const dateFtt = function(fmt, date) { //时间格式化工具
+  var o = {
+      "M+": date.getMonth() + 1, //月份   
+      "d+": date.getDate(), //日   
+      "h+": date.getHours(), //小时   
+      "m+": date.getMinutes(), //分   
+      "s+": date.getSeconds(), //秒   
+      "q+": Math.floor((date.getMonth() + 3) / 3), //季度   
+      "S": date.getMilliseconds() //毫秒   
+  };
+  if (/(y+)/.test(fmt))
+      fmt = fmt.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o)
+      if (new RegExp("(" + k + ")").test(fmt))
+          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  return fmt;
+}
+
 module.exports = {
   resolve,
   assetsPath,
-  cssLoaders,
   createLintingRule,
-  styleLoaders,
   createNotifierCallback,
-  vueLoaderConfig,
-  genHappyPacks
+  genHappyPacks,
+  dateFtt
 }

@@ -30,8 +30,6 @@ module.exports = {
 
         devtool: 'cheap-module-eval-source-map',
         cacheBusting: true,
-
-        cssSourceMap: true
     },
 
     build: {
@@ -42,11 +40,11 @@ module.exports = {
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
-        productionSourceMap: true,
+        productionSourceMap: false,
         devtool: 'cheap-module-source-map',
         productionGzip: false,
         productionGzipExtensions: ['js', 'css'],
 
-        bundleAnalyzerReport: process.env.npm_config_report || true
+        bundleAnalyzerReport: process.env.npm_config_report
     }
 }

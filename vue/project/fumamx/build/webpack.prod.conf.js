@@ -1,5 +1,5 @@
 const path = require('path')
-const {styleLoaders, assetsPath} = require('./utils')
+const {assetsPath, dateFtt} = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
@@ -15,20 +15,29 @@ const FilterWarningsPlugin = require('webpack-filter-warnings-plugin')
 const env = require('../config/prod.env')
 const smp = new SpeedMeasurePlugin() // 测打包速度
 
+const buildDate = dateFtt('yyyyMMddhhmm', new Date())
+
 const webpackConfig = merge(baseWebpackConfig, {
   target:'web',
   mode: 'production',
   module: {
-    rules: styleLoaders({
-      extract: true,
-      usePostCSS: true
-    })
+    rules: [
+      {
+        test: /\.less/,
+        use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader',
+            'Happypack/loader?id=less'
+        ]
+      }
+    ]
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: assetsPath('js/[name].[chunkhash:8].js'),
-    chunkFilename: assetsPath('js/[id].[chunkhash:8].js')
+    filename: assetsPath(`js/${buildDate}/[name].[chunkhash:8].js`),
+    chunkFilename: assetsPath(`js/${buildDate}/[id].[chunkhash:8].js`)
   },
   optimization: {
     splitChunks: {
@@ -108,8 +117,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
   
     new MiniCssExtractPlugin({
-      filename: assetsPath('css/[name].[contenthash].css'),//直接引用的css文件
-			chunkFilename: assetsPath('css/[name].chunk.[contenthash].css')//间接引用的css文件
+      filename: assetsPath(`css/${buildDate}/[name].[contenthash:8].css`),//直接引用的css文件
+			chunkFilename: assetsPath(`css/${buildDate}/[name].chunk.[contenthash:8].css`)//间接引用的css文件
     }),
 
     new HtmlWebpackPlugin({
@@ -140,26 +149,26 @@ const webpackConfig = merge(baseWebpackConfig, {
 })
 
 if (config.build.productionGzip) {
-  const CompressionWebpackPlugin = require('compression-webpack-plugin')
+    const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
-  webpackConfig.plugins.push(
-    new CompressionWebpackPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: new RegExp(
-        '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
-        ')$'
-      ),
-      threshold: 10240,
-      minRatio: 0.8
-    })
-  )
+    webpackConfig.plugins.push(
+        new CompressionWebpackPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp(
+                '\\.(' +
+                config.build.productionGzipExtensions.join('|') +
+                ')$'
+            ),
+            threshold: 10240,
+            minRatio: 0.8
+        })
+    )
 }
 
 if (config.build.bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+    const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+    webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
 
 module.exports = smp.wrap(webpackConfig)

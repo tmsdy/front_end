@@ -11,9 +11,7 @@ const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
-  entry: {
-    app: './src/main.js'
-  },
+  entry: ['@babel/polyfill','./src/main.js'],
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -27,25 +25,17 @@ module.exports = {
   },
   module: {
     noParse: function(content) {
-      return /jquery|lodash|underscore|echarts/.test(content);
+      return /jquery|lodash|underscore/.test(content);
     },
     rules: [
       ...(isProd ? [] : [createLintingRule()]),
       {
+        test: /\.css$/,
+        use: ['vue-style-loader','css-loader','postcss-loader']
+      },
+      {
         test: /\.vue$/,
-        // loader: 'vue-loader'
-        use: [
-          {
-            loader: 'vue-loader',
-            options: {
-              loaders: {
-                css: 'happypack/loader?id=css',
-                less: 'happypack/loader?id=less',
-                js: 'happypack/loader?id=babel'
-              }
-            }
-          }
-        ]
+        loader: 'vue-loader'
       },
       {
         test: /\.js$/,

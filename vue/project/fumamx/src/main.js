@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import './libs'
 import './libs/start.js'
 import Vue from 'vue'
