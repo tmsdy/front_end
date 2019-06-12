@@ -1,11 +1,12 @@
 const path = require('path')
+const webpack = require('webpack')
 const VueLoaderPlugin = require('vue-loader/lib/plugin') ;
 const CleanWebpackPlugin = require('clean-webpack-plugin') ;
 const HtmlWebpackPlugin = require('html-webpack-plugin') ;
-const webpack = require('webpack') ;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') ;
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin") ;
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin') ;
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HappyPack = require('happypack') 
 
 const isDev = process.env.NODE_ENV=='development'
@@ -28,7 +29,14 @@ const config = {
           NODE_ENV:isDev?'"development"':'"production"'
       }
     }),
+    new webpack.DllReferencePlugin({
+      //先去找manifest.json清单，找不到再去打包
+      manifest: path.resolve(__dirname,'dll','venders.manifest.json') 
+    }),
     new HtmlWebpackPlugin() ,
+    new AddAssetHtmlPlugin({
+      filepath: path.resolve(__dirname, 'dll/venders.dll.js')
+    }),
     new HappyPack({
       id:'babel',
       use:[{ loader: 'babel-loader'} ]
