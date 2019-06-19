@@ -14,11 +14,9 @@ acorn-dynamic-import使用的acorn和webpack使用的acorn不是一个
 在webpack.config.js中添加
 plugins: [ 
 "@babel/plugin-proposal-class-properties", 
-"@babel/syntax-dynamic-import",
- "react-loadable/babel", 
- "dynamic-import-node-babel-7",
-],
+"@babel/syntax-dynamic-import"
+]
 
-3.
+3.@babel/syntax-dynamic-import会出现那个问题,用这个babel-plugin-dynamic-import-webpack插件就好了
 
 */
