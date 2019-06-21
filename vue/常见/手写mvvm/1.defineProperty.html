@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+let obj = {}
+
+Object.defineProperty(obj, 'school', {
+    // value: '桃园初中', 
+    // writable: false ,//可不可以改 默认false
+    configurable: false, //可不可以delete 默认false
+    enumerable: false ,//可不可以被枚举到 默认false
+    // 有get和set的时候不能有value和writable
+    get(){
+        return '南陵中学'
+    },
+    set(val){
+        console.log(val)
+    }
+})
+// delete obj.school
+// obj.school = 'ccc'
+// for( key in obj){
+//     console.log(key)
+// }
+console.log(obj)
+console.log(obj.school)
+obj.school = '南陵中学123'
+    
+</script>
+</body>
+</html>
