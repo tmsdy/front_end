@@ -10,8 +10,16 @@
 <script>
 import Item from './item.vue'
 import Tabs from './tabs.vue'
-import { getUrl,init } from "../../common/utils";
-
+// import { throttle } from "lodash";
+function debounce(func,delay){
+    let timer = null
+    return function(){
+        if(timer) clearTimeout(timer)
+        timer = setTimeout(()=>{
+            func.apply(this,arguments)
+        },delay)
+    }
+}
 export default {
     props: ['todo_id'],
     components: {
@@ -32,16 +40,15 @@ export default {
         }
     },
     mounted() {
-        this.printPerson()
-        window.addEventListener('resize', this.getScale);
-        let x1 = this.createLargeClosure('x')//执行了N这个闭包，但是似乎没有内存泄漏
-        console.log(getUrl('http://www.rookiefeifei.top'))
-        init()
+        console.log(debounce)
+        // window.addEventListener('resize', this.getScale)
+        window.addEventListener('resize', debounce(this.getScale, 500));
     },
 
     beforeDestroy() {
         console.log('beforeDestroy')
-        // window.removeEventListener('resize', this.getScale)
+        window.removeEventListener('resize', this.getScale)
+        // window.removeEventListener('resize', debounce(this.getScale, 500))
     },
     computed: {
         filteredTodos() {
@@ -54,15 +61,6 @@ export default {
         }
     },
     methods: {
-        createLargeClosure(x) {
-            var largeStr = new Array(1000000).join(x);
-            // console.log(largeStr)
-            var lC = function lC() { // this is NOT a named function
-                return largeStr;
-            };
-
-            return lC;
-        },
         getScale() {
             console.log('getScale')
         },

@@ -8,6 +8,40 @@ function _Vue(options = {}) {
         proxy(this, "_data", key);
     }
     observe(data)
+    new Compile(options.el, this)
+}
+
+function Compile(el, vm){
+    // el表示需要替换的元素
+    vm.$el = document.querySelector(el)
+    // console.log(vm.$el)
+    // 将app中的内容移到内存中
+    let fragment = document.createDocumentFragment()
+    while(child = vm.$el.firstChild){
+        fragment.appendChild(child)
+    }
+    replace(fragment)
+    function replace(fragment) {
+        // console.log(fragment)
+        Array.from(fragment.childNodes).forEach(function(node){
+            let text = node.textContent
+            let reg = /\{\{(.*)\}\}/
+            if(node.nodeType === 3 && reg.test(text)){ //是文本节点并且有双大括号
+                // console.log(RegExp.$1) a.a b
+                let arr = RegExp.$1.split('.') // [a,a]
+                let val = vm
+                arr.forEach(function (k) { //取vm.a.a的一个小技巧
+                    val = val[k]
+                })
+                node.textContent = text.replace(reg, val)
+            }
+            if(node.childNodes){
+                replace(node)
+            }
+        })
+    }
+    
+    vm.$el.appendChild(fragment)
 }
 
 function observe(data) { //使得data变为响应式
