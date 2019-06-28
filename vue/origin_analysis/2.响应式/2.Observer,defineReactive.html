@@ -1,7 +1,8 @@
 <!-- 
 
 function observe (value, asRootData) {
-  if (!isObject(value) || value instanceof VNode) { //data不是对象或者是vnode都返回
+    *1.value不是对象或数组或者是vnode都返回
+  if (!isObject(value) || value instanceof VNode) {
     return
   }
   var ob;

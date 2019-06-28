@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,33 +8,39 @@
     <title>Document</title>
 </head>
 <style>
-    *{margin: 0;padding: 0}
-#myFrame{
-    width: 100% ;
-    border: none ;
-}
+    * {
+        margin: 0;
+        padding: 0
+    }
+    #myFrame {
+        width: 100%;
+        border: none;
+    }
+
 </style>
+
 <body>
     <div>aaaaaaaaa</div>
     <!-- <iframe id="myFrame" src="http://localhost:4444/b.html" onload="load()"></iframe> -->
-     
-     <iframe id="myFrame" src="http://www.rookiefeifei.top/" onload="load()"></iframe>
+
+    <iframe id="myFrame" src="http://www.rookiefeifei.top/" onload="load()"></iframe>
     <script>
-    // 公司iframe用的多
-    function load(){
-        let frame = document.getElementById('myFrame') ;
-        let _window = frame.contentWindow
-        // console.log(_window.document) //报错，不能跨域获取DOM
-        console.dir(_window.top.document)
-        // console.dir(_window.top.document.getElementsByTagName('h1')) ;
-        console.log(window.document)
-        console.log(window.document.getElementsByTagName('div'))
-        // _window.postMessage('hello,b同学','http://localhost:4444') ;
-        window.onmessage = function(e){
-            console.log(e.data)
+        // 公司iframe用的多
+        function load() {
+            let frame = document.getElementById('myFrame');
+            let _window = frame.contentWindow
+            // console.log(_window.document) //报错，不能跨域获取DOM
+            console.dir(_window.top.document)
+            // console.dir(_window.top.document.getElementsByTagName('h1')) ;
+            console.log(window.document)
+            console.log(window.document.getElementsByTagName('div'))
+            // _window.postMessage('hello,b同学','http://localhost:4444') ;
+            window.onmessage = function (e) {
+                console.log(e.data)
+            }
         }
-    }
-    
+
     </script>
 </body>
+
 </html>
