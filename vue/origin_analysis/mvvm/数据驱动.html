@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Document</title>
 </head>
 <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+
 <body>
     <div id="app">
         <p>{{name}}</p>
@@ -14,20 +16,20 @@
     </div>
 </body>
 <script>
-
-var vm = new Vue({
-    el:'#app' , //不能挂载到body/html上，会覆盖的html文档就不对了
-    data:{
-        name:'feifei' ,
-        age : 21 
-    },
-    methods:{
-        sayName(){
-            console.log(this.name) ;
-            // this.name等于this._data.name,设置了proxy代理做到的
+    var vm = new Vue({
+        el: '#app', //不能挂载到body/html上，会覆盖的html文档就不对了
+        data: {
+            name: 'feifei',
+            age: 21
+        },
+        methods: {
+            sayName() {
+                console.log(this.name);
+                // this.name等于this._data.name,设置了proxy代理做到的
+            }
         }
-    }
-})
+    })
 
 </script>
+
 </html>

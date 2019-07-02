@@ -1,0 +1,1 @@
+// UEditor的addListener添加事件得在实例destroyed里面removeListener
