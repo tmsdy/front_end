@@ -8,7 +8,7 @@ import WelcomePage from './page/WelcomePage'
 import HomePage from './page/HomePage'
 import DetailPage from './page/DetailPage'
 
-// type Props = {};
+type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (

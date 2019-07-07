@@ -17,51 +17,12 @@ function initState(vm) {
 }
 
 function initProps(vm, propsOptions) {
-    var propsData = vm.$options.propsData || {};
-    var props = vm._props = {};
-    // cache prop keys so that future props updates can iterate using Array
-    // instead of dynamic object key enumeration.
-    var keys = vm.$options._propKeys = [];
-    var isRoot = !vm.$parent;
-    // root instance props should be converted
-    if (!isRoot) {
-        toggleObserving(false);
+    // ...
+    defineReactive(props, key, value) //把props上的对象变为响应式的
+    // ...
+    if (!(key in vm)) {
+        proxy(vm, "_props", key); // _props里面的数据变化代理到vm上
     }
-    var loop = function (key) {
-        keys.push(key);
-        var value = validateProp(key, propsOptions, propsData, vm);
-        /* istanbul ignore else */
-        {
-            var hyphenatedKey = hyphenate(key);
-            if (isReservedAttribute(hyphenatedKey) ||
-                config.isReservedAttr(hyphenatedKey)) {
-                warn(
-                    ("\"" + hyphenatedKey + "\" is a reserved attribute and cannot be used as component prop."),
-                    vm
-                );
-            }
-            defineReactive(props, key, value, function () {
-                if (vm.$parent && !isUpdatingChildComponent) {
-                    warn(
-                        "Avoid mutating a prop directly since the value will be " +
-                        "overwritten whenever the parent component re-renders. " +
-                        "Instead, use a data or computed property based on the prop's " +
-                        "value. Prop being mutated: \"" + key + "\"",
-                        vm
-                    );
-                }
-            });
-        }
-        // static props are already proxied on the component's prototype
-        // during Vue.extend(). We only need to proxy props defined at
-        // instantiation here.
-        if (!(key in vm)) {
-            proxy(vm, "_props", key);
-        }
-    };
-
-    for (var key in propsOptions) loop(key);
-    toggleObserving(true);
 }
 
 function initData(vm) {
@@ -78,25 +39,12 @@ function initData(vm) {
     var i = keys.length;
     while (i--) {
         var key = keys[i];
-        // 如果data里的数据和props还有methods有冲突就报错，因为最终都要代理到vm上
+        // ...如果data里的数据和props还有methods有冲突就报错，因为最终都要代理到vm上
         if (!isReserved(key)) {
             proxy(vm, "_data", key);
         }
     }
     observe(data, true); //把data变为响应式
-}
-
-function getData(data, vm) {
-    // #7573 disable dep collection when invoking data getters
-    pushTarget();
-    try {
-        return data.call(vm, vm)
-    } catch (e) {
-        handleError(e, vm, "data()");
-        return {}
-    } finally {
-        popTarget();
-    }
 }
 
 var computedWatcherOptions = { lazy: true };
