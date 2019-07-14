@@ -1,0 +1,21 @@
+# Umeng公共基础
+pod 'UMCCommon'
+pod 'UMCSecurityPlugins'
+# Log推荐引入以便查找问题
+pod 'UMCCommonLog'
+
+# 分享和登录
+# U-Share SDK UI模块 （分享面板，建议添加）
+pod 'UMCShare/UI'
+
+# 集成QQ/QZone/TIM
+pod 'UMCShare/Social/ReducedQQ'
+
+# 集成新浪微博
+pod 'UMCShare/Social/ReducedSina'
+
+# 集成邮件
+pod 'UMCShare/Social/Email'
+
+# 集成短信
+pod 'UMCShare/Social/SMS'
