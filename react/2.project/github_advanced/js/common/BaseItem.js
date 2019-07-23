@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity, View,} from 'react-native'
+import React, { Component } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View, } from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import HTMLView from 'react-native-htmlview';
-import {PropTypes} from 'prop-types';
+import { PropTypes } from 'prop-types';
 
 export default class BaseItem extends Component {
     static propTypes = {
@@ -54,16 +54,18 @@ export default class BaseItem extends Component {
     }
 
     _favoriteIcon() {
-        const {theme} = this.props;
+        const { theme } = this.props;
         return <TouchableOpacity
-            style={{padding: 6}}
-            underlayColor='transparent'
-            onPress={() => this.onPressFavorite()}>
-            <FontAwesome
-                name={this.state.isFavorite ? 'star' : 'star-o'}
-                size={26}
-                style={{color: theme.themeColor}}
-            />
-        </TouchableOpacity>
+        style = { { padding: 6 } }
+        underlayColor = 'transparent'
+        onPress = {
+                () => this.onPressFavorite() } >
+            <
+            FontAwesome
+        name = { this.state.isFavorite ? 'star' : 'star-o' }
+        size = { 26 }
+        style = { { color: theme.themeColor } }
+        /> <
+        /TouchableOpacity>
     }
 }

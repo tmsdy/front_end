@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+// 实现了上下级组件之间灵活通信
 const { Provider, Consumer } = React.createContext('default')
 
 class Parent extends React.Component {
@@ -52,7 +52,7 @@ class Parent2 extends React.Component {
 
 function Child1(props, context) {
   console.log(context)
-  return <Consumer>{value => <p>newContext: {value}</p>}</Consumer>
+  return <Consumer>{value => <p>Child1 newContext: {value}</p>}</Consumer>
 }
 
 Child1.contextTypes = {
@@ -63,7 +63,7 @@ class Child2 extends React.Component {
   render() {
     return (
       <p>
-        childContext: {this.context.value} {this.context.a}
+        Child2 Context: {this.context.value} {this.context.a}
       </p>
     )
   }

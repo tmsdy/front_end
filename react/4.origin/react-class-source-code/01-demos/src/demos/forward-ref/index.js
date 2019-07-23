@@ -4,6 +4,9 @@ import React from 'react'
 
 //函数组件没有实例，是pureComponent没有this。也就是不能在函数组件中使用ref
 // const TargetComponent = props => <input type="text"/>
+// 会出错的时候，这些时候可以用forwardRef，感觉用的比较少
+// 1.用别的库提供的组件不知道是不是pure组件时
+// 2.用redux的connect包装后的组件获取不了组件实例
 
 const TargetComponent = React.forwardRef((props, ref) => (
   <input type="text" ref={ref} />

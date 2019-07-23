@@ -1,4 +1,3 @@
-
 /*
 
 1.说是react-native-gesture-handler不存在
@@ -14,5 +13,7 @@ Deployment target设置：https://blog.csdn.net/wulong710/article/details/539951
 
 4.编译出现_OBJC_CLASS_$_XX,粘贴文件要向xcode，不然可能没导入
 https://www.jianshu.com/p/6d5283b7418d
+
+5.
 
 */
