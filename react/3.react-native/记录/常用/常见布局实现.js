@@ -25,4 +25,15 @@ arrowRight: {
     transform: [{ rotate: '-45deg' }]
 }
 
+3.蒙层
+mask: {
+    position: 'absolute',
+    zIndex: 222,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    width: width,
+    height: height,
+    alignItems: 'center',
+    justifyContent: 'center'
+},
+
 */

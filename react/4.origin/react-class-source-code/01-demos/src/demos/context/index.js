@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// 实现了上下级组件之间灵活通信
-const { Provider, Consumer } = React.createContext('default')
+/*
+实现了上下级组件之间灵活通信,一般一个组件最多用一个用多了就比较乱了，Consumer基本就不用了就用
+*/
+const MyContext = React.createContext('defaultVal') //子元素找不到provider时候的默认值
 
 class Parent extends React.Component {
   state = {
@@ -33,7 +35,7 @@ class Parent extends React.Component {
           />
         </div>
         {/* React.createContext(新API)，上层组件用Provider，下层组件在哪用到数据就用Consumer */}
-        <Provider value={this.state.newContext}>{this.props.children}</Provider>
+        <MyContext.Provider value={this.state.newContext}>{this.props.children}</MyContext.Provider>
       </>
     )
   }
@@ -51,8 +53,7 @@ class Parent2 extends React.Component {
 }
 
 function Child1(props, context) {
-  console.log(context)
-  return <Consumer>{value => <p>Child1 newContext: {value}</p>}</Consumer>
+  return <MyContext.Consumer>{value => <p>Child1 newContext: {value}</p>}</MyContext.Consumer>
 }
 
 Child1.contextTypes = {
@@ -60,7 +61,8 @@ Child1.contextTypes = {
 }
 
 class Child2 extends React.Component {
-  render() {
+  render() { // 子组件就this.context就能拿到传进的数据了
+    console.log(this.context) // { value: "123", a: "bbbbb"}
     return (
       <p>
         Child2 Context: {this.context.value} {this.context.a}
