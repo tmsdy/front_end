@@ -7,9 +7,12 @@ http://www.cocoachina.com/articles/11608
 
 3.image的resizeMode:‘cover’,‘contain’,‘stretch’,‘repeat’,‘center'
 stretch：按给定的宽高延展图片
-contain：按图片的原始宽高按比例展示
+contain：按图片的原始宽高按比例展示 这个会导致圆角不圆
+cover：这个用的多
 
-4.给盒子加阴影,https://blog.csdn.net/SpicyBoiledFish/article/details/76079556
+4.给盒子加阴影:
+https://blog.csdn.net/SpicyBoiledFish/article/details/76079556
+https://blog.csdn.net/qq_34645412/article/details/82689191
 ios:
 shadowColor: '#FF5C00',
 shadowOpacity: 0.5,

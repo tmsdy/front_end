@@ -4,6 +4,7 @@
 1.github:
 这个库不支持单选：https://github.com/react-native-community/react-native-image-picker
 这个库支持多选安卓有问题：https://github.com/ivpusic/react-native-image-crop-picker
+https://www.jianshu.com/p/8420b08062c7
 
 2.link不上没有效果需要手动link：https://reactnative.cn/docs/linking-libraries-ios.html
 不要走第三步，否则不起作用

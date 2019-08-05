@@ -16,7 +16,11 @@ import QRCode from 'react-native-qrcode';
     value='http://www.lcode.org/source-react-native-qrcode/'
     size={200} />
 
-4.
+4.安卓手动链接
+https://blog.csdn.net/qq_39910762/article/details/82971097
+
+5.报找不到react-native-camera
+https://www.cnblogs.com/wukong1688/p/11029562.html
 
 
 */
