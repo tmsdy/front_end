@@ -19,7 +19,7 @@ console.log(DEV)
 let button = document.createElement('button')
 button.innerHTML = 'hello'
 button.addEventListener('click',function(){
-  import('./source').then(data=>{
+  import('./source').then(data=>{ // 异步引入模块
     console.log(data.default) //需要的数据点击时才加载（懒加载，用jsonp实现的）
   })
 })
