@@ -1,4 +1,4 @@
-import {getCookie, isFunction, isIqiyi,} from 'Common/utils/index'
+import {getCookie, isFunction, isIqiyi,} from 'Common/utils'
 import {Toast} from 'Components'
 
 let LOGIN_TOAST = null
