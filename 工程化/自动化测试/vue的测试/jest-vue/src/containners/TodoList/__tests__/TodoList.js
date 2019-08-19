@@ -1,10 +1,19 @@
 import { shallowMount } from '@vue/test-utils'
 import TodoList from '../TodoList.vue'
+import Header from '../components/Header.vue'
 
 describe('TodoList.vue', () => {
-  it('组件渲染正常', () => {
+  it('TodoItem初始化时，todoList应该为空', () => {
     const wrapper = shallowMount(TodoList)
-    // 只要组件能渲染，第一次运行都能生成一个快照，只要DOM一变就能测到，适合测UI。如果接受变化输入u更新快照就行
-    // expect(wrapper).toMatchSnapshot()
+    const todoList = wrapper.vm._data.todoList
+    expect(todoList.length).toBe(0)
+  })
+  it('监听到Header组件触发的addTodoItem事件时候给todoList加个TodoItem', () => {
+    const wrapper = shallowMount(TodoList)
+    const header = wrapper.find(Header)
+    const content = 'feifei'
+    header.vm.$emit('addTodoItem', content)
+    const todoList = wrapper.vm._data.todoList
+    expect(todoList.shift().content).toEqual(content)
   })
 })

@@ -1,0 +1,9 @@
+{
+  "presets": [
+    ["@babel/preset-env",{
+      "targets": {
+        "node": "current" //根据当前node环境来做一些转化
+      }
+    }]
+  ]
+}
