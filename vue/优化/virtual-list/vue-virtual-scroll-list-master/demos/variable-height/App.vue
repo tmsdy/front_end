@@ -1,10 +1,10 @@
 <template>
   <div class="app">
-    <GithubCorner path="/item-mode" />
+    <GithubCorner path="/variable-height" />
     <div class="container">
-      <Header title="item-mode" :desciption="'Build ' + itemCount.toLocaleString() + ' items.'" :start-index="start" :on-data-change="onHeaderDataChange" />
+      <Header title="variable-height" :desciption="'Build ' + itemCount.toLocaleString() + ' items.'" :start-index="start" :on-data-change="onHeaderDataChange" />
       <div class="main">
-        <virtual-list class="list" :size="size" :remain="remain" :bench="30" :start="start" :item="item" :itemcount="itemCount" :itemprops="getItemProps" />
+        <virtual-list class="list" :size="size" :remain="remain" :bench="30" :start="start" :variable="getVariableHeight" :item="item" :itemcount="itemCount" :itemprops="getItemProps" />
       </div>
     </div>
   </div>
@@ -13,19 +13,18 @@
 <script>
 import Item from '../common/Item.vue'
 import VirtualList from 'vue-virtual-scroll-list'
-import { countStorage, getRandomUser } from '../common/util'
-/*
-remain: 视口里保留的item数量
-size: 每个item的高度，remain*size等于当前视口高度。
-bench: 默认并且最小等于remain，存在于视口下的item真实dom数量
-*/
+import { countStorage, getRandomUser, getRandomHeight } from '../common/util'
+
 const remain = 6
 const itemSize = 80
 const itemCount = countStorage.get()
 
 let userInfoList = []
 for (let i = 0; i < itemCount; i++) {
-  userInfoList.push(getRandomUser())
+  userInfoList.push({
+    info: getRandomUser(),
+    vHeight: getRandomHeight()
+  })
 }
 
 export default {
@@ -44,23 +43,22 @@ export default {
       itemCount: itemCount
     }
   },
-  created() {
-    console.log('item-mode created')
-  },
-  mounted() {
-    console.log('item-mode mounted')
-  },
+
   methods: {
     getItemProps(itemIndex) {
-      debugger
       return {
         key: itemIndex,
         props: {
-          height: itemSize,
+          variable: true,
           index: itemIndex,
-          info: userInfoList[itemIndex] || {}
+          height: userInfoList[itemIndex].vHeight,
+          info: userInfoList[itemIndex].info || {}
         }
       }
+    },
+
+    getVariableHeight(itemIndex) {
+      return userInfoList[itemIndex].vHeight
     },
 
     onHeaderDataChange(type, value) {
