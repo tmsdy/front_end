@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
 <body>
-    <div id="app">
-        <div v-for="(item,key,index) of userInfo">
-            {{item}} --- {{key}} --- {{index}}
-        </div>
-        <p v-for="nItem of arr">数字是：{{nItem}}</p>
+  <div id="app">
+    <div v-for="(item,key,index) of userInfo">
+      {{item}} --- {{key}} --- {{index}}
     </div>
+    <p v-for="nItem of arr">数字是：{{nItem}}</p>
+    <p v-for="obj of objArr">名字是：{{obj.name}}</p>
+  </div>
 </body>
 <script>
-
-var vm = new Vue({
-    el:"#app" ,
-    data :{
-        userInfo:{
-            name:"Dell" ,
-            age:28 ,
-            gender:"male",
-            salary:"secret"
-        },
-        arr:[1,2,3,4]
+  // Object.defineProperty只能对数组的部分操作能监听，对数据长度改变和直接改索引监听不了
+  var vm = new Vue({
+    el: "#app",
+    data: {
+      userInfo: {
+        name: "Dell",
+        age: 28,
+        gender: "male",
+        salary: "secret"
+      },
+      arr: [1, 2, 3],
+      objArr: [
+        { name: 'feifei' },
+        { name: 'fangfang' },
+      ]
     },
-    mounted(){ //Vue和实例都有set方法,改变data后可以更新页面
-        Vue.set(this.userInfo,"address","beijing") ;//向对象增加值
-        this.$set(this.userInfo,"zhiwei","teacher") ;
+    mounted() { //Vue和实例都有set方法,改变data后可以更新页面
+      Vue.set(this.userInfo, "address", "beijing");//向对象增加值
+      this.$set(this.userInfo, "zhiwei", "teacher");
 
-        Vue.set(this.arr,1,9)
+      setTimeout(() => {
+        this.arr[2] = 5 //监听不了这个变化来渲染
+        Vue.set(this.arr, 1, 9) //这样可以，两个放一起也可以因为是在同一个执行栈(骚操作)***
+      }, 1000);
+
+      setTimeout(() => {
+        this.objArr[0].name = '只改名字' //这样可以监听到
+      }, 1500);
+      setTimeout(() => {
+        this.objArr[0] = { name: '整体改' } //这样是监听不到的
+      }, 2000);
+      setTimeout(() => {
+        Vue.set(this.objArr, 0, { name: 'Vue.set整体改' }) //这样可以监听到
+      }, 2500);
     }
-})
-    
+  })
+  vm.objArr[0] = { name: '外面改' } //一开始就是外面改
+
 </script>
+
 </html>

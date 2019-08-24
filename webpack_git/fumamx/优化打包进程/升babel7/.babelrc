@@ -1,13 +1,20 @@
 {
   "presets": [
-    ["@babel/preset-env", {
-      "useBuiltIns": "usage",
-      "corejs": 2,
-      "modules": false,
-      "targets": {
-        "browsers": ["> 1%", "last 2 versions", "not ie <= 8"]
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage", //这样会自动引@babel/polyfill
+        "corejs": 2,
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "> 1%",
+            "last 2 versions",
+            "not ie <= 8"
+          ]
+        }
       }
-    }]
+    ]
   ],
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",

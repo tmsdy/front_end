@@ -1,18 +1,21 @@
-<!-- 
-参考：https://juejin.im/post/5cffa35a6fb9a07ec63b0bb0
-1.单页面应用（SinglePage Web Application，SPA）
-  只有一张Web页面的应用，是一种从Web服务器加载的富客户端，单页面跳转仅刷新局部资源 ，
-  公共资源(js、css等)仅需加载一次，常用于PC端官网、购物等网站
+/*
 
-2.多页面应用（MultiPage Application，MPA）
-  多页面跳转刷新所有资源，每个公共资源(js、css等)需选择性重新加载，常用于 app 或 客户端等
+参考：https://juejin.im/post/5cffa35a6fb9a07ec63b0bb0
+1.单页面应用
+  只有一张Web页面的应用，单页面跳转仅刷新局部资源 ，资源都是一次性下载下来，一般用于web。
+  优缺点：
+    页面切换快用户体验好，不过首次加载慢，不利于SEO。可以采用SSR+SPA方案，然后登录页和主页分成两个入口，页面按需加载，对服务器压力小
+
+2.多页面应用
+  多页面跳转刷新所有资源，每个公共资源(js、css等)需选择性重新加载，h5多用这个
+  或者
 
                       单页面应用                        多页面应用
 
   组成        	一个外壳页面和多个页面片段组成	        多个完整页面构成
 资源共用(css,js)	共用，只需在外壳部分加载	        不共用，每个页面都需要加载
 刷新方式	          页面局部刷新或更改	                    整页刷新
-url 模式	          a.com/#/pageone                   a.com/pageone.html 
+url 模式	          a.com/#/pageone                   a.com/pageone.html
                     a.com/#/pagetwo	                  a.com/pagetwo.html
 用户体验         	页面片段间的切换快，用户体验良好	  页面切换加载缓慢，流畅度不够，用户体验比较差
 转场动画	           容易实现	                            无法实现
@@ -22,4 +25,4 @@ url 模式	          a.com/#/pageone                   a.com/pageone.html
 开发成本	        较高，常需借助专业的框架	            较低 ，但页面重复代码多
 维护成本	            相对容易	                              相对复杂
 
- -->
+*/
