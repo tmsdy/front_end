@@ -22,6 +22,7 @@ React
 6.React Router和Vue Router的底层实现原理、动态加载实现原理
 7.可熟练应用React API、生命周期等，可应用HOC、render props、Hooks等高阶用法解决问题
 8.基于React的特性和原理，可以手动实现一个简单的React
+9.redux原理
 
 Vue
 // 1.熟练使用Vue的API、生命周期、钩子函数
@@ -29,6 +30,7 @@ Vue
 3.Vue双向绑定实现原理、Diff算法的内部实现
 4.Vue的事件机制
 5.从template转换成真实DOM的实现机制
+6.vuex原理
 
 多端开发
 1.单页面应用（SPA）的原理和优缺点，掌握一种快速开发SPA的方案

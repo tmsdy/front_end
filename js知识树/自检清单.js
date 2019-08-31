@@ -20,7 +20,7 @@ JavaScript编码能力
 // 5.实现一个sleep函数
 
 手动实现前端轮子
-// 1.手动实现call、apply、bind
+//* 1.手动实现call、apply、bind
 2.手动实现符合Promise/A+规范的Promise
 2.2 手动实现async await
 3.手写一个EventEmitter实现事件发布、订阅

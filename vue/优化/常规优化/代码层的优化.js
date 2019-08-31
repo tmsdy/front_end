@@ -1,8 +1,10 @@
 /*
 https://juejin.im/post/5d548b83f265da03ab42471d
 1.v-for 遍历必须为 item 添加 key，且避免同时使用 v-if
+https://juejin.im/post/5aae19aa6fb9a028d4445d1a
 （1）v-for 遍历必须为 item 添加 key
     在列表数据进行遍历渲染时，需要为每一项 item 设置唯一 key 值，方便 Vue.js 内部机制精准找到该条列表数据。当 state 更新时，新的状态值和旧的状态值对比，较快地定位到 diff 。
+    不能用索引当key，因为如果中间插个数据，后面的没变却因索引变化而重新渲染了
 （2）v-for 遍历避免同时使用 v-if
     v-for 比 v-if 优先级高，每一次小改变都遍历整个数组将会影响速度，必要的时候将遍历的数组搞成computed
 
