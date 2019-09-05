@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +8,50 @@
     <title>Document</title>
 </head>
 <style>
-.words{
-    width: 300px ;
-    overflow:hidden;  /*超过部分不显示*/
-    text-overflow:ellipsis;  /*超过部分用点点表示*/
-    white-space:nowrap;/*不换行*/
-}  
-.duanluo{
-   width: 300px ;
-   text-overflow: ellipsis; /*有些示例里需要定义该属性，实际可省略*/
-   display: -webkit-box;
-   -webkit-line-clamp: 2;/*规定超过两行的部分截断*/
- 　-webkit-box-orient: vertical;
- 　overflow : hidden; 
-   word-break: break-all;/*在任何地方换行*/
-}
+    .words {
+        width: 300px;
+        overflow: hidden;
+        /*超过部分不显示*/
+        text-overflow: ellipsis;
+        /*超过部分用点点表示*/
+        white-space: nowrap;
+        /*不换行*/
+    }
+
+    .duanluo {
+        width: 300px;
+        text-overflow: ellipsis;
+        /*有些示例里需要定义该属性，实际可省略*/
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /*规定超过两行的部分截断*/
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        word-break: break-all;
+        /*在任何地方换行*/
+    }
+
+    .duanluo2 {
+        width: 300px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+
+    }
 </style>
+
 <body>
     <p class="words">
         今天不说前端，来聊聊Git。 发现现在的小孩，玩框架一套一套的，等到玩点实质的工程化的东西就不行了。
-         Git 这么好的工具，培训班怎么可以忽视他的重要性呢？</p>
+        Git 这么好的工具，培训班怎么可以忽视他的重要性呢？</p>
     <p class="duanluo">
         今天不说前端，来聊聊Git。 发现现在的小孩，玩框架一套一套的，等到玩点实质的工程化的东西就不行了。
-            Git 这么好的工具，培训班怎么可以忽视他的重要性呢？</p>
+        Git 这么好的工具，培训班怎么可以忽视他的重要性呢？</p>
+    <p class="duanluo2">
+        今天不说前端，来聊聊Git。 发现现在的小孩，玩框架一套一套的，等到玩点实质的工程化的东西就不行了。
+        Git 这么好的工具，培训班怎么可以忽视他的重要性呢？</p>
 </body>
+
 </html>

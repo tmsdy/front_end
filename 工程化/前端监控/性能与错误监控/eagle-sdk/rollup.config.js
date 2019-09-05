@@ -5,7 +5,7 @@ let isDev = process.env.NODE_ENV === 'develop'
 let babelConfig = {
     "presets": [
         [
-            'env',{
+            'env', {
                 "modules": false,
                 "target": {
                     "browsers": ["chrome > 40"]
@@ -13,7 +13,7 @@ let babelConfig = {
             }
         ]
     ],
-    "plugins":[]
+    "plugins": []
 }
 
 export default {

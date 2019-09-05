@@ -2,15 +2,15 @@
 
 console.log('start')
 
-function a(){
+function a() {
     b()
 }
-function b(){
-    c()
+function b() {
+    // c()
 }
-function c(){
-    x = y + z
-}
+// function c(){
+//     x = y + z
+// }
 a()
 
 console.log('end')

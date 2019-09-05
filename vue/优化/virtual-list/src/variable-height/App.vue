@@ -4,7 +4,7 @@
     <div class="container">
       <Header title="variable-height" :desciption="'Build ' + itemCount.toLocaleString() + ' items.'" :start-index="start" :on-data-change="onHeaderDataChange" />
       <div class="main">
-        <virtual-list class="list" :size="size" :remain="remain" :bench="30" :start="start" :variable="getVariableHeight" :item="item" :itemcount="itemCount" :itemprops="getItemProps" />
+        <virtual-list class="list" :size="size" :remain="remain" :bench="30" :start="start" :variable="true" :item="item" :itemcount="itemCount" :itemprops="getItemProps" />
       </div>
     </div>
   </div>

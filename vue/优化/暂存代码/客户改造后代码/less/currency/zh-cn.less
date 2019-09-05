@@ -1,0 +1,138 @@
+.zh-cn,
+.zh-tw {
+    .tableRowClassName{
+        .boxList{
+            height:32px;
+            line-height: 32px;
+            background:#F7F8F9;
+            border-radius:4px 4px 0px 0px;
+            color: #606266;
+            font-size: 12px;
+            border-radius:4px 4px 0px 0px;
+            padding-left:34px;
+            padding-right:180px;
+            position: relative;
+            margin-top:16px;
+            .posRight{
+                position: absolute;
+                top: 0;
+                height: 100%;
+                right:30px;
+                width: 100px;
+            }
+        }
+        .customerTable{
+            .customerList{
+                >:last-child{
+                    border-bottom:0;
+                }
+            }
+        }
+    }
+    .customerItem{
+        background: white;
+        padding:19px 180px 18px 34px;
+        border-bottom:1px solid rgba(234,237,239,1);
+        font-size: 12px;
+        position:relative;
+        .starBox{
+            position: absolute;
+            left: 9px;
+            top: -1px;
+            width:16px;
+            height:16px;
+            text-align: center;
+            line-height: 16px;
+            color: rgba(208,2,27,1);
+            font-size: 12px;
+        }
+        .listCheckNone1,.listCheckNone,.listChecks{
+            position:absolute;
+            top:19px;
+            left:10px;
+        }
+        .listCheckNone1,.listChecks{
+            display: inline-block;
+        }
+        .listCheckNone{
+            display: none;
+        }
+        .listCheck{
+            display: none;
+        }
+        .customerInfo{
+            height: 17px;
+            color: RGBA(34, 34, 34, 1);
+            .el-dropdown-menu__item {
+                    line-height: 30px;
+                    height: 30px;
+            }
+            .listMenu{
+                display: none;
+            }
+            .toCustomerDetai{
+                display: none;
+            }
+        }
+        .listTimes1{
+            position:absolute;
+            top:19px;
+            right:30px;
+            width: 100px;
+        }
+        .listTimes2{
+            position:absolute;
+            bottom:12px;
+            right:95px;
+            width: 90px;
+        }
+        .listTimes3{
+            position:absolute;
+            top:6px;
+            right:18px;
+            width: 177px;
+            display: none;
+        }
+        .listTimes{
+            position:absolute;
+            top:10px;
+            right:20px;
+            width: 70px;
+        }
+        .listControl{
+            width: 130px;
+            display: none;
+            color: #cdcdcd;
+            .hover{
+                cursor: pointer;
+            }
+        }
+        .listControl1{
+            display: none;
+        }
+    }
+    .customerItem:hover{
+        background:#FAFAFA;
+        .listTime,.listTimes,.listTimes1,.listTimes2{
+            display: none;
+        }
+        .listControl,.listTimes3{
+            display: inline-block;
+        }
+        .toCustomerDetai{
+            display: inline-block;
+        }
+        .listCheck{
+            display: inline-block;
+        }
+        .listMenu{
+            display: inline-block;
+        }
+        .listCheckNone{
+            display: inline-block;
+        }
+        .listCheckNone1{
+            display: none;
+        }
+    }
+}

@@ -1,11 +1,8 @@
-// import perf from './perf'
-import errorCatch from './errorCatch'
+import perf from './perf'
 
-// perf.init(()=>{
-//     console.log('perf init')
-// })
-errorCatch.init((errorInfo)=>{
-    console.log(errorInfo)
+
+perf.init((perfData) => {
+    console.log('perf init')
+    console.log(perfData)
 })
 
-console.log('feifei 123')
