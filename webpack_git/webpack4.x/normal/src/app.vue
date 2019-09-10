@@ -1,14 +1,12 @@
 <template>
-    <div id="app">
-        app
-    </div>
+    <h1>hello</h1>
 </template>
 
 <script>
 
 export default {
-    data(){
-        return{
+    data() {
+        return {
 
         }
     }
@@ -16,5 +14,4 @@ export default {
 </script>
 
 <style scoped>
-    
 </style>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src='https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script>
+    <script>
+
+        tinymce.init({
+            selector: 'textarea#drive-pick-example',
+            height: 200,
+            menubar: false,
+            plugins: [
+                'tinydrive link image media'
+            ],
+            toolbar: 'custom | insertfile | link image media',
+            setup: function (editor) {
+                editor.ui.registry.addButton('custom', {
+                    text: 'Custom pick',
+                    onAction: function () {
+                        editor.plugins.tinydrive.pick({
+                        }).then(function (result) {
+                            result.files.forEach(function (file) {
+                                var link = editor.dom.createHTML('a', { href: file.url }, editor.dom.encode(file.name));
+                                editor.insertContent(link);
+                            });
+                        });
+                    }
+                });
+            }
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <h1>TinyMCE Quick Start Guide</h1>
+    <form method="post">
+        <textarea id="drive-pick-example">
+            This demo shows you how to call tinydrive from within the tinymce api.
+          </textarea>
+    </form>
+</body>
+
+</html>

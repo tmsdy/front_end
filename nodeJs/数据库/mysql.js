@@ -8,9 +8,13 @@
 
 2.建库(schema): 点圆饼
 
-3.建表
+3.表：
+建表：在库下面的tables右击create table,输入表结构，点apply
+右击表可以编辑表(alter table),删除表(drop table)
 
-4.表操作
+4.表操作: 增删改查
+加`password`可以解决关键字冲突问题
+
 
 
 */
