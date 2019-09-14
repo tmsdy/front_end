@@ -3,7 +3,7 @@ const express = require('express')
 // 本次 http 请求的实例
 const app = express()
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { // app.use不分get还是post都处理
     console.log('请求开始...', req.method, req.url)
     next()
 })

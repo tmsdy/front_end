@@ -15,6 +15,11 @@
 4.表操作: 增删改查
 加`password`可以解决关键字冲突问题
 
+5.终端基本操作
+登录：mysql -u root -p
+看所有用户：select user();
+退出：quit;
+
 
 
 */

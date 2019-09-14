@@ -19,4 +19,6 @@
 1）删除符合条件的数据：delete from users where username='feifei'
 2）软删除：可以先把所有数据标记比如status=1,把不需要的可以设为0，这样可以保留数据
 
+
+
 */

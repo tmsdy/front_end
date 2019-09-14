@@ -1,10 +1,10 @@
-// 标准输入输出
-// process.stdin.pipe(process.stdout)
+// 标准输入输出(用这个不多)
+// process.stdin.pipe(process.stdout) //连接输入输出管子
 
 // const http = require('http')
 // const server = http.createServer((req, res) => {
 //     if (req.method === 'POST') {
-//         req.pipe(res)  // 最主要
+//         req.pipe(res)  // 最主要，连接输入输出管子
 //     }
 // })
 // server.listen(8000)
