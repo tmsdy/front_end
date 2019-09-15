@@ -24,7 +24,7 @@ class NavLeft extends React.Component {
         });
         // hashHistory.push(key);
     };
-    componentWillMount(){
+    componentWillMount() {
         const menuTreeNode = this.renderMenu(MenuConfig);
 
         this.setState({
@@ -32,12 +32,12 @@ class NavLeft extends React.Component {
         })
     }
     // 菜单渲染
-    renderMenu =(data)=>{
-        return data.map((item)=>{
-            if(item.children){
+    renderMenu = (data) => {
+        return data.map((item) => {
+            if (item.children) {
                 return (
                     <SubMenu title={item.title} key={item.key}>
-                        { this.renderMenu(item.children)}
+                        {this.renderMenu(item.children)}
                     </SubMenu>
                 )
             }
@@ -58,7 +58,7 @@ class NavLeft extends React.Component {
             <div>
                 <NavLink to="/home" onClick={this.homeHandleClick}>
                     <div className="logo">
-                        <img src="/assets/logo-ant.svg" alt=""/>
+                        <img src="/assets/logo-ant.svg" alt="" />
                         <h1>Imooc MS</h1>
                     </div>
                 </NavLink>
@@ -66,7 +66,7 @@ class NavLeft extends React.Component {
                     onClick={this.handleClick}
                     theme="dark"
                 >
-                    { this.state.menuTreeNode }
+                    {this.state.menuTreeNode}
                 </Menu>
             </div>
         );

@@ -1,40 +1,40 @@
 import React from 'react';
 import { Card, Button, Table, Form, Select, Modal, message } from 'antd';
-import axios from './../../axios/index';
-import Utils from './../../utils/utils';
+import axios from '../../axios/index';
+import Utils from '../../utils/utils';
 const FormItem = Form.Item;
 const Option = Select.Option;
-export default class City extends React.Component{
+export default class City extends React.Component {
 
     state = {
-        list:[],
-        isShowOpenCity:false
+        list: [],
+        isShowOpenCity: false
     }
     params = {
-        page:1
+        page: 1
     }
-    componentDidMount(){
+    componentDidMount() {
         this.requestList();
     }
 
     // 默认请求我们的接口数据
-    requestList = ()=>{
+    requestList = () => {
         let _this = this;
         axios.ajax({
             url: '/open_city',
-            data:{
-                params:{
-                    page:this.params.page
+            data: {
+                params: {
+                    page: this.params.page
                 }
             }
-        }).then((res)=>{
+        }).then((res) => {
             let list = res.result.item_list.map((item, index) => {
                 item.key = index;
                 return item;
             });
             this.setState({
-                list:list,
-                pagination:Utils.pagination(res,(current)=>{
+                list: list,
+                pagination: Utils.pagination(res, (current) => {
                     _this.params.page = current;
                     _this.requestList();
                 })
@@ -43,43 +43,43 @@ export default class City extends React.Component{
     }
 
     // 开通城市
-    handleOpenCity = ()=>{
+    handleOpenCity = () => {
         this.setState({
-            isShowOpenCity:true
+            isShowOpenCity: true
         })
     }
     // 城市开通提交
-    handleSubmit = ()=>{
+    handleSubmit = () => {
         let cityInfo = this.cityForm.props.form.getFieldsValue();
         console.log(cityInfo);
         axios.ajax({
-            url:'/city/open',
-            data:{
-                params:cityInfo
+            url: '/city/open',
+            data: {
+                params: cityInfo
             }
-        }).then((res)=>{
-            if(res.code == '0'){
+        }).then((res) => {
+            if (res.code == '0') {
                 message.success('开通成功');
                 this.setState({
-                    isShowOpenCity:false
+                    isShowOpenCity: false
                 })
                 this.requestList();
             }
         })
     }
-    render(){
+    render() {
         const columns = [
             {
-                title:'城市ID',
-                dataIndex:'id'
+                title: '城市ID',
+                dataIndex: 'id'
             }, {
                 title: '城市名称',
                 dataIndex: 'name'
             }, {
                 title: '用车模式',
                 dataIndex: 'mode',
-                render(mode){
-                    return mode ==1 ?'停车点':'禁停区';
+                render(mode) {
+                    return mode == 1 ? '停车点' : '禁停区';
                 }
             }, {
                 title: '营运模式',
@@ -93,8 +93,8 @@ export default class City extends React.Component{
             }, {
                 title: '城市管理员',
                 dataIndex: 'city_admins',
-                render(arr){
-                    return arr.map((item)=>{
+                render(arr) {
+                    return arr.map((item) => {
                         return item.user_name;
                     }).join(',');
                 }
@@ -115,7 +115,7 @@ export default class City extends React.Component{
                 <Card>
                     <FilterForm />
                 </Card>
-                <Card style={{marginTop:10}}>
+                <Card style={{ marginTop: 10 }}>
                     <Button type="primary" onClick={this.handleOpenCity}>开通城市</Button>
                 </Card>
                 <div className="content-wrap">
@@ -126,26 +126,26 @@ export default class City extends React.Component{
                         pagination={this.state.pagination}
                     />
                 </div>
-                <Modal 
+                <Modal
                     title="开通城市"
                     visible={this.state.isShowOpenCity}
-                    onCancel={()=>{
+                    onCancel={() => {
                         this.setState({
-                            isShowOpenCity:false
+                            isShowOpenCity: false
                         })
                     }}
                     onOk={this.handleSubmit}
                 >
-                    <OpenCityForm wrappedComponentRef={(inst)=>{this.cityForm = inst;}}/>
+                    <OpenCityForm wrappedComponentRef={(inst) => { this.cityForm = inst; }} />
                 </Modal>
             </div>
         );
     }
 }
 
-class FilterForm extends React.Component{
+class FilterForm extends React.Component {
 
-    render(){
+    render() {
         const { getFieldDecorator } = this.props.form;
         return (
             <Form layout="inline">
@@ -153,7 +153,7 @@ class FilterForm extends React.Component{
                     {
                         getFieldDecorator('city_id')(
                             <Select
-                                style={{width:100}}
+                                style={{ width: 100 }}
                                 placeholder="全部"
                             >
                                 <Option value="">全部</Option>
@@ -207,7 +207,7 @@ class FilterForm extends React.Component{
                     }
                 </FormItem>
                 <FormItem>
-                    <Button type="primary" style={{margin:'0 20px'}}>查询</Button>
+                    <Button type="primary" style={{ margin: '0 20px' }}>查询</Button>
                     <Button>重置</Button>
                 </FormItem>
             </Form>
@@ -216,23 +216,23 @@ class FilterForm extends React.Component{
 }
 FilterForm = Form.create({})(FilterForm);
 
-class OpenCityForm extends React.Component{
-    render(){
+class OpenCityForm extends React.Component {
+    render() {
         const formItemLayout = {
-            labelCol:{
-                span:5
+            labelCol: {
+                span: 5
             },
-            wrapperCol:{
-                span:19
+            wrapperCol: {
+                span: 19
             }
         }
-        const { getFieldDecorator }  =this.props.form;
+        const { getFieldDecorator } = this.props.form;
         return (
             <Form layout="horizontal">
                 <FormItem label="选择城市" {...formItemLayout}>
                     {
-                        getFieldDecorator('city_id',{
-                            initialValue:'1'
+                        getFieldDecorator('city_id', {
+                            initialValue: '1'
                         })(
                             <Select style={{ width: 100 }}>
                                 <Option value="">全部</Option>
