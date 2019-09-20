@@ -25,6 +25,7 @@ if (ENV !== 'production') {
         stream: writeStream
     }))
 }
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json()); //对应getPostData实现，解析application/json的
 app.use(express.urlencoded({ extended: false })); //解析x-www-form-urlencoded格式的

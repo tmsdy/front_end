@@ -8,14 +8,13 @@ import './style/common.less'
 export default (props) => {
     return (
         <Row>
-            <Col className="nav-left" span="3">
+            <Col className="nav-left" span={3}>
                 <NavLeft />
             </Col>
-            <Col className="main" span="21">
+            <Col className="main" span={21}>
                 <Header></Header>
                 <Row className="content">
-                    content
-                    {/* {this.props.children} */}
+                    {props.children}
                 </Row>
                 <Footer></Footer>
             </Col>

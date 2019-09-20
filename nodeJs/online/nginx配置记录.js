@@ -1,7 +1,8 @@
-<!-- 
-  第一版：
-upstream rookiefeifei {
-  server 127.0.0.1:3389;
+/*
+
+第一版：
+upstream website {
+  server 127.0.0.1:4000;
 }
 server {
   listen 80 ;
@@ -13,13 +14,13 @@ server {
     proxy_set_header Host $http_host;
     proxy_set_header X-Nginx-Proxy true;
 
-    proxy_pass http://101.132.102.35:8088;
+    proxy_pass http://website;
     proxy_redirect off;
   }
 }
 第二版
 upstream website {
-  server 127.0.0.1:3389;
+  server 127.0.0.1:4000;
 }
 
 server {
@@ -37,4 +38,4 @@ server {
   }
 }
 
- -->
+*/

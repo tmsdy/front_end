@@ -115,6 +115,10 @@ const menuList = [
                 title: '折线图',
                 key: '/charts/line'
             },
+            {
+                title: '学习',
+                key: '/charts/learn'
+            },
         ]
     },
     {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter, Route, Switch, Redirect} from 'react-router-dom'
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import App from './App'
 import Login from './pages/login'
 import Admin from './admin'
@@ -29,21 +29,21 @@ import Pie from './pages/echarts/pie/index'
 import Line from './pages/echarts/line/index'
 import Permission from './pages/permission'
 
-export default class ERouter extends React.Component{
+export default class ERouter extends React.Component {
 
-    render(){
+    render() {
         return (
             <HashRouter>
                 <App>
                     <Switch>
-                        <Route path="/login" component={Login}/>
+                        <Route path="/login" component={Login} />
                         <Route path="/common" render={() =>
                             <Common>
                                 <Route path="/common/order/detail/:orderId" component={OrderDetail} />
                             </Common>
                         }
                         />
-                        <Route path="/" render={()=>
+                        <Route path="/" render={() =>
                             <Admin>
                                 <Switch>
                                     <Route path='/home' component={Home} />
@@ -71,7 +71,7 @@ export default class ERouter extends React.Component{
                                     <Redirect to="/home" />
                                     {/* <Route component={NoMatch} /> */}
                                 </Switch>
-                            </Admin>         
+                            </Admin>
                         } />
                     </Switch>
                 </App>
