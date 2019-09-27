@@ -2,24 +2,26 @@
 
 {%block content%}
 
-    <div class="listBox">
+<div class="listBox">
 
-        {%for content in contents%}
-            <div class="listItem" data-id="{{content.id}}">
-                <div class="ti"></div>
-                <div class="ci"></div>
-                <h1>{{content.title}}</h1>
-                <dfn><p>{{content.description}}</p></dfn>
-                <ul class="details">
-                    <li class="author"><a href="#">作者：{{content.user.username}}</a></li>
-                    <li class="icon-time"><a href="#">时间：{{content.addTime|date('Y年m月d日')}}</a></li>
-                    <li class="comments"><a href="#">评论：{{content.comments.length}}</a></li>
-                    <li class="likes"><a href="#">浏览：{{content.views}}</a></li>
-                </ul>
-            </div>
-        {%endfor%}
-
+    {%for content in contents%}
+    <div class="listItem" data-id="{{content.id}}">
+        <div class="ti"></div>
+        <div class="ci"></div>
+        <h1>{{content.title}}</h1>
+        <dfn>
+            <p>{{content.description}}</p>
+        </dfn>
+        <ul class="details">
+            <li class="author"><a href="#">作者：{{content.user.username}}</a></li>
+            <li class="icon-time"><a href="#">时间：{{content.addTime|date('Y年m月d日')}}</a></li>
+            <li class="comments"><a href="#">评论：{{content.comments.length}}</a></li>
+            <li class="likes"><a href="#">浏览：{{content.views}}</a></li>
+        </ul>
     </div>
+    {%endfor%}
+
+</div>
 
 
 <div class="pager">

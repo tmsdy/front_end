@@ -1,8 +1,12 @@
-import perf from './perf'
+// import perf from './perf'
+// perf.init((perfData) => {
+//     console.log('perf init')
+//     console.log(perfData)
+// })
 
+import errorCatch from './errorCatch'
 
-perf.init((perfData) => {
-    console.log('perf init')
-    console.log(perfData)
+errorCatch.init(errorInfo => {
+    console.log('errorInfo', errorInfo)
 })
 

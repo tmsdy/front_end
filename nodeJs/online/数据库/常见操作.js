@@ -1,6 +1,7 @@
 /*
 
 1.增：insert into users(username,`password`,realname)values('fangfang','123','芳芳')
+!字符串记得要加''号
 
 2.查询：
 1）查所有的用户：select * from users; //用*有点耗性能

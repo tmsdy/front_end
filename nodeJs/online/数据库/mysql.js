@@ -20,6 +20,8 @@
 看所有用户：select user();
 退出：quit;
 
+6.生成mysql当前unix时间戳：unix_timestamp(now());
+
 
 
 */
