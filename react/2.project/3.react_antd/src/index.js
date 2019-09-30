@@ -6,6 +6,6 @@ import HomeRouter from './pages/route_demo/route3/router'
 import Router from './router';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Router />, document.getElementById('root'));
+ReactDOM.render(<HomeRouter />, document.getElementById('root'));
 
 serviceWorker.unregister();
