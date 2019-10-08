@@ -17,7 +17,7 @@ const codeMapList = [
  *
  * @example app.context.client = func , ctx.client(200)
  */
-module.exports = function(code = 200, message, data = null) {
+module.exports = function (code = 200, message, data = null) {
   this.response.set('Content-Type', 'application/json')
   const item = codeMapList.find(d => d.code === code)
   const targetMessage = item ? item.message : ''

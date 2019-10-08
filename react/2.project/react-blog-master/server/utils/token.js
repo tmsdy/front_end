@@ -22,7 +22,7 @@ exports.checkToken = (ctx, roleList = [1]) => {
   }
 
   const token = authorizationHeader.split(' ')[1] // 取到 token
-  return jwt.verify(token, TOKEN.secret, function(err, decoded) {
+  return jwt.verify(token, TOKEN.secret, function (err, decoded) {
     if (err) {
       return false
     } else if (decoded) {
