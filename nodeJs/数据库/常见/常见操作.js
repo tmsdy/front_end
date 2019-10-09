@@ -2,6 +2,7 @@
 
 1.增：insert into users(username,`password`,realname)values('fangfang','123','芳芳')
 !字符串记得要加''号
+主键存在相同就更新，不存在就添加：replace into users
 
 2.查询：
 1）查所有的用户：select * from users; //用*有点耗性能

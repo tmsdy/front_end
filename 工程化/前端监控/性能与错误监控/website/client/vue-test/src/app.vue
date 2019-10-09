@@ -11,8 +11,8 @@ export default {
         }
     },
     mounted() {
-        console.log('vue')
-        vue = 'aaa' + 'bbb'
+        // console.log('vue')
+        // vue = 'aaa' + 'bbb'
     }
 }
 </script>

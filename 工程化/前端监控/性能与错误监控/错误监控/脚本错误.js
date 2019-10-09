@@ -20,9 +20,6 @@ UglifyJsPlugin有个sourceMap，如果prod开sourceMap，这个要为true
 4.本地跑通了，上服务器请求报504请求时间超时。
 1)服务正常，接口有问题。大概率是node的问题
 2)不链接mysql的没问题,证明连mysql出问题了，最后发现上线该换成内网地址，我用的还是外网
-5.mysql报错：Error: Cannot enqueue Query after fatal error.
-重启时候好了过会又不行。需要建立mqsql池连接
-6.因为错误信息会随时间一直累积很多，如果每次都要传map文件到服务器累积的map文件就很多肯定不行。
 
 扩展：
 1.看线上node运行日志：pm2 log xxx(进程)

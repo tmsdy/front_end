@@ -13,6 +13,7 @@ https://fearby.com/article/how-to-setup-pooled-mysql-connections-in-node-js-that
 
 4.需求：查询一个数据，如果有重复就count+1,没有就新增
 暂时只能用2个sql，在看有没有一个sql能起效果。
+用replace代替insert可以起一定的效果
 
 5.node的new Date().getTime()生成的时间总是一样的
 

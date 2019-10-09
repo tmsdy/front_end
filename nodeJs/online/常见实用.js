@@ -4,5 +4,8 @@
 
 2.看磁盘：df -h
 
+3.pm2查看log：pm2 log fumamx-monitor-node_test
+
+
 
 */
