@@ -1,6 +1,6 @@
 
 $.ajax({
-    url: 'http://localhost:3003/api/detail',
+    url: 'http://localhost:3003/api/detai',
     method: 'post',
     data: {
         a: '1',

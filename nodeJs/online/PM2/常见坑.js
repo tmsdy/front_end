@@ -4,6 +4,5 @@
 解决：在服务器根目录下vi .bashrc,注释case那几行
 然后source .bashrc
 
-2.pm2查看log：pm2 log fumamx-monitor-node_test
 
 */

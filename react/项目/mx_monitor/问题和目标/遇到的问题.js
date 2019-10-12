@@ -4,6 +4,6 @@ react脚手架支持css/sass要支持less的话需要：https://www.cnblogs.com/
 yarn add less less-loader
 暴露webpack配置：
 
-
+2.到底是用uid还是uip作为主键
 
 */

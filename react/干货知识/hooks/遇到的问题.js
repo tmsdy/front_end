@@ -6,6 +6,6 @@
 2.let [xList, setXlist] = useState([])，在setXlist时候会反复调用
 https://segmentfault.com/q/1010000020315170
 
-
+3.useEffect后面[]自动format加东西
 
 */
