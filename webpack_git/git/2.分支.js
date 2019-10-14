@@ -9,6 +9,7 @@
 
 4.将远程git仓库里的指定分支拉取到本地（本地不存在）
 git checkout -b test origin/test
+git checkout -b dev-hf origin/dev-new
 
 
 */
