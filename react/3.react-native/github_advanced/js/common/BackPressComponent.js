@@ -1,5 +1,5 @@
-import React, {PropTypes} from "react";
-import {BackHandler} from "react-native";
+import React, { PropTypes } from "react";
+import { BackHandler } from "react-native";
 
 /**
  * Android物理回退键处理
