@@ -13,6 +13,7 @@ export default {
     mounted() {
         // console.log('vue')
         // vue = 'aaa' + 'bbb'
+        console.log('222')
     }
 }
 </script>

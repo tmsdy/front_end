@@ -3,84 +3,6 @@
     factory();
 }(function () { 'use strict';
 
-    let formatStack = (stack) => {
-        let matchUrl = stack.match(/https?:\/\/[^\n]+/); //报错url和报错位置
-        // console.log(matchUrl)
-        let urlFirstStack = matchUrl ? matchUrl[0] : '';
-        let regUrlCheck = /https?:\/\/(\S)*\.js/;
-
-        let resourceUrl = ''; //报错url
-        if (regUrlCheck.test(urlFirstStack)) {
-            resourceUrl = urlFirstStack.match(regUrlCheck)[0];
-        }
-
-        let stackCol = null; //报错信息列
-        let stackRow = null; //报错信息行
-        let posStack = urlFirstStack.match(/:(\d+):(\d+)/);
-        if (posStack && posStack.length >= 3) {
-            [, stackCol, stackRow] = posStack;
-        }
-        return {
-            resourceUrl,
-            stackCol,
-            stackRow
-        }
-    };
-    let formatError = (errorObj) => {
-        // console.log(errorObj)
-        let col = errorObj.column || errorObj.columnNumber;
-        let row = errorObj.line || errorObj.lineNumber;
-        let errorType = errorObj.name;
-        let message = errorObj.message;
-
-        let { stack } = errorObj;
-        if (stack) {
-            // console.log(stack)
-            let { resourceUrl, stackCol, stackRow } = formatStack(stack);
-
-            return {
-                content: stack,
-                col: Number(col || stackCol),
-                row: Number(row || stackRow),
-                errorType,
-                message,
-                resourceUrl
-            }
-            // debugger
-        }
-        // debugger
-    };
-
-    var errorCatch = {
-        init: (cb) => {
-            let _origin_error = window.onerror;
-            console.log('errorCatch 开始监听');
-            window.onerror = function (message, source, lineno, colno, error) {
-                let errorInfo = formatError(error);
-                errorInfo._message = message;
-                errorInfo._source = source;
-                errorInfo._lineno = lineno;
-                errorInfo._colno = colno;
-
-                cb(errorInfo);
-
-                errorInfo.type = 'error';
-                _origin_error && _origin_error.apply(window, arguments);
-
-            };
-            // 针对 vue 报错重写 console.error
-            // TODO
-            console.error = (function (origin) {
-                return function (info) {
-                    let stack = info.stack;
-                    let { resourceUrl, stackCol, stackRow } = formatStack(stack);
-                    console.log(resourceUrl, stackCol, stackRow);
-                    origin.call(console, info);
-                }
-            })(console.error);
-        }
-    };
-
     var xhrHook = {
         init: (cb) => {
             let xhr = window.XMLHttpRequest;
@@ -104,6 +26,7 @@
 
                 let ajaxEnd = (eventType) => () => {
                     if (_self.response) {
+                        debugger
                         let responseSize = null;
                         switch (_self.responseType) {
                             case 'json':
@@ -130,9 +53,21 @@
                 };
 
                 // 这三种都代表这请求已经结束了，需要统计一些信息，并上报上去
-                this.addEventListener('load', ajaxEnd('load'), false);
-                this.addEventListener('error', ajaxEnd('error'), false);
-                this.addEventListener('abort', ajaxEnd('abort'), false);
+                if (this.addEventListener) {
+                    this.addEventListener('load', ajaxEnd('load'), false);
+                    this.addEventListener('error', ajaxEnd('error'), false);
+                    this.addEventListener('abort', ajaxEnd('abort'), false);
+                } else {
+                    let _origin_onreadystatechange = this.onreadystatechange;
+                    this.onreadystatechange = function (event) {
+                        if (_origin_onreadystatechange) {
+                            _originOpen.apply(this, arguments);
+                        }
+                        if (this.readyState === 4) {
+                            ajaxEnd('end')();
+                        }
+                    };
+                }
 
                 return _originSend.apply(this, arguments)
             };
@@ -182,23 +117,25 @@
     };
 
     // import perf from './perf'
-    errorCatch.init(errorInfo => {
-        console.log('errorInfo', errorInfo);
-    });
 
     xhrHook.init((xhrInfo) => {
         console.log(xhrInfo);
+        if (/^[45]/.test(xhrInfo.status)) { //匹配4xx,5xx开头的http状态码
+            console.log('错误信息', {
+                status: xhrInfo.status
+            });
+        }
     });
 
-    throw new Error('抛出的错误')
+    // throw new Error('抛出的错误')
 
-    try {
-        console.log('try catch====');
-        aaa = 'bbb' + 'ccc';
-    } catch (err) {
-        // console.log(err)
-        throw err
-    }
+    // try {
+    //     console.log('try catch====')
+    //     aaa = 'bbb' + 'ccc'
+    // } catch (err) {
+    //     // console.log(err)
+    //     throw err
+    // }
 
 }));
 //# sourceMappingURL=bundle.umd.js.map

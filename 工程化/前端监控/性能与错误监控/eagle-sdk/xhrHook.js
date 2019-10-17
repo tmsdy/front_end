@@ -21,6 +21,7 @@ export default {
 
             let ajaxEnd = (eventType) => () => {
                 if (_self.response) {
+                    debugger
                     let responseSize = null
                     switch (_self.responseType) {
                         case 'json':
@@ -47,9 +48,21 @@ export default {
             }
 
             // 这三种都代表这请求已经结束了，需要统计一些信息，并上报上去
-            this.addEventListener('load', ajaxEnd('load'), false)
-            this.addEventListener('error', ajaxEnd('error'), false)
-            this.addEventListener('abort', ajaxEnd('abort'), false)
+            if (this.addEventListener) {
+                this.addEventListener('load', ajaxEnd('load'), false);
+                this.addEventListener('error', ajaxEnd('error'), false);
+                this.addEventListener('abort', ajaxEnd('abort'), false);
+            } else {
+                let _origin_onreadystatechange = this.onreadystatechange;
+                this.onreadystatechange = function (event) {
+                    if (_origin_onreadystatechange) {
+                        _originOpen.apply(this, arguments);
+                    }
+                    if (this.readyState === 4) {
+                        ajaxEnd('end')();
+                    }
+                };
+            }
 
             return _originSend.apply(this, arguments)
         }
