@@ -16,7 +16,7 @@ https://www.jianshu.com/p/8420b08062c7
 
 4.遇到的react-native-image-crop-picker问题
 安卓编译问题：https://github.com/ivpusic/react-native-image-crop-picker/issues/835
-加：maven {url 'https://jitpack.io'} 
+加：maven {url 'https://jitpack.io'}
 然后有androidx的包，项目要升到androidx。
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
@@ -24,6 +24,13 @@ import androidx.core.content.FileProvider;
 5.升级androidx：
 https://www.jianshu.com/p/b0800f590e6e
 https://www.jianshu.com/p/7dc111353328
-https://developer.android.com/jetpack/androidx/migrate
+新旧包对照：https://developer.android.com/jetpack/androidx/migrate
+
+6.一般步骤
+npm i react-native-image-crop-picker
+react-native link react-native-image-crop-picker
+安卓加
+maven { url "https://jitpack.io" }
+<uses-permission android:name="android.permission.CAMERA"/>
 
 */

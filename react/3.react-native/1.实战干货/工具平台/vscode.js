@@ -4,7 +4,10 @@
 
 2.去除自动import:全局搜 module "console"注释即可
 
-3.快捷键：
+3.RN的stylesheet支持代码提示：下面的第二种方案
+https://www.miaoroom.com/code/ued/vscode-intellisense-for-stylesheet-not-work.html
+
+4.快捷键：
 home: fn+⬅️
 end：fn+➡️
 page up: fn+⬆️
