@@ -11,4 +11,6 @@ https://blog.csdn.net/lan_yangbi/article/details/82775812
 记得import android.webkit.WebView;
 有时候h5改了代码热更新有问题，重新进就好了
 
+3.记得手机要设置仅限充电
+
 */
