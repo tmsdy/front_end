@@ -45,11 +45,14 @@ export default (props) => {
                 super(name);
                 this.age = age
             }
+            getName() { // 可以重写父级的方法
+                console.log('getName')
+            }
         }
         let child = new Child('xiaofeifei', 5)
         console.log(child)
         Child.hello() //hello // 父类的静态方法，可以被子类继承
-
+        child.getName()
     }, [])
 
     return (
