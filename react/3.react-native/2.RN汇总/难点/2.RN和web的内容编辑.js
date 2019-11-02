@@ -5,13 +5,7 @@
 
 2.RN富文本编辑器：react-native-zss-rich-text-editor
 1）import { RichTextEditor } from 'react-native-zss-rich-text-editor'
-public richtextRef = React.createRef()
-<RichTextEditor
-    ref={this.richtextRef}
-    initialTitleHTML={'Title!!'}
-    initialContentHTML={'Hello <b>World</b> <p>this is a new paragraph</p> <p>this is another new paragraph</p>'}
-    editorInitializedCallback={() => this.onEditorInitialized()}
-/>
+...
 2）在android/app/build.gradle最下面加：
 project.afterEvaluate {
     apply from: '../../node_modules/react-native-zss-rich-text-editor/htmlCopy.gradle';
@@ -23,6 +17,10 @@ project.afterEvaluate {
 要装：react-native-webview-bridge
 
 3.解决坑：https://www.jianshu.com/p/037e9a9c619a
+
+4.sethtml后编辑内容后滚问题：
+https://github.com/wix/react-native-zss-rich-text-editor/issues/109
+解决：直接加contentInset={{ bottom: -2000 }}，下面会有固定空白这个，其他还没问题可以的。
 
 
 */

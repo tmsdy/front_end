@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body></body>
+<script>
+    // 对组合继承进行了优化，组合继承缺点在于继承父类函数时调用了构造函数，我们只需要优化掉这点就行了
+    function Parent(value) {
+        this.val = value
+        this.colors = ['red', 'blue']
+        Parent.prototype.getValue = function () {
+            console.log(this.val)
+        }
+    }
+    function Child(value) {
+        Parent.call(this, value)
+    }
+
+    // Child.prototype = Parent.prototype //这样赋值，给Child原型添加方法时Parent也会被添加
+    Child.prototype = Object.create(Parent.prototype, {
+        constructor: { // 不加这个Child的原型就没有constructor
+            value: Child,
+            enumerable: false,
+            writable: true,
+            configurable: true
+        }
+    })
+    Child.prototype.sayAge = function () {
+        console.log(21)
+    }
+    const child = new Child(1)
+    const parent = new Parent(1)
+    // 不管怎样下面都是true的
+    // console.log(child instanceof Child) //true
+    // console.log(child instanceof Parent) //true
+
+    console.log(child)
+    child.getValue() // 1
+    child.sayAge() // 21
+    parent.getValue() // 1
+    parent.sayAge() // 如果是直接赋值原型那么这里会打印21，是不对的
+
+
+</script>
+
+</html>
