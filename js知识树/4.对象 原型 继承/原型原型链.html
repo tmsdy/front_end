@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+</body>
+<script>
+    /* __
+        1.函数才有prototype(原型),实例对象从构造函数的原型"继承"属性。
+        2.p1.__proto__指针指向构造函数的原型Person.prototype，__proto__ 将对象和原型连接起来组成了原型链
+        3.prototype(原型)都有constructor，指向构造函数的
+    */
+    function Person() {
+    }
+    Person.prototype.name = 'Kevin';
+    var p1 = new Person();
+    console.log(Person.prototype)
+    console.log(p1.name)
+
+    console.log(p1.__proto__ === Person.prototype); //true
+    console.log(Person === Person.prototype.constructor); //true
+
+    // 顺便学习一个ES5的方法,可以获得对象的__proto__
+    console.log(Object.getPrototypeOf(p1) === p1.__proto__) // true
+    console.log(Object.getPrototypeOf(p1) === Person.prototype) // true
+
+</script>
+
+</html>

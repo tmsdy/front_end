@@ -1,13 +1,9 @@
+let obj = {
+    aaa: 'aaa',
 
-let currentCtid = 123
-let companyCtid = 123
-let params = {}
-
-if (currentCtid && currentCtid != companyCtid) {
-    params.ctid = currentCtid
-    params.targetCtid = currentCtid
-} else {
-    params.targetCtid = companyCtid
 }
 
-console.log(params)
+if (obj.arr && obj.arr.length) {
+    console.log('进来了')
+}
+console.log('没进来')
