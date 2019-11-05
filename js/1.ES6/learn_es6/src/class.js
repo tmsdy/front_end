@@ -40,17 +40,18 @@ export default (props) => {
         person.getCountry()
 
         class Child extends Parent {
-            constructor(name, age) {
+            constructor(name, height) {
                 // super(name)，相当于 ES5 的 Parent.call(this,name)
                 super(name);
-                this.age = age
+                this.height = height
             }
             getName() { // 可以重写父级的方法
                 console.log('getName')
             }
         }
-        let child = new Child('xiaofeifei', 5)
+        let child = new Child('xiaofeifei', 175)
         console.log(child)
+        console.log(Child.age)
         Child.hello() //hello // 父类的静态方法，可以被子类继承
         child.getName()
     }, [])

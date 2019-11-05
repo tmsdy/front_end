@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+
+        function Parent() {
+            this.aaa = '111'
+            this.sayAaa = () => {
+                console.log(this.aaa)
+            }
+            Parent.staticA = 'staticA'
+            Parent.prototype.hello = () => {
+                console.log('hello')
+            }
+        }
+
+        function Child(name) {
+            Parent.apply(this)
+            this.name = name
+            Child.prototype.sayName = () => {
+                console.log(this.name)
+            }
+        }
+
+        Child.prototype = Object.create(Parent.prototype)
+        Child.prototype.constructor = Child
+
+        Object.setPrototypeOf(Child, Parent)
+        // Child.__proto__ = Parent
+
+        let person = new Child('feifei')
+        console.log(person)
+        console.log(person.aaa)
+        console.log(person.name)
+        console.log(Child.staticA)
+        person.hello()
+        person.sayName()
+
+
+    </script>
+</body>
+
+</html>

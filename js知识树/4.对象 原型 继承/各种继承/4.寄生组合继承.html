@@ -8,23 +8,25 @@
         this.val = value
         this.colors = ['red', 'blue']
         Parent.staticA = 'staticA'
+        Parent.staticHello = () => {
+            console.log('staticHello')
+        }
         Parent.prototype.getValue = function () {
             console.log(this.val)
         }
     }
-    function Child(value) {
+    function Child(value) { // 1.构造继承：拿到父级的属性和方法，并支持传参
         Parent.call(this, value)
     }
 
+    // 2.寄生原型：拿到Parent的原型放到Child原型的__proto__上
     // Child.prototype = Parent.prototype //这样赋值，给Child原型添加方法时Parent也会被添加
-    Child.prototype = Object.create(Parent.prototype, {
-        constructor: { // 不加这个Child的原型就没有constructor
-            value: Child,
-            enumerable: false,
-            writable: true,
-            configurable: true
-        }
-    })
+    Child.prototype = Object.create(Parent.prototype)
+    Child.prototype.constructor = Child // 不加这个Child的原型就没有constructor,其实不加也没啥影响
+
+    // 3.继承静态属性：把Parent构造函数的静态属性放到Child构造函数的__proto__上
+    Object.setPrototypeOf ? Object.setPrototypeOf(Child, Parent) : (Child.__proto__ = Parent);
+
     Child.prototype.sayAge = function () {
         console.log(21)
     }
