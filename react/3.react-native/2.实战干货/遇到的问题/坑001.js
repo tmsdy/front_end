@@ -23,4 +23,9 @@ Unknown argument type '__attribute__' in method -[RCTAppState getCurrentAppState
 7.'React/RCTBridgeModule.h' file not found
 解决：https://stackoverflow.com/questions/41663002/react-rctbridgemodule-h-file-not-found
 
+8.library not found for -lPods-orangeWar_TS
+
+9.极光消息推送的identifier 'kJPFDidReceiveRemoteNotification'问题
+把"jcore-react-native": "^1.3.1","jpush-react-native": "^2.5.1",两个^去掉再安装build就行
+
 */
