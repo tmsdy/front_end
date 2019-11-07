@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<script>
 /*
 解释下浮动和它的工作原理？清除浮动的技巧
 浮动元素脱离文档流，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留。
@@ -23,11 +14,7 @@
     clear:both;
 }
 
-3,父级也一起浮动或者父级定义height 
+3,父级也一起浮动或者父级定义height
 4,设置`overflow`为`hidden`或者auto
+
 */
-</script>
-<body>
-    
-</body>
-</html>
