@@ -11,6 +11,11 @@
 
 3.多种情况跳到写邮件页面：state状态很多主组件有30多个，拆分了附件列表和自动联想
 
+4.跳选择联系人和文档，选好再跳回来的话带上选中的
+1）navigation.navigate: 再点返回又返回到选择页了
+2）StackActions.reset：返回webview页不行
+3）pop + replace: 原始邮件的编辑状态会丢掉
+
 
 
 */

@@ -32,5 +32,7 @@ const x = 10n;
 ++x;          // → 11n
 --x;          // → 9n
 console.log(typeof x);   //"bigint"
-
 */
+console.log(9999999999999999999999999999999999999999n)
+console.log(1n + 2n)
+console.log(1.255 * 100n)
