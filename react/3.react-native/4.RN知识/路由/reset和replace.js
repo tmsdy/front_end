@@ -10,8 +10,8 @@ navUtil.navigation.dispatch(StackActions.reset({
 
 // 2.路由replace
 // 选文件返回（跳1层路由）
-navUtil.navigation.dispatch(StackActions.pop({ n: 1 })) //干掉之前的WriteMail路由
-navUtil.navigation.dispatch(StackActions.replace({ //放现在的WriteMail路由
+navUtil.navigation.dispatch(StackActions.pop({ n: 1 })) // 干掉之前的WriteMail路由
+navUtil.navigation.dispatch(StackActions.replace({ // 替换掉当前最上层的路由
     routeName: 'WriteMail',
     params: {
         actionType: 'FileMail',
