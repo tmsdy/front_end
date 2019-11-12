@@ -17,8 +17,9 @@ $(SRCROOT)/../node_modules/react-native-splash-screen/ios
 Could not find or use auto-linked framework 'FileBrowser'
 见选择文件的步骤，建RNFileSelector文件夹...
 
-
-
+4.react-native-image-crop-picker: https://www.jianshu.com/p/71dee6198b56
+1) No known class method for selector 'labelColor'
+issue: https://github.com/ivpusic/react-native-image-crop-picker/issues/1154
 
 
 

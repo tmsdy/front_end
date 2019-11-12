@@ -9,11 +9,11 @@
     <title>demo</title>
 </head>
 <script>
-    var px = 1 / window.devicePixelRatio;
+    var px = 1 / window.devicePixelRatio; // iphone6的时候正好window.devicePixelRatio = 2
     document.write('<meta name="viewport" content="width=device-width,initial-scale=' + px + ',minimum-scale=1,maximum-scale=1,user-scalable=no" />');
     var html = document.documentElement;
-    // html.style.fontSize = html.clientWidth / 25 + 'px';
-    html.style.fontSize = html.clientWidth / 3.75 + 'px';
+    html.style.fontSize = html.clientWidth / 25 + 'px';
+    // html.style.fontSize = html.clientWidth / 3.75 + 'px';
 
     console.log(html.clientWidth, window.devicePixelRatio, html.style.fontSize)
 </script>

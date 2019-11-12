@@ -10,5 +10,8 @@ https://blog.csdn.net/tfy_2425482491/article/details/80882394
 
 3.删掉node_modules，xcode里面的配置并不会掉，还是在ios的project.pbxproj
 
+4.ios启动时候卡在Loading dependency graph
+试着：http://localhost:8081/index.bundle?platform=ios
+
 
 */
