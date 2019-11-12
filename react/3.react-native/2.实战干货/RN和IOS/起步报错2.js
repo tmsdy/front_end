@@ -21,6 +21,7 @@ Unknown argument type '__attribute__' in method -[RCTAppState getCurrentAppState
 6.启动报错多了可以product -> clean build folder试试
 
 7.'React/RCTBridgeModule.h' file not found
+product -> scheme -> edit scheme -> build里面取消Parallelise Build，在项目上面添加React
 解决：https://stackoverflow.com/questions/41663002/react-rctbridgemodule-h-file-not-found
 
 8.library not found for -lPods-orangeWar_TS

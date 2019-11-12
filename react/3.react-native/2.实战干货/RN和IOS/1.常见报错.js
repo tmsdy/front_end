@@ -15,6 +15,7 @@ $(SRCROOT)/../node_modules/react-native-splash-screen/ios
 
 3.react-native-file-selector的问题
 Could not find or use auto-linked framework 'FileBrowser'
+见选择文件的步骤，建RNFileSelector文件夹...
 
 
 
