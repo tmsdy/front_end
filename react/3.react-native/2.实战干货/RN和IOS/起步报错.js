@@ -18,7 +18,10 @@ https://www.jianshu.com/p/6d5283b7418d
 Unknown argument type '__attribute__' in method -[RCTAppState getCurrentAppState:error:]. Extend RCTConvert to support this type.
 解决：https://blog.csdn.net/askme_/article/details/101206086
 
-6.启动报错多了可以product -> clean build folder试试
+6.'config.h' file not found
+先 cd node_modules/react-native/third-party/glog-0.3.4
+再 ../../scripts/ios-configure-glog.sh
+终极解决：https://www.cnblogs.com/richard-youth/p/10002565.html
 
 7.'React/RCTBridgeModule.h' file not found
 product -> scheme -> edit scheme -> build里面取消Parallelise Build，在项目上面添加React

@@ -21,6 +21,9 @@ https://www.jianshu.com/p/8420b08062c7
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
+* ios : 走手动连接，Build Phases → Link Binary With Libraries
+把.a文件拖进去，然后imagecrop里面library还有2个，把它两的.framework也拖进去
+
 5.升级androidx：
 https://www.jianshu.com/p/b0800f590e6e
 https://www.jianshu.com/p/7dc111353328

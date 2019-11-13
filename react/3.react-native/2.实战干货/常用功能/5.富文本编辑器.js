@@ -14,7 +14,9 @@ project.afterEvaluate {
 3）RCTWebViewBridge的报错：
 参考：https://github.com/wix/react-native-zss-rich-text-editor/issues/15
 
-要装：react-native-webview-bridge
+要装：react-native-webview-bridge-updated
+
+* ios: 手动link react-native-webview-bridge-updated 这里面的.a文件就行了
 
 3.解决坑：https://www.jianshu.com/p/037e9a9c619a
 

@@ -15,7 +15,8 @@ $(SRCROOT)/../node_modules/react-native-splash-screen/ios
 
 3.react-native-file-selector的问题
 Could not find or use auto-linked framework 'FileBrowser'
-见选择文件的步骤，建RNFileSelector文件夹...
+见选择文件的步骤，建 RNFileSelector 文件夹...
+解决Xcode rename failed的问题: 在app的ios里面已经建过文件夹了
 
 4.react-native-image-crop-picker: https://www.jianshu.com/p/71dee6198b56
 1) No known class method for selector 'labelColor'
