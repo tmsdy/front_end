@@ -1,4 +1,5 @@
 /*
+参考：https://mp.weixin.qq.com/s/fMvSims4VBeoKs0JJhJYtA
 * 1.所有的对象都有__proto__指针，
 
 * 2.原型链查找: person1实例->__proto__(Person.prototype)->__proto__(Object.prototype)->__proto__(null)
