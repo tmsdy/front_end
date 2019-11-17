@@ -1,3 +1,4 @@
+# 目标：平均80%以上，两周内搞定。
 # vue
 - 响应式 & 双向绑定 & 生命周期
 - watch & computed & vue.nextTick
