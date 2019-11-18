@@ -16,7 +16,9 @@ https://www.jianshu.com/p/6d5283b7418d
 
 5.xcode11中RN启动时报错：
 Unknown argument type '__attribute__' in method -[RCTAppState getCurrentAppState:error:]. Extend RCTConvert to support this type.
-解决：https://blog.csdn.net/askme_/article/details/101206086
+return RCTReadString(input, "__unused") ||
+         RCTReadString(input, "__attribute__((__unused__))") ||
+         RCTReadString(input, "__attribute__((unused))");
 
 6.'config.h' file not found
 先 cd node_modules/react-native/third-party/glog-0.3.4

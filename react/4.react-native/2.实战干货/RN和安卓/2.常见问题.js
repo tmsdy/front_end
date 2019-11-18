@@ -15,4 +15,10 @@ requireNativeComponent: 'RNCVIewPager' was not found in the UIManager
 issue：https://github.com/ant-design/ant-design-mobile-rn/issues/663
 https://github.com/react-native-community/react-native-viewpager/issues/18
 
+4.Unable to resolve dependency -> 代理的问题
+gradle.properties有代理设置
+解决：https://www.jianshu.com/p/20e3c392f438
+装了ShadowsocksX代理的问题，解决后还要把代理干掉。
+
+
 */

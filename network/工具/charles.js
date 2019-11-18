@@ -6,6 +6,8 @@
 1）mac os proxy勾上这样电脑上走的请求全都可以被抓到
 2）mac抓https：Help -> SSL Proxying -> Install Charles Root Certificate，证书显示简介 -> 改为始终信任就行了
 
+模拟器抓包：Help -> SSL Proxying -> Install Charles Root Certificate in IOS simulator
+
 参考：https://www.jianshu.com/p/2712e53bb761
 3.手机抓https：Help -> SSL Proxying -> Install Charles Root Certificate，装ca证书
     要配好*:433的端口
