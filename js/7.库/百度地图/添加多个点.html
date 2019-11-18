@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+		body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=E0zbIHWLxiEiLUvjDgIzSFGFKXbfvxkN"></script>
+    <script type="text/javascript" src="data.json"></script>
+	<title>添加多个标注点</title>
+</head>
+<body>
+	<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+	let map = new BMap.Map("allmap")
+	map.centerAndZoom(new BMap.Point(121.47,31.235522), 12)
+    map.enableScrollWheelZoom()
+
+    let pointList = myData.pointList
+
+    pointList.forEach(({longitude, latitude},i) => {
+        let point =  new BMap.Point(longitude,latitude)
+        map.addOverlay(new BMap.Marker(point))
+    })
+
+</script>

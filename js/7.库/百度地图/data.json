@@ -1,0 +1,20 @@
+var myData = {
+    "pointList": [
+        {
+            "longitude": 121.470259,
+            "latitude": 31.237872
+        },
+        {
+            "longitude": 121.513919,
+            "latitude": 31.246946
+        },
+        {
+            "longitude": 121.48753,
+            "latitude": 31.232877
+        },
+        {
+            "longitude": 121.45361,
+            "latitude": 31.227933
+        }
+    ]
+}
