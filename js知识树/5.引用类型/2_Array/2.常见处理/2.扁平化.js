@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-</body>
-<script>
 var arr = [1, [2, [3, 4]]];
 // 1.toString暴力解决
 function flatten1(arr) {
@@ -28,6 +17,3 @@ function flatten2(arr) {
 console.log(flatten2(arr2))
 
 // 3.看underscore源码
-
-</script>
-</html>

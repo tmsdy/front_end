@@ -1,9 +1,7 @@
 {
-	"console": {
-		"prefix": "clg",
-		"body": [
-			"console.log('$1')"
-		],
-		"description": "Log output to console"
-	}
+  "console": {
+    "prefix": "cl",
+    "body": ["console.log($1)"],
+    "description": "Log output to console"
+  }
 }
