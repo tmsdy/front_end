@@ -6,6 +6,10 @@ comfirmSelect = () => {
         navUtil.navigation.dispatch(StackActions.pop({ n: 2 }))
     });
 }
+/** 问题
+ * 走test路由正常，走login -> webview -> rn写邮件，然后setParams失效了
+ * 干脆直接给navUtil.navigation赋值属性了
+ *  */
 // 2.选择文件确认
 navUtil.navigation.setParams({ fileList: fileParams })
 setTimeout(() => {
