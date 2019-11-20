@@ -1,7 +1,7 @@
 var arr = [1, [2, [3, 4]]];
 // 1.toString暴力解决
 function flatten1(arr) {
-    return arr.toString().split(',').map(item=>+item)
+    return arr.toString().split(',').map(item => +item)
 }
 // console.log(flatten1(arr))
 
@@ -9,11 +9,12 @@ function flatten1(arr) {
 var arr2 = [1, [2, [3, 4]]];
 function flatten2(arr) {
     while (arr.some(item => Array.isArray(item))) {
-      arr = [].concat(...arr)
-      // console.log(arr)
+        arr = [].concat(...arr)
+        // console.log(arr)
     }
     return arr;
 }
 console.log(flatten2(arr2))
+console.log([...[1, 2, [3, 4]]], [].concat(...[1, [2, [3, 4]]]))
 
 // 3.看underscore源码

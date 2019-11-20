@@ -2,7 +2,7 @@
 var firstName = 'Michael';
 var year = 1958;
 
-export {firstName, lastName, year};
+export { firstName, lastName, year };
 
 /* 
 Babel编译
@@ -14,7 +14,7 @@ Babel编译
 */
 "use strict";
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.year = exports.firstName = void 0; //先赋值undefined用void 0
 var firstName = 'Michael';
