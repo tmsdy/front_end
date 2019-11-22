@@ -6,6 +6,7 @@
 - vuex & 组件通信
 - 自定义指令 & 
 - diff算法 & 虚拟DOM
+- proxy
 
 # react
 - 高阶组件

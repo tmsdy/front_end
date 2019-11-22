@@ -12,4 +12,8 @@ RN端两种滚动实现方式
   1) ScrollView组件实现滚动
   2) View和responder手势响应系统实现滚动
 
+属性：
+scrollEnabled={false} //是否允许手势滚动
+keyboardShouldPersistTaps="always" //保证点击其他地方输入框不失焦
+
 */

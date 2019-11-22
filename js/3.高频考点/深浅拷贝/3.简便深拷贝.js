@@ -13,3 +13,5 @@ JSON.parse(JSON.stringify(obj1));
 */
 // var obj4 = $.extend(true,{},obj1) ;
 
+// 3.模拟实现一个深拷贝，并考虑对象相互引用以及 Symbol 拷贝的情况
+

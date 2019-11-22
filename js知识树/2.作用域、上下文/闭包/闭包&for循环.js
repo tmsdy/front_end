@@ -34,7 +34,7 @@ for (var i = 0; i < 3; i++) {
 当执行 data[0] 函数的时候，data[0] 函数的作用域链发生了改变：
 
 data[0]Context = {
-    Scope: [AO, 匿名函数Context.AO globalContext.VO]
+    Scope: [AO, 匿名函数Context.AO, globalContext.VO]
 }
 匿名函数Context = {
     AO: {

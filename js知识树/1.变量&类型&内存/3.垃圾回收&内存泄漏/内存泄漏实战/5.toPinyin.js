@@ -1,8 +1,8 @@
 // 由window.PinyinHelper window.PinyinFormat引起的内存泄漏
 export const toPinyin = (data = [], _option = {}) => {
     let option = Object.assign({
-            usekey: 'label'
-        },
+        usekey: 'label'
+    },
         _option
     )
     let {
@@ -27,18 +27,3 @@ export const toPinyin = (data = [], _option = {}) => {
     return data
 }
 
-{
-    alias: "付妍,fuyan,fy"
-    ctId: 260815373
-    inUse: 1
-    mobile: "18550935584"
-    nickName: "fy"
-    realName: "付妍"
-} {
-    alias: "付妍,fuyan,fy"
-    ctId: 260815373
-    inUse: 1
-    mobile: "18550935584"
-    nickName: "fy"
-    realName: "付妍"
-}

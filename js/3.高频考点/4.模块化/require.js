@@ -1,4 +1,4 @@
-var mod = require('./counter');
+var mod = require('./counter') // 值的拷贝
 
 console.log(mod.counter);  // 3
 mod.incCounter();
