@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+         使用姿势：1.拿不准某块代码会不会报错的时候
+         进catch的姿势：1.手动throw 2.写出让浏览器报错的代码
+         缺点：1.耗性能 2.捕获不到异步错误 3.可能会导致报错点更模糊
+        */
+        // let b = {}
+        // console.log(b.data.ccc)
+        try {
+            throw '123'
+            window.a.b !== 2
+
+            let a = {}
+            console.log(a.data.ccc) //
+
+        } catch (err) {
+            console.log(err)
+        }
+
+    </script>
+</body>
+
+</html>

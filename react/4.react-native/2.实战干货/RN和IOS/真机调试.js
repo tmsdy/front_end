@@ -15,12 +15,15 @@ https://stackoverflow.com/questions/37241579/install-claimed-to-have-succeeded-b
 edit scheme里的build和run是debug & 保证有手机对应版本的的调试包, clean build folder
 5）file -> Project Settings >  Build System > Legacy Build System
 
+添加测试机：
+1.开发网站里的devices添加
+2.profile里面edit fumamx_dev钩上测试机再下下来覆盖掉原来的。
+
 记录：
 1.Library not loaded: @rpath/QBImagePicker.framework
 link RSKImageCropper.framework和QBImagePicker.framework这两个，记得embed & sign
 
 2.保证iPhone Distribution:的信任是系统默认的
-
 
 加debugger ui产生的跨域问题：浏览器认为localhost请求本机地址:8081的bundle.js是跨域了
 https://blog.csdn.net/weixin_33904756/article/details/85965598

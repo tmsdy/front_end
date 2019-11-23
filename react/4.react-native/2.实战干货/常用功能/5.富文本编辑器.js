@@ -23,6 +23,7 @@ project.afterEvaluate {
 4.sethtml后编辑内容后滚问题：
 https://github.com/wix/react-native-zss-rich-text-editor/issues/109
 解决：直接加contentInset={{ bottom: -2000 }}，下面会有固定空白这个，其他还没问题可以的。
+解决2: 直接去源码里把window.scrollTo注释掉。
 
 
 */

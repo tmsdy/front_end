@@ -34,8 +34,8 @@ function NoDataDesc({ keyword }) {
       不存在标题/内容中含有 <span className='keyword'>{keyword}</span> 的文章！
     </span>
   ) : (
-    <span>暂无数据...</span>
-  )
+      <span>暂无数据...</span>
+    )
 }
 
 function Home(props) {
@@ -138,31 +138,31 @@ function Home(props) {
             {props.windowWidth > 1300 ? (
               <Preview list={list} />
             ) : (
-              <>
-                <div className='drawer-btn' onClick={e => setDrawerVisible(true)}>
-                  <Icon type='menu-o' className='nav-phone-icon' />
-                </div>
-                <Drawer
-                  title='文章列表'
-                  placement='right'
-                  closable={false}
-                  onClose={e => setDrawerVisible(false)}
-                  visible={drawerVisible}
-                  getContainer={() => document.querySelector('.app-home')}>
-                  <Preview list={list} showTitle={false} />
-                </Drawer>
-              </>
-            )}
+                <>
+                  <div className='drawer-btn' onClick={e => setDrawerVisible(true)}>
+                    <Icon type='menu-o' className='nav-phone-icon' />
+                  </div>
+                  <Drawer
+                    title='文章列表'
+                    placement='right'
+                    closable={false}
+                    onClose={e => setDrawerVisible(false)}
+                    visible={drawerVisible}
+                    getContainer={() => document.querySelector('.app-home')}>
+                    <Preview list={list} showTitle={false} />
+                  </Drawer>
+                </>
+              )}
           </>
         ) : (
-          <>
-            {keyword && (
-              <div className='no-data'>
-                <Empty description={<NoDataDesc keyword={keyword} />} />
-              </div>
-            )}
-          </>
-        )}
+            <>
+              {keyword && (
+                <div className='no-data'>
+                  <Empty description={<NoDataDesc keyword={keyword} />} />
+                </div>
+              )}
+            </>
+          )}
 
         <Pagination current={parseInt(page) || 1} onChange={handlePageChange} total={total} />
       </div>

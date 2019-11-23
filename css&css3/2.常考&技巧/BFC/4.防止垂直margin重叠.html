@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <style>
-	/*BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。*/
-	.wrap {
-		overflow: hidden;
-	}
-	p {
-		color: #f55;
-		background: #fcc;
-		width: 200px;
-		line-height: 100px;
-		text-align:center;
-		margin: 100px;
-	}
+    /*BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。*/
+    .wrap {
+        overflow: hidden;
+    }
+
+    p {
+        color: #f55;
+        background: #fcc;
+        width: 200px;
+        line-height: 100px;
+        text-align: center;
+        margin: 100px;
+    }
 </style>
+
 <body>
-	<p>Haha</p>
-	<div class="wrap">
-		<p>Hehe</p>
-	</div>
+    <p>Haha</p>
+    <div class="wrap">
+        <p>Hehe</p>
+    </div>
 </body>
+
 </html>
