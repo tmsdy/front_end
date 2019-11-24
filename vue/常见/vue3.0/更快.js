@@ -1,9 +1,8 @@
-
 /*
 
 1.数据劫持：Object.defineProperty -> Proxy
 1）js喜欢对数据的结构越稳定越好，Object.defineProperty总是改变结构的话那可优化性就低了
-2）Proxy只是对原始对象做个Proxy，不需要很大的改动
+2）Proxy只是对原始对象做个Proxy，没有对原始对象太多的改动
 
 2.vdom重构：比2.0快了一倍
 1）slot默认编译成函数，使父子组件不再有更新的强耦合了
@@ -20,7 +19,7 @@
     <p class="child">child</p>
     <p class="child">child</p>
 </div>
-vue这边很容易看出是就一个msg变了容易做优化，react的creatElement就比较难分析了
+vue这边很容易看出是就一个msg变了容易做优化，react jsx的creatElement就比较难分析了
 react解决方法是时间分片，造成了伤害的一种弥补。
 
 理想的情况就做一个msg这个节点的diff就好了
