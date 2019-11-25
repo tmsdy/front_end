@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        const { createApp, reactive, computed, effect } = Vue
+
+        const myComp = {
+            template: `
+                <button @click="addCount">Count is {{state.count}}</button>
+                <p>{{state.name}}</p>
+            `,
+            setup() {
+                const state = reactive({
+                    count: 0,
+                    name: 'feifei'
+                })
+                effect(() => {
+                    console.log('created')
+                })
+                function addCount() {
+                    state.count += 1
+                }
+                return {
+                    state,
+                    addCount
+                }
+            }
+        }
+        createApp().mount(myComp, '#app')
+    </script>
+</body>
+
+</html>
