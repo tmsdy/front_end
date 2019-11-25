@@ -13,4 +13,8 @@ https://blog.csdn.net/lan_yangbi/article/details/82775812
 
 3.记得手机要设置仅限充电
 
+4.打log
+import android.util.Log;
+Log.d('test','test======');
+
 */

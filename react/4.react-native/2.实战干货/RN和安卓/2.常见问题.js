@@ -20,5 +20,7 @@ gradle.properties有代理设置
 解决：https://www.jianshu.com/p/20e3c392f438
 装了ShadowsocksX代理的问题，解决后还要把代理干掉。
 
+5.由于包没导入报红：cannot resolve symbol Uri
+解决：alt+enter自动导入包
 
 */

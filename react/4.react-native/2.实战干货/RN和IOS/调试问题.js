@@ -8,4 +8,6 @@
 2.Development cannot be enabled while your device is locked
 要信任电脑才能安装
 
+3.
+
 */
