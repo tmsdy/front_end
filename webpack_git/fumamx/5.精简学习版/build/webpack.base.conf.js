@@ -24,18 +24,23 @@ module.exports = {
         }
     },
     module: {
-        noParse: function (content) {
+        noParse: function (content) { // 不去解析依赖
             return /jquery|lodash|underscore/.test(content);
         },
         rules: [
             ...(isProd ? [] : [createLintingRule()]),
             {
                 test: /\.css$/,
-                use: ['vue-style-loader', 'css-loader', 'postcss-loader']
+                use: ['cache-loader', 'vue-style-loader', 'css-loader', 'postcss-loader']
+                // 加了cache-loader，OptmizeCssAssetsWebpackPlugin时间 23s -> 13s
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                // loader: 'vue-loader',解析和转换.vue->js/css/html，再给对应loader处理
+                use: [
+                    'cache-loader',
+                    'vue-loader'
+                ]
             },
             {
                 test: /\.js$/,

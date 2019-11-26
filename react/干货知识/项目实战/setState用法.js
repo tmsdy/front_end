@@ -22,6 +22,12 @@ this.setState({
         this.closeCopyDark()
     }
 })
+// 同步setState
+setStateAsync(state) {
+    return new Promise((resolve) => {
+        this.setState(state, resolve)
+    })
+}
 
 // 错误用法
 state = {
