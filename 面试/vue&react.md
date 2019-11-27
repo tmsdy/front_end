@@ -1,9 +1,8 @@
 # 目标：平均80%以上，两周内搞定。
 # vue
-- 响应式 & 双向绑定 & 生命周期
+- 生命周期 & 响应式 & 双向绑定 
 - watch & computed & vue.nextTick
-- mixin & 
-- vuex & 组件通信
+- mixin & 组件通信 & vuex
 - 自定义指令 & 
 - diff算法 & 虚拟DOM
 - proxy
