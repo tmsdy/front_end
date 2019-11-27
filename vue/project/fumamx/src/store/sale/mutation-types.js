@@ -1,7 +1,0 @@
-// 客户信息
-export const SET_CUSTOMERINFO = 'SET_CUSTOMERINFO'
-// 路由传参
-export const SET_ROUTPARAMETERS = 'SET_ROUTPARAMETERS'
-
-// 下推传参
-export const SET_PARAMERSDATA = 'SET_PARAMERSDATA'

@@ -1,9 +1,0 @@
-// 货币
-export const SET_CURRENCY = 'SET_CURRENCY'
-export const SET_CURRENCYSHOW = 'SET_CURRENCYSHOW'
-// 计量单位
-export const SET_UNITLIST = 'SET_UNITLIST'
-export const SET_UNITLISTSHOW = 'SET_UNITLISTSHOW'
-// 港口
-export const SET_PORTLIST = 'SET_PORTLIST'
-export const SET_PORTLISTSHOW = 'SET_PORTLISTSHOW'

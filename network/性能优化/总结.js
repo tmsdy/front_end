@@ -17,6 +17,6 @@
 1）预加载：在浏览器空闲时间(first contentful paint后)开始加载别的页面必要的文件，优先级是lowest的
 <link rel="prefetch" href="<%= publicPath %>/static/UEditor/ueditor.all.js" />
 2）懒加载：请求到图片列表的地址，没在页面上显示的图片src=""，当快进入可视区再赋值src
-3）
+3）按需加载：import路由动态导入组件，这样不用把所有的路由页面打包到一个js文件中，按需来加载
 
 */

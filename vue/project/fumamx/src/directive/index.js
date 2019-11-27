@@ -1,5 +1,0 @@
-import './buriedPoint/index'
-import './imgSrc/index'
-import './dialogDrag/index'
-import './accessAuthority/index'
-import './elementEdit/index'

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!-- 
+        用js模拟DOM结构，DOM变化的对比，放在JS层来做
+        提高重绘性能(哪块变了改哪块)
+        尤雨溪谈vdom：https://www.zhihu.com/question/31809713
+     -->
+    <ul id="list">
+        <li class="item">Item1</li>
+        <li class="item">Item2</li>
+    </ul>
+    <!-- js模拟的DOM结构
+        当dom改变会生成一个新的模拟DOM，和原来这个对比，只修改变化DOM节点
+        性能比较：dom操作是昂贵的(因为里面属性很多,而且会引起回流)，
+        js运行效率高，渲染只会触发一次回流
+        {
+            tag:'ul',
+            attr:{
+                id:'list'
+            },
+            children:[
+                {
+                    tag:'li',
+                    attrs:{ className:'item' },
+                    children:['Item1']
+                },
+                {
+                    tag:'li',
+                    attrs:{ className:'item' },
+                    children:['Item2']
+                },
+            ]
+        }
+    -->
+</body>
+
+</html>

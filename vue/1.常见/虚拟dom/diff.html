@@ -1,0 +1,42 @@
+<!-- 
+体现在两种patch用法上
+1.patch(container,vnode)
+<ul id="list">
+     <li class="item">item 1</li>
+ </ul>
+ {
+     tag:'ul',
+     attrs:{
+         id:'list'
+     },
+     children:[
+        {
+            tag:'li' ,
+            attrs:{
+                className:'item'
+            },
+            children:['item 1']
+        }
+     ]
+ }
+ patch里面的createElement方法把vnode生成真实DOM渲染到容器中
+
+ 2.patch(vnode,newVnode)
+patch里面的updateChildren(vnode,newVnode)方法(简化版)
+
+ function updateChildren(vnode,newVnode){
+     var children = vnode.children || [] ;
+     var newChildren = newVnode.children || [] ;
+     // 遍历现有的 children
+     children.forEach((child,i)=>{
+        var newChild = newChildren[i] ;
+        if(newChild==null) return ;
+        if(child.tag === newChild.tag){ // tag一样，递归更新
+            updateChildren(child,newChild) ;
+        }else{ //不一样就替换
+            replaceNode(child,newChild) ;
+        }
+     })
+ }
+
+ -->
