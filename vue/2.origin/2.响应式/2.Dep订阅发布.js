@@ -15,7 +15,7 @@ Dep.prototype.removeSub = function removeSub(sub) {
 
 Dep.prototype.depend = function depend() {
     if (Dep.target) {
-        Dep.target.addDep(this);
+        Dep.target.addDep(this); // 就是Watcher.addDep(this)
     }
 };
 

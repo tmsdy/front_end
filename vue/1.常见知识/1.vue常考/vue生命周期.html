@@ -36,11 +36,11 @@
         updated() {//只有和模版中的数据绑定了才会发生更新
             console.log('updated')
         },
-        beforeDestory() { //销毁前
+        beforeDestory() { // 适合移除事件、定时器，防止内存泄漏
             console.log('beforeDestory')
         },
-        // 卸掉Vue实例上的watchers，所有的事件监听器会被移除，所有的子实例也会被销毁
-        distoryed() { //销毁后
+        // 卸掉Vue实例上的watchers，子实例被销毁，
+        distoryed() { //销毁后才走这儿
             console.log('distoryed')
         }
     })

@@ -55,7 +55,7 @@ function defineReactive(obj, key, val, customSetter, shallow) {
     Object.defineProperty(obj, key, {
         enumerable: true,
         configurable: true,
-        get: function reactiveGetter() {
+        get: function reactiveGetter() { // 实例化过程中，会对模板中的属性进行求值，触发依赖收集
             var value = getter ? getter.call(obj) : val;
             if (Dep.target) {
                 dep.depend();//收集当前的渲染Watcher：Dep.target

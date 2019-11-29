@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./style.css" />
+
+<body>
+    <div class="animation-type">Animation type: </div>
+    <h1>Animate with <span class="animation-name"></span></h1>
+
+    <div id="animate" class=macbook></div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        var animations = ["top-left", "translate"];
+
+        animations.forEach(anim => {
+            $(".animation-type").append(
+                `<label><input type="radio" name="animation-type" value="${anim}">${anim}</label>`
+            );
+        });
+
+        $('input[type="radio"]').on('change', function () {
+            console.log('this.value', this.value);
+            setAnimation(this.value);
+        });
+
+        $('input[type="radio"]').eq(0).click();
+
+        function setAnimation(animName) {
+            animations.forEach(anim => {
+                document.body.classList.remove(anim);
+            });
+
+            $(".animation-name").text(animName);
+
+            document.body.classList.add(animName);
+        }
+
+        var machines = 10;
+
+        $("<button></button")
+            .text("clear")
+            .click(function moar() {
+                $("[id=animate]")
+                    .slice(1)
+                    .remove();
+            })
+            .prependTo("body");
+
+        $("<button></button")
+            .text("add " + machines + " more macbooks")
+            .click(function moar() {
+                $("#animate")
+                    .clone()
+                    .insertAfter("#animate");
+                if (machines-- > 0) setTimeout(moar, 15);
+            })
+            .prependTo("body");
+
+
+    </script>
+</body>
+
+</html>

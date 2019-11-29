@@ -1,7 +1,4 @@
-Vue.prototype.$mount = function (el, hydrating) { //runtime-only版本的vue会直接走到这里
-    el = el && inBrowser ? query(el) : undefined;
-    return mountComponent(this, el, hydrating)
-};
+
 var mount = Vue.prototype.$mount; //缓存的默认的mount方法
 
 Vue.prototype.$mount = function (el, hydrating) { //runtime+compiler版本会重新赋值$mount方法
@@ -46,13 +43,13 @@ function mountComponent(vm, el, hydrating) {
         vm._update(vm._render(), hydrating);
     };
 
-    new Watcher(vm, updateComponent, noop, {
+    new Watcher(vm, updateComponent, noop, { // 实例化渲染Watcher，里面调this.get()更新页面
         before: function before() {
             if (vm._isMounted && !vm._isDestroyed) {
                 callHook(vm, 'beforeUpdate');
             }
         }
-    }, true); //实例化渲染Watcher
+    }, true);
     hydrating = false;
 
     if (vm.$vnode == null) {
