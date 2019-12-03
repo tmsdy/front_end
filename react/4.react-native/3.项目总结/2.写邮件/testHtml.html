@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <!-- <div style = "height: 40px;line-height: 40px;"> ——原始邮件—— </div> -->
+    <div id="toggleShow" contenteditable="false" style="color: #007fff;height: 40px;line-height: 40px;">——隐藏原邮件——</div>
+    <div id="wrapper">
+        123
+    </div>
+    <script>
+        var divToggleShow = document.getElementById('toggleShow')
+        var divWrapper = document.getElementById('wrapper')
+        var showOff = true
+        var tempHtml = ''
+        divToggleShow.addEventListener('click', function (e) {
+            console.log('clicked')
+            if (showOff) {
+                divWrapper.style.display = 'none'
+                tempHtml = divWrapper.innerHTML
+                divWrapper.innerHTML = ''
+                divToggleShow.innerText = '——显示原邮件——'
+                showOff = false
+            } else {
+                if (tempHtml) {
+                    divWrapper.innerHTML = tempHtml
+                }
+                divWrapper.style.display = 'block'
+                divToggleShow.innerText = '——隐藏原邮件——'
+                showOff = true
+            }
+        })
+
+        divToggleShow.click()
+
+
+    </script>
+</body>
+
+</html>

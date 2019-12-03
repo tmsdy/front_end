@@ -1,5 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-<!-- 
+    .div1 {
+        /* font-size: 0; */
+        border-bottom: 1px solid gray;
+    }
+
+    .span1 {
+        display: inline-block;
+    }
+
+    /* 内联元素的margin padding都可以设置 */
+    .span2 {
+        background-color: pink;
+        padding-left: 30px;
+        margin-left: 50px;
+    }
+
+    .img1 {
+        width: 80px;
+        height: 120px;
+        object-fit: contain;
+    }
+
+    #div2 {
+        height: 40px;
+        background-color: #ccc;
+    }
+</style>
+
+<body>
+    <div class="div1">
+        <!-- 两个inline-block在一起，没有内容的会默认占一个字符的位置 -->
+        <span class="span1"></span>
+        <img class="img1" src="./game03.png" alt="">
+    </div>
+    <div>123</div>
+    <span class="span2">我是span</span>
+    <div id="div2">
+        div2div2div2div2
+    </div>
+    <!-- 
 
 块级元素：div、h1等、hr、p、ul、table
 特点：1.独占一行，宽度默认100% 2.可容纳块级或者内联元素 3.可设置宽高边距
@@ -15,3 +61,15 @@ img和input是display: inline-block的
   3.position:absolute与position:fixed.都会使得原先的行内元素变为块级元素。
 
  -->
+</body>
+<script>
+    setTimeout(() => {
+        let oDiv = document.getElementById('div2')
+        oDiv.style.backgroundColor = 'pink'
+        // while (true) {} // 死循环了这样一直不到渲染引擎工作，所以改不了颜色
+        console.log(getComputedStyle(oDiv).backgroundColor)
+    }, 1000);
+
+</script>
+
+</html>

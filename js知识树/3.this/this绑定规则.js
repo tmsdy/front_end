@@ -1,20 +1,20 @@
 /*
-this 五种绑定规则
+this绑定规则：this是在上下文创建的时候根据下面的规则确定的。
 
-1.默认绑定: this指向全局，严格模式是undefined
+* 1.普通函数调用: this指向全局，严格模式是undefined
 var a = 2;
 function foo() {
-    console.log( this.a ) //2 
+    console.log( this.a ) //2
 }
-foo(); 
+foo();
 
-2.隐式绑定
+* 2.对象方法的调用：this指向调用对象。
 function foo() {
     console.log( this.a )
 }
 var obj = {
     a: 2 ,
-    foo: foo 
+    foo: foo
 }
 obj.foo() ; //2
 1) 严格来说foo函数不属于obj对象
@@ -22,15 +22,15 @@ obj.foo() ; //2
 中的this绑定到这个上下文对象
 3）丢失this绑定：如果单独引用obj的foo函数出来执行，那foo里的this是指向全局对象的
 
-3.显示绑定：call、apply、bind这些(优先级比较高)
-
-4.new foo() this绑定的是新创建出来的对象
+* 3.new foo() this绑定的是新创建出来的对象
 function foo(a) {
     this.a = a;
 }
 var bar = new foo(2); // bar和foo(..)调用中的this进行绑定
 console.log( bar.a ); // 2
 
-5.箭头函数绑定：由外层函数的词法作用域决定this
+* 4.显示绑定：call、apply、bind这些(优先级比较高)
+
+* 5.箭头函数绑定：由外层函数的词法作用域决定this
 
  */

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <script>
+
+        // 代码里应该尽量用settimeout代替setinterval，setinterval在时间间隔很短的时候会产生回调累积
+        // 哪个定时器在上面就先打印哪个
+        // setInterval(() => {
+        //     console.log('setInterval')
+        // }, 2000);
+        // setTimeout(() => {
+        //     console.log('setTimeout')
+        // }, 2000);
+
+        setTimeout(() => {
+            console.log('setTimeout')
+        });
+        // setInterval(() => { //基本上就是每一帧打印一次
+        //     console.log('setInterval')
+        // });
+
+    </script>
+</body>
+
+</html>
