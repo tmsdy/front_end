@@ -36,5 +36,9 @@ last-modified缺点：
 
 1.第一次请求服务器会返回last-Modified和Etag，再次请求该资源时会带上对应的if-modified-since、if-none-match
 
+最佳实践：
+1.基本不变的文件用max-age强缓存，只有当名字变了才去请求。
+2.经常变动的文件设置no-cache协商缓存，每次都去走一遍服务器看看有没有变。
+
 
 */

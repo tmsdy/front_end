@@ -8,26 +8,26 @@ import ReactDOM from 'react-dom'
 
 class App extends React.Component {
 
-        constructor(){
-            super();
-            this.state = {
-                val:'100',
-                result:''
-            }
+    constructor() {
+        super();
+        this.state = {
+            val: '100',
+            result: ''
         }
+    }
 
-        handleChange = (e) =>{ //e是事件源
-            let val = e.target.value;
-            this.setState({val});
-        }
-        render(){
-            let {val} = this.state
-            return (<div>
-                受控组件
-                <input type="text" value={val} onChange={this.handleChange}/>
-                {val}<br />
-            </div>)
-        }
+    handleChange = (e) => { //e是事件源
+        let val = e.target.value;
+        this.setState({ val });
+    }
+    render() {
+        let { val } = this.state
+        return (<div>
+            受控组件
+                <input type="text" value={val} onChange={this.handleChange} />
+            {val}<br />
+        </div>)
+    }
 
 }
 export default App

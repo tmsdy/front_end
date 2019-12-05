@@ -6,7 +6,7 @@ import axios from 'axios'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state:{
+    state: {
         todos: []
     },
     mutations: {
@@ -17,7 +17,7 @@ export default new Vuex.Store({
             state.todos.unshift(playload);
         },
         remove(state, playload) {
-            state.todos = state.todos.filter(todo => todo.id != playload.id );
+            state.todos = state.todos.filter(todo => todo.id != playload.id);
         }
     },
     actions: {
@@ -32,31 +32,31 @@ export default new Vuex.Store({
         },
 
         // 添加新任务
-        postNewTask(store, {title}) {
+        postNewTask(store, { title }) {
             return axios.post('/api/add', {
                 title
-            }).then( response => {
+            }).then(response => {
                 if (!response.data.error) {
                     store.commit('add', response.data);
                     return Promise.resolve(response);
                 } else {
                     return Promise.reject(response);
                 }
-            } );
+            });
         },
 
         // 删除
         remove(store, payload) {
             return axios.post('/api/remove', {
                 id: payload.id
-            }).then( response => {
+            }).then(response => {
                 if (!response.data.error) {
-                    store.commit('remove', {id: payload.id});
+                    store.commit('remove', { id: payload.id });
                     return Promise.resolve();
                 } else {
                     return Promise.reject();
                 }
-            } );
+            });
         }
     }
 });
