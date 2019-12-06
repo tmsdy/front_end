@@ -22,8 +22,8 @@ rn版本0.60前的对应0.x的react-native-file-selector的步骤：
 2.走一波项目 -> Build Settings -> Search Paths -> Framework Search Paths把.framework的路径拉进来还有Header Search Path把.a文件路径拉进来
 !选择文件问题：卡在fileBrowser.framework找不到。万总决定不做了就不搞了。
 
-4.
-
+* 4.新的选文件库：react-native-document-picker 强大给劲
+http://npm.taobao.org/package/react-native-document-picker
 
 
 */

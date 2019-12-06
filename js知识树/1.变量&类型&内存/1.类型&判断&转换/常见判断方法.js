@@ -7,3 +7,5 @@ function isPlainObject(obj) {
 function isObject(obj) {
     return obj !== null && typeof obj === 'object'
 }
+
+console.log(JSON.stringify({}) === '{}') //true

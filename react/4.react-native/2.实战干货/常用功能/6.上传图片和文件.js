@@ -7,7 +7,7 @@ let formData = new FormData()
 formData.append('file', {
     uri: path,
     type: mime,
-    name,
+    name: escape(name),
     size
 })
 axios({
@@ -21,7 +21,9 @@ axios({
     console.log('res===', res)
 })
 
-3.
+3.注意：
+对name字段编码（后台接收需要解码，才能得到真正的文件名），不然会报类似的错误
+unexpected char 0*6587 at 34 in content-disposition
 
 
 */

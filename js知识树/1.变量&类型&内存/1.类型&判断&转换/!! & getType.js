@@ -4,7 +4,6 @@ function getType(obj) {
         ? Object.prototype.toString.call(obj).replace('[object ', '').replace(']', '').toLowerCase()
         : typeof obj;
 }
-
 // 调用
 getType(null); // -> null
 getType(undefined); // -> undefined
