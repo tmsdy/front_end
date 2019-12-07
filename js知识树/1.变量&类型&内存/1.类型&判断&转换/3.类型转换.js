@@ -24,9 +24,10 @@
 */
 console.log(null == undefined) //true
 console.log('1' == 1) //true
-console.log('1' == true) //true
+console.log('1' == true) //true true会转成1
+console.log('2' == true) //false
 console.log([] == false) //true
 console.log([] == []) // false
 console.log([] == ![]) //true
 
-console.log('1' == true)
+
