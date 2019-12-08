@@ -14,9 +14,14 @@
     参考：https://juejin.im/post/5d00820b5188255ee806a1c7#heading-6
   1.3：开启浏览器缓存
 
-2. 绿线
+2. 加载事件先后: FP前面都是白屏状态，LCP内容都能看到了。
+DCL：DomContentedLoaded
 FP: first-paint
 FCP: first-contentful-paint
+LCP: largest-contentful-paint
+L: onload
+
+3.使用服务端渲染ssr防止白屏，用服务端渲染静态HTML来获得更快的首次有效绘制，一旦JavaScript加载完毕再将页面接管下来。
 
 
 
