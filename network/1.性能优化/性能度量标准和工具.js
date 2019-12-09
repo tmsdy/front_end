@@ -16,8 +16,8 @@ js的执行不能超过100ms，会阻塞渲染让用户感觉到卡，大概是�
 3. 加载事件先后: FP前面都是白屏状态，LCP内容都能看到了。
 DCL：DomContentedLoaded
 FP: first-paint
-FCP: first-contentful-paint
-LCP: largest-contentful-paint
+第一屏内容 FCP: first-contentful-paint
+整屏内容 LCP: largest-contentful-paint
 L: onload
 取值：performance.getEntriesByName('first-contentful-paint)
 

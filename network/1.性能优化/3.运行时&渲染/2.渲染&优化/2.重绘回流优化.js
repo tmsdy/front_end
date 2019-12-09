@@ -1,5 +1,5 @@
 /*
-
+浏览器渲染详细可以看这个：https://mp.weixin.qq.com/s/sU4Y2pBU659O1vNyZSSX5Q
 重绘：只是元素外观风格的变化，比如各种color、border和background、box-shadow
 回流(重新布局): 元素的尺寸、布局的变化、盒子模型相关、定位浮动相关、文字结构相关
 

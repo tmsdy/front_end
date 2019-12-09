@@ -21,4 +21,7 @@ babel-loader缓存：loader: 'babel-loader?cacheDirectory=true'
 2) Scope hoisting：它们可以检查import链，并尽可能的将散乱的模块放到一个函数中，前提是不能造成代码冗余。所以只有被引用了一次的模块才会被合并。使用Scope Hoisting可以让代码体积更小并且可以降低代码在运行时的内存开销，同时它的运行速度更快。前面2.1节介绍了变量从局部作用域到全局作用域的搜索过程越长执行速度越慢，Scope Hoisting可以减少搜索时间。
 3）Code-splitting：可以使用import语法实现按需加载。
 
+* 4.静态文件版本号
+给css/js文件打上hash戳，这样上新版本的时候html引用的hash戳不一样就会重新下载文件了。
+
 */
