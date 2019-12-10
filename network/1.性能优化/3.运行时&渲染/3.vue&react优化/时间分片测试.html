@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div id="root"></div>
+    <script>
+        // 1.一下子吃进10000个DIV 虽然全程时间短但是有明显的白屏（7～8帧的白屏）
+        // function randomHexColor() { //随机生成十六进制颜色
+        //     return "#" + ("00000" + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6)
+        // }
+        // setTimeout(function () {
+        //     var k = 0
+        //     var root = document.getElementById("root")
+        //     for (var i = 0; i < 10000; i++) {
+        //         k += new Date - 0
+        //         var el = document.createElement("div")
+        //         el.innerHTML = k + Math.random()
+        //         root.appendChild(el)
+        //         el.style.cssText = "background:" + randomHexColor() + ";height:30px;"
+        //     }
+        // });
+
+        // 2.requestAnimationFrame分片插入，虽然全程时间长但是没有白屏！
+        var root = document.getElementById("root")
+        function randomHexColor() { //随机生成十六进制颜色
+            return "#" + ("00000" + (Math.random() * 0x1000000 << 0).toString(16)).substr(-6)
+        }
+        setTimeout(function () {
+            function loop(n) {
+                var k = 0
+                for (var i = 0; i < 100; i++) {
+                    k += new Date - 0
+                    var el = document.createElement("div")
+                    el.innerHTML = k + Math.random()
+                    root.appendChild(el)
+                    el.style.cssText = "background:" + randomHexColor() + ";height:30px;"
+                }
+                if (n) {
+                    requestAnimationFrame(function () { // 2.4s时间
+                        loop(n - 1)
+                    })
+                }
+            }
+            loop(100)
+        })
+
+
+    </script>
+</body>
+
+</html>
