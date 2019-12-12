@@ -4,7 +4,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    //先找到每个入口，然后从各个入口分别出发，找到依赖的模块，然后生成一个Chunk，把Chunk写到文件系统中(Assets)
+    /*
+    1.先找到每个入口，然后从各个入口分别出发，找到依赖的模块，然后生成一个Chunk，把Chunk写到文件系统中(Asset资源)
+    2.一个入口对应一个Chunk，但不一定对应一个asset，因为可能有代码分割、公共模块抽离等
+    */
     entry: {
         index: './src/index.js',
         base: './src/base.js'
@@ -40,7 +43,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
-            chunks: ['vendor', 'index'],
+            chunks: ['vendor', 'index'],//在产出的html中引入哪些代码块
             title: 'index标题',
             hash: true,
             minify: {

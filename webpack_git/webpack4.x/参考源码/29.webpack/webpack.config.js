@@ -104,24 +104,25 @@ module.exports = {
                 //多个loader是有顺序要求的，从右往左写，因为转换的时候是从右往左转换
                 //此插件先用css-loader处理一下css文件
                 //如果压缩
-                loader: cssExtract.extract({
-                    use: ["css-loader?minimize"]
-                })
-                //loader: ["style-loader", "css-loader", "postcss-loader"]
+                // loader: cssExtract.extract({
+                //     use: ["css-loader?minimize"]
+                // })
+                // loader: 'css-loader'
+                loader: ["style-loader", "css-loader", "postcss-loader"]
             },
             {
                 test: /\.less$/,
-                loader: lessExtract.extract({
-                    use: ["css-loader?minimize", "less-loader"]
-                })
-                //use: ["style-loader", "css-loader", "less-loader"]
+                // loader: lessExtract.extract({
+                //     use: ["css-loader?minimize", "less-loader"]
+                // })
+                use: ["style-loader", "css-loader", "less-loader"]
             },
             {
                 test: /\.scss$/,
-                loader: sassExtract.extract({
-                    use: ["css-loader?minimize", "sass-loader"]
-                })
-                // use: ["style-loader", "css-loader", "sass-loader"]
+                // loader: sassExtract.extract({
+                //     use: ["css-loader?minimize", "sass-loader"]
+                // })
+                use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
                 test: /\.(html|htm)/,
