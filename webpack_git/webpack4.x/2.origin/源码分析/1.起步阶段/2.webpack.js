@@ -9,10 +9,7 @@ const webpack = (options, callback) => {
     for (const plugin of options.plugins) { // 注册所有自定义的插件
         plugin.apply(compiler);
     }
-    // 触发事件
-    compiler.hooks.environment.call();
-    compiler.hooks.afterEnvironment.call();
-    // 激活options配置：根据传入的options，挂上各种内置插件
+    // options配置挂一些插件 + 挂各种内置插件
     compiler.options = new WebpackOptionsApply().process(options, compiler);
     // ...
     return compiler;

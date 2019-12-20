@@ -7,36 +7,35 @@ string ref
 */
 class MyComponent extends React.Component {
     componentDidMount() {
-      this.refs.myRef.focus();
+        this.refs.myRef.focus();
     }
     render() {
-      return <input ref="myRef" />;
+        return <input ref="myRef" />;
     }
-  }
-  
-  // callback ref
-  class MyComponent extends React.Component {
+}
+
+// callback ref
+class MyComponent extends React.Component {
     componentDidMount() {
-      this.myRef.focus();
+        this.myRef.focus();
     }
     render() {
-      return <input ref={(ele) => {
-        this.myRef = ele;
-      }} />;
+        return <input ref={(ele) => {
+            this.myRef = ele;
+        }} />;
     }
-  }
-  
-  // React.createRef
-  class MyComponent extends React.Component {
+}
+
+// React.createRef
+class MyComponent extends React.Component {
     constructor(props) {
-      super(props);
-      this.myRef = React.createRef();
+        super(props);
+        this.myRef = React.createRef();
     }
     componentDidMount() {
-      this.myRef.current.focus();
+        this.myRef.current.focus();
     }
     render() {
-      return <input ref={this.myRef} />;
+        return <input ref={this.myRef} />;
     }
-  }
-  
+}

@@ -1,20 +1,18 @@
 <!-- 
-MVC
+* MVC：单向
     View: 视图
     Controller: 控制器
     Model：数据源
-
 Controller能控制View和Model的变化
-
 一般是View触发事件到Controller，Controller控制Model，Model再去改View
 
-MVVM
+* MVVM: 双向
     View：视图、模板
     ViewModel：视图模型(vue里面的各种)
     Model：模型、数据
 
 View通过ViewModel实现(事件监听)来操作Model的数据
 Model通过ViewModel实现(数据绑定)来更新View
-实现了视图和模型的彻底分离，ViewModel承担一种桥梁的作用
+不用再自己手动操作Dom元素，来改变View的显示，而是改变属性后该属性对应View层显示会自动改变
 
  -->

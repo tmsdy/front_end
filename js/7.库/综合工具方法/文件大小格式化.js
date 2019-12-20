@@ -16,3 +16,4 @@ const formatFileSize = function (fileSize) {
         return temp + 'GB';
     }
 }
+console.log(formatFileSize(13806733))

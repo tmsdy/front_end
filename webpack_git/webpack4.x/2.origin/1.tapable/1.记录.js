@@ -23,5 +23,6 @@
     4）AsyncSeriesBailHook：熔断型(不用 0次)
     5）AsyncSeriesWaterfallHook：流水型(常用 5次)
 
+* Async和sync的区别在于Async通过callback来和后续的函数沟通，sync则是通过return一个值来做交流。所以，Async自带sync中bail类型的钩子。
 
 */

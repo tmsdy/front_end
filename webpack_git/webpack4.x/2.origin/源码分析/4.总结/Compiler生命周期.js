@@ -1,11 +1,9 @@
 /*
 
-1.首先触发beforeRun钩子，绑定了读取文件的对象。
-  接着是run：主要是处理缓存的模块，减少编译的模块，加速编译速度。
-  之后进入Compiler.compile()的编译环节。
+1.beforeRun -> run -> beforeCompile -> compile，这些钩子并没有做很多事，也就是把几个内置tap上的一些事件触发了，主要还是供用户扩展用的。
 
 2.等Compiler.compile运行结束之后会回调run中名为onCompiled的函数，将编译后的内容生成文件
-  里面shouldEmit判断是否编译成功，未成功则结束done，打印相应信息。成功则调用Compiler.emitAssets打包文件。  
+  里面shouldEmit判断是否编译成功，未成功则结束done，打印相应信息。成功则调用Compiler.emitAssets打包文件。
 
 beforeCompile：
   编译前的准备，创建ModuleFactory并绑定到创建的Compilation上，同时处理一些不需要编译的模块
@@ -20,7 +18,7 @@ compilation.finish：
 compilation.seal：
   开始封装，优化依赖的hook、module的hook、Chunk的hook等
   优化结束后开始执行Compiler的回调函数，将格式化的js通过Template模板重新聚合在一起，然后回调Compiler生成文件
-  
+
 4.模块的发源地-moduleFactory
   干的2件事：
     1)匹配了相对应的parser，将parser配置成了专门用于当前模块的解析器将源码解析成AST模式
