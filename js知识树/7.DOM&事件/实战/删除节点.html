@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <div class="imgWrapper">
+        <img src="" class="cropper-hidden" />
+        <div class="cropper-container">cropper-container</div>
+    </div>
+    <script>
+        let imgWrapper = document.getElementsByClassName('imgWrapper')[0]
+        imgWrapper.removeChild(document.getElementsByClassName('cropper-hidden')[0])
+        imgWrapper.removeChild(document.getElementsByClassName('cropper-container')[0])
+        console.log(imgWrapper)
+    </script>
+</body>
+
+</html>

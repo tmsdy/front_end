@@ -36,5 +36,5 @@
         (function (module, exports, __webpack_require__) {
             eval("\r\nlet str = __webpack_require__(\"./src/a.js\")\r\n\r\nconsole.log(str)\n\n//# sourceURL=webpack:///./src/index.js?");
         })
-
 });
+// 这是development模式的bundle.js对象key-value形式，production的bundle参数是个数组
