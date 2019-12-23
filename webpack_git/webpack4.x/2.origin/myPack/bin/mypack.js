@@ -8,5 +8,5 @@ let configPath = path.join(rootPath, 'webpack.config.js')
 let config = require(configPath)
 
 let compiler = new Compiler(config)
-compiler.hooks.entryOptions.call(config) // 触发entryOptions事件，说明解析配置文件完毕
+compiler.hooks.entryOption.call(config) // 触发entryOptions事件，说明解析配置文件完毕
 compiler.run()
