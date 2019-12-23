@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react'
 /*
 hooks
   1.给函数组件可以操作state、使用生命周期的能力
-  2.意义是让我们拆分在组件内部的逻辑，提取出来以后给更多的组件复用
+  2.意义：拆分在组件内部的逻辑，提取出来以后给更多的组件复用，而不用再搞高阶组件了
 */
 export default () => { //相当于componentDidmount
     const [name, setName] = useState('jokcy') //hooks需要写在函数最外层

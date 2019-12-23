@@ -26,7 +26,7 @@ signingConfigs {
         }
     }
 
-4.执行打包命令： ./gradlew assembleRelease
+4.执行打包命令： ./gradlew assembleRelease 或者 ./gradlew assembleReleaseStaging
 生成jsbundle包并合并到生成的apk中
 遇到报错：Execution failed for task ':app:bundleReleaseJsAndAssets'.
 解决：https://stackoverflow.com/questions/49513047/react-native-assemblerelease-fails-for-task-appbundlereleasejsandassets
