@@ -1,20 +1,20 @@
 import Types from '../types'
-import DataStore,{FLAG_STORAGE} from '../../expend/dao/DataStore'
-import {handleData} from '../ActionUtil'
+import DataStore, { FLAG_STORAGE } from '../../expend/dao/DataStore'
+import { handleData } from '../ActionUtil'
 
-export function onRefreshPopular(storeName,url,pageSize) {
+export function onRefreshPopular(storeName, url, pageSize) {
     return dispatch => {
         dispatch({
             type: Types.POPULAR_REFRESH,
             storeName, //前端后端那些分类名
         })
         let dataStore = new DataStore()
-        dataStore.fetchData(url,FLAG_STORAGE.flag_popular)
+        dataStore.fetchData(url, FLAG_STORAGE.flag_popular)
             .then(data => {
                 // console.log(data)
-                handleData(Types.POPULAR_REFRESH_SUCCESS,dispatch,storeName,data,pageSize)
+                handleData(Types.POPULAR_REFRESH_SUCCESS, dispatch, storeName, data, pageSize)
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err)
                 dispatch({
                     type: Types.LOAD_POPULAR_FAIL,
@@ -36,9 +36,9 @@ export function onRefreshPopular(storeName,url,pageSize) {
  */
 export function onLoadMorePopular(storeName, pageIndex, pageSize, dataArray = [], callBack) {
     return dispatch => {
-        setTimeout(()=>{ //模拟网络请求
-            if((pageIndex-1)*pageSize>=dataArray.length){ //已加载完全部数据
-                if(typeof callBack === 'function'){
+        setTimeout(() => { //模拟网络请求
+            if ((pageIndex - 1) * pageSize >= dataArray.length) { //已加载完全部数据
+                if (typeof callBack === 'function') {
                     callBack('no more data')
                 }
                 dispatch({
@@ -47,16 +47,16 @@ export function onLoadMorePopular(storeName, pageIndex, pageSize, dataArray = []
                     storeName,
                     pageIndex: --pageIndex,
                 })
-            }else{
-                let max = pageIndex*pageSize > dataArray.length ? dataArray.length : pageIndex*pageSize
+            } else {
+                let max = pageIndex * pageSize > dataArray.length ? dataArray.length : pageIndex * pageSize
                 // console.log(pageIndex,pageSize,max)
                 dispatch({
                     type: Types.POPULAR_LOAD_MORE_SUCCESS,
                     storeName,
                     pageIndex,
-                    projectModels: dataArray.slice(0,max)
+                    projectModels: dataArray.slice(0, max)
                 })
             }
-        },100)
+        }, 100)
     }
 }

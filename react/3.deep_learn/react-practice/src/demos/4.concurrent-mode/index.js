@@ -25,12 +25,12 @@ class Parent extends React.Component {
 
     updateNum() {
         const newNum = this.state.num === 3 ? 0 : this.state.num + 1
-        if (this.state.async) {
+        if (this.state.async) { // 动画流畅，数字变化较慢
             this.setState({
                 num: newNum,
             })
         } else {
-            flushSync(() => { //可以提升setState优先级
+            flushSync(() => { // 可以提升setState优先级,然后数字变化频繁但动画会卡
                 this.setState({
                     num: newNum,
                 })

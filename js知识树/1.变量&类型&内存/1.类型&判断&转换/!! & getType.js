@@ -5,17 +5,17 @@ function getType(obj) {
         : typeof obj;
 }
 // 调用
-getType(null); // -> null
-getType(undefined); // -> undefined
-getType({}); // -> object
-getType([]); // -> array
-getType(123); // -> number
-getType(true); // -> boolean
-getType('123'); // -> string
-getType(/123/); // -> regexp
-getType(new Date()); // -> date
+console.log(getType(null)) // -> null
+console.log(getType(undefined)) // -> undefined
+console.log(getType({})) // -> object
+console.log(getType([])) // -> array
+console.log(getType(123)) // -> number
+console.log(getType(true)) // -> boolean
+console.log(getType('123')) // -> string
+console.log(getType(/123/)) // -> regexp
+console.log(getType(new Date())) // -> date
 
-// 快速判断非空：!! 判断是不是null/undifined/0/''
+// 快速判断非空：!! 判断是不是null undifined 0 ''
 console.log(!!{}) // true
 console.log(!!null) // false
 console.log(!!undefined) // false

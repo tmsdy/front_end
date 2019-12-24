@@ -10,10 +10,15 @@
 4.readonly state
     1)如果用到了state，除了在声明组件时通过泛型参数传递其state结构，还需要在初始化state时声明为 readonly
         因为我们使用 class properties 语法对state做初始化时，会覆盖掉Component<P, S>中对state的readonly标识。
-    2)如果state很复杂不想一个个都初始化，可以结合类型断言初始化state为空对象或者只包含少数必须的值的对象：  
+    2)如果state很复杂不想一个个都初始化，可以结合类型断言初始化state为空对象或者只包含少数必须的值的对象：
         readonly state = {} as IState;
 
-5.
+5.忽略对libs文件夹的ts检测，在package.json里面加
+"linterOptions": {
+    "exclude": [
+        "libs"
+    ]
+}
 
 
 */

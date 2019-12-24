@@ -1,8 +1,8 @@
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 // import Trending from 'GitHubTrending'
 
 export const FLAG_STORAGE = {
-    flag_popular: 'popular', 
+    flag_popular: 'popular',
     flag_trending: 'trending'
 };
 
@@ -17,9 +17,12 @@ export default class DataStore {
     fetchData(url, flag) {
         return new Promise((resolve, reject) => {
             this.fetchLocalData(url).then((wrapData) => {
+                console.log('wrapData=', wrapData)
                 if (wrapData && DataStore.checkTimestampValid(wrapData.timestamp)) {
+                    console.log('走本地缓存了')
                     resolve(wrapData);
                 } else {
+                    console.log('走请求了')
                     this.fetchNetData(url, flag).then((data) => {
                         resolve(this._wrapData(data));
                     }).catch((error) => {
@@ -89,14 +92,14 @@ export default class DataStore {
             }
         })
     }
-    
+
     saveData(url, data, callback) {
         if (!data || !url) return;
         AsyncStorage.setItem(url, JSON.stringify(this._wrapData(data)), callback);
     }
 
     _wrapData(data) { //给data打上时间戳
-        return {data: data, timestamp: new Date().getTime()};
+        return { data: data, timestamp: new Date().getTime() };
     }
 
     /**
