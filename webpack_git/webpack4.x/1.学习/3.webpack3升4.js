@@ -24,6 +24,9 @@ wwebpack会根据mode值来设置一个全局变量process.env.NODE_ENV
   2) happypack用来对编译阶段进行多线程编译
   3) UglifyJsPlugin的多线程压缩
 
-* 5.通过code spliting来对路由做按需加载
+* 5.通过code spliting的import语法来对路由做按需加载
+
+* 6.scope hoisting作用域提升：减少了函数声明，文件体积变小，函数作用域变少
+
 
 */

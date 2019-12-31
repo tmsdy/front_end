@@ -175,7 +175,7 @@ class Compiler extends Tapable {
         };
 
         this.hooks.beforeRun.callAsync(this, err => { // NodeEnvironmentPlugin触发
-            this.hooks.run.callAsync(this, err => { // CachePlugin触发
+            this.hooks.run.callAsync(this, err => { // CachePlugin触发,有编译缓存走编译缓存，提高编译速度
                 this.readRecords(err => { // 看看能不能读到资源
                     this.compile(onCompiled) // 开始编译
                 });

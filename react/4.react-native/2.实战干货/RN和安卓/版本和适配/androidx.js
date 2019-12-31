@@ -21,7 +21,6 @@ android.support.v4.content.ContextCompat androidx.core.content.ContextCompat
 android.support.annotation.RequiresApi androidx.annotation.RequiresApi
 android.support.v4.content.FileProvider androidx.core.content.FileProvider
 
-
 adb reverse tcp:8081 tcp:8081
 npm start -- --reset-cache
 

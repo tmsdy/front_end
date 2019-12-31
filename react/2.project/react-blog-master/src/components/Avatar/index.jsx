@@ -49,8 +49,8 @@ function AppAvatar(props) {
                     <Text type='secondary'>{github.login}</Text>
                   </>
                 ) : (
-                  <span className='github-name'> {github.login}</span>
-                )}
+                    <span className='github-name'> {github.login}</span>
+                  )}
               </li>
 
               {github.blog && (

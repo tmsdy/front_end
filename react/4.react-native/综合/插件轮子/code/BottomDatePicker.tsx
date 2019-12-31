@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { SCREEN_WIDTH, SCREEN_HEIGHT } from '../../libs/utils'
-import { DatePickerView } from "@ant-design/react-native";
+import { DatePickerView } from "@ant-design/react-native"
+
 
 interface DatePickerProps {
     title?: string,
@@ -14,21 +15,28 @@ interface DatePickerState {
 
 export default class BottomDatePicker extends Component<DatePickerProps, DatePickerState> {
     public state: DatePickerState = {
-        dateVal: new Date
+        dateVal: new Date,
     }
+
     constructor(props: DatePickerProps) {
         super(props)
     }
+
+    componentDidMount() {
+    }
+
     onChange(value: Date) {
         this.setState({
             dateVal: value
         })
     }
+
     comfirmDate() {
         let { getDate, setMaskOff } = this.props
         getDate(this.state.dateVal)
         setMaskOff(false)
     }
+
     render() {
         let { setMaskOff, title } = this.props
         let { dateVal } = this.state
@@ -47,6 +55,7 @@ export default class BottomDatePicker extends Component<DatePickerProps, DatePic
                     </View>
                     <DatePickerView
                         value={dateVal}
+                        mode='datetime'
                         onChange={this.onChange.bind(this)}
                     ></DatePickerView>
                 </View>
@@ -59,9 +68,9 @@ const styles = StyleSheet.create({
     Wrapper: {
         position: 'absolute',
         bottom: 0,
+        zIndex: 300,
         width: SCREEN_WIDTH,
         height: SCREEN_HEIGHT,
-        flexDirection: 'column'
     },
     mask: {
         flex: 1,
@@ -69,10 +78,6 @@ const styles = StyleSheet.create({
     },
     bottomBox: {
         width: SCREEN_WIDTH,
-        position: 'absolute',
-        left: 0,
-        bottom: 0,
-        zIndex: 122,
         flexDirection: 'column',
         backgroundColor: '#fff',
     },
