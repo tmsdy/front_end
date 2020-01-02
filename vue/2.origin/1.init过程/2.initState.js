@@ -21,7 +21,7 @@ function initProps(vm, propsOptions) {
     defineReactive(props, key, value) //把props上的对象变为响应式的
     // ...
     if (!(key in vm)) {
-        proxy(vm, "_props", key); // _props里面的数据变化代理到vm上
+        proxy(vm, "_props", key); // _props里面的数据变化代理到vm上,然后可以this.xxx访问了
     }
 }
 

@@ -26,11 +26,12 @@ React
 
 Vue
 // 1.熟练使用Vue的API、生命周期、钩子函数
-2.MVVM框架设计理念
+2.MVVM框架设计理念，双向绑定流程、发展趋势？
 3.Vue双向绑定实现原理、Diff算法的内部实现
-4.Vue的事件机制
-5.从template转换成真实DOM的实现机制
-6.vuex原理
+4.Vue的响应式原理
+5.介绍这三个步骤的流程 Template -> VDOM -> 真实 DOM，render 函数内容
+6.vuex原理，Vuex 的单向数据流模型
+7.vue-router 的原理，history 模式和 hash 模式的区别，为什么 history 模式是先进行 app 内模块的切换再去手动更新路由
 
 多端开发
 1.单页面应用（SPA）的原理和优缺点，掌握一种快速开发SPA的方案

@@ -13,7 +13,7 @@ wwebpack会根据mode值来设置一个全局变量process.env.NODE_ENV
 - development：开发体验好，日志更全面，console.log保留。
 - production：专注项目编译部署，开启 Scope hoisting 和 Tree-shaking 功能
 
-* 3.全新的插件系统，提供了针对插件和钩子的新API，变化如下：
+* 3.全新的插件系统Tapable，提供了针对插件和钩子的新API，变化如下：
   所有的 hook 由 hooks 对象统一管理，它将所有的hook作为可扩展的类属性
   添加插件时，你需要提供一个名字
   开发插件时，你可以选择插件的类型（sync/callback/promise之一）

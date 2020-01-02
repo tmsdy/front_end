@@ -1,5 +1,5 @@
 /*
-* 1.webpack的功能
+* 1.webpack能干啥？
 * 1）代码转换：把ts、es6以上代码编译成浏览器可以运行的js，less/scss -> css, vue -> html/js/css
     用到babel-loader,less-loader,vue-loader等、
 
@@ -19,8 +19,8 @@
 * 这些模块会以 Entry 为单位进行分组，一个 Entry 和其所有依赖的 Module 被分到一个组也就是一个 Chunk。
 * 最后 Webpack 会把所有 Chunk 转换成文件输出。 在整个流程中 Webpack 会在恰当的时机执行 Plugin 里定义的逻辑。
 
-2.不同的业务逻辑拆成模块，再去分别的引入模块，保证项目的可维护性和扩展性
+* 2.不同的业务逻辑拆成模块，再去分别的引入模块，保证项目的可维护性和扩展性
 
-3.webpack内部的事件流：tapable，整个webpack工作流就靠这个。
+* 3.webpack内部的事件流：tapable，整个webpack工作流就靠这个。
 
 */

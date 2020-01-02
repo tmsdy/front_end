@@ -11,7 +11,7 @@ export function App() {
         <Provider store={Store}>
             <Toggle />
         </Provider>
-    );
+    )
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
