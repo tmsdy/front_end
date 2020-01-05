@@ -1,0 +1,163 @@
+apply plugin: "com.android.application"
+
+import com.android.build.OutputFile
+
+
+project.ext.react = [
+    entryFile: "index.js",
+    bundleInStaging: true,       // Add this
+    bundleInInternalTest: true,  // Add this
+    bundleInRelease: true
+]
+
+apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
+
+def enableSeparateBuildPerCPUArchitecture = false
+
+/**
+ * Run Proguard to shrink the Java bytecode in release builds.
+ */
+def enableProguardInReleaseBuilds = false
+
+def jscFlavor = 'org.webkit:android-jsc:+'
+def enableHermes = project.ext.react.get("enableHermes", false);
+
+Properties properties=new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    defaultConfig {
+        applicationId "com.fumamxapp"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.1.0"
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+        vectorDrawables.useSupportLibrary = true
+    }
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+    splits {
+        abi {
+            reset()
+            enable enableSeparateBuildPerCPUArchitecture
+            universalApk false  // If true, also generate a universal APK
+            include "armeabi-v7a", "x86"
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_debug")+'"'
+            manifestPlaceholders = [
+                "APP_NAME":"@string/app_name_debug",
+                JPUSH_APPKEY: "03c867241c2275c915ef422d",
+                APP_CHANNEL : "default"
+            ]
+        }
+        release {
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+            buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_production")+'"'
+            manifestPlaceholders = [
+                "APP_NAME":"@string/app_name",
+                JPUSH_APPKEY: "f7e3f21de9c1e3ef8631cf9c",
+                APP_CHANNEL : "default"
+            ]
+        }
+        releaseStaging {
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+            buildConfigField "String", "CODEPUSH_KEY", '"'+properties.getProperty("code_push_key_staging")+'"'
+            applicationIdSuffix ".alph"
+            manifestPlaceholders = [
+                "APP_NAME":"@string/app_name_staging",
+                JPUSH_APPKEY: "03c867241c2275c915ef422d",
+                APP_CHANNEL : "default"
+            ]
+            matchingFallbacks = ['releaseStaging','release', ]
+        }
+    }
+
+    project.ext.sentryCli = [
+            logLevel: "debug",
+            flavorAware: false,
+            //add
+            enableHermes: false
+    ]
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+
+    // applicationVariants are e.g. debug, release
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            // For each separate APK per architecture, set a unique version code as described here:
+            // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
+            def versionCodes = ["armeabi-v7a":1, "x86":2]
+            def abi = output.getFilter(OutputFile.ABI)
+            if (abi != null) {  // null for the universal-debug, universal-release variants
+                output.versionCodeOverride = versionCodes.get(abi) * 1048576 + defaultConfig.versionCode
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation project(':react-native-sound')
+    implementation project(':react-native-audio')
+    implementation project(':react-native-document-picker')
+    implementation project(':react-native-image-crop-picker')
+    implementation project(':react-native-fs')
+    implementation project(':jpush-react-native')
+    implementation project(':jcore-react-native')
+    implementation project(':react-native-webview')
+    implementation project(':react-native-code-push')
+    implementation project(':react-native-vector-icons')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-gesture-handler')
+    implementation project(':react-native-splash-screen')
+    api fileTree(dir: "libs", include: ["*.jar"])
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-webview-bridge-updated')
+    if (enableHermes) {
+        def hermesPath = "../../node_modules/hermesvm/android/";
+        debugImplementation files(hermesPath + "hermes-debug.aar")
+        releaseImplementation files(hermesPath + "hermes-release.aar")
+    } else {
+        implementation jscFlavor
+    }
+}
+
+// Run this once to be able to run the application with BUCK
+// puts all compile dependencies into folder libs for BUCK to use
+task copyDownloadableDepsToLibs(type: Copy) {
+    from configurations.compile
+    into 'libs'
+}
+project.afterEvaluate {
+    apply from: '../../node_modules/react-native-zss-rich-text-editor/htmlCopy.gradle';
+    copyEditorHtmlToAppAssets(file('../../node_modules/react-native-zss-rich-text-editor'))
+}

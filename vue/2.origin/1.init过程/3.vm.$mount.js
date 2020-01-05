@@ -23,7 +23,7 @@ Vue.prototype.$mount = function (el, hydrating) { //runtime+compiler版本会重
             }, this);
             var render = ref.render;
             var staticRenderFns = ref.staticRenderFns;
-            options.render = render;
+            options.render = render; // 把render函数挂在this.options上
             options.staticRenderFns = staticRenderFns;
             //   ...
         }

@@ -1,6 +1,6 @@
 var Watcher = function Watcher(vm, expOrFn, cb, options, isRenderWatcher) {
     this.vm = vm;
-    if (isRenderWatcher) {
+    if (isRenderWatcher) { // 是不是渲染Watcher
         vm._watcher = this;
     }
     vm._watchers.push(this); //新建的Watcher会被push进vm._watchers里面

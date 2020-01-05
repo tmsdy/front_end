@@ -26,20 +26,26 @@
     // 数据与视图的分离，解耦（开放封闭原则）
     var vm = new Vue({
         el: '#app',
+        // render(createElement) {
+        //     return createElement('div', {
+        //         attrs: {
+        //             id: 'app'
+        //         }
+        //     }, this.age)
+        // },
         props: {
             age: {
                 type: Number,
                 default: 22
             }
         },
-        data: [],
-        // data(){
-        //     return{
-        //         flag:true ,
-        //         name :'飞飞',
-        //         name2:'芳芳'
-        //     }
-        // },
+        data() {
+            return {
+                flag: true,
+                name: '飞飞',
+                name2: '芳芳'
+            }
+        },
         mounted() {
             console.log(this)
         },
