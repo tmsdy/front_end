@@ -12,9 +12,16 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
 4.运行时闪退的错误日志：
 couldn't find DSO to load: libhermes.so
 （最后一个解决了）：https://github.com/facebook/react-native/issues/25923
-改app的build.gradle
+两个build.gradle都要改
 
 5.[TAG] Failed to resolve variable '${project.version}'
 https://www.jianshu.com/p/7b43af6c91ca
+
+6.code push报错：找不到reactNativeCodePush_androidDeploymentKey
+在res/values/strings.xml中添加
+<string name="reactNativeCodePush_androidDeploymentKey">code push key</string>
+
+7.低版本react-native-webview报错：Failed resolution of: Lcom/facebook/react/views/webview/ReactWebViewManager;
+
 
 */

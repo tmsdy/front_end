@@ -1,9 +1,15 @@
+var hooks = ['create', 'activate', 'update', 'remove', 'destroy']
+/*
+createPatchFunction函数利用了函数柯里化的技巧
+1.传入存在web和weex平台的差异化的modules和nodeOps，不同的操作dom、生成东西的api
+2.定义了很多辅助函数，辅助函数里用到那些api并写法适应差异，然后在返回的patch函数中直接用辅助方法就好了
+*/
 function createPatchFunction(backend) {
     var i, j;
-    var cbs = {};
+    var cbs = {} // 不同阶段的钩子执行不同的函数
 
     var modules = backend.modules; // 模块里有一些钩子调用，可以生成dom属性、class、style等
-    var nodeOps = backend.nodeOps; // 一些操作dom的方法
+    var nodeOps = backend.nodeOps; // 一些操作dom的api(web和weex不一样)
 
     for (i = 0; i < hooks.length; ++i) {
         cbs[hooks[i]] = [];
@@ -63,12 +69,7 @@ function createPatchFunction(backend) {
         ownerArray,
         index
     ) {
-        if (isDef(vnode.elm) && isDef(ownerArray)) {
-            // This vnode was used in a previous render!
-            // now it's used as a new node, overwriting its elm would cause
-            // potential patch errors down the road when it's used as an insertion
-            // reference node. Instead, we clone the node on-demand before creating
-            // associated DOM element for it.
+        if (isDef(vnode.elm) && isDef(ownerArray)) { // 如果vnode之前渲染用到的走这儿（优化）
             vnode = ownerArray[index] = cloneVNode(vnode);
         }
 
@@ -80,42 +81,29 @@ function createPatchFunction(backend) {
         var data = vnode.data;
         var children = vnode.children;
         var tag = vnode.tag;
-        if (isDef(tag)) {
-            {
-                if (data && data.pre) {
-                    creatingElmInVPre++;
-                }
-                if (isUnknownElement$$1(vnode, creatingElmInVPre)) {
-                    warn(
-                        'Unknown custom element: <' + tag + '> - did you ' +
-                        'register the component correctly? For recursive components, ' +
-                        'make sure to provide the "name" option.',
-                        vnode.context
-                    );
-                }
-            }
+        if (isDef(tag)) { // 一般的dom节点
+            // ...对未定义的组件检查报警告
 
-            vnode.elm = vnode.ns ?
+            vnode.elm = vnode.ns ? // 创建dom节点
                 nodeOps.createElementNS(vnode.ns, tag) :
                 nodeOps.createElement(tag, vnode);
-            setScope(vnode);
+            setScope(vnode); // 与css作用域相关
 
-            /* istanbul ignore if */
-            {
-                createChildren(vnode, children, insertedVnodeQueue);
+            { // 创建子节点挂在vnode.elm上，里面会递归调用createElm，所以insert顺序是由子到父
+                createChildren(vnode, children, insertedVnodeQueue)
                 if (isDef(data)) {
                     invokeCreateHooks(vnode, insertedVnodeQueue);
                 }
-                insert(parentElm, vnode.elm, refElm);
+                insert(parentElm, vnode.elm, refElm); // 把处理好的dom一并插入到parentElm中
             }
 
             if ("development" !== 'production' && data && data.pre) {
                 creatingElmInVPre--;
             }
-        } else if (isTrue(vnode.isComment)) {
+        } else if (isTrue(vnode.isComment)) { // 是注释节点
             vnode.elm = nodeOps.createComment(vnode.text);
             insert(parentElm, vnode.elm, refElm);
-        } else {
+        } else { // 是文本节点
             vnode.elm = nodeOps.createTextNode(vnode.text);
             insert(parentElm, vnode.elm, refElm);
         }
@@ -193,7 +181,7 @@ function createPatchFunction(backend) {
             }
         }
     }
-
+    // 创建子节点挂在vnode.elm元素下
     function createChildren(vnode, children, insertedVnodeQueue) {
         if (Array.isArray(children)) {
             {
@@ -257,7 +245,7 @@ function createPatchFunction(backend) {
         }
     }
 
-    function invokeDestroyHook(vnode) {
+    function invokeDestroyHook(vnode) { // 删除vnode
         var i, j;
         var data = vnode.data;
         if (isDef(data)) {
@@ -598,10 +586,6 @@ function createPatchFunction(backend) {
     }
 
     return function patch(oldVnode, vnode, hydrating, removeOnly, parentElm, refElm) {
-        if (isUndef(vnode)) {
-            if (isDef(oldVnode)) { invokeDestroyHook(oldVnode); }
-            return
-        }
 
         var isInitialPatch = false;
         var insertedVnodeQueue = [];
@@ -611,85 +595,30 @@ function createPatchFunction(backend) {
             isInitialPatch = true;
             createElm(vnode, insertedVnodeQueue, parentElm, refElm);
         } else {
-            var isRealElement = isDef(oldVnode.nodeType);
+            var isRealElement = isDef(oldVnode.nodeType); // 是不是真实dom
             if (!isRealElement && sameVnode(oldVnode, vnode)) {
-                // patch existing root node
+                // 新旧vnode的patch更新
                 patchVnode(oldVnode, vnode, insertedVnodeQueue, removeOnly);
             } else {
                 if (isRealElement) {
-                    // mounting to a real element
-                    // check if this is server-rendered content and if we can perform
-                    // a successful hydration.
-                    if (oldVnode.nodeType === 1 && oldVnode.hasAttribute(SSR_ATTR)) {
-                        oldVnode.removeAttribute(SSR_ATTR);
-                        hydrating = true;
-                    }
-                    if (isTrue(hydrating)) {
-                        if (hydrate(oldVnode, vnode, insertedVnodeQueue)) {
-                            invokeInsertHook(vnode, insertedVnodeQueue, true);
-                            return oldVnode
-                        } else {
-                            warn(
-                                'The client-side rendered virtual DOM tree is not matching ' +
-                                'server-rendered content. This is likely caused by incorrect ' +
-                                'HTML markup, for example nesting block-level elements inside ' +
-                                '<p>, or missing <tbody>. Bailing hydration and performing ' +
-                                'full client-side render.'
-                            );
-                        }
-                    }
-                    // either not server-rendered, or hydration failed.
-                    // create an empty node and replace it
+                    // ...处理服务端渲染的逻辑
+                    // 把真实dom转成vnode
                     oldVnode = emptyNodeAt(oldVnode);
                 }
 
-                // replacing existing element
-                var oldElm = oldVnode.elm;
-                var parentElm$1 = nodeOps.parentNode(oldElm);
+                var oldElm = oldVnode.elm; // 一般稳id为app的div
+                var parentElm$1 = nodeOps.parentNode(oldElm); // 一般为body
 
-                // create new node
+                // * 把vnode挂在到真实dom上，创建了新的app节点
                 createElm(
                     vnode,
                     insertedVnodeQueue,
-                    // extremely rare edge case: do not insert if old element is in a
-                    // leaving transition. Only happens when combining transition +
-                    // keep-alive + HOCs. (#4590)
                     oldElm._leaveCb ? null : parentElm$1,
                     nodeOps.nextSibling(oldElm)
                 );
+                // ...处理组件相关的父级占位节点
 
-                // update parent placeholder node element, recursively
-                if (isDef(vnode.parent)) {
-                    var ancestor = vnode.parent;
-                    var patchable = isPatchable(vnode);
-                    while (ancestor) {
-                        for (var i = 0; i < cbs.destroy.length; ++i) {
-                            cbs.destroy[i](ancestor);
-                        }
-                        ancestor.elm = vnode.elm;
-                        if (patchable) {
-                            for (var i$1 = 0; i$1 < cbs.create.length; ++i$1) {
-                                cbs.create[i$1](emptyNode, ancestor);
-                            }
-                            // #6513
-                            // invoke insert hooks that may have been merged by create hooks.
-                            // e.g. for directives that uses the "inserted" hook.
-                            var insert = ancestor.data.hook.insert;
-                            if (insert.merged) {
-                                // start at index 1 to avoid re-invoking component mounted hook
-                                for (var i$2 = 1; i$2 < insert.fns.length; i$2++) {
-                                    insert.fns[i$2]();
-                                }
-                            }
-                        } else {
-                            registerRef(ancestor);
-                        }
-                        ancestor = ancestor.parent;
-                    }
-                }
-
-                // destroy old node
-                if (isDef(parentElm$1)) {
+                if (isDef(parentElm$1)) { // 把旧的节点删掉
                     removeVnodes(parentElm$1, [oldVnode], 0, 0);
                 } else if (isDef(oldVnode.tag)) {
                     invokeDestroyHook(oldVnode);

@@ -14,9 +14,9 @@ function lifecycleMixin(Vue) {
         var prevActiveInstance = activeInstance;
         activeInstance = vm;
         vm._vnode = vnode;
-        if (!prevVnode) { // 初始渲染页面
+        if (!prevVnode) { // 初始渲染页面，传真实dom容器和vdom
             vm.$el = vm.__patch__(vm.$el, vnode, hydrating, false)
-        } else { // 数据变化产生更新
+        } else { // 数据变化产生更新，传入旧的vdom和新的vdom
             vm.$el = vm.__patch__(prevVnode, vnode);
         }
         activeInstance = prevActiveInstance;
