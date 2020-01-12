@@ -17,5 +17,6 @@ React:
  1) fiber时间分片、调度。在eventloop一个tick中js执行时间过长会导致渲染延迟，页面就变卡。
 于是需要一个时间调度器。浏览器刚好实现一个requestIdleCallback。requestIdleCallback根据参数的不同，可以在限度时间内安排一定量的JS任务，从而不影响视图渲染/事件回调; 也可以强制在浏览器不断更新视图的瞎忙中，强制中断这个行为，立即安插进我们React JS逻辑。
 我们在requestIdleCallback的回调中加入一个WorkLoop的方法，它每接触一个fiber时，就判定一下当前时间，看否有空闲时间让它进行beginWork操作（相当于刚才的第一个阶段，设置dom, instance, willXXX），没有就把它放进列队中。把控制权让渡给视图渲染。下次requestIdleCallback唤起时，从列队将刚才那个fiber取出来，执行beginWork。
+2）利用shouldComponentUpdate做渲染优化：把不依赖state的部分做成pureComponent，最小化渲染组件数量
 
 */

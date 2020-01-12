@@ -25,6 +25,12 @@ link RSKImageCropper.framework和QBImagePicker.framework这两个，记得embed 
 
 2.保证iPhone Distribution:的信任是系统默认的
 
+3.Error: Multiple commands produce
+解决：https://www.jianshu.com/p/fdb1421f3c8b
+用Legacy build system代替New Build System
+
+4.Library not found for -lPods-fumamxApp
+
 加debugger ui产生的跨域问题：浏览器认为localhost请求本机地址:8081的bundle.js是跨域了
 https://blog.csdn.net/weixin_33904756/article/details/85965598
 

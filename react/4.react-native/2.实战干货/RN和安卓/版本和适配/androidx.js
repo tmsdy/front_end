@@ -15,6 +15,8 @@ AndroidX是对android.support.xxx包的整理后产物
 1）AndroidX的迁移要求在在AndroidStudio 3.2 或更高版本中执行，要求的targetSdkVersion版本为28（android9.0），classpath 'com.android.tools.build:gradle:3.2.0'要3.2.0或者更高。
 
 常见对照：
+android.support.annotation.Nullable androidx.annotation.Nullable
+android.support.annotation.NonNull androidx.annotation.NonNull
 android.support.v4.app.ActivityCompat androidx.core.app.ActivityCompat
 android.support.v7.app.AppCompatActivity androidx.appcompat.app.AppCompatActivity
 android.support.v4.content.ContextCompat androidx.core.content.ContextCompat

@@ -16,6 +16,9 @@ class Counter extends Component {
             this.setState({ number: this.props.number });
         });
     }
+    componentDidMount() {
+        console.log(this.props)
+    }
     componentWillUnmount() {
         this.unsubscribe();//取消订阅
     }
@@ -23,6 +26,7 @@ class Counter extends Component {
         return (
             <div style={{ border: '1px solid red' }}>
                 <p>{this.state.number}</p>
+                <p>{this.state.counter}</p>
                 <button onClick={this.props.increment} >+</button>
                 <button onClick={this.props.decrement}>-</button>
                 <button onClick={() => {
