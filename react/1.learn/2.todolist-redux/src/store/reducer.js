@@ -5,8 +5,8 @@ const defaultState = {
     inputValue: '',
     list: [
         {
-            id: 3,
-            content: "默认的"
+            id: 0,
+            content: "默认的 todo item"
         }
     ]
 }
@@ -24,13 +24,21 @@ export default (state = defaultState, action) => { //这state是store原先的st
     let newState = JSON.parse(JSON.stringify(state)) || state
     switch (action.type) {
         case CHANGE_INPUT_VALUE:
-            newState.inputValue = action.value; break;
+            newState = { ...state, inputValue: action.value }
+            break;
         case ADD_TODO_ITEM:
-            newState.count = action.count
-            newState.list = [...newState.list, action.item]
-            newState.inputValue = ''; break;
+            newState = {
+                ...state,
+                count: action.count,
+                list: [...newState.list, action.item],
+                inputValue: ''
+            };
+            break;
         case DELETE_TODO_ITEM:
-            newState.list = newState.list.filter(item => item.id !== action.id); break;
+            newState = {
+                ...state,
+                list: newState.list.filter(item => item.id !== action.id)
+            }; break;
         default: ;
     }
     return newState //把新的数据返回给store，store拿到新的数据自己更新自己的state

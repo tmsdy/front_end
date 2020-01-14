@@ -3,7 +3,6 @@
 触发事件：store.dispatch(getAddTodoItemAction)
 取值：store.getState()
 订阅变化：store.subscribe(()=>{ this.setState(store.getState()) })
-页面取值：this.state.xxx
 
 * actionCreators.js
 定义actions：export const getAddTodoItemAction = (inputValue, count) => ({
