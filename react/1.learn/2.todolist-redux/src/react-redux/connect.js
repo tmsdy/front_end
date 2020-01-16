@@ -23,7 +23,7 @@ export default function (mapStateToProps, mapDispatchToProps) {
             render() {
                 let actions = {};
                 if (typeof mapDispatchToProps == 'function') {
-                    actions = mapDispatchToProps(this.store.disaptch);
+                    actions = mapDispatchToProps(this.store.dispatch);
                 } else if (typeof mapDispatchToProps == 'object') {
                     actions = bindActionCreators(mapDispatchToProps, this.store.dispatch);
                 }

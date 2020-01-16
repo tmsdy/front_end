@@ -1,11 +1,12 @@
 /*
 
-上层组件用Provider，下层组件在哪用到数据就用Consumer
-const { Provider,Consumer } = React.createContext('defaultVal')
-上层：<Provider value={this.state.newContext}>{this.props.children}</Provider>
-下层：<Consumer>{value => <p>Child1 newContext: {value}</p>}</Consumer>
+1.复用有状态的组件很麻烦，之前得用render props和hoc模式来复用
+缺点：会造成大量层级嵌套，hooks不会这样。
 
-组件上面绑定方法不需要在写bind(this)了
+2.之前组件上面绑定方法得bind(this)或者箭头函数，hooks定义函数直接用。
+
+3.hooks useState各种数据直接用
+
 
 shouldComponentUpdate可能会搞得循环更新
 

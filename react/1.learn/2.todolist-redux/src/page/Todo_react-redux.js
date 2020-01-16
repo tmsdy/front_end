@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css'
 import TodoItem from './TodoItem'
 import './TodoList.css'
-import { connect } from 'react-redux'
-// import { connect } from '../react-redux'
-import { Input, Button, List } from 'antd';
-import store from '../store'
+// import { connect } from 'react-redux'
+import { connect } from '../react-redux'
+import { Input, Button } from 'antd';
 import { getInputChangeAction, getAddTodoItemAction, getDeleteTodoItemAction } from '../store/actionCreators'
 
 class TodoList extends Component {
@@ -13,32 +12,19 @@ class TodoList extends Component {
         super(props)
         this.state = {}
     }
-    hanleStoreChange = () => {
-        this.setState(store.getState())
-    }
-    inputChange = (e) => {
-        let inputValue = e.target.value
-        this.props.inputChange(inputValue)
-    }
-    btnClick = () => {
-        let { inputValue, count } = this.state
-        this.props.addTodoItem(inputValue, count)
-    }
-    deleteItem = (id) => {
-        this.props.deleteTodoItem(id)
-    }
     getTodoItem = () => {
-        return this.props.list.map((item, i) => {
+        let { list, deleteTodoItem } = this.props
+        return list.map((item, i) => {
             return (
                 <TodoItem
                     key={item.id} item={item}
-                    deleteItem={this.deleteItem}
+                    deleteItem={(id) => { deleteTodoItem(id) }}
                 ></TodoItem>
             )
         })
     }
     render() {
-        let { inputValue, list } = this.props
+        let { inputValue, count, inputChange, addTodoItem } = this.props
         return (
             <div style={{ marginTop: 10, marginLeft: 10 }}>
                 <label htmlFor="insertArea">输入内容</label>
@@ -47,9 +33,13 @@ class TodoList extends Component {
                     style={{ width: 300, marginRight: 10 }}
                     placeholder="做点什么吧"
                     value={inputValue}
-                    onChange={this.inputChange}
+                    onChange={(e) => {
+                        inputChange(e.target.value)
+                    }}
                 />
-                <Button type="primary" onClick={this.btnClick}>提交</Button>
+                <Button type="primary" onClick={() => {
+                    addTodoItem(inputValue, count)
+                }}>提交</Button>
                 <ul>
                     {this.getTodoItem()}
                 </ul>
@@ -60,6 +50,7 @@ class TodoList extends Component {
 
 const mapStateToProps = (state) => { //把store中的数据映射到当前组件props上
     return {
+        count: state.count,
         inputValue: state.inputValue,
         list: state.list
     }

@@ -1,7 +1,7 @@
 import React from 'react';//引入react才能编译jsx语法
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
-// import { Provider } from './react-redux'
+// import { Provider } from 'react-redux'
+import { Provider } from './react-redux'
 import store from './store'
 // import TodoList from './page/Todo_redux'
 import TodoList from './page/Todo_react-redux'
