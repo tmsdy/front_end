@@ -1,80 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <style>
+<style>
     #container {
-      width: 100%;
-      height: 200px;
-      line-height: 200px;
-      text-align: center;
-      color: #fff;
-      background-color: #444;
-      font-size: 30px;
+        width: 100%;
+        height: 200px;
+        line-height: 200px;
+        text-align: center;
+        color: #fff;
+        background-color: #444;
+        font-size: 30px;
     }
-  </style>
-  <body>
+</style>
+
+<body>
     <div id="container"></div>
 
     <script>
-      /*
-在前端开发中有一部分的用户行为会频繁的触发事件执行，而对于DOM操作、资源加载等耗费性能的处理，
-很可能导致界面卡顿，甚至浏览器的崩溃
-函数节流: 
-    1.预定一个函数只有在大于等于执行周期时才执行，周期内调用不执行。好像水滴攒到一定重量才会落下一样
-    2.场景：窗口调整（resize）页面滚动（scroll）抢购疯狂点击（mousedown）
-*/
-      var count = 1;
-      var container = document.getElementById("container");
-      function getUserAction(e) {
-        console.log(this);
-        container.innerHTML = count++;
-      }
-      container.onclick = throttle2(getUserAction, 1000);
-      // 思路：当前点击的时间戳 > 上一次点击的时间戳 + 延迟时间
-      function throttle(func, delay) {
-        let last = 0;
-        return function() {
-          let now = +new Date();
-          if (now - last > delay) {
-            func.apply(this, arguments);
-            last = now;
-          }
-        };
-      }
+        /*
+  在前端开发中有一部分的用户行为会频繁的触发事件执行，而对于DOM操作、资源加载等耗费性能的处理，
+  很可能导致界面卡顿，甚至浏览器的崩溃
+  函数节流: 
+      1.预定一个函数只有在大于等于执行周期时才执行，周期内调用不执行。好像水滴攒到一定重量才会落下一样
+      2.场景：窗口调整（resize）页面滚动（scroll）抢购疯狂点击（mousedown）
+  */
+        var count = 1;
+        var container = document.getElementById("container");
+        function getUserAction(e) {
+            console.log(this);
+            container.innerHTML = count++;
+        }
+        container.onclick = throttle2(getUserAction, 1000);
+        // 思路：当前点击的时间戳 > 上一次点击的时间戳 + 延迟时间
+        function throttle(func, delay) {
+            let last = 0;
+            return function () {
+                let now = +new Date();
+                if (now - last > delay) {
+                    func.apply(this, arguments);
+                    last = now;
+                }
+            };
+        }
 
-      // underscore实现:
-      _.throttle = function(func, wait, options) {
-        var context, args, result;
-        var timeout = null;
-        var previous = 0;
-        if (!options) options = {};
-        var later = function() {
-          previous = options.leading === false ? 0 : _.now();
-          timeout = null;
-          result = func.apply(context, args);
-          if (!timeout) context = args = null;
-        };
-        return function() {
-          var now = _.now();
-          if (!previous && options.leading === false) previous = now;
-          //计算剩余时间
-          var remaining = wait - (now - previous);
-          context = this;
-          args = arguments;
-          //剩余时间小于等于0或者剩余时间大于等待时间(本地时间变动出现)
-          if (remaining <= 0 || remaining > wait) {
-            if (timeout) {
-              clearTimeout(timeout);
-              timeout = null;
+        function throttle2(func, delay) {
+            let last = 0
+            return function () {
+                let now = +new Date
+                if (now - last > delay) {
+                    func.apply(this, arguments)
+                    last = now
+                }
             }
-            previous = now;
-            result = func.apply(context, args);
-            if (!timeout) context = args = null;
-          } else if (!timeout && options.trailing !== false) {
-            timeout = setTimeout(later, remaining);
-          }
-          return result;
+        }
+
+        // underscore实现:
+        _.throttle = function (func, wait, options) {
+            var context, args, result;
+            var timeout = null;
+            var previous = 0;
+            if (!options) options = {};
+            var later = function () {
+                previous = options.leading === false ? 0 : _.now();
+                timeout = null;
+                result = func.apply(context, args);
+                if (!timeout) context = args = null;
+            };
+            return function () {
+                var now = _.now();
+                if (!previous && options.leading === false) previous = now;
+                //计算剩余时间
+                var remaining = wait - (now - previous);
+                context = this;
+                args = arguments;
+                //剩余时间小于等于0或者剩余时间大于等待时间(本地时间变动出现)
+                if (remaining <= 0 || remaining > wait) {
+                    if (timeout) {
+                        clearTimeout(timeout);
+                        timeout = null;
+                    }
+                    previous = now;
+                    result = func.apply(context, args);
+                    if (!timeout) context = args = null;
+                } else if (!timeout && options.trailing !== false) {
+                    timeout = setTimeout(later, remaining);
+                }
+                return result;
+            };
         };
-      };
     </script>
-  </body>
+</body>
+
 </html>
