@@ -1,6 +1,5 @@
-
 export default (reducer) => {
-    let state // 保证reducer在init时候取的是initstate
+    let state = undefined
     let listeners = []
 
     function getState() {
@@ -9,15 +8,15 @@ export default (reducer) => {
 
     function dispatch(action) {
         state = reducer(state, action)
-        listeners.forEach(listener => listener())
+        listeners.forEach(listener => listener(state))
     }
 
-    dispatch({ type: '@@REDUX_INIT' })
+    dispatch({ type: '@@REACT_INIT' })
 
     function subscribe(listener) {
         listeners.push(listener)
-        return function () {
-            listeners.filter(item => item !== listener)
+        return () => {
+            listeners.filter(l => l !== listener)
         }
     }
 

@@ -22,6 +22,7 @@ export default function (mapStateToProps, mapDispatchToProps) {
             }
             render() {
                 let actions = {};
+                console.log(this.store)
                 if (typeof mapDispatchToProps == 'function') {
                     actions = mapDispatchToProps(this.store.dispatch);
                 } else if (typeof mapDispatchToProps == 'object') {

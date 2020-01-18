@@ -17,7 +17,6 @@ const defaultState = {
     有了state和action其实输出就已经确定了，如果里面有new Date()之类的就不是纯函数了，因为输出不再由state/action固定
   2)不会有任何副作用:
     比如去改state就是副作用，不要去改
-  
 */
 export default (state = defaultState, action) => { //这state是store原先的state
     console.log(state, action)

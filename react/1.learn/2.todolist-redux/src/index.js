@@ -1,4 +1,4 @@
-import React from 'react';//引入react才能编译jsx语法
+import React, { createContext } from 'react';//引入react才能编译jsx语法
 import ReactDOM from 'react-dom';
 // import { Provider } from 'react-redux'
 import { Provider } from './react-redux'

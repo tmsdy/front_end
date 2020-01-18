@@ -1,5 +1,5 @@
 // import { createStore } from 'redux'
-import createStore from '../redux/createStore'
+import createStore from '../redux/createStore2'
 
 import reducer from './reducer'
 
