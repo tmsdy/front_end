@@ -1,22 +1,21 @@
-
 export default (reducer) => {
-    let state // 保证reducer在init时候取的是initstate
+    let state
     let listeners = []
 
-    function getState() {
+    function getState() { // 取state
         return state
     }
 
     function dispatch(action) {
-        state = reducer(state, action)
-        listeners.forEach(listener => listener())
+        state = reducer(state, action) // 走reducer生成新的state
+        listeners.forEach(listener => listener()) // 触发所有的订阅
     }
 
-    dispatch({ type: '@@REDUX_INIT' })
+    dispatch({ type: '@@REDUX_INIT' }) // 用reducer的initstate初始化state
 
-    function subscribe(listener) {
+    function subscribe(listener) { // 收集订阅
         listeners.push(listener)
-        return function () {
+        return function () { // 返回取消订阅函数
             listeners.filter(item => item !== listener)
         }
     }

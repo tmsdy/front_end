@@ -9,6 +9,7 @@ QrCodePage2：https://blog.csdn.net/qq_39910762/article/details/82971097
 2.react-native link react-native-camera
 link不上没有效果需要手动link：https://reactnative.cn/docs/linking-libraries-ios.html
 不要走第三步，否则不起作用
+记得加在defaultConfig里加missingDimensionStrategy 'react-native-camera', 'general'
 
 3.二维码生成：
 import QRCode from 'react-native-qrcode';

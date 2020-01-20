@@ -1,36 +1,28 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from '../redux';
 import propTypes from 'prop-types';
 export default function (mapStateToProps, mapDispatchToProps) {
-    return function (WrapedComponent) {
-        class ProxyComponent extends Component {
+    return function (OriginComp) {
+        class ConnectComp extends Component {
             static contextTypes = {
                 store: propTypes.object
             }
-            constructor(props, context) {
-                super(props, context);
-                this.store = context.store;
-                this.state = mapStateToProps(this.store.getState());
-            }
             componentWillMount() {
-                this.unsubscribe = this.store.subscribe(() => {
-                    this.setState(mapStateToProps(this.store.getState()));
+                let store = this.context.store
+                this.unsubscribe = store.subscribe(() => {
+                    this.setState(mapStateToProps(store.getState()));
                 });
             }
             componentWillUnmount() {
                 this.unsubscribe();
             }
             render() {
-                let actions = {};
-                console.log(this.store)
-                if (typeof mapDispatchToProps == 'function') {
-                    actions = mapDispatchToProps(this.store.dispatch);
-                } else if (typeof mapDispatchToProps == 'object') {
-                    actions = bindActionCreators(mapDispatchToProps, this.store.dispatch);
-                }
-                return <WrapedComponent {...this.state} {...actions} />
+                let store = this.context.store
+                return <OriginComp
+                    {...mapStateToProps(store.getState())}
+                    {...mapDispatchToProps(store.dispatch)}
+                />
             }
         }
-        return ProxyComponent;
+        return ConnectComp;
     }
 }
