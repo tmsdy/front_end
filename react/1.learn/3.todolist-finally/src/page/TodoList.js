@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css'
-import store from './store'
+import store from '../store'
 import TodoItem from './TodoItem'
 import TodoListUI from './TodoListUI'
-import { getInputChangeAction, getAddTodoItemAction, getDeleteTodoItemAction } from './store/actionCreators'
+import { getInputChangeAction, getAddTodoItemAction, getDeleteTodoItemAction } from '../action/actionCreators'
 
 class TodoList extends Component { //容器组件负责逻辑
 
@@ -15,13 +15,13 @@ class TodoList extends Component { //容器组件负责逻辑
         this.btnClick = this.btnClick.bind(this)
         this.deleteItem = this.deleteItem.bind(this)
         this.handleStoreChange = this.handleStoreChange.bind(this)
-        this.state = store.getState()
+        this.state = store.getState().todoReducer
         store.subscribe(this.handleStoreChange) //只要store改变就会调用一次handleStoreChange
     }
     componentDidMount() {
     }
     handleStoreChange() {
-        this.setState(store.getState())
+        this.setState(store.getState().todoReducer)
     }
     inputChange(e) {
         let inputValue = e.target.value
