@@ -9,11 +9,11 @@ export default function (mapStateToProps, mapDispatchToProps) {
             componentWillMount() {
                 let store = this.context.store
                 this.unsubscribe = store.subscribe(() => {
-                    this.setState(mapStateToProps(store.getState()));
-                });
+                    this.setState(mapStateToProps(store.getState()))
+                })
             }
             componentWillUnmount() {
-                this.unsubscribe();
+                this.unsubscribe()
             }
             render() {
                 let store = this.context.store

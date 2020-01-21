@@ -22,7 +22,7 @@ export default (state = defaultState, action) => {
             newState.inputValue = ''; break;
         case DELETE_TODO_ITEM:
             newState.list = newState.list.filter(item => item.id !== action.id); break;
-        default: ;
+        default: break;
     }
     return newState
 }

@@ -1,61 +1,39 @@
-import React, { Component } from 'react';
-import 'antd/dist/antd.css'
-import store from '../store'
+import React from 'react';
+import { useSelector, useDispatch } from "react-redux"
 import TodoItem from './TodoItem'
 import TodoListUI from './TodoListUI'
 import { getInputChangeAction, getAddTodoItemAction, getDeleteTodoItemAction } from '../action/actionCreators'
 
-class TodoList extends Component { //容器组件负责逻辑
+export default (props) => {
+    const todoState = useSelector(state => state.todo)
+    const dispatch = useDispatch()
+    const { inputValue, count, list } = todoState
 
-    constructor(props) {
-        super(props)
-        this.state = {}
-        this.todoRef = React.createRef() // {current: null}
-        this.inputChange = this.inputChange.bind(this)
-        this.btnClick = this.btnClick.bind(this)
-        this.deleteItem = this.deleteItem.bind(this)
-        this.handleStoreChange = this.handleStoreChange.bind(this)
-        this.state = store.getState().todoReducer
-        store.subscribe(this.handleStoreChange) //只要store改变就会调用一次handleStoreChange
-    }
-    componentDidMount() {
-    }
-    handleStoreChange() {
-        this.setState(store.getState().todoReducer)
-    }
-    inputChange(e) {
-        let inputValue = e.target.value
-        store.dispatch(getInputChangeAction(inputValue)) //把action传给store,store自动把state,action转发给reducer
-    }
-    btnClick() {
-        let { inputValue, count } = this.state
-        store.dispatch(getAddTodoItemAction(inputValue, count))
-    }
-    deleteItem(id) {
-        store.dispatch(getDeleteTodoItemAction(id))
-    }
-    getTodoItem() {
-        return this.state.list.map((item, i) => {
+    function getTodoItem() {
+        return list.map((item, i) => {
             return (
                 <TodoItem
-                    key={item.id} item={item}
-                    deleteItem={this.deleteItem}
+                    key={item.id}
+                    item={item}
+                    deleteItem={(id) => {
+                        dispatch(getDeleteTodoItemAction(id))
+                    }}
                 ></TodoItem>
             )
         })
     }
-    render() {
-        // UI组件负责渲染
-        let { inputValue } = this.state
-        return (
-            <TodoListUI //父组件把方法传给子组件用，数据还是在父组件变的，一变就又重新渲染了
-                inputValue={inputValue}
-                inputChange={this.inputChange}
-                btnClick={this.btnClick}
-                getTodoItem={this.getTodoItem.bind(this)}
-            />
-        )
-    }
+
+    return (
+        <TodoListUI //父组件把方法传给子组件用，数据还是在父组件变的，一变就又重新渲染了
+            inputValue={inputValue}
+            inputChange={(e) => {
+                dispatch(getInputChangeAction(e.target.value))
+            }}
+            btnClick={() => {
+                dispatch(getAddTodoItemAction(inputValue, count))
+            }}
+            getTodoItem={getTodoItem}
+        />
+    )
 }
 
-export default TodoList;

@@ -7,10 +7,9 @@
 
 3.hooks useState各种数据直接用
 
+4.shouldComponentUpdate可能会搞得循环更新，useMemo完全取代
 
-shouldComponentUpdate可能会搞得循环更新
-
-更便于函数式编程，中间件编程
+5.更便于函数式编程，中间件编程
 
 API
 1.生命周期：useEffect
