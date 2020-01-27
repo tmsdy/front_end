@@ -1,6 +1,6 @@
-export default function createStore(reducer, preloadedState,enhancer) {
-    if(enhancer && typeof enhancer == 'function'){
-        return enhancer(createStore)(reducer, preloadedState);
+export default function createStore(reducer, preloadedState, enhancer) {
+    if (enhancer && typeof enhancer == 'function') {
+        return enhancer(createStore)(reducer, preloadedState)
     }
 
     let state = preloadedState;

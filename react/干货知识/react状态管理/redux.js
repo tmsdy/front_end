@@ -1,4 +1,5 @@
 /*
+新redux的useSelector看法: https://www.zhihu.com/question/332090851/answer/730617297
 
 1.redux = reducer + flux
 
