@@ -3,10 +3,9 @@ var arr = [1, [2, [3, 4]]];
 function flatten1(arr) {
     return arr.toString().split(',').map(item => +item)
 }
-// console.log(flatten1(arr))
+console.log(flatten1(arr))
 
 // 2.利用arr.some
-var arr2 = [1, [2, [3, 4]]];
 function flatten2(arr) {
     while (arr.some(item => Array.isArray(item))) {
         arr = [].concat(...arr)
@@ -14,7 +13,7 @@ function flatten2(arr) {
     }
     return arr;
 }
-console.log(flatten2(arr2))
-console.log([...[1, 2, [3, 4]]], [].concat(...[1, [2, [3, 4]]]))
+console.log(flatten2(arr))
 
-// 3.看underscore源码
+// 3.ES6的flat（需要polyfill）
+// console.log(arr.flat(Infinity))

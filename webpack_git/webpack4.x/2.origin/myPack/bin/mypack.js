@@ -1,6 +1,5 @@
 #! /usr/bin/env node
 const path = require('path')
-const fs = require('fs')
 const Compiler = require('../lib/Compiler')
 
 const rootPath = process.cwd() // 当前的工作目录

@@ -1,6 +1,4 @@
-const {
-    SyncHook
-} = require('tapable')
+const { SyncHook } = require('tapable')
 const esprima = require('esprima')
 const estraverse = require('estraverse')
 const escodegen = require('escodegen')
@@ -45,7 +43,7 @@ class Compiler {
 
         this.hooks.compile.call(this)
         parseModule(entryPath, true)
-        // console.log(modules)
+
         this.hooks.afterCompile.call(this)
 
         let bundle = ejs.compile(fs.readFileSync(path.join(__dirname, 'main.ejs'), 'utf8'))({
