@@ -1,6 +1,6 @@
 /*
 
-1.DNS预解析
+* 1.DNS预解析
   一个从未访问过的域名解析耗时长达 1 秒，有缓存的话就很快
 DNS预解析: 会分析这个页面需要的资源所在的域名，浏览器空闲时提前将这些域名转化为 IP 地址
 <meta http-equiv='x-dns-prefetch-control' content='on'>
