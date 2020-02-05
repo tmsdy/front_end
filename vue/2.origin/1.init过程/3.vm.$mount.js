@@ -8,12 +8,12 @@ Vue.prototype.$mount = function (el, hydrating) { //runtime+compiler版本会重
     // 优先 render -> template -> 外部html
     if (!options.render) {
         var template = options.template;
-        if (template) { //有template的处理
+        if (template) { // 有template的处理
             //   ...
-        } else if (el) { //通过外部html生成 template
+        } else if (el) { // 通过外部html生成 template
             template = getOuterHTML(el);
         }
-        if (template) { //编译过程,用template生成render函数(vue只认这个)
+        if (template) { // 编译过程,用template生成render函数(vue只认这个)
             //   ...
             var ref = compileToFunctions(template, {
                 shouldDecodeNewlines: shouldDecodeNewlines,

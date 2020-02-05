@@ -13,9 +13,11 @@
 1.window.onerror捕获不到vue的错误。
 window.onerror只能捕获未处理的错误，如果错误被vue处理了，那你那根本就没法处理。
 Vue用Vue.config.errorHandler来处理的,不过信息全混在stack里了，可以重写console.error来处理错误
+
 2.开发环境压缩代码去掉sourcemap模拟会出现堆栈溢出
 提高webpack-dev-server运行内存：https://blog.csdn.net/xiasohuai/article/details/86704392
 UglifyJsPlugin有个sourceMap，如果prod开sourceMap，这个要为true
+
 3.看vue-test测试项目学习new webpack.SourceMapDevToolPlugin(options)分离map文件
 4.本地跑通了，上服务器请求报504请求时间超时。
 1)服务正常，接口有问题。大概率是node的问题

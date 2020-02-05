@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        每秒钟计算一次网页的 FPS 值，获得一列数据，然后分析。通俗地解释就是，通过 requestAnimationFrame API 来定时执行一些 JS 代码，如果浏览器卡顿，无法很好地保证渲染的频率，1s 中 frame 无法达到 60 帧，即可间接地反映浏览器的渲染帧率。
+        我们可以定义一些边界值，比如连续出现3个低于20的 FPS 即可认为网页存在卡顿。
+        */
+
+        var lastTime = performance.now()
+        console.log(lastTime)
+        var frame = 0
+        var lastFameTime = performance.now()
+        var loop = function (time) {
+            var now = performance.now()
+            var fs = (now - lastFameTime)
+            lastFameTime = now
+            var fps = Math.round(1000 / fs)
+            frame++
+            if (now > 1000 + lastTime) {
+                var fps2 = Math.round((frame * 1000) / (now - lastTime))
+                console.log('fps==', fps, fps2)
+                frame = 0
+                lastTime = now
+            }
+            window.requestAnimationFrame(loop)
+        }
+
+        loop()
+    </script>
+</body>
+
+</html>
