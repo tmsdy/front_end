@@ -7,16 +7,16 @@ class App extends Component {
         return (
             <div className="App">
                 <nav className="navs">
-                    <Link to="/ref">RefDemo</Link>
-                    <Link to="/forward-ref">ForwardRefDemo</Link>
-                    <Link to="/context">ContextDemo</Link>
-                    <Link to="/concurrent">ConcurrentModeDemo</Link>
-                    <Link to="/suspense">SuspenseDemo</Link>
-                    <Link to="/hooks">HooksDemo</Link>
-                    <Link to="/children">ChildrenDemo</Link>
-                    <Link to="/portal">PortalDemo</Link>
+                    <Link to="/ref">Ref</Link>
+                    <Link to="/forward-ref">ForwardRef</Link>
+                    <Link to="/context">Context</Link>
+                    <Link to="/concurrent">ConcurrentMode</Link>
+                    <Link to="/suspense">Suspense</Link>
+                    <Link to="/hooks">Hooks</Link>
+                    <Link to="/children">Children</Link>
+                    <Link to="/portal">createPortal</Link>
                     <br />
-                    <Link to="/control_comp">双向绑定demo</Link>
+                    <Link to="/control_comp">双向绑定</Link>
                 </nav>
                 <div className="contents">{routes}</div>
             </div>

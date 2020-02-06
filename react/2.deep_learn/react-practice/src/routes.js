@@ -8,7 +8,7 @@ import SuspenseDemo from './learn/5.suspense'
 import HooksDemo from './learn/6.hooks'
 import ForwardRefDemo from './learn/2.forward-ref'
 import ChildrenDemo from './learn/children'
-import PortalDemo from './learn/portal'
+import PortalDemo from './learn/7.createPortal'
 import ControlDemo from './learn/1.control'
 
 export default (

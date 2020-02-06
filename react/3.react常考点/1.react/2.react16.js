@@ -15,6 +15,6 @@ flushSync(() => {
 
 * 5.{ Provider, Consumer } = React.createContext，做上下层组件通信
 
-* 6.
+* 6.createPortal: 可以将子节点渲染到存在于父组件以外的 DOM 节点上
 
 */
