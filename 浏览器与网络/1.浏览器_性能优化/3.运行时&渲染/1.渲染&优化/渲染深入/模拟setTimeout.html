@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    window.mySetTimeout = function (func, delay) {
+        let lastTime = performance.now()
+        let count = 0
+        function loop() {
+            let now = performance.now()
+            let delayTime = delay + lastTime
+            if (now > delayTime && count === 0) {
+                count++
+                func.apply(null, arguments)
+            } else {
+                requestAnimationFrame(loop)
+            }
+        }
+        loop()
+    }
+    mySetTimeout(() => {
+        console.log('mySetTimeout')
+    }, 1000)
+
+
+
+</script>
+
+</html>
