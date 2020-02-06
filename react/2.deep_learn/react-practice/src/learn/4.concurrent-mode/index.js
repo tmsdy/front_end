@@ -1,6 +1,5 @@
 import React, { ConcurrentMode } from 'react'
 import { flushSync } from 'react-dom'
-
 import './index.css'
 
 class Parent extends React.Component {
@@ -64,21 +63,9 @@ class Parent extends React.Component {
         )
     }
 }
-
-// class Child extends React.Component {
-//   state = {
-//     num: 1
-//   }
-
-//   render () {
-//     return (
-//       <div>
-
-//       </div>
-//     )
-//   }
-// }
-
+/*
+让react的整体渲染流程有优先级的排比，让整体的渲染流程变得可中断，这样就能进行调度了，把更多CPU性能给优先级高的交互任务
+*/
 export default () => (
     // ConcurrentMode下组件的setState更新都是第一优先级的
     <ConcurrentMode>

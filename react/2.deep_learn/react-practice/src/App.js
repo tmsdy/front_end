@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import routes from './routes'
-import './App.css'
 
 class App extends Component {
     render() {
@@ -15,7 +14,6 @@ class App extends Component {
                     <Link to="/suspense">SuspenseDemo</Link>
                     <Link to="/hooks">HooksDemo</Link>
                     <Link to="/children">ChildrenDemo</Link>
-                    <Link to="/memo">MemoDemo</Link>
                     <Link to="/portal">PortalDemo</Link>
                     <br />
                     <Link to="/control_comp">双向绑定demo</Link>

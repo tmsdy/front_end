@@ -9,7 +9,7 @@ function requestData() {
     if (promise) throw promise
     promise = new Promise(resolve => {
         setTimeout(() => {
-            data = 'Data resolved'
+            data = '请求到的数据'
             resolve()
         }, 2000)
     })
@@ -27,6 +27,6 @@ export default () => (
     // 没有data的时候走fallback，有就走SuspenseComp的data
     <Suspense fallback="loading data">
         <SuspenseComp />
-        <LazyComp />
+        {/* <LazyComp /> */}
     </Suspense>
 )

@@ -5,93 +5,72 @@ import PropTypes from 'prop-types'
 */
 const MyContext = React.createContext('defaultVal') //子元素找不到provider时候的默认值
 
-class Parent extends React.Component {
+class ParentProvider extends React.Component {
     state = {
-        childContext: '123',
-        newContext: '456',
+        provideVal: '12345',
     }
-
     getChildContext() {
-        return { value: this.state.childContext, a: 'aaaaa' }
+        return { value: this.state.provideVal }
     }
-
     render() {
         return (
             <>
                 <div>
-                    <label>childContext:</label>
+                    <label>provideVal:</label>
                     <input
                         type="text"
-                        value={this.state.childContext}
-                        onChange={e => this.setState({ childContext: e.target.value })}
-                    />
-                </div>
-                <div>
-                    <label>newContext:</label>
-                    <input
-                        type="text"
-                        value={this.state.newContext}
-                        onChange={e => this.setState({ newContext: e.target.value })}
+                        value={this.state.provideVal}
+                        onChange={e => this.setState({ provideVal: e.target.value })}
                     />
                 </div>
                 {/* React.createContext(新API)，上层组件用Provider，下层组件在哪用到数据就用Consumer */}
-                <MyContext.Provider value={this.state.newContext}>{this.props.children}</MyContext.Provider>
+                <MyContext.Provider value={this.state.provideVal}>{this.props.children}</MyContext.Provider>
             </>
         )
     }
 }
+function ChildConsumer(props, context) {
+    console.log('子组件1渲染')
+    return <MyContext.Consumer>{value => <p>ChildConsumer value: {value}</p>}</MyContext.Consumer>
+}
+ParentProvider.childContextTypes = { // 限定props要传value，不然报错
+    value: PropTypes.string
+}
+ChildConsumer.contextTypes = {
+    value: PropTypes.string
+}
 
-class Parent2 extends React.Component {
-    // { value: this.state.childContext, a: 'bbbbb' }
+class ParentContext extends React.Component {
     getChildContext() {
-        return { a: 'bbbbb' }
+        return { childContextVal: 'bbbbb' }
     }
-
     render() {
         return this.props.children
     }
 }
-
-function Child1(props, context) {
-    return <MyContext.Consumer>{value => <p>Child1 newContext: {value}</p>}</MyContext.Consumer>
-}
-
-Child1.contextTypes = {
-    value: PropTypes.string,
-}
-
-class Child2 extends React.Component {
+class ChildContext extends React.Component {
     render() { // 子组件就this.context就能拿到传进的数据了
-        console.log(this.context) // { value: "123", a: "bbbbb"}
+        console.log('子组件2拿到context并渲染', this.context)
         return (
             <p>
-                Child2 Context: {this.context.value} {this.context.a}
+                ChildContext value: {this.context.childContextVal}
             </p>
         )
     }
 }
-
-// Child2.contextType = Consumer
-
-Child2.contextTypes = {
-    value: PropTypes.string,
-    a: PropTypes.string, //取离的最近的Parent2的a
+ChildContext.contextTypes = {
+    childContextVal: PropTypes.string
 }
-// childContextTypes 对下层所有组件都能用，影响比较大，数据一更新下层即便没用该数据也要被完整渲染一次，react17将弃用
-Parent.childContextTypes = {
-    value: PropTypes.string,
-    a: PropTypes.string,
-}
-
-Parent2.childContextTypes = {
-    a: PropTypes.string,
+// * childContextTypes: 对下层所有组件都能用，影响比较大，数据一更新下层即便没用该数据也要被完整渲染一次，react17将弃用
+ParentContext.childContextTypes = {
+    childContextVal: PropTypes.string,
 }
 
 export default () => (
-    <Parent>
-        <Parent2>
-            <Child1 />
-            <Child2 />
-        </Parent2>
-    </Parent>
+    <ParentProvider>
+        <ParentContext>
+            <ChildConsumer />
+            <ChildContext />
+        </ParentContext>
+    </ParentProvider>
 )

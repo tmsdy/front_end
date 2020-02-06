@@ -23,7 +23,7 @@ const logger3 = (store) => (next) => (action) => {
 const store = createStore(
     reducer,
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware(logger1, logger2, logger3)
+    // applyMiddleware(logger1, logger2, logger3)
 )
 
 
