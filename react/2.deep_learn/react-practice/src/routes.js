@@ -1,16 +1,16 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import RefDeom from './demos/1.ref'
-import ContextDemo from './demos/3.context'
-import ConcurrentModeDemo from './demos/4.concurrent-mode'
-import SuspenseDemo from './demos/5.suspense'
-import HooksDemo from './demos/hooks'
-import ForwardRefDemo from './demos/2.forward-ref'
-import ChildrenDemo from './demos/children'
-import MemoDemo from './demos/memo'
-import PortalDemo from './demos/portal'
-import ControlDemo from './demos/1.control'
+import RefDeom from './learn/1.ref'
+import ContextDemo from './learn/3.context'
+import ConcurrentModeDemo from './learn/4.concurrent-mode'
+import SuspenseDemo from './learn/5.suspense'
+import HooksDemo from './learn/hooks'
+import ForwardRefDemo from './learn/2.forward-ref'
+import ChildrenDemo from './learn/children'
+import MemoDemo from './learn/memo'
+import PortalDemo from './learn/portal'
+import ControlDemo from './learn/1.control'
 
 export default (
     <>
