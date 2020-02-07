@@ -14,7 +14,6 @@ str.replace(re, function ($0, $1) {
         index = $0.length;
         value = $1;
     }
-
-});
+})
 
 console.log('最多的字符:' + value + ',重复的次数:' + index);

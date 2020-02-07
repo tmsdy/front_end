@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
 </body>
-<script src="./链表.js" ></script>
+<script src="./链表.js"></script>
 <script>
-let arr = ['我','很','喜','欢','你'] ;
+    let arr = ['我', '很', '喜', '欢', '你'];
 
-let _list = new LinkList() ;
+    let _list = new LinkList();
 
-for(let i=0,len=arr.length ; i<len ;i++){
-    if(i!=0){
-        _list.insert(arr[i],arr[i-1]) ;
-    }else{
-        _list.insert(arr[i],'head') ;
+    for (let i = 0, len = arr.length; i < len; i++) {
+        if (i != 0) {
+            _list.insert(arr[i], arr[i - 1]);
+        } else {
+            _list.insert(arr[i], 'head');
+        }
     }
-}
 
-_list.display()
+    _list.display()
 
 
 </script>
+
 </html>

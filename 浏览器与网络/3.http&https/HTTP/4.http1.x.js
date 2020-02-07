@@ -1,6 +1,6 @@
 /*
 
-HTTP1.0: 每个TCP连接只能发送一个请求。解决：Connection: keep-alive
+HTTP1.0: 每个TCP连接只能发送一个请求，响应请求后就断了连接
 
 * HTTP1.1:
 1.长链接(持久连接)：默认是持久连接connection:keep-alive。减少了 TCP 连接的重复建立和断开所造成的额外开销。
