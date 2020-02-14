@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+</head>
+
+<body>
+    <script>
+
+        function Foo() {
+            getName = function () { console.log(1) }
+            return this
+        }
+
+        Foo.getName = function () { console.log(2) }
+
+        Foo.prototype.getName = function () { console.log(3) }
+
+        var getName = function () { console.log(4) }
+
+        function getName() {
+            console.log(5)
+        }
+
+        Foo.getName()
+        getName()
+        Foo().getName()
+        getName()
+        new Foo.getName()
+        new Foo().getName()
+        new new Foo().getName()
+
+        /*
+         1.Foo.getName() 2
+
+         2.getName() 4
+         function getName先赋值全局，然后到var getName = function再次赋值。
+
+         3.Foo().getName() 1
+         返回了this是window，里面的getName又会覆盖一次window的getName
+
+         4.getName() 1
+
+         5.new Foo.getName() 2
+
+         6.new Foo().getName() 3
+         拆解成
+            var foo = new Foo()
+            foo.getName() // foo是没有getName的方法，会从原型中找
+
+        7.new new Foo().getName() 3
+        拆解成
+            var foo = new Foo()
+            new foo.getName() // 原型找的getName覆盖了实例的getName
+
+        */
+
+    </script>
+
+
+
+</body>
+
+</html>
