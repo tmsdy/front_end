@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 常用方法是使用 type="file" 的input标签触发下载，然后使用formData传输数据
+    // https://www.sogou.com/link?url=DSOYnZeCC_pKZzihDKzFgzQoUkRGi7SFpJq0VKlNjFuZ1AFsa7xnmA..
+    handleClick = () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document'; // word文件对应的MIME类型
+        input.onchange = (e) => {
+            const file = e.target.files.items(0);// files[0]也行
+            console.table(file);
+            // 检查文档格式
+            if (!this.checkDocument()) {
+                e.target.value = '';
+                return;
+            }
+            // 上传文档
+            this.uploadDocument(file);
+        };
+        input.click();
+    };
+</script>
+
+</html>
