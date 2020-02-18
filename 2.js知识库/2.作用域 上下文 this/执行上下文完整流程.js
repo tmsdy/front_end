@@ -1,5 +1,5 @@
 /*
-var scope = "global scope";
+var scope = "global scope"
 function checkscope(){
     var scope = "local scope";
     function f(){
