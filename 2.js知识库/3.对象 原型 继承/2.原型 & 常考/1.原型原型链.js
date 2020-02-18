@@ -7,13 +7,13 @@
 特例：当把构造函数当成Function的实例对象的时候，走构造函数的__proto__到Function的原型
 
 /*
-    *例1: var obj={}; obj.prototype.__proto__指向谁?
+    *问题: var obj={}; obj.prototype.__proto__指向谁?
     obj.prototype是undefined，函数对象才有prototype，所以答案是 js报错
 */
 
 // * 3.person是没有constructor的，会走person.__proto__ -> Person.prototype(这里有constructor)
 function Person() { }
-var person = new Person();
+var person = new Person()
 console.log(person.constructor === Person); // true
 console.log(person.constructor === Person.prototype.constructor) //true
 

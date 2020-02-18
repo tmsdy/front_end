@@ -18,7 +18,7 @@
 * 数组(100%)
     - 去重、扁平化 & 乱序 & 
 * 请求
-    - Promise/Promise.all/race/retry实现 & jsonp实现 & async/await原理优缺点
+    - Promise/Promise.all/race实现 & jsonp实现 & async/await原理优缺点
 * 事件
     - eventEmitter(emit,on,off,once) & 事件委托
 * 柯里化 & 函数式编程

@@ -24,9 +24,10 @@ Child.__proto__ = Parent
 
 let feifei = new Child('feifei')
 
-console.log(instance_of(feifei, Child))
-console.log(instance_of(feifei, Parent))
-console.log(instance_of(feifei, Others))
+console.log(instance_of(feifei, Child)) // true
+console.log(instance_of(feifei, Parent)) // true
+console.log(instance_of(feifei, Others)) // false
+console.log(instance_of(feifei, Object)) // true
 
 function instance_of(L, R) {
     L = L.__proto__

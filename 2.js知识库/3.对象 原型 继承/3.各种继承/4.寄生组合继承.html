@@ -25,7 +25,7 @@
     Child.prototype.constructor = Child // 不加这个Child的原型就没有constructor,其实不加也没啥影响
 
     // 3.继承静态属性：把Parent构造函数的静态属性放到Child构造函数的__proto__上
-    Object.setPrototypeOf ? Object.setPrototypeOf(Child, Parent) : (Child.__proto__ = Parent);
+    Object.setPrototypeOf ? Object.setPrototypeOf(Child, Parent) : (Child.__proto__ = Parent)
 
     Child.prototype.sayAge = function () {
         console.log(21)
