@@ -4,13 +4,14 @@ var b = 10;
     b = 20 // 这里改不动函数b
     console.log(b) //函数b
 })()
+console.log(b) // 10
 
 // 2.打印10
 var c = 10;
 (function () {
-    console.log(c);
-    c = 20;
-})();
+    console.log(c) // 先打印10
+    c = 20 // 后赋值全局的c
+})()
 
 // 3.打印20
 var d = 10;
