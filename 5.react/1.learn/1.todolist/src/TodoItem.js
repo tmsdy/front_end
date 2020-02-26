@@ -7,12 +7,14 @@ export class TodoItem extends Component {
         this.deleteItem = this.deleteItem.bind(this)
         this.state = {}
     }
+
     deleteItem() {
         let { item, deleteItem } = this.props
         let { test } = this.state
         console.log(test) // test123
         deleteItem(item.id)
     }
+
     // 父组件render子组件都render会有性能损失，在这里减少一些不必要的render
     shouldComponentUpdate(nextProps, nextState) {
         console.log('shouldComponentUpdate')
@@ -21,6 +23,7 @@ export class TodoItem extends Component {
         }
         return false
     }
+
     // 挂载组件时，会在render前执行；更新组件时，该静态方法会在shouldComponentUpdate前执行。
     static getDerivedStateFromProps(props, state) { // 静态方法拿不到this,应该把它设计成纯函数
         console.log('getDerivedStateFromProps', props)
@@ -32,10 +35,11 @@ export class TodoItem extends Component {
 
     render() {
         console.log('render')
-        let { item } = this.props
+        let { item, children } = this.props
         return (
             <Fragment>
                 <li >{item.content}<span className="item_delete" onClick={this.deleteItem}>删除</span></li>
+                {children}
             </Fragment>
         )
     }

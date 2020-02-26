@@ -3,10 +3,10 @@
 webpack是有默认配置的的splitChunks的，但一般都需要自己配
 optimization: {
   splitChunks: { //对同步异步加载的文件都起作用
-    chunks: 'async', //代码分割，async(默认)只对异步代码进行分割，initial同步，all是都分割
-    minSize: 30000, //只要大于30kb的模块才做代码分割，一般只会匹配到比较大的库
-    maxSize: 0, //可配可不配，超过这个大小的会二次分割，一般不用配
-    minChunks: 1, //引了多少次后才会走分割
+    chunks: 'async', // 代码分割，async(默认)只对异步代码进行分割，initial同步，all是都分割
+    minSize: 30000, // 只要大于30kb的模块才做代码分割，一般只会匹配到比较大的库
+    maxSize: 0, // 可配可不配，超过这个大小的会二次分割，一般不用配
+    minChunks: 1, // 引了多少次后才会走分割
     maxAsyncRequests: 5, //一个页面一个库分割数量限制，一般不用动
     maxInitialRequests: 3, //首页中库分割数量限制，一般不用动
     automaticNameDelimiter: '~', //文件生成中间的链接符，一般不用动

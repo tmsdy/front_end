@@ -8,7 +8,7 @@
 babel-loader缓存：loader: 'babel-loader?cacheDirectory=true'
 
 * 2.优化打包后大小
-1）代码分割：把多次引用的模块分割打包出来。
+1）代码分割：把 多次引用的、>30KB的模块分割打包出来。
 2）第三方库：
     dllplugin：把vue、vue-router、element等基本不会变的统一抽出来打包cdn引入。这样以后就不用再打包了
     externals+cdn+http2: 多个cdn外链，利用http2多路复用可以更快：https://www.jianshu.com/p/f6b3f097a56d
