@@ -18,6 +18,10 @@ export default (props) => {
             console.log('8.setTimeout');
         }, 0)
 
+        requestAnimationFrame(() => {
+            console.log('requestAnimationFrame')
+        })
+
         async1();
 
         new Promise(function (resolve) {
