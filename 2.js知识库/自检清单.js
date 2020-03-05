@@ -20,7 +20,7 @@ JavaScript编码能力
 // 5.实现一个sleep函数
 
 手动实现前端轮子
-//* 1.手动实现call、apply、bind
+1.手动实现call、apply、bind
 2.手动实现符合Promise/A+规范的Promise
 2.2 手动实现async await
 3.手写一个EventEmitter实现事件发布、订阅
@@ -35,8 +35,5 @@ JavaScript编码能力
 3.掌握一种GIS开发框架，如百度地图API
 4.掌握一种可视化开发框架，如Three.js、D3
 5.工具函数库，如lodash、underscore、moment等，理解使用的工具类或工具函数的具体实现原理
-
-
-
 
 */
