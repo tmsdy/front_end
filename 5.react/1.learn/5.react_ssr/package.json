@@ -1,0 +1,31 @@
+{
+    "name": "5.react_ssr",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "npm-run-all --parallel dev:**",
+        "dev:start": "nodemon dist/server.js",
+        "dev:build:client": "webpack --config ./build/webpack.client.js --watch",
+        "dev:build:server": "webpack --config ./build/webpack.server.js --watch"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.8.7",
+        "@babel/plugin-proposal-class-properties": "^7.8.3",
+        "@babel/preset-env": "^7.8.7",
+        "@babel/preset-react": "^7.8.3",
+        "babel-loader": "^8.0.6",
+        "webpack": "^4.42.0",
+        "webpack-cli": "^3.3.11",
+        "webpack-merge": "^4.2.2",
+        "webpack-node-externals": "^1.7.2"
+    }
+}
