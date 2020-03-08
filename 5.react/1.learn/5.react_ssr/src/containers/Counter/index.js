@@ -14,7 +14,7 @@ export default class Counter extends Component {
                     this.setState({
                         number: this.state.number + 1
                     })
-                }}>number加一</button>
+                }}>加一</button>
             </div>
         )
     }

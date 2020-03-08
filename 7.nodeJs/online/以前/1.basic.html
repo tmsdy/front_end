@@ -24,20 +24,6 @@ pm2跑服务：
 看app应用详情：pm2 show app
 看实时日志：pm2 logs
 
-nginx代理：
-1.清除apache
-sudo service apache stop
-update-rc.d -f apache2 remove
-sudo apt-get remove apache2
-2.更新包列表：sudo apt-get update
-3.安装nginx:sudo apt-get install nginx
-4.cd /etc/nginx/conf.d
-写项目配置文件：sudo vi rookiefeifei-top-3389.conf 
-cd ../
-sudo nginx -t 检测配置文件有没有错误
-成功后重启nginx: sudo nginx -s reload
-5.返回的头信息中有Server:nginx/1.10.3 (Ubuntu)信息
-去掉：去nginx.conf里面把 server_tokens off;前面的#去掉
-重载：service nginx reload
+
 
  -->
