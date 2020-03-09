@@ -69,7 +69,7 @@ class TodoList extends Component {
         // console.log('todo render')
         let { inputValue, list } = this.state
         return ( //加括号可以多行写，组件的state或者props改变时，render函数就会重新执行
-            <div style={{ marginTop: 10, marginLeft: 10 }}>
+            <div className="container" title="test" data-test="container">
                 <label htmlFor="insertArea">输入内容</label>
                 <Input //react默认对输入框内容做转义的
                     id="insertArea"

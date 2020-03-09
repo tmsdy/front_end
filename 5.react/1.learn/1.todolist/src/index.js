@@ -1,4 +1,4 @@
-import React from 'react';//引入react才能编译jsx语法
+import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoList from './TodoList';
 
