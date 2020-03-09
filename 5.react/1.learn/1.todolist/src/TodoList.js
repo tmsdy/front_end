@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
-// import axios from 'axios'
+import React, { Component } from 'react'
 import 'antd/dist/antd.css'
 import TodoItem from './TodoItem'
-import Test from './Test'
-// import Lifecycle from './learn/Lifecycle'
 import './TodoList.css'
 import { Input, Button, List } from 'antd';
 
@@ -23,9 +20,7 @@ class TodoList extends Component {
         this.btnClick = this.btnClick.bind(this)
         this.deleteItem = this.deleteItem.bind(this)
     }
-    componentDidMount() { //组件被挂载到页面时执行一次，一般在这里ajax获取数据
-        // axios.get('/api/todolist')
-    }
+
     inputChange(e) {
         let inputValue = e.target.value
         console.log(inputValue)
@@ -33,6 +28,7 @@ class TodoList extends Component {
             inputValue
         }))
     }
+
     btnClick() {
         this.setState((prevState) => {
             let { inputValue, list, count } = prevState
@@ -48,6 +44,7 @@ class TodoList extends Component {
             console.log(this.state)
         })
     }
+
     deleteItem(id) {
         let { list } = this.state
         list = list.filter(item => item.id !== id)
@@ -55,6 +52,7 @@ class TodoList extends Component {
             list
         }))
     }
+
     getTodoItem() {
         return this.state.list.map((item, i) => {
             return (
@@ -62,10 +60,11 @@ class TodoList extends Component {
                     key={i}
                     item={item}
                     deleteItem={this.deleteItem}
-                >{i}</TodoItem>
+                ></TodoItem>
             )
         })
     }
+
     render() {
         // console.log('todo render')
         let { inputValue, list } = this.state
@@ -90,8 +89,6 @@ class TodoList extends Component {
                     dataSource={list}
                     renderItem={item => (<List.Item>{item.content}</List.Item>)}
                 />
-                <Test content={inputValue}></Test>
-                {/* <Lifecycle></Lifecycle> */}
             </div>
         );
     }

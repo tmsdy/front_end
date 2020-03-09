@@ -35,11 +35,10 @@ export class TodoItem extends Component {
 
     render() {
         console.log('render')
-        let { item, children } = this.props
+        let { item } = this.props
         return (
             <Fragment>
                 <li >{item.content}<span className="item_delete" onClick={this.deleteItem}>删除</span></li>
-                {children}
             </Fragment>
         )
     }
