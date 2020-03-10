@@ -7,14 +7,16 @@ module.exports = {
     "setupFiles": [
         "react-app-polyfill/jsdom"
     ],
-    "setupFilesAfterEnv": [
-        "./node_modules/jest-enzyme/lib/index.js"
-    ],
+    // "setupFilesAfterEnv": [
+    //     "./node_modules/jest-enzyme/lib/index.js"
+    // ],
+    "setupFilesAfterEnv": ["jest-enzyme"],
+    "testEnvironment": "enzyme",
     "testMatch": [
         "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
         "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
     ],
-    "testEnvironment": "jsdom",
+    // "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {
         "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",

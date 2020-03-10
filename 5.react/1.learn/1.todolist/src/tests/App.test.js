@@ -9,7 +9,7 @@ it('start test', () => {
     let todo = shallow(<TodoList />) // 浅渲染，只渲染TodoList这一层的组件
     let container = todo.find("[data-test='container']")
     // console.log(todo.debug())
-    expect(container).toExist()
-    // expect(container).toHaveProp('title', 'test')
-    // expect(container.prop('title')).toBe('test')
+    // expect(container).toExist()
+    expect(container).toHaveProp('title', 'test')
+    expect(container.prop('title')).toBe('test')
 })
