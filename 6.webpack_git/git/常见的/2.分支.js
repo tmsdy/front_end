@@ -11,5 +11,13 @@
 git checkout -b test origin/test
 git checkout -b dev-hf origin/dev-new
 
+5.本地创建dev分支，提交并推到远程：https://blog.csdn.net/u013435007/article/details/90400710
+创建dev分支：git checkout -b dev
+改动提交后，
+创建并推到远程dev分支：git push origin dev:dev
+
+6.合分支出问题：回退到 merge 合 自己分支之前那里，然后在自己分支上落后的时候拉merge不会有冲突，
+然后再拉自己分支处理冲突
+
 
 */
