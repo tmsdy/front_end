@@ -24,9 +24,11 @@ module.exports = {
     modules: [path.resolve('node_modules')], //只在当前的找
     extensions: ['.js', '.css', '.vue'],//省略后缀找文件的顺序
     mainFields: ['style', 'main'],//换下bs配置中顺序
-    // alias:{ //别名
-    //   bootstrap: 'bootstrap/dist/css/bootstrap.css'
-    // }
+    alias: { //别名
+      // bootstrap: 'bootstrap/dist/css/bootstrap.css'
+      '@': path.resolve(__dirname, 'src'),
+      styles: path.resolve(__dirname, 'src/styles'),
+    }
   },
   module: {
     rules: [

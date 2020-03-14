@@ -1,6 +1,7 @@
 import 'bootstrap'
-import './style.css'
-import { sum } from './a'
+import '@/styles/style.css'
+// import { sum } from './a'
+import { sum } from '@/a'
 // import { Provider } from 'react-redux'
 import React from 'react'
 import { isEmpty } from 'lodash-es' // 但这样却不能tree-shaking
@@ -21,9 +22,9 @@ console.log(DEV)
 let button = document.createElement('button')
 button.innerHTML = 'hello'
 button.addEventListener('click', function () {
-    import('./source').then(data => { // 异步引入模块
-        console.log(data.default) //需要的数据点击时才加载（懒加载，用jsonp实现的）
-    })
+  import('./source').then(data => { // 异步引入模块
+    console.log(data.default) //需要的数据点击时才加载（懒加载，用jsonp实现的）
+  })
 })
 document.body.appendChild(button)
 
@@ -32,7 +33,7 @@ let xhr = new XMLHttpRequest()
 xhr.open('GET', '/api/user', true)
 
 xhr.onload = function () {
-    console.log(xhr.response)
+  console.log(xhr.response)
 }
 
 xhr.send()
