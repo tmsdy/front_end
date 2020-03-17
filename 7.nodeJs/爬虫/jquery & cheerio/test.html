@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+<body>
+  <div data-name="user" st:name="user">
+    hello
+  </div>
+  <script>
+    console.log($("div[data-name='user'").text())
+    console.log($("div[st:name='user'").text()) // 这种还不好取，报错
+  </script>
+</body>
+
+</html>

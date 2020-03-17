@@ -1,0 +1,173 @@
+{
+  "data": {
+    "campaigns": [
+      {
+        "abTestOpen": null,
+        "actionType": null,
+        "actionValue": null,
+        "activityId": null,
+        "activityPeriod": null,
+        "activityType": null,
+        "adgroupId": 974593783,
+        "adgroupIdList": null,
+        "adgroupList": null,
+        "adgroups": [
+          {
+            "abTestOpen": null,
+            "adboardFilter": 1,
+            "adboardList": null,
+            "adgroupId": 974593783,
+            "adgroupIdList": null,
+            "adgroupName": "全店竞价推广_20200310_1727",
+            "adzoneIds": null,
+            "adzones": null,
+            "autoBid": null,
+            "autoBidStrategy": null,
+            "bidPrice": null,
+            "bizCode": "zszwShop",
+            "campaignGroupId": null,
+            "campaignId": 971200748,
+            "campaignName": null,
+            "campaignType": null,
+            "constraintBid": null,
+            "constraintValue": null,
+            "cpaPrice": null,
+            "cpcLimit": null,
+            "crowds": null,
+            "dayBudget": null,
+            "faultEnumList": null,
+            "intelligentBid": 0,
+            "marketAim": null,
+            "marketItemIds": null,
+            "marketLandingType": null,
+            "marketScene": null,
+            "materialList": null,
+            "newTargetAdgroup": null,
+            "newTargetHasMigrate": null,
+            "objectId": 974593783,
+            "ocpx": null,
+            "operationList": null,
+            "priceScope": null,
+            "serviceProvider": null,
+            "showTags": null,
+            "solutionCode": null,
+            "solutionType": null,
+            "status": 1,
+            "targetFilterList": null,
+            "targetRefactor": 1,
+            "topAppKey": null,
+            "topCompanyName": null
+          }
+        ],
+        "assureMoney": 0,
+        "assureType": null,
+        "assureValue": null,
+        "autoBid": 1,
+        "autoDmc": 1,
+        "avgDmc": null,
+        "bizCode": "zszwShop",
+        "campaignGroupId": null,
+        "campaignId": 971200748, 计划的Id
+        "campaignIdList": null,
+        "campaignModel": 1,
+        "campaignName": "全店竞价推广_常规投放计划_20200310_144704", 计划名称
+        "campaignType": 2,
+        "canEdit": true,
+        "constraintBid": "none",
+        "constraintType": "none",
+        "constraintValue": null,
+        "dayBudget": 300.00,
+        "dmcType": 1,
+        "faultEnumList": null,
+        "from": null,
+        "industryVenueId": null,
+        "launchAreaList": [],
+        "launchAreas": [],
+        "launchPeriodList": [
+          {
+            "dayOfWeek": "0111110",
+            "timeSpanList": null,
+            "timeSpans": [
+              "0到23"
+            ]
+          },
+          {
+            "dayOfWeek": "1000001",
+            "timeSpanList": null,
+            "timeSpans": [
+              "0到23"
+            ]
+          }
+        ],
+        "launchPeriodSimples": [
+          {
+            "dayOfWeek": "0111110",
+            "timeSpanList": null,
+            "timeSpans": [
+              "0到23"
+            ]
+          },
+          {
+            "dayOfWeek": "1000001",
+            "timeSpanList": null,
+            "timeSpans": [
+              "0到23"
+            ]
+          }
+        ],
+        "launchTime": {
+          "beginTime": "2020-03-10",
+          "bizCode": null,
+          "endTime": "2020-03-16",
+          "launchForever": false,
+          "serviceProvider": null,
+          "showTags": null,
+          "solutionCode": null,
+          "topAppKey": null,
+          "topCompanyName": null
+        },
+        "lifeCycle": 2,
+        "marketAim": 8,
+        "marketScene": 901,
+        "marketingAim": 8,
+        "objectId": 971200748,
+        "ocpx": false,
+        "operationList": null,
+        "ppaConstraint": null,
+        "ppcConstraint": null,
+        "promotionEntity": {
+          "entityList": [
+            "60036677"
+          ],
+          "type": 1,
+          "windowItemIdList": null
+        },
+        "reportInfoList": null,
+        "serviceProvider": null,
+        "showTags": [
+          "优化点击量"
+        ],
+        "solutionCode": null,
+        "solutionType": 0,
+        "speedType": 1,
+        "status": 1,
+        "targetBuyers": null,
+        "timeDiscount": null,
+        "topAppKey": null,
+        "topCompanyName": null,
+        "topStatus": null,
+        "topTime": null,
+        "totalBudget": null
+      }
+    ]
+  },
+  "info": {
+    "disableTime": false,
+    "errorCode": null,
+    "lockSla": false,
+    "message": null,
+    "ok": true,
+    "redirectUrl": null,
+    "unlockUrl": null
+  }
+}

@@ -1,0 +1,10 @@
+console.log(
+  Boolean("https://zt.jd.com/fcgi-bin/jdzt/user/menu?tag=44".match('^http[s]://zt\\.jd\\.com/fcgi-bin/jdzt/user/menu\\?tag=44'))
+)
+console.log(
+  Boolean(
+    "https://zuanshi.taobao.com/index_smart.jsp#!/main1/index?alias=shop&stepIndex=2&subStepIndex=-1".match(
+      "^http[s]://zuanshi\\.taobao\\.com/index_smart\\.jsp\\#\\!/main1/index\\?alias=shop&stepIndex=1&subStepIndex=-1"
+    )
+  )
+)
