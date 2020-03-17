@@ -1,5 +1,5 @@
 /*
-
+参考：https://www.jianshu.com/p/f6ac6e3ee7a3
 1.权限：在 Manifest 的 permissions 中声明 "storage"
 
 2.两种储存区域：sync & local。
