@@ -11,6 +11,10 @@ chrome.storage.local.set
 get：取值 & set：设值 & remove(清除单一值) & clear(清除全部值)
 getBytesInUse：获取一个数据或多个数据所占用的总空间，返回结果的单位是字节
 
-4.
+4.监听存储：这个没反应不知道为啥
+chrome.storage.onChanged.addListener(function (changes, areaName) {
+    console.log('Value in ' + areaName + ' has been changed:');
+    console.log(changes);
+  })
 
 */
