@@ -4,8 +4,12 @@
 
 2.两种储存区域：sync & local。
   sync储存的区域会根据用户当前在Chrome上登陆的Google账户自动同步数据，当无可用网络连接可用时，sync区域对数据的读写和local区域对数据的读写行为一致
-chrome.storage.sync.set
-chrome.storage.local.set
+chrome.storage.local.set({key: value}, function() {
+    console.log('Value is set to ' + value);
+})
+chrome.storage.local.get(['key'], function(result) {
+    console.log('Value currently is ' + result.key);
+})
 
 3.储存区域的五种方法：
 get：取值 & set：设值 & remove(清除单一值) & clear(清除全部值)
@@ -13,8 +17,8 @@ getBytesInUse：获取一个数据或多个数据所占用的总空间，返回�
 
 4.监听存储：这个没反应不知道为啥
 chrome.storage.onChanged.addListener(function (changes, areaName) {
-    console.log('Value in ' + areaName + ' has been changed:');
-    console.log(changes);
-  })
+  console.log('Value in ' + areaName + ' has been changed:');
+  console.log(changes);
+})
 
 */
