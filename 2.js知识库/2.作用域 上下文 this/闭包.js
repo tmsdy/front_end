@@ -18,12 +18,12 @@
 */
 // 1.基本
 function aa() { // 内部变量不被回收
-    var a = 20;
-    function b(i) { // 内部变量被回收
-        a += i
-        console.log(a)
-    }
-    return b;
+  var a = 20;
+  function b(i) { // 内部变量被回收
+    a += i
+    console.log(a)
+  }
+  return b;
 }
 let b = aa()
 b(2) // 22
@@ -34,13 +34,13 @@ c(5);//25
 
 // 2.模块化
 function CoolModule() {
-    var sommething = 'cool';
-    function doSomething() {
-        console.log('something')
-    }
-    return {
-        doSomething: doSomething
-    }
+  var sommething = 'cool';
+  function doSomething() {
+    console.log('something')
+  }
+  return {
+    doSomething: doSomething
+  }
 }
 var foo = CoolModule();
 foo.doSomething; //something
