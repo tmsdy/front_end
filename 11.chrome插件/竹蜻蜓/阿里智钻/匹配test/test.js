@@ -20,9 +20,6 @@ console.log(str.match("'adgroupId':"))
 let arr = [1, 2, 3]
 let plan = {
   planName: '默认的计划名', // 计划名
-  status: '提交中',
-  description: '',
-  campaignId: 0,
   unitList: [ // 单元列表
     {
       unitName: 'DZ_达摩盘精选-活动人群：新势力周会场高活直播偏好人群', // 单元名
@@ -33,3 +30,8 @@ let plan = {
     }
   ]
 }
+/*
+需要校验的
+requestBody.formData
+
+*/

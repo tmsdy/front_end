@@ -1,0 +1,171 @@
+[
+  {
+    "targetType": 128,
+    "crowdName": "达摩盘定向-我创建的人群：DZ竞品高客单_板休潜客_电商部",
+    "targetLabel": {
+      "adgroupBindCrowdId": null,
+      "bidPrice": null,
+      "bindCrowd": true,
+      "bizType": null,
+      "campaignId": null,
+      "createTime": "2017-01-10",
+      "crowdId": null,
+      "dayBudget": null,
+      "deleteCrowd": true,
+      "discount": null,
+      "id": 115194,
+      "isDefaultPrice": null,
+      "labelDesc": "达摩盘定向",
+      "labelId": 115194,
+      "labelName": "我创建的人群",
+      "labelOptionMode": "OPTION",
+      "labelPriceMode": "OPTION_MATRIX",
+      "labelSourceType": "DYNAMIC_OPTION",
+      "labelValue": "{optionValue}",
+      "matrixPrice": [],
+      "memberId": null,
+      "optionCount": 202,
+      "optionGroups": null,
+      "options": [
+        {
+          "bidPrice": null,
+          "createTime": "2017-01-10",
+          "filter": null,
+          "id": 1003,
+          "labelId": 115194,
+          "labelOptionSourceType": "DYNAMIC",
+          "labelOptionType": "CHECKBOX",
+          "matrixPrice": [],
+          "optionDesc": null,
+          "optionName": "DZ竞品高客单_板休潜客_电商部",
+          "optionValue": "5446411",
+          "parentOptionId": null,
+          "properties": {
+            "coverage": "200000",
+            "validateTime": "2020-07-01",
+            "dmpCrowdDescription": "DZ竞品高客单_板休潜客_电商部",
+            "enableTime": "2020-04-08",
+            "isRecommended": "false",
+            "scoreRank": "2.5",
+            "businessType": "34",
+            "_debug_from_source": "DYNAMIC"
+          },
+          "sortNum": null,
+          "status": 1,
+          "updateTime": "2017-01-10",
+          "selected": true
+        }
+      ],
+      "priority": null,
+      "productId": null,
+      "properties": {
+        "_dmp_option_group_id": "30427",
+        "optionSourceType": "DYNAMIC",
+        "_dmp_tag_id": "147445",
+        "businessType": "1,3,10,11,12,13,14,18,21,25,26,24,29,30,34,37,39,41,42,43,44,46,47,48,49,50,53,54,55,56,57,58,59,60,61,62,67,70,71,72,73,74,76,77,78"
+      },
+      "shopId": null,
+      "sortNum": 2,
+      "status": 1,
+      "suggestPrice": null,
+      "targetId": 138,
+      "targetType": 128,
+      "targetingDimension": null,
+      "targetingId": 138,
+      "transId": null,
+      "updateTime": "2017-07-26",
+      "videoId": null,
+      "videoType": null,
+      "tag": "",
+      "color": "#ff0000",
+      "selected": false
+    },
+    "matrixPrice": [
+      {
+        "adzoneName": "无线_流量包_网上购物_手淘app_手淘焦点图",
+        "adzoneId": 34492608,
+        "settleMinPrice": 0.2,
+        "bidPrice": "1"
+      },
+      {
+        "adzoneName": "PC_流量包_网上购物_淘宝首页焦点图",
+        "adzoneId": 34502344,
+        "settleMinPrice": 0.2,
+        "bidPrice": "1"
+      },
+      {
+        "adzoneName": "无线_天猫_app首页焦点图2最新",
+        "adzoneId": 108327200025,
+        "settleMinPrice": 0.1,
+        "bidPrice": "1"
+      }
+    ],
+    "bidPrice": ""
+  },
+  {
+    "targetType": 65536,
+    "crowdName": "流量智选",
+    "targetLabel": {
+      "adgroupId": null,
+      "bizCode": null,
+      "campaignId": null,
+      "labelDesc": "流量智选",
+      "labelId": 115201,
+      "labelName": "流量智选",
+      "labelPriceMode": "LABEL_MATRIX",
+      "labelValue": "10",
+      "optionGroups": null,
+      "options": [
+        {
+          "bizCode": null,
+          "optionDesc": null,
+          "optionId": null,
+          "optionName": "流量智选",
+          "optionValue": "{shopId}",
+          "properties": {
+            "score": null,
+            "uv": null,
+            "rank": null
+          },
+          "serviceProvider": null,
+          "showTags": null,
+          "solutionCode": null,
+          "status": null,
+          "topAppKey": null,
+          "topCompanyName": null
+        }
+      ],
+      "properties": {},
+      "serviceProvider": null,
+      "showTags": null,
+      "solutionCode": null,
+      "status": 1,
+      "targetCategoryNameList": null,
+      "targetId": 141,
+      "targetType": 65536,
+      "topAppKey": null,
+      "topCompanyName": null
+    },
+    "matrixPrice": [
+      {
+        "adzoneName": "无线_流量包_网上购物_手淘app_手淘焦点图",
+        "adzoneId": 34492608,
+        "settleMinPrice": 0.2,
+        "bidPrice": "1"
+      },
+      {
+        "adzoneName": "PC_流量包_网上购物_淘宝首页焦点图",
+        "adzoneId": 34502344,
+        "settleMinPrice": 0.2,
+        "bidPrice": "1"
+      },
+      {
+        "adzoneName": "无线_天猫_app首页焦点图2最新",
+        "adzoneId": 108327200025,
+        "settleMinPrice": 0.1,
+        "bidPrice": "1"
+      }
+    ],
+    "bidPrice": ""
+  }
+]
