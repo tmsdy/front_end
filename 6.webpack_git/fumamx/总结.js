@@ -5,7 +5,7 @@
 3）include指定在那儿找， exclude排除在哪找
 4）设置noParse: 像jquery、lodash独立的第三方库，不需要webpack再去分析它的依赖了
 5）编译缓存：使用cache-loader缓存比较耗时的loader(css-loader,eslint-loader)
-babel-loader缓存：loader: 'babel-loader?cacheDirectory=true'
+babel-loader缓存：loader: 'babel-loader?cacheDirectory=true' ✅
 
 * 2.优化打包后大小
 1）代码分割：把 多次引用的、>30KB的模块分割打包出来。

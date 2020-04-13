@@ -26,7 +26,7 @@ module.exports = {
     }
   },
   module: {
-    noParse: function(content) {
+    noParse: function (content) {
       return /jquery|lodash|underscore|echarts/.test(content);
     },
     rules: [
@@ -79,7 +79,7 @@ module.exports = {
       }
     ]
   },
-  plugins:[
+  plugins: [
     ...genHappyPacks(),
     new VueLoaderPlugin()
   ],

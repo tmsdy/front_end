@@ -11,8 +11,8 @@ const sourceMapEnabled = isProd
   ? config.build.productionSourceMap
   : config.dev.cssSourceMap
 
-const resolve = function(dir) {
-    return path.join(__dirname, '..', dir)
+const resolve = function (dir) {
+  return path.join(__dirname, '..', dir)
 }
 
 const assetsPath = function (_path) {
@@ -32,7 +32,7 @@ const cssLoaders = function (options) {
     loader: 'postcss-loader',
   }
 
-  function generateLoaders (loader) {
+  function generateLoaders(loader) {
     const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
 
     if (loader) {
@@ -56,7 +56,7 @@ const cssLoaders = function (options) {
   }
 }
 
-const createLintingRule = function(){
+const createLintingRule = function () {
   return {
     test: /\.(js|vue)$/,
     use: 'Happypack/loader?id=eslint',
@@ -80,7 +80,7 @@ const styleLoaders = function (options) {
   return output
 }
 
-const createNotifierCallback = function() {
+const createNotifierCallback = function () {
   const notifier = require('node-notifier')
 
   return (severity, errors) => {
@@ -120,8 +120,8 @@ const vueLoaderConfig = function () {
 const genHappyPacks = function () {
   let happyPacks = [
     new HappyPack({
-      id:'babel',
-      use:[{ loader: 'babel-loader'} ],
+      id: 'babel',
+      use: [{ loader: 'babel-loader' }],
       threads: 5,
       threadPool: happyThreadPool
     }),
@@ -137,13 +137,13 @@ const genHappyPacks = function () {
       threadPool: happyThreadPool
     })
   ]
-  if(!isProd){
+  if (!isProd) {
     happyPacks.push(
       new HappyPack({
         id: 'eslint',
         threads: 5,
         threadPool: happyThreadPool,
-        use:[
+        use: [
           {
             loader: 'eslint-loader',
             options: {

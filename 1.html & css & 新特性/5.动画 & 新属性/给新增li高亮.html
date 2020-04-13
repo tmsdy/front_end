@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style>
+  li.active {
+    animation: fadeBg 2s
+  }
+
+  @keyframes fadeBg {
+    0% {
+      background-color: red;
+    }
+
+    100% {
+      background-color: #fff;
+    }
+  }
+</style>
+
+<body>
+  <button id="btn">添加</button>
+  <ul id="ulist">
+    <li class="active">1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+
+    //为所有的li添加高亮事件
+    var ulist = document.getElementById("ulist");
+    var list = document.getElementsByTagName("li");
+    var btn = document.getElementById("btn");
+    //创建li
+    btn.onclick = function () {
+      var e = document.createElement("li");
+      e.classList.add('active')
+      e.innerHTML = "新添加的元素";
+      ulist.appendChild(e);
+    }
+    ulist.onmouseover = function (evt) {
+      var e = evt || event;
+      var target = e.target || e.srcElement;
+      if (target.tagName == "LI") {
+        target.style.backgroundColor = "red";
+      }
+    }
+    ulist.onmouseout = function (evt) {
+      var e = evt || event;
+      var target = e.target || e.srcElement;
+      if (target.tagName == "LI") {
+        target.style.backgroundColor = "";
+      }
+    }
+  </script>
+</body>
+
+</html>

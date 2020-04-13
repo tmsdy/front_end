@@ -1,0 +1,44 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "no-shadowed-variable": [
+      false
+    ],
+    "no-console": [
+      false
+    ],
+    "object-literal-sort-keys": [
+      false
+    ],
+    "ordered-imports": false,
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "max-line-length": [
+      false
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "allow-leading-underscore"
+    ],
+    "no-debugger": [
+      false
+    ],
+    "no-bitwise": [
+      false
+    ],
+    "trailing-comma": [
+      true
+    ],
+    "quotemark": false,
+    "member-ordering": false, // 设false不用非得在constructor里声明public成员
+    "member-access": false // 不用非得每个方法都加个public private
+  },
+  "rulesDirectory": []
+}
