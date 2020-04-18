@@ -2,8 +2,11 @@ let time = '{"beginTime":"2020-04-17","bizCode":null,"endTime":"2020-04-17","lau
 let res = JSON.parse(time)
 // console.log(typeof res, res.beginTime, res.endTime)
 
-let re = /^[\w\u4e00-\u9fa5]+$/gi
-console.log(re.test('DZ_达摩盘定向我创建的人群DZ竞品高客单_板休潜客_电商部'))
+let re = /^[\w\u4e00-\u9fa5]+$/g
+// console.log(re.test('DZ_达摩盘定向我创建的人群DZ竞品高客单_板休潜客_电商部'))
+let str = 'DZ_达摩盘精选-定制人群：店铺粉丝非会员'
+let str2 = 'DZ_达摩盘精选店铺粉丝非会员'
+console.log(str2.match(/[\w\u4e00-\u9fa5]+/g).join(''))
 
 let arr = [true, false, false]
 console.log(arr.every(item => item))
