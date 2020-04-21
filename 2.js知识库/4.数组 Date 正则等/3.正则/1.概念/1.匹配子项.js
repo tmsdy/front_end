@@ -8,18 +8,18 @@
 第二个小括号就是第二个孩子
 */
 
-var str = '2013-6-7';
+var str = '2013-6-7'
 
-var re = /(\d+)(-)/g;
+var re = /(\d+)(-)/g
 
 str = str.replace(re, function ($0, $1, $2) {
-    console.log($0, $1, $2)
-    return $1 + '.';
-});
+  console.log($0, $1, $2)
+  return $1 + '.'
+})
 
-console.log(str);   //2013.6.7
+console.log(str)   //2013.6.7
 
-var re = /(a)(b)(c)/;
+var re = /(a)(b)(c)/
 
-console.log('abc'.match(re));  //[abc,a,b,c](当match不加g的时候才可以获取到子项的集合)
+console.log('abc'.match(re))  //[abc,a,b,c](当match不加g的时候才可以获取到子项的集合)
 

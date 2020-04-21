@@ -1,0 +1,37 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>无标题文档</title>
+  <script>
+
+    // 字符类 : 一组相似的元素   [] 中括号的整体代表一个字符
+    var str1 = 'abc'
+    var str2 = 'abdc'
+
+    var re = /a[bde]c/ // abc adc aec都可以匹配到
+
+    console.log(re.test(str1)) //true
+    console.log(re.test(str2)) //false
+
+    // 排除 : ^ 如果^写在[]里面的话，就代表排除的意思
+    var str = 'abc'
+    var re = /a[^bde]c/ // 不是 abc adc aec之一的都可以匹配到
+
+    console.log(re.test(str)) //false
+
+    var str = 'abc'
+
+    var re = /a[a-z0-9A-Z]c/
+
+    console.log(re.test(str)) //true
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
