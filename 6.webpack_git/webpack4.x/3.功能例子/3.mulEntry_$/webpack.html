@@ -16,12 +16,12 @@
     npm i jquery -S
     在entry里配个vendor(第三方)的入口
 
-6.全局变量，例如jquery
-    npm i expose-loader -D
-    rules里加个{
-        test: /^jquery$/,
-        loader:'expose-loader?$'
-    }
+6.全局变量，例如jquery的$，得先npm i jquery
+new webpack.ProvidePlugin({ // 把$变成全局的
+  $: "jquery",
+  jQuery: "jquery",
+  "window.jQuery": "jquery"
+}),
 
 7.不同模块的变量是私有的不能共用
 

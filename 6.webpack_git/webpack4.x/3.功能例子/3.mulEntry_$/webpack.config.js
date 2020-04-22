@@ -21,14 +21,6 @@ module.exports = {
     //     return /jquery|lodash/.test(content);
     // },
     rules: [
-      {   //把$变成全局变量
-        test: /^jquery$/,
-        // loader:'expose-loader?$' //简便写法
-        use: {
-          loader: 'expose-loader',
-          options: '$'
-        }
-      },
       {
         test: /\.css$/,
         // css-loader解析处理css文件中的url路径
@@ -40,6 +32,11 @@ module.exports = {
   },
   plugins: [ // 插件放的位置不分顺序
     new CleanWebpackPlugin([path.join(__dirname, 'dist')]),
+    new webpack.ProvidePlugin({ // 把$变成全局的
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',

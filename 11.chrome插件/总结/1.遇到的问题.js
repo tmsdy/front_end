@@ -9,3 +9,5 @@ location.href = `
   `
 
 // 3.正则不要存成变量，不然同样的字符串test的结果可true可false左右横跳
+
+// 4.jquery做鼠标移入移出的事件委托：https://blog.csdn.net/qq_36358940/article/details/76317140
