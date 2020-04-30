@@ -10,3 +10,14 @@ let url = '//detail.tmall.hk/hk/item.htm?spm=a1z10.3-b-s.w4011-17039211475.51.55
 // console.log(url.match(/[\w\W]+\?/)[0])
 
 
+let addBtnGroup = {
+  123: {
+    x: 200,
+    y: 200,
+    width: 40,
+    height: 40
+  }
+}
+for (item in addBtnGroup) {
+  console.log(item)
+}
