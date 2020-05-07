@@ -17,22 +17,22 @@ const Cookies = require('cookies');
 const User = require('./models/User');
 
 app.use((req, res, next) => { //每次访问页面解析cookies信息
-    req.cookies = new Cookies(req, res);
-    req.userInfo = {};
-    if (req.cookies.get('userInfo')) {
-        try {
-            req.userInfo = JSON.parse(req.cookies.get('userInfo'));
-            console.log(req.userInfo)
-            User.findById(req.userInfo._id).then((userInfo) => { //判断是不是管理员
-                req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
-                next();
-            })
-        } catch (e) {
-            // next() ;
-        }
-    } else {
+  req.cookies = new Cookies(req, res)
+  req.userInfo = {}
+  if (req.cookies.get('userInfo')) {
+    try {
+      req.userInfo = JSON.parse(req.cookies.get('userInfo'));
+      console.log(req.userInfo)
+      User.findById(req.userInfo._id).then((userInfo) => { //判断是不是管理员
+        req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
         next();
+      })
+    } catch (e) {
+      // next() ;
     }
+  } else {
+    next();
+  }
 
 });
 
@@ -44,12 +44,12 @@ app.use('/', require('./routers/main'));
 //链接数据库并监听hhtp端口
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/blog', (err) => {
-    if (err) {
-        console.log("数据库链接失败！")
-    } else {
-        console.log("数据库链接成功！");
-        app.listen(8081);
-    }
+  if (err) {
+    console.log("数据库链接失败！")
+  } else {
+    console.log("数据库链接成功！");
+    app.listen(8081);
+  }
 });
 
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+</head>
+<style>
+  .img {
+    width: 40px;
+    height: 80px;
+    object-fit: contain;
+    position: absolute;
+    left: 40px;
+    top: 40px;
+  }
+
+  #btn {
+    margin-top: 300px;
+  }
+</style>
+
+<body>
+  <img class="img"
+    src="https://img.alicdn.com/bao/uploaded/i4/2786278078/O1CN01bHmBrO29Xm1DxBMUt_!!0-item_pic.jpg_240x240.jpg">
+
+  <button id="btn">开始动</button>
+  <script>
+
+    const oBtn = document.querySelector('#btn')
+
+    oBtn.addEventListener('click', (e) => {
+      console.log('click')
+      $(".img").animate({ left: '250px' })
+    })
+
+  </script>
+</body>
+
+</html>
