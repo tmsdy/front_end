@@ -8,6 +8,6 @@
 
 * 3.端口3000不要随便改，要改就得所有的用到3000端口的都改
 
-* 4.
+* 4.右键菜单：https://crxdoc-zh.appspot.com/apps/contextMenus#method-create
 
 */
