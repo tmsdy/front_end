@@ -9,7 +9,7 @@
 cd /etc/nginx/conf.d
 sudo vi rookiefeifei-top-3389.conf
 cd ../
-sudo nginx -t 检测配置文件有没有错误
+检测配置文件有没有错误：sudo nginx -t 
 成功后重启nginx: sudo nginx -s reload
 
 4.返回的头信息中有Server:nginx/1.10.3 (Ubuntu)信息

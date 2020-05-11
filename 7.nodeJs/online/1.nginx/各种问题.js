@@ -4,4 +4,8 @@
 解决：先nginx -c /etc/nginx/nginx.conf，nginx.conf文件的路径可以从nginx -t的返回中找到。
 再nginx -s reload
 
+2.nginx: [alert] kill(21725, 1) failed (1: Operation not permitted)
+解决：nginx 缺少启动权限，sudo nginx -s reload
+
+
  */

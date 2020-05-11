@@ -1,5 +1,4 @@
 /*
-
 1.一般命令
 新建编辑修改文件：vi app.js 编辑app.js，按i进入编辑模式，esc后wq加回车保存退出。
 强制删除用户：userdel -r -f feifei
