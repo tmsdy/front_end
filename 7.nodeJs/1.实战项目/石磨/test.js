@@ -1,4 +1,4 @@
-let str = 'search_hot'
-console.log(str.endsWith('hot'))
+const moment = require("moment")
 
-console.log(0.3456.toFixed(2))
+let date = ['20200507', '20200513']
+moment(params.date).format('YYYY-MM-DD')

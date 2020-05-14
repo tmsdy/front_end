@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import './test/shimo_test'
+
 // import App from './class'
 // import App from './async'
 import App from './async_print'
